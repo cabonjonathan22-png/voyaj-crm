@@ -20,6 +20,7 @@ void main() {
   setUpAll(loadFonts);
 
   final screens = {
+    'dashboard': Routes.dashboard,
     'organisations': Routes.organisations,
     'organisation_new': '${Routes.organisations}?new=1',
     'organisation_detail': '${Routes.organisations}/${sid('org-1')}',

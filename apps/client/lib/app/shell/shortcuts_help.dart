@@ -17,6 +17,7 @@ const _groups = <(String, List<(String, String)>)>[
   (
     'Navigation',
     [
+      ('Ctrl 0', 'Tableau de bord'),
       ('Ctrl 1', 'Organisations'),
       ('Ctrl 2', 'Contacts'),
       ('Ctrl 3', 'Pipelines'),

@@ -4508,6 +4508,132 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Dernier envoi : {date}'**
   String webhookLastDelivery(String date);
+
+  /// No description provided for @navDashboard.
+  ///
+  /// In fr, this message translates to:
+  /// **'Tableau de bord'**
+  String get navDashboard;
+
+  /// No description provided for @dashHello.
+  ///
+  /// In fr, this message translates to:
+  /// **'Bonjour {name}'**
+  String dashHello(String name);
+
+  /// No description provided for @dashOpenPipeline.
+  ///
+  /// In fr, this message translates to:
+  /// **'Affaires en cours'**
+  String get dashOpenPipeline;
+
+  /// No description provided for @dashOpenDeals.
+  ///
+  /// In fr, this message translates to:
+  /// **'{count, plural, =0{Aucune affaire} =1{1 affaire} other{{count} affaires}}'**
+  String dashOpenDeals(int count);
+
+  /// No description provided for @dashWeighted.
+  ///
+  /// In fr, this message translates to:
+  /// **'Pipeline pondéré'**
+  String get dashWeighted;
+
+  /// No description provided for @dashWeightedHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'Montants × probabilité'**
+  String get dashWeightedHelp;
+
+  /// No description provided for @dashWon.
+  ///
+  /// In fr, this message translates to:
+  /// **'Affaires gagnées'**
+  String get dashWon;
+
+  /// No description provided for @dashRevenue.
+  ///
+  /// In fr, this message translates to:
+  /// **'Chiffre d\'affaires HT'**
+  String get dashRevenue;
+
+  /// No description provided for @dashRevenueHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'Factures moins avoirs émis cette année'**
+  String get dashRevenueHelp;
+
+  /// No description provided for @dashOutstanding.
+  ///
+  /// In fr, this message translates to:
+  /// **'Reste à encaisser'**
+  String get dashOutstanding;
+
+  /// No description provided for @dashNoOverdue.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucune facture en retard'**
+  String get dashNoOverdue;
+
+  /// No description provided for @dashOverdue.
+  ///
+  /// In fr, this message translates to:
+  /// **'{count, plural, =1{1 facture en retard} other{{count} factures en retard}} ({amount})'**
+  String dashOverdue(int count, String amount);
+
+  /// No description provided for @dashTasks.
+  ///
+  /// In fr, this message translates to:
+  /// **'Mes tâches'**
+  String get dashTasks;
+
+  /// No description provided for @dashTasksHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'{late} en retard · {today} aujourd\'hui'**
+  String dashTasksHelp(int late, int today);
+
+  /// No description provided for @dashTasksNone.
+  ///
+  /// In fr, this message translates to:
+  /// **'Rien d\'urgent : aucune tâche en retard ni prévue aujourd\'hui.'**
+  String get dashTasksNone;
+
+  /// No description provided for @dashRevenueChart.
+  ///
+  /// In fr, this message translates to:
+  /// **'Chiffre d\'affaires mensuel'**
+  String get dashRevenueChart;
+
+  /// No description provided for @dashRevenueChartHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'12 derniers mois, HT (factures moins avoirs)'**
+  String get dashRevenueChartHelp;
+
+  /// No description provided for @dashPipelineByStage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Pipeline par étape'**
+  String get dashPipelineByStage;
+
+  /// No description provided for @dashOrganisations.
+  ///
+  /// In fr, this message translates to:
+  /// **'Organisations par statut'**
+  String get dashOrganisations;
+
+  /// No description provided for @dashActivity.
+  ///
+  /// In fr, this message translates to:
+  /// **'Activité des 30 derniers jours'**
+  String get dashActivity;
+
+  /// No description provided for @dashNoData.
+  ///
+  /// In fr, this message translates to:
+  /// **'Pas encore de données.'**
+  String get dashNoData;
 }
 
 class _AppLocalizationsDelegate

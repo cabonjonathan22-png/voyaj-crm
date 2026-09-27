@@ -52,6 +52,8 @@ class AppShell extends ConsumerWidget {
             unawaited(ref.read(syncEngineProvider)?.syncNow()),
         const SingleActivator(LogicalKeyboardKey.f1): () =>
             unawaited(showShortcutsHelp(context)),
+        const SingleActivator(LogicalKeyboardKey.digit0, control: true): () =>
+            go(Routes.dashboard),
         const SingleActivator(LogicalKeyboardKey.digit1, control: true): () =>
             go(Routes.organisations),
         const SingleActivator(LogicalKeyboardKey.digit2, control: true): () =>
@@ -137,6 +139,12 @@ class _Sidebar extends ConsumerWidget {
     bool can(Permission p) => ref.watch(permissionProvider(p));
 
     final workspace = [
+      _NavItem(
+        LucideIcons.layoutDashboard,
+        l10n.navDashboard,
+        Routes.dashboard,
+        shortcut: 'Ctrl 0',
+      ),
       if (can(Permission.organisationRead))
         _NavItem(
           LucideIcons.building2,

@@ -2576,4 +2576,90 @@ class AppLocalizationsFr extends AppLocalizations {
   String webhookLastDelivery(String date) {
     return 'Dernier envoi : $date';
   }
+
+  @override
+  String get navDashboard => 'Tableau de bord';
+
+  @override
+  String dashHello(String name) {
+    return 'Bonjour $name';
+  }
+
+  @override
+  String get dashOpenPipeline => 'Affaires en cours';
+
+  @override
+  String dashOpenDeals(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count affaires',
+      one: '1 affaire',
+      zero: 'Aucune affaire',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get dashWeighted => 'Pipeline pondéré';
+
+  @override
+  String get dashWeightedHelp => 'Montants × probabilité';
+
+  @override
+  String get dashWon => 'Affaires gagnées';
+
+  @override
+  String get dashRevenue => 'Chiffre d\'affaires HT';
+
+  @override
+  String get dashRevenueHelp => 'Factures moins avoirs émis cette année';
+
+  @override
+  String get dashOutstanding => 'Reste à encaisser';
+
+  @override
+  String get dashNoOverdue => 'Aucune facture en retard';
+
+  @override
+  String dashOverdue(int count, String amount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count factures en retard',
+      one: '1 facture en retard',
+    );
+    return '$_temp0 ($amount)';
+  }
+
+  @override
+  String get dashTasks => 'Mes tâches';
+
+  @override
+  String dashTasksHelp(int late, int today) {
+    return '$late en retard · $today aujourd\'hui';
+  }
+
+  @override
+  String get dashTasksNone =>
+      'Rien d\'urgent : aucune tâche en retard ni prévue aujourd\'hui.';
+
+  @override
+  String get dashRevenueChart => 'Chiffre d\'affaires mensuel';
+
+  @override
+  String get dashRevenueChartHelp =>
+      '12 derniers mois, HT (factures moins avoirs)';
+
+  @override
+  String get dashPipelineByStage => 'Pipeline par étape';
+
+  @override
+  String get dashOrganisations => 'Organisations par statut';
+
+  @override
+  String get dashActivity => 'Activité des 30 derniers jours';
+
+  @override
+  String get dashNoData => 'Pas encore de données.';
 }

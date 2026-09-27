@@ -131,6 +131,14 @@ final commandsProvider = Provider<List<AppCommand>>((ref) {
     ),
     for (final (route, label, icon, shortcut, keywords, permission) in [
       (
+        Routes.dashboard,
+        'Aller au tableau de bord',
+        LucideIcons.layoutDashboard,
+        'Ctrl 0',
+        'accueil indicateurs chiffre affaires pipeline',
+        null,
+      ),
+      (
         Routes.organisations,
         'Aller aux organisations',
         LucideIcons.building2,
@@ -203,7 +211,7 @@ final commandsProvider = Provider<List<AppCommand>>((ref) {
         Permission.organisationRead,
       ),
     ])
-      if (can(permission))
+      if (permission == null || can(permission))
         AppCommand(
           id: 'nav.$route',
           label: label,

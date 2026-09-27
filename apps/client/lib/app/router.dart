@@ -23,6 +23,7 @@ import '../features/crm/duplicates/duplicates_page.dart';
 import '../features/crm/map/map_page.dart';
 import '../features/crm/organisations/organisation_page.dart';
 import '../features/crm/organisations/organisations_page.dart';
+import '../features/dashboard/dashboard_page.dart';
 import '../features/dev/design_system_gallery.dart';
 import '../features/email/emails_page.dart';
 import '../features/settings/settings_page.dart';
@@ -36,6 +37,7 @@ abstract final class Routes {
   static const setup = '/setup';
   static const login = '/login';
   static const mfa = '/login/mfa';
+  static const dashboard = '/tableau-de-bord';
   static const organisations = '/organisations';
   static const contacts = '/contacts';
   static const elected = '/elus';
@@ -65,7 +67,7 @@ final routerProvider = Provider<GoRouter>((ref) {
     ..onDispose(refresh.dispose);
 
   final router = GoRouter(
-    initialLocation: Routes.organisations,
+    initialLocation: Routes.dashboard,
     refreshListenable: refresh,
     redirect: (context, state) {
       final location = state.matchedLocation;
@@ -74,7 +76,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         AuthSignedOut() => location == Routes.login ? null : Routes.login,
         AuthMfaRequired() => location == Routes.mfa ? null : Routes.mfa,
         AuthSignedIn() =>
-          Routes._public.contains(location) ? Routes.organisations : null,
+          Routes._public.contains(location) ? Routes.dashboard : null,
       };
     },
     routes: [
@@ -94,6 +96,10 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state, child) =>
             AppShell(location: state.matchedLocation, child: child),
         routes: [
+          GoRoute(
+            path: Routes.dashboard,
+            pageBuilder: (_, state) => _instant(state, const DashboardPage()),
+          ),
           GoRoute(
             path: Routes.organisations,
             pageBuilder: (_, state) => _instant(
