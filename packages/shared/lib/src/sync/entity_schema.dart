@@ -53,13 +53,18 @@ final class FieldSpec {
       FieldType.decimal => value is num,
       FieldType.boolean => value is bool,
       FieldType.dateTime => value is String && DateTime.tryParse(value) != null,
-      FieldType.date =>
-        value is String &&
-            _datePattern.hasMatch(value) &&
-            DateTime.tryParse(value) != null,
+      FieldType.date => value is String && _isCalendarDate(value),
       FieldType.json => value is Map || value is List,
     };
   }
+}
+
+/// Date `AAAA-MM-JJ` existante (`2026-02-30` est refusée : [DateTime.parse]
+/// la convertirait silencieusement en 2 mars).
+bool _isCalendarDate(String value) {
+  if (!_datePattern.hasMatch(value)) return false;
+  final parsed = DateTime.tryParse(value);
+  return parsed != null && formatDateOnly(parsed) == value;
 }
 
 /// Formate une date calendaire (`AAAA-MM-JJ`).
