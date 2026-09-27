@@ -203,6 +203,14 @@ final commandsProvider = Provider<List<AppCommand>>((ref) {
         Permission.invoiceRead,
       ),
       (
+        Routes.agenda,
+        "Aller à l'agenda",
+        LucideIcons.calendarDays,
+        'Ctrl 8',
+        'calendrier rendez-vous ics outlook google',
+        Permission.activityRead,
+      ),
+      (
         Routes.duplicates,
         'Aller aux doublons',
         LucideIcons.copy,

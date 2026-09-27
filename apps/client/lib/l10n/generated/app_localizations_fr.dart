@@ -2662,4 +2662,58 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get dashNoData => 'Pas encore de données.';
+
+  @override
+  String get navAgenda => 'Agenda';
+
+  @override
+  String get agendaMine => 'Mes activités';
+
+  @override
+  String get agendaEveryone => 'Toute l\'équipe';
+
+  @override
+  String get agendaPrevious => 'Mois précédent';
+
+  @override
+  String get agendaNext => 'Mois suivant';
+
+  @override
+  String get agendaToday => 'Aujourd\'hui';
+
+  @override
+  String get agendaNewMeeting => 'Rendez-vous';
+
+  @override
+  String get agendaNewTask => 'Tâche';
+
+  @override
+  String get agendaNothing => 'Rien de prévu ce jour-là.';
+
+  @override
+  String get agendaSubscribe => 'Abonnement (Outlook, Google)';
+
+  @override
+  String get agendaSubscribeHelp =>
+      'Ajoutez cette adresse dans Outlook (« Ajouter un calendrier » › « À partir d\'Internet ») ou Google Agenda (« À partir de l\'URL ») : vos rendez-vous, appels et tâches Voyaj y apparaissent et se mettent à jour automatiquement.';
+
+  @override
+  String get agendaCreateLink => 'Créer le lien';
+
+  @override
+  String get agendaRenew => 'Nouveau lien';
+
+  @override
+  String get agendaRevoke => 'Désactiver';
+
+  @override
+  String get agendaLinkOnce =>
+      'Copiez l\'adresse maintenant : elle ne sera plus affichée. Toute personne qui la connaît voit votre agenda.';
+
+  @override
+  String get agendaLinkActive =>
+      'Un lien d\'abonnement est actif. Générer un nouveau lien désactive l\'ancien.';
+
+  @override
+  String get agendaLinkNone => 'Aucun lien d\'abonnement actif.';
 }

@@ -4634,6 +4634,108 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Pas encore de données.'**
   String get dashNoData;
+
+  /// No description provided for @navAgenda.
+  ///
+  /// In fr, this message translates to:
+  /// **'Agenda'**
+  String get navAgenda;
+
+  /// No description provided for @agendaMine.
+  ///
+  /// In fr, this message translates to:
+  /// **'Mes activités'**
+  String get agendaMine;
+
+  /// No description provided for @agendaEveryone.
+  ///
+  /// In fr, this message translates to:
+  /// **'Toute l\'équipe'**
+  String get agendaEveryone;
+
+  /// No description provided for @agendaPrevious.
+  ///
+  /// In fr, this message translates to:
+  /// **'Mois précédent'**
+  String get agendaPrevious;
+
+  /// No description provided for @agendaNext.
+  ///
+  /// In fr, this message translates to:
+  /// **'Mois suivant'**
+  String get agendaNext;
+
+  /// No description provided for @agendaToday.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aujourd\'hui'**
+  String get agendaToday;
+
+  /// No description provided for @agendaNewMeeting.
+  ///
+  /// In fr, this message translates to:
+  /// **'Rendez-vous'**
+  String get agendaNewMeeting;
+
+  /// No description provided for @agendaNewTask.
+  ///
+  /// In fr, this message translates to:
+  /// **'Tâche'**
+  String get agendaNewTask;
+
+  /// No description provided for @agendaNothing.
+  ///
+  /// In fr, this message translates to:
+  /// **'Rien de prévu ce jour-là.'**
+  String get agendaNothing;
+
+  /// No description provided for @agendaSubscribe.
+  ///
+  /// In fr, this message translates to:
+  /// **'Abonnement (Outlook, Google)'**
+  String get agendaSubscribe;
+
+  /// No description provided for @agendaSubscribeHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ajoutez cette adresse dans Outlook (« Ajouter un calendrier » › « À partir d\'Internet ») ou Google Agenda (« À partir de l\'URL ») : vos rendez-vous, appels et tâches Voyaj y apparaissent et se mettent à jour automatiquement.'**
+  String get agendaSubscribeHelp;
+
+  /// No description provided for @agendaCreateLink.
+  ///
+  /// In fr, this message translates to:
+  /// **'Créer le lien'**
+  String get agendaCreateLink;
+
+  /// No description provided for @agendaRenew.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouveau lien'**
+  String get agendaRenew;
+
+  /// No description provided for @agendaRevoke.
+  ///
+  /// In fr, this message translates to:
+  /// **'Désactiver'**
+  String get agendaRevoke;
+
+  /// No description provided for @agendaLinkOnce.
+  ///
+  /// In fr, this message translates to:
+  /// **'Copiez l\'adresse maintenant : elle ne sera plus affichée. Toute personne qui la connaît voit votre agenda.'**
+  String get agendaLinkOnce;
+
+  /// No description provided for @agendaLinkActive.
+  ///
+  /// In fr, this message translates to:
+  /// **'Un lien d\'abonnement est actif. Générer un nouveau lien désactive l\'ancien.'**
+  String get agendaLinkActive;
+
+  /// No description provided for @agendaLinkNone.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun lien d\'abonnement actif.'**
+  String get agendaLinkNone;
 }
 
 class _AppLocalizationsDelegate

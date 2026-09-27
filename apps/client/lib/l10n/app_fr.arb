@@ -855,5 +855,22 @@
   "dashPipelineByStage": "Pipeline par étape",
   "dashOrganisations": "Organisations par statut",
   "dashActivity": "Activité des 30 derniers jours",
-  "dashNoData": "Pas encore de données."
+  "dashNoData": "Pas encore de données.",
+  "navAgenda": "Agenda",
+  "agendaMine": "Mes activités",
+  "agendaEveryone": "Toute l'équipe",
+  "agendaPrevious": "Mois précédent",
+  "agendaNext": "Mois suivant",
+  "agendaToday": "Aujourd'hui",
+  "agendaNewMeeting": "Rendez-vous",
+  "agendaNewTask": "Tâche",
+  "agendaNothing": "Rien de prévu ce jour-là.",
+  "agendaSubscribe": "Abonnement (Outlook, Google)",
+  "agendaSubscribeHelp": "Ajoutez cette adresse dans Outlook (« Ajouter un calendrier » › « À partir d'Internet ») ou Google Agenda (« À partir de l'URL ») : vos rendez-vous, appels et tâches Voyaj y apparaissent et se mettent à jour automatiquement.",
+  "agendaCreateLink": "Créer le lien",
+  "agendaRenew": "Nouveau lien",
+  "agendaRevoke": "Désactiver",
+  "agendaLinkOnce": "Copiez l'adresse maintenant : elle ne sera plus affichée. Toute personne qui la connaît voit votre agenda.",
+  "agendaLinkActive": "Un lien d'abonnement est actif. Générer un nouveau lien désactive l'ancien.",
+  "agendaLinkNone": "Aucun lien d'abonnement actif."
 }

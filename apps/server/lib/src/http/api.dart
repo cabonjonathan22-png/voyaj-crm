@@ -10,6 +10,7 @@ import '../auth/auth_context.dart';
 import '../auth/auth_service.dart';
 import '../auth/users_service.dart';
 import '../billing/billing_service.dart';
+import '../calendar/calendar_service.dart';
 import '../connectors/connector_service.dart';
 import '../connectors/webhook_service.dart';
 import '../db/database.dart';
@@ -38,6 +39,7 @@ Handler buildHandler({
   required BillingService billing,
   required ConnectorService connectors,
   required WebhookService webhooks,
+  required CalendarService calendar,
   required bool trustProxy,
   required bool hsts,
 }) {
@@ -437,6 +439,31 @@ Handler buildHandler({
     ..post('/webhooks/<id>/ping', (Request r, String id) async {
       final status = await webhooks.ping(await authed(r), id);
       return jsonResponse({'status': status});
+    })
+    // ── Agenda ──
+    ..get('/calendar/feed', (Request r) async {
+      return jsonResponse({'active': await calendar.hasFeed(await authed(r))});
+    })
+    ..post('/calendar/feed', (Request r) async {
+      return jsonResponse({'url': await calendar.createFeed(await authed(r))});
+    })
+    ..delete('/calendar/feed', (Request r) async {
+      await calendar.revokeFeed(await authed(r));
+      return noContent();
+    })
+    // Flux ICS : authentifié par le jeton de l'URL (abonnement d'agenda).
+    ..get('/calendar/<file>', (Request r, String file) async {
+      if (!file.endsWith('.ics')) {
+        throw const ApiException.notFound('Agenda introuvable.');
+      }
+      final ics = await calendar.feed(file.substring(0, file.length - 4));
+      return Response.ok(
+        ics,
+        headers: {
+          HttpHeaders.contentTypeHeader: 'text/calendar; charset=utf-8',
+          HttpHeaders.cacheControlHeader: 'private, max-age=300',
+        },
+      );
     })
     // ── Audit ──
     ..get('/audit', (Request r) async {

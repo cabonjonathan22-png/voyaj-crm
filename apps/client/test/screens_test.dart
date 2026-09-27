@@ -29,6 +29,7 @@ void main() {
     'elected': Routes.elected,
     'pipelines': Routes.pipelines,
     'tasks': Routes.tasks,
+    'agenda': Routes.agenda,
     'map': Routes.map,
     'duplicates': Routes.duplicates,
     'settings_custom_fields': '${Routes.settings}/customFields',

@@ -68,6 +68,8 @@ class AppShell extends ConsumerWidget {
             go(Routes.emails),
         const SingleActivator(LogicalKeyboardKey.digit7, control: true): () =>
             go(Routes.billing),
+        const SingleActivator(LogicalKeyboardKey.digit8, control: true): () =>
+            go(Routes.agenda),
         const SingleActivator(LogicalKeyboardKey.keyW, control: true): () {
           final next = ref
               .read(workTabsProvider.notifier)
@@ -174,6 +176,13 @@ class _Sidebar extends ConsumerWidget {
           l10n.navTasks,
           Routes.tasks,
           shortcut: 'Ctrl 4',
+        ),
+      if (can(Permission.activityRead))
+        _NavItem(
+          LucideIcons.calendarDays,
+          l10n.navAgenda,
+          Routes.agenda,
+          shortcut: 'Ctrl 8',
         ),
       if (can(Permission.emailUse))
         _NavItem(

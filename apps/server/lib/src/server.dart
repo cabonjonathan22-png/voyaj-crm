@@ -11,6 +11,7 @@ import 'auth/auth_service.dart';
 import 'auth/users_service.dart';
 import 'billing/billing_service.dart';
 import 'billing/chorus_pro.dart';
+import 'calendar/calendar_service.dart';
 import 'config.dart';
 import 'connectors/connector_service.dart';
 import 'connectors/webhook_service.dart';
@@ -43,6 +44,7 @@ final class Services {
     this.billing,
     this.connectors,
     this.webhooks,
+    this.calendar,
   );
 
   factory Services.create(
@@ -133,6 +135,7 @@ final class Services {
         cipher: cipher,
         httpClient: webhookClient,
       ),
+      CalendarService(db: db, publicUrl: config.publicUrl),
     );
   }
 
@@ -147,6 +150,7 @@ final class Services {
   final BillingService billing;
   final ConnectorService connectors;
   final WebhookService webhooks;
+  final CalendarService calendar;
 }
 
 /// Serveur HTTP en cours d'exécution.
@@ -201,6 +205,7 @@ final class VoyajServer {
       billing: services.billing,
       connectors: services.connectors,
       webhooks: services.webhooks,
+      calendar: services.calendar,
       trustProxy: config.trustProxy,
       hsts: config.tlsEnabled || config.trustProxy,
     );

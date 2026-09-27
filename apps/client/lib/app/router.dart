@@ -9,6 +9,7 @@ import '../features/admin/connectors_page.dart';
 import '../features/admin/public_data_page.dart';
 import '../features/admin/roles_page.dart';
 import '../features/admin/users_page.dart';
+import '../features/agenda/agenda_page.dart';
 import '../features/auth/auth_state.dart';
 import '../features/auth/login_page.dart';
 import '../features/auth/mfa_page.dart';
@@ -43,6 +44,7 @@ abstract final class Routes {
   static const elected = '/elus';
   static const pipelines = '/pipelines';
   static const tasks = '/taches';
+  static const agenda = '/agenda';
   static const map = '/carte';
   static const duplicates = '/doublons';
   static const emails = '/emails';
@@ -156,6 +158,10 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: Routes.tasks,
             pageBuilder: (_, state) => _instant(state, const TasksPage()),
+          ),
+          GoRoute(
+            path: Routes.agenda,
+            pageBuilder: (_, state) => _instant(state, const AgendaPage()),
           ),
           GoRoute(
             path: Routes.map,
