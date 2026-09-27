@@ -37,6 +37,7 @@ flowchart TB
 |---|---|
 | `voyaj_shared` | Seule source des modèles et règles partagées : `Tag`, DTO d'auth, protocole de synchro, `EntitySchema` (liste blanche des champs), `Hlc`, `mergeFields`, `Permission`/`SystemRole`, validation. |
 | `voyaj_server` | CLI `voyaj_server` (`serve`, `migrate`, `create-admin`, `gen-key`, `audit-verify`), API REST, WebSocket, services (auth, utilisateurs, synchro, audit). |
+| `fr_public_data` | Lecture des données publiques (geo.api.gouv.fr, transport.data.gouv.fr, data.culture.gouv.fr) et conversion en organisations : régions, départements, EPCI, communes, AOM, festivals. |
 | `voyaj_client` | Application desktop : design system, shell, base locale, moteur de synchro, écrans. |
 
 ## Synchronisation
@@ -111,6 +112,13 @@ n'est pas garanti, le client gère les références orphelines.
 | `segments` | filtres enregistrés partagés (entité, critères JSON) |
 | `files` | contenu des fichiers joints (non synchronisé) : empreinte SHA-256, taille, type |
 
+## Schéma PostgreSQL (migration 0003 — données publiques)
+
+| Table | Contenu |
+|---|---|
+| `public_data_sources` | configuration par source : import quotidien activé, périmètre (codes de départements) |
+| `public_data_runs` | historique des imports : déclenchement (manuel / planifié), état, compteurs (lus, créés, mis à jour, inchangés, refusés), erreur |
+
 Base locale Drift (client, schéma v2) : une table par entité synchronisée (mêmes colonnes,
 `version` = dernière version serveur connue), `outbox`, `sync_errors`, `key_values` (préférences,
 curseur, HLC, poste, vues de tableaux, onglets de travail).
@@ -143,6 +151,7 @@ curseur, HLC, poste, vues de tableaux, onglets de travail).
 | GET/POST/PUT/DELETE | `/api/v1/roles`, `/roles/{id}` | rôles |
 | POST / GET | `/api/v1/sync/push`, `/sync/pull?cursor=` | synchronisation |
 | POST / GET | `/api/v1/files`, `/files/{sha256}` | fichiers joints (25 Mo max, corps brut) |
+| GET / PUT / POST | `/api/v1/public-data`, `/public-data/{source}`, `/public-data/{source}/run`, `/public-data/runs` | données publiques : état, configuration, lancement (202, en arrière-plan), historique |
 | GET / POST | `/api/v1/sync/conflicts`, `/sync/conflicts/{id}/review` | conflits |
 | GET | `/api/v1/audit?limit=&before=` | journal d'audit |
 | WS | `/ws` | notifications temps réel (1er message : authentification) |
@@ -180,3 +189,24 @@ lib/l10n/           fichiers ARB (fr)
   ignorés, tags et organisations manquants créés, provenance RGPD sur chaque fiche.
 - **Doublons** : clés de rapprochement (SIRET, SIREN ou INSEE par type, nom normalisé + lieu ;
   email, mobile, nom + organisation), regroupement transitif, fusion synchronisée.
+
+## Données publiques (Phase 3)
+
+```mermaid
+flowchart LR
+  G["geo.api.gouv.fr<br/>régions · départements · EPCI · communes"] --> P
+  T["transport.data.gouv.fr<br/>AOM"] --> P
+  C["data.culture.gouv.fr<br/>festivals"] --> P
+  P["fr_public_data<br/>PublicRecord"] --> S["PublicDataService<br/>(file, planification)"]
+  S --> U["SyncService.upsertFromSource<br/>rapprochement · parents · fusion"]
+  U --> O[("organisations")]
+  O -- "pull" --> Postes
+```
+
+- Ordre : régions → départements → EPCI → communes (les parents existent avant les enfants) →
+  AOM → festivals.
+- Rapprochement : `source` + `source_ref` (code INSEE, SIREN…), sinon fiche de même type avec le
+  même code (`matchField`) si elle ne provient pas déjà d'une autre source publique.
+- Mise à jour : seuls les champs modifiés dans la source et **non modifiés par un utilisateur**
+  (`field_meta` : dernière écriture sans utilisateur) sont écrits ; `collected_at` est actualisé.
+- Création : statut « À prospecter ». Les fiches supprimées ne sont pas recréées.

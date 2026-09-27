@@ -19,13 +19,14 @@ commentaires). Identifiants de code en anglais.
 apps/client/        Flutter desktop (Riverpod, go_router, Drift chiffré)
 apps/server/        Serveur Dart (shelf, PostgreSQL, WebSocket)
 packages/shared/    Modèles freezed, protocole de synchro, HLC, fusion, permissions, validation
+packages/fr_public_data/  Données publiques (geo.api.gouv.fr, AOM, festivals) → organisations
 deploy/docker/      Dockerfile, docker-compose (serveur + Postgres + Caddy)
 deploy/windows/     Service Windows (WinSW) et installeur client (Inno Setup)
 docs/               ARCHITECTURE.md, ROADMAP.md
 ```
 
-Packages prévus, créés dans leur phase : `packages/fr_public_data` (3), `packages/invoicing` (5),
-`packages/connectors` (6).
+`packages/fr_public_data` (Phase 3) : lecture des données publiques. Packages prévus, créés dans
+leur phase : `packages/invoicing` (5), `packages/connectors` (6).
 
 ## Commandes
 
@@ -74,4 +75,6 @@ exécution), lu dans l'environnement ou `apps/server/.env`.
   les scripts `.ps1` accentués doivent être en UTF-8 **avec BOM**.
 - Tests d'écrans : données de démonstration dans `apps/client/test/support/crm_seed.dart`
   (identifiants convertis en UUID par `sid()`) ; carte sans tuiles (`mapTilesEnabledProvider`).
+- Imports de données publiques : écrire via `SyncService.upsertFromSource` (jamais d'INSERT direct),
+  tests serveur sur les jeux d'essai `packages/fr_public_data/test/fixtures`.
 - Aucun secret dans le code : `.env` (non versionné) ou variables d'environnement.

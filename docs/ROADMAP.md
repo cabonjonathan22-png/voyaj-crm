@@ -6,7 +6,7 @@
 |---|---|---|
 | 1 — Socle | Monorepo, serveur + PostgreSQL, auth (rôles, 2FA, sessions), design system, shell, Ctrl+K, base locale chiffrée, synchro hors ligne (tags), service Windows, Docker, **installeur client** | ✅ Terminée |
 | 2 — CRM cœur | Organisations, contacts, élus, pipelines Kanban, activités, tâches, tags appliqués, champs personnalisés, segments, recherche globale, carte, import CSV, doublons, **fichiers joints**, **onglets de travail** | ✅ Terminée |
-| 3 — Données publiques | `packages/fr_public_data`, import des collectivités, festivals, AOM, mises à jour planifiées | À venir |
+| 3 — Données publiques | `packages/fr_public_data`, import des collectivités (régions, départements, EPCI, communes), festivals, AOM, mises à jour planifiées | ✅ Terminée (à valider sur les API réelles, voir ci-dessous) |
 | 4 — Emails | IMAP/SMTP, OAuth Gmail/Microsoft, boîte de réception, modèles, séquences | À venir |
 | 5 — Facturation & compta | Devis/factures/avoirs, Factur-X, PA + Chorus Pro, FEC, TVA — **validation expert-comptable** | À venir |
 | 6 — Connecteurs | Supabase, Firebase, MySQL, MongoDB, REST, webhooks, éditeur de mapping | À venir |
@@ -37,14 +37,27 @@
   choix d'un autre responsable et filtre « mes fiches » à ajouter (liste des utilisateurs à
   mettre en cache localement : elle n'est aujourd'hui lisible qu'en ligne).
 - **Import Excel** (`.xlsx`) : seul le CSV est pris en charge (Excel sait l'exporter).
-- **Carte** : regroupement des marqueurs (clusters) avant l'import des 35 000 communes (Phase 3) ;
-  serveur de tuiles configurable (OpenStreetMap par défaut, usage modéré exigé par sa politique).
+- **Carte** : serveur de tuiles configurable (OpenStreetMap par défaut, usage modéré exigé par sa
+  politique).
 - **Doublons ignorés** : mémorisés par poste (clé locale) ; à partager si besoin.
 - **Rappels** : notification dans l'application uniquement (pas de notification système Windows).
 - Affaires : pas de liste tabulaire dédiée (Kanban, fiches et recherche globale).
 - Tags : unicité des noms non imposée ; l'import réutilise les tags existants par nom normalisé.
 - Fichiers joints : pas de purge des fichiers qui ne sont plus référencés ; pas de cache local
   (téléchargement à la demande, connexion requise).
+
+### Données publiques (Phase 3)
+- **À valider au premier import réel** : le développement s'est fait sans accès réseau à
+  `geo.api.gouv.fr`, `transport.data.gouv.fr` et `data.culture.gouv.fr` (jeux d'essai écrits
+  d'après la documentation des API). Les formats de geo.api.gouv.fr sont stables ; ceux des AOM
+  (`/api/aoms/geojson`) et du Panorama des festivals (export JSON) sont lus avec des noms de
+  champs tolérants : en cas d'échec, l'import s'arrête avec un message (« aucune donnée ») visible
+  dans Administration → Données publiques. Adapter alors `packages/fr_public_data/lib/src/parsers.dart`.
+- Contacts publics (maires, élus : Répertoire national des élus) : non importés — données
+  personnelles, à décider avec le DPO (base légale, information des personnes).
+- Contours géographiques (polygones des communes / EPCI) non importés.
+- Un seul serveur exécute les imports (file en mémoire) ; plusieurs instances nécessiteraient un
+  verrou en base.
 
 ### Serveur
 - Limiteur de tentatives en mémoire : à déplacer en base (ou Redis) si plusieurs instances.
@@ -78,3 +91,15 @@
 | Pipelines par défaut (Collectivités, Festivals) créés à la demande depuis le client | Pas de données imposées par une migration ; étapes modifiables. |
 | Carte **flutter_map** + OpenStreetMap | Libre, sans clé d'API. |
 | Base locale v2 : curseur de synchro remis à zéro à la migration | Les postes existants reçoivent les données CRM déjà présentes sur le serveur. |
+
+## Décisions (Phase 3)
+
+| Décision | Raison |
+|---|---|
+| Imports exécutés **par le serveur** (à la demande ou chaque nuit, `VOYAJ_PUBLIC_DATA_HOUR`) | Une seule lecture des sources pour toute l'équipe, pas de dépendance réseau des postes, historique centralisé. |
+| Écritures « système » par le moteur de synchronisation (`upsertFromSource`) | Les fiches importées se synchronisent comme les autres ; un journal d'audit **par import** (pas par fiche). |
+| Fiches retrouvées par `source` + `source_ref`, sinon **rapprochées** d'une fiche saisie (code INSEE, SIREN, code département/région, même type) | Pas de doublon avec les communes déjà créées à la main ou par import CSV. |
+| Un champ dont la dernière écriture vient d'un utilisateur n'est **jamais écrasé** ; une fiche supprimée n'est pas recréée | Les corrections de l'équipe priment sur la source. |
+| Périmètre par **départements** (communes : 35 000 fiches sinon) | Volume adapté aux postes et à la carte. |
+| Hiérarchie par `parent_id` : commune → EPCI → département → région | Réutilise le rattachement des organisations (fiche « Rattachement »). |
+| Carte : regroupement des marqueurs par grille au-delà de 300 points | Lisible et fluide avec des milliers de communes, sans dépendance supplémentaire. |
