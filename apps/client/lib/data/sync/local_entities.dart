@@ -160,6 +160,26 @@ final class LocalEntity {
       };
 }
 
+/// Ligne Drift → enregistrement au format réseau (champs du schéma,
+/// `id` et `version`).
+Map<String, Object?> rowToWire(EntitySchema schema, Insertable<Object?> row) {
+  final columns = row.toColumns(false);
+  Object? value(String column) => switch (columns[column]) {
+    final Variable<Object> v => v.value,
+    _ => null,
+  };
+  return {
+    SyncColumns.id: value(SyncColumns.id),
+    SyncColumns.version: value(SyncColumns.version),
+    for (final MapEntry(key: field, value: spec) in schema.fields.entries)
+      field: switch (value(field)) {
+        final DateTime d => d.toUtc().toIso8601String(),
+        final String text when spec.type == FieldType.json => jsonDecode(text),
+        final other => other,
+      },
+  };
+}
+
 final Map<String, LocalEntity> _byName = {
   for (final schema in SyncEntities.all) schema.name: LocalEntity(schema),
 };

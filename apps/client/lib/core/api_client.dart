@@ -63,6 +63,7 @@ final class ApiClient {
   final http.Client _http;
 
   static const timeout = Duration(seconds: 20);
+  static const fileTimeout = Duration(minutes: 3);
 
   Future<AuthTokens>? _refreshing;
 
@@ -136,7 +137,29 @@ final class ApiClient {
   Future<Object?> sendAnonymous(String method, String path, {Object? body}) =>
       _raw(method, path, body: body, token: null);
 
-  Future<Object?> send(String method, String path, {Object? body}) async {
+  /// Envoie un fichier joint ; retourne son identifiant (SHA-256).
+  Future<String> uploadFile(List<int> bytes, {String? mimeType}) async {
+    final json = await send(
+      'POST',
+      '/api/v1/files',
+      bytes: bytes,
+      contentType: mimeType ?? 'application/octet-stream',
+    );
+    return (json! as Map<String, dynamic>)['id'] as String;
+  }
+
+  /// Contenu d'un fichier joint.
+  Future<List<int>> downloadFile(String id) async =>
+      (await send('GET', '/api/v1/files/$id', rawResponse: true))! as List<int>;
+
+  Future<Object?> send(
+    String method,
+    String path, {
+    Object? body,
+    List<int>? bytes,
+    String? contentType,
+    bool rawResponse = false,
+  }) async {
     final tokens = await loadTokens();
     if (tokens == null) {
       const failure = ApiFailure(
@@ -147,15 +170,24 @@ final class ApiClient {
       onSessionLost(failure);
       throw failure;
     }
+    Future<Object?> attempt(String token) => _raw(
+      method,
+      path,
+      body: body,
+      token: token,
+      bytes: bytes,
+      contentType: contentType,
+      rawResponse: rawResponse,
+    );
     try {
-      return await _raw(method, path, body: body, token: tokens.accessToken);
+      return await attempt(tokens.accessToken);
     } on ApiFailure catch (e) {
       if (e.status != 401 || e.code == ApiErrorCodes.sessionRevoked) {
         if (e.code == ApiErrorCodes.sessionRevoked) onSessionLost(e);
         rethrow;
       }
       final refreshed = await refreshTokens(tokens);
-      return _raw(method, path, body: body, token: refreshed.accessToken);
+      return attempt(refreshed.accessToken);
     }
   }
 
@@ -191,23 +223,39 @@ final class ApiClient {
     String path, {
     required Object? body,
     required String? token,
+    List<int>? bytes,
+    String? contentType,
+    bool rawResponse = false,
   }) async {
-    final request = http.Request(method, baseUri.resolve(path))
-      ..headers[HttpHeaders.acceptHeader] = 'application/json';
+    final request = http.Request(method, baseUri.resolve(path));
+    if (!rawResponse) {
+      request.headers[HttpHeaders.acceptHeader] = 'application/json';
+    }
     if (token != null) {
       request.headers[HttpHeaders.authorizationHeader] = 'Bearer $token';
     }
-    if (body != null) {
+    if (bytes != null) {
+      request
+        ..headers[HttpHeaders.contentTypeHeader] = contentType!
+        ..bodyBytes = bytes;
+    } else if (body != null) {
       request.headers[HttpHeaders.contentTypeHeader] = 'application/json';
       request.body = jsonEncode(body);
     }
+    // Fichiers : délai adapté aux connexions lentes.
+    final limit = bytes != null || rawResponse ? fileTimeout : timeout;
     final http.Response response;
     try {
       response = await http.Response.fromStream(
-        await _http.send(request).timeout(timeout),
-      ).timeout(timeout);
+        await _http.send(request).timeout(limit),
+      ).timeout(limit);
     } on Object {
       throw const ApiFailure.network();
+    }
+    if (rawResponse &&
+        response.statusCode >= 200 &&
+        response.statusCode < 300) {
+      return response.bodyBytes;
     }
     final text = utf8.decode(response.bodyBytes);
     final decoded = text.isEmpty ? null : _tryDecode(text);

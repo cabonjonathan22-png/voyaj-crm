@@ -17,9 +17,13 @@ const _groups = <(String, List<(String, String)>)>[
   (
     'Navigation',
     [
-      ('Ctrl 1', 'Tags'),
-      ('Ctrl 2', 'Synchronisation'),
+      ('Ctrl 1', 'Organisations'),
+      ('Ctrl 2', 'Contacts'),
+      ('Ctrl 3', 'Pipelines'),
+      ('Ctrl 4', 'Tâches'),
+      ('Ctrl 5', 'Carte'),
       ('Ctrl ,', 'Paramètres'),
+      ('Ctrl W', "Fermer l'onglet de la fiche"),
     ],
   ),
   (
@@ -33,6 +37,7 @@ const _groups = <(String, List<(String, String)>)>[
       ('Maj ↑ ↓', 'Étendre la sélection'),
       ('Ctrl A', 'Tout sélectionner'),
       ('Suppr', 'Supprimer la sélection'),
+      ('Ctrl E', 'Modifier la fiche ouverte'),
       ('Échap', 'Fermer / désélectionner'),
     ],
   ),

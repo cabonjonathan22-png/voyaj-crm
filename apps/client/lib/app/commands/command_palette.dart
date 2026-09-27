@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../design_system/design_system.dart';
+import '../../features/crm/search_index.dart';
 import 'commands.dart';
 import 'fuzzy.dart';
 
@@ -57,11 +58,12 @@ class _CommandPaletteState extends ConsumerState<_CommandPalette> {
     super.dispose();
   }
 
-  List<AppCommand> _results(List<AppCommand> all) {
+  List<AppCommand> _results(List<AppCommand> all, List<SearchEntry> index) {
     final query = _query.text;
     if (query.trim().isEmpty) {
       return all.where((c) => c.group != CommandGroup.records).toList();
     }
+    final records = searchRecords(index, query, limit: _maxRecords);
     final scored = <(AppCommand, int)>[];
     for (final command in all) {
       final score = [
@@ -72,12 +74,7 @@ class _CommandPaletteState extends ConsumerState<_CommandPalette> {
       if (score != null && score > -1000) scored.add((command, score));
     }
     scored.sort((a, b) => b.$2.compareTo(a.$2));
-    var records = 0;
-    return [
-      for (final (command, _) in scored)
-        if (command.group != CommandGroup.records || records++ < _maxRecords)
-          command,
-    ];
+    return [for (final (command, _) in scored) command, ...records];
   }
 
   void _move(int delta, int count) {
@@ -98,7 +95,10 @@ class _CommandPaletteState extends ConsumerState<_CommandPalette> {
   Widget build(BuildContext context) {
     final c = context.colors;
     final t = context.text;
-    final results = _results(ref.watch(commandsProvider));
+    final results = _results(
+      ref.watch(commandsProvider),
+      ref.watch(searchIndexProvider),
+    );
     if (_selected >= results.length) _selected = 0;
 
     return Align(

@@ -153,7 +153,7 @@ void main() {
     final v1 = AppDatabase(NativeDatabase(file));
     await v1.writeSetting(SettingKeys.syncCursor, 42);
     await v1.customStatement(
-      "INSERT INTO tags (id, name, color, created_at, updated_at) "
+      'INSERT INTO tags (id, name, color, created_at, updated_at) '
       "VALUES ('t1', 'Prioritaire', '#EF4444', '2026-01-01T00:00:00Z', "
       "'2026-01-01T00:00:00Z')",
     );

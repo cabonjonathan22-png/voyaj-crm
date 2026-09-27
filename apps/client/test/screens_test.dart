@@ -6,8 +6,10 @@ import 'package:voyaj_client/app/app.dart';
 import 'package:voyaj_client/app/providers.dart';
 import 'package:voyaj_client/app/router.dart';
 import 'package:voyaj_client/data/local/database.dart';
+import 'package:voyaj_client/features/crm/map/map_page.dart';
 import 'package:voyaj_shared/voyaj_shared.dart';
 
+import 'support/crm_seed.dart';
 import 'support/test_app.dart';
 
 /// Rend chaque écran (thèmes clair et sombre) et vérifie qu'aucune
@@ -17,6 +19,17 @@ void main() {
   setUpAll(loadFonts);
 
   const screens = {
+    'organisations': Routes.organisations,
+    'organisation_new': '${Routes.organisations}?new=1',
+    'organisation_detail': '${Routes.organisations}/org-1',
+    'contacts': Routes.contacts,
+    'contact_detail': '${Routes.contacts}/ct-2',
+    'elected': Routes.elected,
+    'pipelines': Routes.pipelines,
+    'tasks': Routes.tasks,
+    'map': Routes.map,
+    'duplicates': Routes.duplicates,
+    'settings_custom_fields': '${Routes.settings}/customFields',
     'tags': Routes.tags,
     'tag_detail': '${Routes.tags}?id=tag-1',
     'tag_new': '${Routes.tags}?new=1',
@@ -41,12 +54,14 @@ void main() {
         final boot = (await tester.runAsync(() async {
           final boot = await testBootstrap(themeMode: theme);
           await _seed(boot.db);
+          await seedCrm(boot.db);
           return boot;
         }))!;
         final container = ProviderContainer(
           overrides: [
             bootstrapProvider.overrideWithValue(boot),
             syncEngineProvider.overrideWithValue(null),
+            mapTilesEnabledProvider.overrideWithValue(false),
           ],
         );
 

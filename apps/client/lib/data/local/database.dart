@@ -462,6 +462,9 @@ abstract final class SettingKeys {
   static const dataServerUrl = 'data_server_url';
   static const themeMode = 'theme_mode';
   static const sidebarCollapsed = 'sidebar_collapsed';
+  static const workTabs = 'work_tabs';
+  static const lastPipeline = 'last_pipeline';
+  static const ignoredDuplicates = 'ignored_duplicates';
   static String tableView(String table) => 'table_view.$table';
   static String savedViews(String table) => 'saved_views.$table';
 }

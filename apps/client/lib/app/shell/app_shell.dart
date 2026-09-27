@@ -17,6 +17,7 @@ import '../commands/command_palette.dart';
 import '../providers.dart';
 import '../router.dart';
 import 'shortcuts_help.dart';
+import 'work_tabs.dart';
 
 /// Mise en page principale : barre latérale + contenu, raccourcis globaux.
 class AppShell extends ConsumerWidget {
@@ -50,9 +51,23 @@ class AppShell extends ConsumerWidget {
         const SingleActivator(LogicalKeyboardKey.f1): () =>
             unawaited(showShortcutsHelp(context)),
         const SingleActivator(LogicalKeyboardKey.digit1, control: true): () =>
-            go(Routes.tags),
+            go(Routes.organisations),
         const SingleActivator(LogicalKeyboardKey.digit2, control: true): () =>
-            go(Routes.sync),
+            go(Routes.contacts),
+        const SingleActivator(LogicalKeyboardKey.digit3, control: true): () =>
+            go(Routes.pipelines),
+        const SingleActivator(LogicalKeyboardKey.digit4, control: true): () =>
+            go(Routes.tasks),
+        const SingleActivator(LogicalKeyboardKey.digit5, control: true): () =>
+            go(Routes.map),
+        const SingleActivator(LogicalKeyboardKey.keyW, control: true): () {
+          final next = ref
+              .read(workTabsProvider.notifier)
+              .close(location, current: location);
+          if (next != null) {
+            go(next.isEmpty ? _listRouteFor(location) : next);
+          }
+        },
         const SingleActivator(LogicalKeyboardKey.comma, control: true): () =>
             go(Routes.settings),
       },
@@ -68,13 +83,29 @@ class AppShell extends ConsumerWidget {
                 width: collapsed ? VSize.sidebarCollapsed : VSize.sidebar,
                 child: _Sidebar(location: location, collapsed: collapsed),
               ),
-              Expanded(child: child),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    WorkTabsBar(
+                      location: location,
+                      fallback: (tab) => _listRouteFor(tab.route),
+                    ),
+                    Expanded(child: child),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
       ),
     );
   }
+
+  /// Liste parente d'une fiche (`/contacts/…` → `/contacts`).
+  static String _listRouteFor(String route) => route.startsWith(Routes.contacts)
+      ? Routes.contacts
+      : Routes.organisations;
 }
 
 class _NavItem {
@@ -100,13 +131,44 @@ class _Sidebar extends ConsumerWidget {
     bool can(Permission p) => ref.watch(permissionProvider(p));
 
     final workspace = [
-      _NavItem(LucideIcons.tags, l10n.navTags, Routes.tags, shortcut: 'Ctrl 1'),
-      _NavItem(
-        LucideIcons.refreshCw,
-        l10n.navSync,
-        Routes.sync,
-        shortcut: 'Ctrl 2',
-      ),
+      if (can(Permission.organisationRead))
+        _NavItem(
+          LucideIcons.building2,
+          l10n.navOrganisations,
+          Routes.organisations,
+          shortcut: 'Ctrl 1',
+        ),
+      if (can(Permission.contactRead)) ...[
+        _NavItem(
+          LucideIcons.users,
+          l10n.navContacts,
+          Routes.contacts,
+          shortcut: 'Ctrl 2',
+        ),
+        _NavItem(LucideIcons.award, l10n.navElected, Routes.elected),
+      ],
+      if (can(Permission.dealRead))
+        _NavItem(
+          LucideIcons.kanban,
+          l10n.navPipelines,
+          Routes.pipelines,
+          shortcut: 'Ctrl 3',
+        ),
+      if (can(Permission.activityRead))
+        _NavItem(
+          LucideIcons.squareCheck,
+          l10n.navTasks,
+          Routes.tasks,
+          shortcut: 'Ctrl 4',
+        ),
+      if (can(Permission.organisationRead))
+        _NavItem(LucideIcons.map, l10n.navMap, Routes.map, shortcut: 'Ctrl 5'),
+    ];
+    final data = [
+      _NavItem(LucideIcons.tags, l10n.navTags, Routes.tags),
+      if (can(Permission.organisationRead))
+        _NavItem(LucideIcons.copy, l10n.navDuplicates, Routes.duplicates),
+      _NavItem(LucideIcons.refreshCw, l10n.navSync, Routes.sync),
     ];
     final admin = [
       if (can(Permission.userRead))
@@ -178,6 +240,13 @@ class _Sidebar extends ConsumerWidget {
                   padding: const EdgeInsets.symmetric(horizontal: VSpace.x2),
                   children: [
                     for (final item in workspace)
+                      _NavTile(
+                        item: item,
+                        location: location,
+                        collapsed: collapsed,
+                      ),
+                    _SectionLabel(l10n.sectionData, collapsed: collapsed),
+                    for (final item in data)
                       _NavTile(
                         item: item,
                         location: location,

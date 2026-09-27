@@ -6,7 +6,6 @@ import 'package:go_router/go_router.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:voyaj_shared/voyaj_shared.dart';
 
-import '../../design_system/design_system.dart';
 import '../../features/settings/settings_page.dart';
 import '../providers.dart';
 import '../router.dart';
@@ -58,13 +57,30 @@ final commandsProvider = Provider<List<AppCommand>>((ref) {
   bool can(Permission p) => ref.watch(permissionProvider(p));
 
   return [
+    if (can(Permission.organisationWrite))
+      AppCommand(
+        id: 'organisation.new',
+        label: 'Nouvelle organisation',
+        group: CommandGroup.actions,
+        icon: LucideIcons.building2,
+        keywords: 'créer ajouter collectivité mairie festival',
+        run: (context, _) => context.go('${Routes.organisations}?new=1'),
+      ),
+    if (can(Permission.contactWrite))
+      AppCommand(
+        id: 'contact.new',
+        label: 'Nouveau contact',
+        group: CommandGroup.actions,
+        icon: LucideIcons.userPlus,
+        keywords: 'créer ajouter personne élu',
+        run: (context, _) => context.go('${Routes.contacts}?new=1'),
+      ),
     if (can(Permission.tagWrite))
       AppCommand(
         id: 'tag.new',
         label: 'Nouveau tag',
         group: CommandGroup.actions,
         icon: LucideIcons.plus,
-        shortcut: 'Ctrl N',
         keywords: 'créer ajouter étiquette',
         run: (context, _) => context.go('${Routes.tags}?new=1'),
       ),
@@ -113,12 +129,79 @@ final commandsProvider = Provider<List<AppCommand>>((ref) {
       keywords: 'quitter déconnexion',
       run: (_, read) => read(authProvider.notifier).logout(),
     ),
+    for (final (route, label, icon, shortcut, keywords, permission) in [
+      (
+        Routes.organisations,
+        'Aller aux organisations',
+        LucideIcons.building2,
+        'Ctrl 1',
+        'collectivités mairies communes festivals',
+        Permission.organisationRead,
+      ),
+      (
+        Routes.contacts,
+        'Aller aux contacts',
+        LucideIcons.users,
+        'Ctrl 2',
+        'personnes',
+        Permission.contactRead,
+      ),
+      (
+        Routes.elected,
+        'Aller aux élus',
+        LucideIcons.award,
+        null,
+        'maires mandats conseillers',
+        Permission.contactRead,
+      ),
+      (
+        Routes.pipelines,
+        'Aller aux pipelines',
+        LucideIcons.kanban,
+        'Ctrl 3',
+        'affaires kanban opportunités ventes',
+        Permission.dealRead,
+      ),
+      (
+        Routes.tasks,
+        'Aller aux tâches',
+        LucideIcons.squareCheck,
+        'Ctrl 4',
+        'activités rappels agenda',
+        Permission.activityRead,
+      ),
+      (
+        Routes.map,
+        'Aller à la carte',
+        LucideIcons.map,
+        'Ctrl 5',
+        'géographie territoire',
+        Permission.organisationRead,
+      ),
+      (
+        Routes.duplicates,
+        'Aller aux doublons',
+        LucideIcons.copy,
+        null,
+        'fusion dédoublonnage',
+        Permission.organisationRead,
+      ),
+    ])
+      if (can(permission))
+        AppCommand(
+          id: 'nav.$route',
+          label: label,
+          group: CommandGroup.navigation,
+          icon: icon,
+          shortcut: shortcut,
+          keywords: keywords,
+          run: (context, _) => context.go(route),
+        ),
     AppCommand(
       id: 'nav.tags',
       label: 'Aller aux tags',
       group: CommandGroup.navigation,
       icon: LucideIcons.tags,
-      shortcut: 'Ctrl 1',
       run: (context, _) => context.go(Routes.tags),
     ),
     AppCommand(
@@ -126,7 +209,6 @@ final commandsProvider = Provider<List<AppCommand>>((ref) {
       label: 'Aller à la synchronisation',
       group: CommandGroup.navigation,
       icon: LucideIcons.refreshCw,
-      shortcut: 'Ctrl 2',
       keywords: 'conflits erreurs',
       run: (context, _) => context.go(Routes.sync),
     ),
@@ -175,18 +257,6 @@ final commandsProvider = Provider<List<AppCommand>>((ref) {
         icon: LucideIcons.palette,
         keywords: 'composants debug',
         run: (context, _) => context.go(Routes.designSystem),
-      ),
-    // Recherche globale : les données locales sont interrogeables ici.
-    for (final tag in ref.watch(tagsProvider).value ?? const <Tag>[])
-      AppCommand(
-        id: 'tag.${tag.id}',
-        label: tag.name,
-        subtitle: tag.description,
-        group: CommandGroup.records,
-        icon: LucideIcons.tag,
-        leading: ColorDot(parseHexColor(tag.color)),
-        keywords: 'tag ${tag.description ?? ''}',
-        run: (context, _) => context.go('${Routes.tags}?id=${tag.id}'),
       ),
   ];
 });

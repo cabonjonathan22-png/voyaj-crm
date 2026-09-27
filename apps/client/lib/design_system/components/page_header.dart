@@ -38,15 +38,17 @@ class PageHeader extends StatelessWidget {
           Text(title, style: t.title),
           if (subtitle != null) ...[
             const SizedBox(width: VSpace.x3),
-            Flexible(
+            // Expanded (et non Flexible + Spacer, qui partageraient l'espace
+            // libre) : les actions restent alignées à droite.
+            Expanded(
               child: Text(
                 subtitle!,
                 style: t.small,
                 overflow: TextOverflow.ellipsis,
               ),
             ),
-          ],
-          const Spacer(),
+          ] else
+            const Spacer(),
           for (final (i, action) in actions.indexed) ...[
             if (i > 0) const SizedBox(width: VSpace.x2),
             action,

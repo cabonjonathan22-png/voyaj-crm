@@ -11,6 +11,15 @@ import '../features/auth/auth_state.dart';
 import '../features/auth/login_page.dart';
 import '../features/auth/mfa_page.dart';
 import '../features/auth/server_setup_page.dart';
+import '../features/crm/activities/tasks_page.dart';
+import '../features/crm/contacts/contact_page.dart';
+import '../features/crm/contacts/contacts_page.dart';
+import '../features/crm/contacts/elected_page.dart';
+import '../features/crm/deals/pipeline_page.dart';
+import '../features/crm/duplicates/duplicates_page.dart';
+import '../features/crm/map/map_page.dart';
+import '../features/crm/organisations/organisation_page.dart';
+import '../features/crm/organisations/organisations_page.dart';
 import '../features/dev/design_system_gallery.dart';
 import '../features/settings/settings_page.dart';
 import '../features/sync/sync_page.dart';
@@ -23,6 +32,13 @@ abstract final class Routes {
   static const setup = '/setup';
   static const login = '/login';
   static const mfa = '/login/mfa';
+  static const organisations = '/organisations';
+  static const contacts = '/contacts';
+  static const elected = '/elus';
+  static const pipelines = '/pipelines';
+  static const tasks = '/taches';
+  static const map = '/carte';
+  static const duplicates = '/doublons';
   static const tags = '/tags';
   static const sync = '/sync';
   static const settings = '/settings';
@@ -41,7 +57,7 @@ final routerProvider = Provider<GoRouter>((ref) {
     ..onDispose(refresh.dispose);
 
   final router = GoRouter(
-    initialLocation: Routes.tags,
+    initialLocation: Routes.organisations,
     refreshListenable: refresh,
     redirect: (context, state) {
       final location = state.matchedLocation;
@@ -50,7 +66,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         AuthSignedOut() => location == Routes.login ? null : Routes.login,
         AuthMfaRequired() => location == Routes.mfa ? null : Routes.mfa,
         AuthSignedIn() =>
-          Routes._public.contains(location) ? Routes.tags : null,
+          Routes._public.contains(location) ? Routes.organisations : null,
       };
     },
     routes: [
@@ -70,6 +86,71 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state, child) =>
             AppShell(location: state.matchedLocation, child: child),
         routes: [
+          GoRoute(
+            path: Routes.organisations,
+            pageBuilder: (_, state) => _instant(
+              state,
+              OrganisationsPage(
+                create: state.uri.queryParameters.containsKey('new'),
+              ),
+            ),
+            routes: [
+              GoRoute(
+                path: ':id',
+                pageBuilder: (_, state) => _instant(
+                  state,
+                  OrganisationPage(
+                    key: ValueKey(state.pathParameters['id']),
+                    id: state.pathParameters['id']!,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          GoRoute(
+            path: Routes.contacts,
+            pageBuilder: (_, state) => _instant(
+              state,
+              ContactsPage(
+                create: state.uri.queryParameters.containsKey('new'),
+              ),
+            ),
+            routes: [
+              GoRoute(
+                path: ':id',
+                pageBuilder: (_, state) => _instant(
+                  state,
+                  ContactPage(
+                    key: ValueKey(state.pathParameters['id']),
+                    id: state.pathParameters['id']!,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          GoRoute(
+            path: Routes.elected,
+            pageBuilder: (_, state) => _instant(state, const ElectedPage()),
+          ),
+          GoRoute(
+            path: Routes.pipelines,
+            pageBuilder: (_, state) => _instant(
+              state,
+              PipelinePage(pipelineId: state.uri.queryParameters['id']),
+            ),
+          ),
+          GoRoute(
+            path: Routes.tasks,
+            pageBuilder: (_, state) => _instant(state, const TasksPage()),
+          ),
+          GoRoute(
+            path: Routes.map,
+            pageBuilder: (_, state) => _instant(state, const MapPage()),
+          ),
+          GoRoute(
+            path: Routes.duplicates,
+            pageBuilder: (_, state) => _instant(state, const DuplicatesPage()),
+          ),
           GoRoute(
             path: Routes.tags,
             pageBuilder: (_, state) => _instant(

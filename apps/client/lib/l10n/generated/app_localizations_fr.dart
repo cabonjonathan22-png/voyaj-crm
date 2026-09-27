@@ -638,4 +638,842 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get auditSystem => 'Système';
+
+  @override
+  String get yes => 'Oui';
+
+  @override
+  String get no => 'Non';
+
+  @override
+  String get sectionData => 'Données';
+
+  @override
+  String get navOrganisations => 'Organisations';
+
+  @override
+  String get navContacts => 'Contacts';
+
+  @override
+  String get navElected => 'Élus';
+
+  @override
+  String get navPipelines => 'Pipelines';
+
+  @override
+  String get navTasks => 'Tâches';
+
+  @override
+  String get navMap => 'Carte';
+
+  @override
+  String get navDuplicates => 'Doublons';
+
+  @override
+  String get recordNotFound => 'Cet élément n\'existe pas ou a été supprimé.';
+
+  @override
+  String get tabOverview => 'Aperçu';
+
+  @override
+  String get tabDeals => 'Affaires';
+
+  @override
+  String get tabActivities => 'Activités';
+
+  @override
+  String get tabFiles => 'Fichiers';
+
+  @override
+  String get tabPositions => 'Postes et mandats';
+
+  @override
+  String get copyEmail => 'Copier l\'email';
+
+  @override
+  String get moveUp => 'Monter';
+
+  @override
+  String get moveDown => 'Descendre';
+
+  @override
+  String get formInvalidNumber => 'Nombre invalide.';
+
+  @override
+  String get formNone => '— Aucun —';
+
+  @override
+  String get formChoose => 'Choisir…';
+
+  @override
+  String get customFieldsTitle => 'Champs personnalisés';
+
+  @override
+  String get organisationsSubtitle =>
+      'Collectivités, EPCI, AOM, festivals et partenaires.';
+
+  @override
+  String get organisationNew => 'Nouvelle organisation';
+
+  @override
+  String get organisationEdit => 'Modifier l\'organisation';
+
+  @override
+  String get organisationCreated => 'Organisation créée.';
+
+  @override
+  String organisationDeleteTitle(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Supprimer $count organisations ?',
+      one: 'Supprimer cette organisation ?',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String organisationDeleteMessage(int count, String names) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other:
+          '$names… seront supprimées pour toute l\'équipe. Leurs contacts et affaires sont conservés.',
+      one:
+          '« $names » sera supprimée pour toute l\'équipe. Ses contacts et affaires sont conservés.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String organisationDeleted(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count organisations supprimées.',
+      one: 'Organisation supprimée.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get organisationsEmptyTitle => 'Aucune organisation';
+
+  @override
+  String get organisationsEmptyMessage =>
+      'Créez une organisation ou importez un fichier CSV (communes, EPCI, festivals…).';
+
+  @override
+  String get orgName => 'Nom';
+
+  @override
+  String get orgKind => 'Type';
+
+  @override
+  String get orgStatus => 'Statut';
+
+  @override
+  String get orgParent => 'Organisation parente';
+
+  @override
+  String get orgSectionContact => 'Coordonnées';
+
+  @override
+  String get orgSectionAddress => 'Adresse';
+
+  @override
+  String get orgSectionIdentity => 'Identification';
+
+  @override
+  String get orgSectionHierarchy => 'Rattachement';
+
+  @override
+  String get orgSectionTraceability => 'Traçabilité';
+
+  @override
+  String get orgPhone => 'Téléphone';
+
+  @override
+  String get orgEmail => 'Email';
+
+  @override
+  String get orgWebsite => 'Site web';
+
+  @override
+  String get orgAddress => 'Adresse';
+
+  @override
+  String get orgPostalCode => 'Code postal';
+
+  @override
+  String get orgCity => 'Ville';
+
+  @override
+  String get orgDepartement => 'Département';
+
+  @override
+  String get orgDepartementShort => 'Dép.';
+
+  @override
+  String get orgRegion => 'Région';
+
+  @override
+  String get orgLatitude => 'Latitude';
+
+  @override
+  String get orgLongitude => 'Longitude';
+
+  @override
+  String get orgSiren => 'SIREN';
+
+  @override
+  String get orgSiret => 'SIRET';
+
+  @override
+  String get orgInsee => 'Code INSEE';
+
+  @override
+  String get orgPopulation => 'Population';
+
+  @override
+  String get orgDescription => 'Description';
+
+  @override
+  String get orgSource => 'Source';
+
+  @override
+  String get orgCollectedAt => 'Collectée le';
+
+  @override
+  String orgChildren(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count organisations rattachées',
+      one: '1 organisation rattachée',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get contactsSubtitle => 'Personnes, agents et élus des organisations.';
+
+  @override
+  String get contactNew => 'Nouveau contact';
+
+  @override
+  String get contactEdit => 'Modifier le contact';
+
+  @override
+  String get contactCreated => 'Contact créé.';
+
+  @override
+  String contactDeleteTitle(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Supprimer $count contacts ?',
+      one: 'Supprimer ce contact ?',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String contactDeleteMessage(int count, String names) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$names… seront supprimés pour toute l\'équipe.',
+      one: '« $names » sera supprimé pour toute l\'équipe.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String contactDeleted(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count contacts supprimés.',
+      one: 'Contact supprimé.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get contactsEmptyTitle => 'Aucun contact';
+
+  @override
+  String get contactsEmptyMessage =>
+      'Ajoutez les interlocuteurs de vos organisations ou importez un fichier CSV.';
+
+  @override
+  String get contactsAttached => 'Contacts rattachés';
+
+  @override
+  String get contactName => 'Nom';
+
+  @override
+  String get contactCivility => 'Civilité';
+
+  @override
+  String get contactFirstName => 'Prénom';
+
+  @override
+  String get contactLastName => 'Nom';
+
+  @override
+  String get contactOrganisation => 'Organisation';
+
+  @override
+  String get contactJobTitle => 'Fonction';
+
+  @override
+  String get contactService => 'Service';
+
+  @override
+  String get contactMobile => 'Mobile';
+
+  @override
+  String get contactNotes => 'Notes';
+
+  @override
+  String get contactDoNotContact => 'Ne pas contacter (opposition, RGPD)';
+
+  @override
+  String get contactDoNotContactShort => 'Ne pas contacter';
+
+  @override
+  String get positionNew => 'Ajouter un poste';
+
+  @override
+  String get positionEdit => 'Modifier le poste';
+
+  @override
+  String get positionAddElected => 'Ajouter un mandat';
+
+  @override
+  String get positionContact => 'Contact';
+
+  @override
+  String get positionIsElected => 'Mandat électif';
+
+  @override
+  String get positionMandate => 'Fonction élective';
+
+  @override
+  String get positionDelegation => 'Délégation';
+
+  @override
+  String get positionStart => 'Début';
+
+  @override
+  String get positionEnd => 'Fin';
+
+  @override
+  String get positionElected => 'Élu';
+
+  @override
+  String positionUntil(String date) {
+    return 'jusqu\'au $date';
+  }
+
+  @override
+  String get positionsCurrent => 'Postes et mandats en cours';
+
+  @override
+  String get positionsPast => 'Postes et mandats passés';
+
+  @override
+  String get positionsEmpty => 'Aucun poste ni mandat.';
+
+  @override
+  String get electedSubtitle =>
+      'Mandats électifs en cours (maires, adjoints, conseillers, présidents…).';
+
+  @override
+  String get electedEmptyTitle => 'Aucun élu';
+
+  @override
+  String get electedEmptyMessage =>
+      'Ajoutez un mandat depuis la fiche d\'un contact ou d\'une organisation.';
+
+  @override
+  String get pipelinesSubtitle => 'Suivi des affaires par étape.';
+
+  @override
+  String get dealNew => 'Nouvelle affaire';
+
+  @override
+  String get dealEdit => 'Modifier l\'affaire';
+
+  @override
+  String get dealTitle => 'Intitulé';
+
+  @override
+  String get dealStage => 'Étape';
+
+  @override
+  String get dealContact => 'Contact';
+
+  @override
+  String get dealAmount => 'Montant (€)';
+
+  @override
+  String get dealProbability => 'Probabilité (%)';
+
+  @override
+  String get dealExpectedClose => 'Clôture prévue';
+
+  @override
+  String dealCloseOn(String date) {
+    return 'clôture le $date';
+  }
+
+  @override
+  String get dealLate => 'En retard';
+
+  @override
+  String get dealSearch => 'Rechercher une affaire…';
+
+  @override
+  String get dealsEmpty => 'Aucune affaire.';
+
+  @override
+  String dealsOpenTotal(String amount) {
+    return 'En cours : $amount';
+  }
+
+  @override
+  String pipelineTotals(String open, String weighted) {
+    return 'En cours : $open · Pondéré : $weighted';
+  }
+
+  @override
+  String get pipelineConfigure => 'Configurer';
+
+  @override
+  String get pipelineNew => 'Nouveau pipeline';
+
+  @override
+  String get pipelineName => 'Nom du pipeline';
+
+  @override
+  String get pipelineKind => 'Type';
+
+  @override
+  String get pipelineArchived => 'Archivé (masqué du Kanban)';
+
+  @override
+  String get pipelineCreateDefaults =>
+      'Créer les pipelines Collectivités et Festivals';
+
+  @override
+  String get pipelineSetupFirst => 'Configurer un pipeline';
+
+  @override
+  String get pipelinesEmptyTitle => 'Aucun pipeline';
+
+  @override
+  String get pipelinesEmptyMessage =>
+      'Créez les pipelines par défaut (étapes modifiables ensuite) ou un pipeline sur mesure.';
+
+  @override
+  String get pipelinesEmptyReadOnly =>
+      'Un administrateur doit configurer les pipelines.';
+
+  @override
+  String get stagesTitle => 'Étapes';
+
+  @override
+  String get stagesEmpty => 'Ce pipeline n\'a pas d\'étape.';
+
+  @override
+  String get stageNew => 'Ajouter une étape';
+
+  @override
+  String get stageEdit => 'Modifier l\'étape';
+
+  @override
+  String get stageName => 'Nom de l\'étape';
+
+  @override
+  String get stageOutcome => 'Issue';
+
+  @override
+  String get stageDefaultNew => 'Nouveau';
+
+  @override
+  String get stageInUse => 'Déplacez d\'abord les affaires de cette étape.';
+
+  @override
+  String get activityNew => 'Nouvelle activité';
+
+  @override
+  String get activityEdit => 'Modifier l\'activité';
+
+  @override
+  String get activitySaved => 'Activité enregistrée.';
+
+  @override
+  String get activityKind => 'Type';
+
+  @override
+  String get activitySubject => 'Objet';
+
+  @override
+  String get activityBody => 'Contenu';
+
+  @override
+  String get activityStart => 'Début';
+
+  @override
+  String get activityEnd => 'Fin';
+
+  @override
+  String get activityDue => 'Échéance';
+
+  @override
+  String get activityRemind => 'Rappel';
+
+  @override
+  String get activityDone => 'Terminée';
+
+  @override
+  String get activityDeal => 'Affaire';
+
+  @override
+  String get activityOpenTasks => 'Tâches à faire';
+
+  @override
+  String get activityHistory => 'Historique';
+
+  @override
+  String get activityEmpty => 'Aucune activité.';
+
+  @override
+  String activityDueOn(String date) {
+    return 'échéance $date';
+  }
+
+  @override
+  String get tasksSubtitle => 'Tâches à faire et journal des échanges.';
+
+  @override
+  String get taskNew => 'Nouvelle tâche';
+
+  @override
+  String tasksTodo(int count) {
+    return 'À faire ($count)';
+  }
+
+  @override
+  String tasksOverdue(int count) {
+    return 'En retard ($count)';
+  }
+
+  @override
+  String tasksToday(int count) {
+    return 'Aujourd\'hui ($count)';
+  }
+
+  @override
+  String get tasksDone => 'Terminées';
+
+  @override
+  String get tasksActivities => 'Activités';
+
+  @override
+  String get tasksMine => 'Mes tâches uniquement';
+
+  @override
+  String get tasksEmpty => 'Aucune tâche.';
+
+  @override
+  String get attachmentAdd => 'Joindre un fichier';
+
+  @override
+  String get attachmentDownload => 'Télécharger';
+
+  @override
+  String get attachmentsHint =>
+      'Fichiers partagés avec l\'équipe (25 Mo maximum, connexion au serveur requise).';
+
+  @override
+  String get attachmentsEmpty => 'Aucun fichier joint.';
+
+  @override
+  String get attachmentUploaded => 'Fichier joint.';
+
+  @override
+  String get attachmentDownloaded => 'Fichier enregistré.';
+
+  @override
+  String get attachmentTooLarge => 'Fichier trop volumineux (25 Mo maximum).';
+
+  @override
+  String get tagAdd => 'Tag';
+
+  @override
+  String get tagAddTitle => 'Ajouter un tag';
+
+  @override
+  String get tagApplyTitle => 'Appliquer un tag';
+
+  @override
+  String tagApplied(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Tag appliqué à $count éléments.',
+      one: 'Tag appliqué à 1 élément.',
+      zero: 'Tag déjà appliqué.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get segments => 'Segments';
+
+  @override
+  String get segmentNone => 'Aucun segment partagé';
+
+  @override
+  String get segmentSaveAs => 'Enregistrer comme segment…';
+
+  @override
+  String get segmentSaveDescription =>
+      'Les filtres et la recherche actuels seront partagés avec toute l\'équipe.';
+
+  @override
+  String get segmentName => 'Nom du segment';
+
+  @override
+  String get segmentDescription => 'Description';
+
+  @override
+  String get segmentSaved => 'Segment enregistré.';
+
+  @override
+  String segmentDelete(String name) {
+    return 'Supprimer « $name »';
+  }
+
+  @override
+  String get exportCsv => 'Exporter en CSV';
+
+  @override
+  String exportDone(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count lignes exportées.',
+      one: '1 ligne exportée.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String mapSubtitle(int shown, int missing) {
+    return '$shown organisations affichées · $missing sans coordonnées';
+  }
+
+  @override
+  String get mapAllKinds => 'Tous les types';
+
+  @override
+  String get mapEmpty =>
+      'Aucune organisation n\'a de coordonnées (latitude et longitude).';
+
+  @override
+  String get customFieldsDescription =>
+      'Champs supplémentaires affichés dans les fiches, les tableaux et l\'import.';
+
+  @override
+  String get customFieldsEmpty => 'Aucun champ personnalisé.';
+
+  @override
+  String get customFieldNew => 'Ajouter un champ';
+
+  @override
+  String get customFieldEdit => 'Modifier le champ';
+
+  @override
+  String get customFieldLabel => 'Libellé';
+
+  @override
+  String get customFieldType => 'Type';
+
+  @override
+  String get customFieldOptions => 'Choix (liste)';
+
+  @override
+  String get customFieldOptionsHint => 'Choix séparés par des virgules';
+
+  @override
+  String get duplicatesSubtitle =>
+      'Organisations et contacts probablement saisis plusieurs fois.';
+
+  @override
+  String get duplicatesNone => 'Aucun doublon détecté';
+
+  @override
+  String get duplicatesNoneMessage =>
+      'Comparaison sur SIRET, SIREN, code INSEE, nom + lieu, email et mobile.';
+
+  @override
+  String duplicatesGroup(int count) {
+    return '$count fiches semblables';
+  }
+
+  @override
+  String get duplicatesIgnore => 'Ce ne sont pas des doublons';
+
+  @override
+  String get duplicatesMerge => 'Fusionner';
+
+  @override
+  String get duplicatesKept => 'Conservée';
+
+  @override
+  String duplicatesCreated(String when) {
+    return 'créée $when';
+  }
+
+  @override
+  String get duplicatesMergeTitle => 'Fusionner les fiches ?';
+
+  @override
+  String duplicatesMergeMessage(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other:
+          'Les $count fiches en double seront supprimées ; leurs informations manquantes, contacts, affaires, activités, fichiers et tags sont reportés sur la fiche conservée.',
+      one:
+          'La fiche en double sera supprimée ; ses informations manquantes, contacts, affaires, activités, fichiers et tags sont reportés sur la fiche conservée.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get duplicatesMerged => 'Fiches fusionnées.';
+
+  @override
+  String get importCsv => 'Importer';
+
+  @override
+  String get importTitleOrganisations => 'Importer des organisations';
+
+  @override
+  String get importTitleContacts => 'Importer des contacts';
+
+  @override
+  String get importPickHelp =>
+      'Choisissez un fichier CSV (export Excel « CSV UTF-8 » ou séparateur point-virgule). La première ligne doit contenir les en-têtes. Colonnes reconnues automatiquement :';
+
+  @override
+  String get importChooseFile => 'Choisir un fichier CSV';
+
+  @override
+  String get importEmptyFile => 'Le fichier est vide ou illisible.';
+
+  @override
+  String importFileSummary(String name, int count) {
+    return '$name : $count lignes';
+  }
+
+  @override
+  String get importMappingHelp =>
+      'Associez chaque colonne à un champ (les colonnes ignorées ne sont pas importées).';
+
+  @override
+  String get importIgnore => 'Ignorer';
+
+  @override
+  String get importDefaultKind => 'Type par défaut';
+
+  @override
+  String get importDefaultStatus => 'Statut par défaut';
+
+  @override
+  String importSkipDuplicates(int count) {
+    return 'Ignorer les doublons ($count détectés : SIRET, INSEE, nom + lieu, email…)';
+  }
+
+  @override
+  String importRequiredMissing(String field) {
+    return 'Associez une colonne au champ obligatoire « $field ».';
+  }
+
+  @override
+  String importProblems(int count) {
+    return '$count valeurs non reconnues (valeur par défaut appliquée) :';
+  }
+
+  @override
+  String importProblemKind(String value) {
+    return 'type inconnu « $value »';
+  }
+
+  @override
+  String importProblemStatus(String value) {
+    return 'statut inconnu « $value »';
+  }
+
+  @override
+  String importProblemNumber(String value) {
+    return 'nombre invalide « $value »';
+  }
+
+  @override
+  String importLine(int line, String message) {
+    return 'Ligne $line : $message';
+  }
+
+  @override
+  String get importRgpdNotice =>
+      'La source (nom du fichier) et la date de collecte sont enregistrées sur chaque fiche importée (RGPD).';
+
+  @override
+  String importSource(String file) {
+    return 'Import CSV $file';
+  }
+
+  @override
+  String get importBack => 'Retour';
+
+  @override
+  String importRun(int count) {
+    return 'Importer $count lignes';
+  }
+
+  @override
+  String importProgress(int done, int total) {
+    return '$done / $total lignes traitées';
+  }
+
+  @override
+  String importDone(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count fiches importées.',
+      one: '1 fiche importée.',
+      zero: 'Aucune fiche importée.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get importDuplicatesSkipped => 'Doublons ignorés';
+
+  @override
+  String get importOrganisationsCreated => 'Organisations créées';
+
+  @override
+  String get importTagsCreated => 'Tags créés';
+
+  @override
+  String get importRejected => 'Lignes refusées';
 }

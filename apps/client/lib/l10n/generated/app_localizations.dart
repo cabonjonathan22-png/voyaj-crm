@@ -1214,6 +1214,1368 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Système'**
   String get auditSystem;
+
+  /// No description provided for @yes.
+  ///
+  /// In fr, this message translates to:
+  /// **'Oui'**
+  String get yes;
+
+  /// No description provided for @no.
+  ///
+  /// In fr, this message translates to:
+  /// **'Non'**
+  String get no;
+
+  /// No description provided for @sectionData.
+  ///
+  /// In fr, this message translates to:
+  /// **'Données'**
+  String get sectionData;
+
+  /// No description provided for @navOrganisations.
+  ///
+  /// In fr, this message translates to:
+  /// **'Organisations'**
+  String get navOrganisations;
+
+  /// No description provided for @navContacts.
+  ///
+  /// In fr, this message translates to:
+  /// **'Contacts'**
+  String get navContacts;
+
+  /// No description provided for @navElected.
+  ///
+  /// In fr, this message translates to:
+  /// **'Élus'**
+  String get navElected;
+
+  /// No description provided for @navPipelines.
+  ///
+  /// In fr, this message translates to:
+  /// **'Pipelines'**
+  String get navPipelines;
+
+  /// No description provided for @navTasks.
+  ///
+  /// In fr, this message translates to:
+  /// **'Tâches'**
+  String get navTasks;
+
+  /// No description provided for @navMap.
+  ///
+  /// In fr, this message translates to:
+  /// **'Carte'**
+  String get navMap;
+
+  /// No description provided for @navDuplicates.
+  ///
+  /// In fr, this message translates to:
+  /// **'Doublons'**
+  String get navDuplicates;
+
+  /// No description provided for @recordNotFound.
+  ///
+  /// In fr, this message translates to:
+  /// **'Cet élément n\'existe pas ou a été supprimé.'**
+  String get recordNotFound;
+
+  /// No description provided for @tabOverview.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aperçu'**
+  String get tabOverview;
+
+  /// No description provided for @tabDeals.
+  ///
+  /// In fr, this message translates to:
+  /// **'Affaires'**
+  String get tabDeals;
+
+  /// No description provided for @tabActivities.
+  ///
+  /// In fr, this message translates to:
+  /// **'Activités'**
+  String get tabActivities;
+
+  /// No description provided for @tabFiles.
+  ///
+  /// In fr, this message translates to:
+  /// **'Fichiers'**
+  String get tabFiles;
+
+  /// No description provided for @tabPositions.
+  ///
+  /// In fr, this message translates to:
+  /// **'Postes et mandats'**
+  String get tabPositions;
+
+  /// No description provided for @copyEmail.
+  ///
+  /// In fr, this message translates to:
+  /// **'Copier l\'email'**
+  String get copyEmail;
+
+  /// No description provided for @moveUp.
+  ///
+  /// In fr, this message translates to:
+  /// **'Monter'**
+  String get moveUp;
+
+  /// No description provided for @moveDown.
+  ///
+  /// In fr, this message translates to:
+  /// **'Descendre'**
+  String get moveDown;
+
+  /// No description provided for @formInvalidNumber.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nombre invalide.'**
+  String get formInvalidNumber;
+
+  /// No description provided for @formNone.
+  ///
+  /// In fr, this message translates to:
+  /// **'— Aucun —'**
+  String get formNone;
+
+  /// No description provided for @formChoose.
+  ///
+  /// In fr, this message translates to:
+  /// **'Choisir…'**
+  String get formChoose;
+
+  /// No description provided for @customFieldsTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Champs personnalisés'**
+  String get customFieldsTitle;
+
+  /// No description provided for @organisationsSubtitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Collectivités, EPCI, AOM, festivals et partenaires.'**
+  String get organisationsSubtitle;
+
+  /// No description provided for @organisationNew.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouvelle organisation'**
+  String get organisationNew;
+
+  /// No description provided for @organisationEdit.
+  ///
+  /// In fr, this message translates to:
+  /// **'Modifier l\'organisation'**
+  String get organisationEdit;
+
+  /// No description provided for @organisationCreated.
+  ///
+  /// In fr, this message translates to:
+  /// **'Organisation créée.'**
+  String get organisationCreated;
+
+  /// No description provided for @organisationDeleteTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'{count, plural, =1{Supprimer cette organisation ?} other{Supprimer {count} organisations ?}}'**
+  String organisationDeleteTitle(int count);
+
+  /// No description provided for @organisationDeleteMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'{count, plural, =1{« {names} » sera supprimée pour toute l\'équipe. Ses contacts et affaires sont conservés.} other{{names}… seront supprimées pour toute l\'équipe. Leurs contacts et affaires sont conservés.}}'**
+  String organisationDeleteMessage(int count, String names);
+
+  /// No description provided for @organisationDeleted.
+  ///
+  /// In fr, this message translates to:
+  /// **'{count, plural, =1{Organisation supprimée.} other{{count} organisations supprimées.}}'**
+  String organisationDeleted(int count);
+
+  /// No description provided for @organisationsEmptyTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucune organisation'**
+  String get organisationsEmptyTitle;
+
+  /// No description provided for @organisationsEmptyMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Créez une organisation ou importez un fichier CSV (communes, EPCI, festivals…).'**
+  String get organisationsEmptyMessage;
+
+  /// No description provided for @orgName.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nom'**
+  String get orgName;
+
+  /// No description provided for @orgKind.
+  ///
+  /// In fr, this message translates to:
+  /// **'Type'**
+  String get orgKind;
+
+  /// No description provided for @orgStatus.
+  ///
+  /// In fr, this message translates to:
+  /// **'Statut'**
+  String get orgStatus;
+
+  /// No description provided for @orgParent.
+  ///
+  /// In fr, this message translates to:
+  /// **'Organisation parente'**
+  String get orgParent;
+
+  /// No description provided for @orgSectionContact.
+  ///
+  /// In fr, this message translates to:
+  /// **'Coordonnées'**
+  String get orgSectionContact;
+
+  /// No description provided for @orgSectionAddress.
+  ///
+  /// In fr, this message translates to:
+  /// **'Adresse'**
+  String get orgSectionAddress;
+
+  /// No description provided for @orgSectionIdentity.
+  ///
+  /// In fr, this message translates to:
+  /// **'Identification'**
+  String get orgSectionIdentity;
+
+  /// No description provided for @orgSectionHierarchy.
+  ///
+  /// In fr, this message translates to:
+  /// **'Rattachement'**
+  String get orgSectionHierarchy;
+
+  /// No description provided for @orgSectionTraceability.
+  ///
+  /// In fr, this message translates to:
+  /// **'Traçabilité'**
+  String get orgSectionTraceability;
+
+  /// No description provided for @orgPhone.
+  ///
+  /// In fr, this message translates to:
+  /// **'Téléphone'**
+  String get orgPhone;
+
+  /// No description provided for @orgEmail.
+  ///
+  /// In fr, this message translates to:
+  /// **'Email'**
+  String get orgEmail;
+
+  /// No description provided for @orgWebsite.
+  ///
+  /// In fr, this message translates to:
+  /// **'Site web'**
+  String get orgWebsite;
+
+  /// No description provided for @orgAddress.
+  ///
+  /// In fr, this message translates to:
+  /// **'Adresse'**
+  String get orgAddress;
+
+  /// No description provided for @orgPostalCode.
+  ///
+  /// In fr, this message translates to:
+  /// **'Code postal'**
+  String get orgPostalCode;
+
+  /// No description provided for @orgCity.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ville'**
+  String get orgCity;
+
+  /// No description provided for @orgDepartement.
+  ///
+  /// In fr, this message translates to:
+  /// **'Département'**
+  String get orgDepartement;
+
+  /// No description provided for @orgDepartementShort.
+  ///
+  /// In fr, this message translates to:
+  /// **'Dép.'**
+  String get orgDepartementShort;
+
+  /// No description provided for @orgRegion.
+  ///
+  /// In fr, this message translates to:
+  /// **'Région'**
+  String get orgRegion;
+
+  /// No description provided for @orgLatitude.
+  ///
+  /// In fr, this message translates to:
+  /// **'Latitude'**
+  String get orgLatitude;
+
+  /// No description provided for @orgLongitude.
+  ///
+  /// In fr, this message translates to:
+  /// **'Longitude'**
+  String get orgLongitude;
+
+  /// No description provided for @orgSiren.
+  ///
+  /// In fr, this message translates to:
+  /// **'SIREN'**
+  String get orgSiren;
+
+  /// No description provided for @orgSiret.
+  ///
+  /// In fr, this message translates to:
+  /// **'SIRET'**
+  String get orgSiret;
+
+  /// No description provided for @orgInsee.
+  ///
+  /// In fr, this message translates to:
+  /// **'Code INSEE'**
+  String get orgInsee;
+
+  /// No description provided for @orgPopulation.
+  ///
+  /// In fr, this message translates to:
+  /// **'Population'**
+  String get orgPopulation;
+
+  /// No description provided for @orgDescription.
+  ///
+  /// In fr, this message translates to:
+  /// **'Description'**
+  String get orgDescription;
+
+  /// No description provided for @orgSource.
+  ///
+  /// In fr, this message translates to:
+  /// **'Source'**
+  String get orgSource;
+
+  /// No description provided for @orgCollectedAt.
+  ///
+  /// In fr, this message translates to:
+  /// **'Collectée le'**
+  String get orgCollectedAt;
+
+  /// No description provided for @orgChildren.
+  ///
+  /// In fr, this message translates to:
+  /// **'{count, plural, =1{1 organisation rattachée} other{{count} organisations rattachées}}'**
+  String orgChildren(int count);
+
+  /// No description provided for @contactsSubtitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Personnes, agents et élus des organisations.'**
+  String get contactsSubtitle;
+
+  /// No description provided for @contactNew.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouveau contact'**
+  String get contactNew;
+
+  /// No description provided for @contactEdit.
+  ///
+  /// In fr, this message translates to:
+  /// **'Modifier le contact'**
+  String get contactEdit;
+
+  /// No description provided for @contactCreated.
+  ///
+  /// In fr, this message translates to:
+  /// **'Contact créé.'**
+  String get contactCreated;
+
+  /// No description provided for @contactDeleteTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'{count, plural, =1{Supprimer ce contact ?} other{Supprimer {count} contacts ?}}'**
+  String contactDeleteTitle(int count);
+
+  /// No description provided for @contactDeleteMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'{count, plural, =1{« {names} » sera supprimé pour toute l\'équipe.} other{{names}… seront supprimés pour toute l\'équipe.}}'**
+  String contactDeleteMessage(int count, String names);
+
+  /// No description provided for @contactDeleted.
+  ///
+  /// In fr, this message translates to:
+  /// **'{count, plural, =1{Contact supprimé.} other{{count} contacts supprimés.}}'**
+  String contactDeleted(int count);
+
+  /// No description provided for @contactsEmptyTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun contact'**
+  String get contactsEmptyTitle;
+
+  /// No description provided for @contactsEmptyMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ajoutez les interlocuteurs de vos organisations ou importez un fichier CSV.'**
+  String get contactsEmptyMessage;
+
+  /// No description provided for @contactsAttached.
+  ///
+  /// In fr, this message translates to:
+  /// **'Contacts rattachés'**
+  String get contactsAttached;
+
+  /// No description provided for @contactName.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nom'**
+  String get contactName;
+
+  /// No description provided for @contactCivility.
+  ///
+  /// In fr, this message translates to:
+  /// **'Civilité'**
+  String get contactCivility;
+
+  /// No description provided for @contactFirstName.
+  ///
+  /// In fr, this message translates to:
+  /// **'Prénom'**
+  String get contactFirstName;
+
+  /// No description provided for @contactLastName.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nom'**
+  String get contactLastName;
+
+  /// No description provided for @contactOrganisation.
+  ///
+  /// In fr, this message translates to:
+  /// **'Organisation'**
+  String get contactOrganisation;
+
+  /// No description provided for @contactJobTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Fonction'**
+  String get contactJobTitle;
+
+  /// No description provided for @contactService.
+  ///
+  /// In fr, this message translates to:
+  /// **'Service'**
+  String get contactService;
+
+  /// No description provided for @contactMobile.
+  ///
+  /// In fr, this message translates to:
+  /// **'Mobile'**
+  String get contactMobile;
+
+  /// No description provided for @contactNotes.
+  ///
+  /// In fr, this message translates to:
+  /// **'Notes'**
+  String get contactNotes;
+
+  /// No description provided for @contactDoNotContact.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ne pas contacter (opposition, RGPD)'**
+  String get contactDoNotContact;
+
+  /// No description provided for @contactDoNotContactShort.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ne pas contacter'**
+  String get contactDoNotContactShort;
+
+  /// No description provided for @positionNew.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ajouter un poste'**
+  String get positionNew;
+
+  /// No description provided for @positionEdit.
+  ///
+  /// In fr, this message translates to:
+  /// **'Modifier le poste'**
+  String get positionEdit;
+
+  /// No description provided for @positionAddElected.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ajouter un mandat'**
+  String get positionAddElected;
+
+  /// No description provided for @positionContact.
+  ///
+  /// In fr, this message translates to:
+  /// **'Contact'**
+  String get positionContact;
+
+  /// No description provided for @positionIsElected.
+  ///
+  /// In fr, this message translates to:
+  /// **'Mandat électif'**
+  String get positionIsElected;
+
+  /// No description provided for @positionMandate.
+  ///
+  /// In fr, this message translates to:
+  /// **'Fonction élective'**
+  String get positionMandate;
+
+  /// No description provided for @positionDelegation.
+  ///
+  /// In fr, this message translates to:
+  /// **'Délégation'**
+  String get positionDelegation;
+
+  /// No description provided for @positionStart.
+  ///
+  /// In fr, this message translates to:
+  /// **'Début'**
+  String get positionStart;
+
+  /// No description provided for @positionEnd.
+  ///
+  /// In fr, this message translates to:
+  /// **'Fin'**
+  String get positionEnd;
+
+  /// No description provided for @positionElected.
+  ///
+  /// In fr, this message translates to:
+  /// **'Élu'**
+  String get positionElected;
+
+  /// No description provided for @positionUntil.
+  ///
+  /// In fr, this message translates to:
+  /// **'jusqu\'au {date}'**
+  String positionUntil(String date);
+
+  /// No description provided for @positionsCurrent.
+  ///
+  /// In fr, this message translates to:
+  /// **'Postes et mandats en cours'**
+  String get positionsCurrent;
+
+  /// No description provided for @positionsPast.
+  ///
+  /// In fr, this message translates to:
+  /// **'Postes et mandats passés'**
+  String get positionsPast;
+
+  /// No description provided for @positionsEmpty.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun poste ni mandat.'**
+  String get positionsEmpty;
+
+  /// No description provided for @electedSubtitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Mandats électifs en cours (maires, adjoints, conseillers, présidents…).'**
+  String get electedSubtitle;
+
+  /// No description provided for @electedEmptyTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun élu'**
+  String get electedEmptyTitle;
+
+  /// No description provided for @electedEmptyMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ajoutez un mandat depuis la fiche d\'un contact ou d\'une organisation.'**
+  String get electedEmptyMessage;
+
+  /// No description provided for @pipelinesSubtitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Suivi des affaires par étape.'**
+  String get pipelinesSubtitle;
+
+  /// No description provided for @dealNew.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouvelle affaire'**
+  String get dealNew;
+
+  /// No description provided for @dealEdit.
+  ///
+  /// In fr, this message translates to:
+  /// **'Modifier l\'affaire'**
+  String get dealEdit;
+
+  /// No description provided for @dealTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Intitulé'**
+  String get dealTitle;
+
+  /// No description provided for @dealStage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Étape'**
+  String get dealStage;
+
+  /// No description provided for @dealContact.
+  ///
+  /// In fr, this message translates to:
+  /// **'Contact'**
+  String get dealContact;
+
+  /// No description provided for @dealAmount.
+  ///
+  /// In fr, this message translates to:
+  /// **'Montant (€)'**
+  String get dealAmount;
+
+  /// No description provided for @dealProbability.
+  ///
+  /// In fr, this message translates to:
+  /// **'Probabilité (%)'**
+  String get dealProbability;
+
+  /// No description provided for @dealExpectedClose.
+  ///
+  /// In fr, this message translates to:
+  /// **'Clôture prévue'**
+  String get dealExpectedClose;
+
+  /// No description provided for @dealCloseOn.
+  ///
+  /// In fr, this message translates to:
+  /// **'clôture le {date}'**
+  String dealCloseOn(String date);
+
+  /// No description provided for @dealLate.
+  ///
+  /// In fr, this message translates to:
+  /// **'En retard'**
+  String get dealLate;
+
+  /// No description provided for @dealSearch.
+  ///
+  /// In fr, this message translates to:
+  /// **'Rechercher une affaire…'**
+  String get dealSearch;
+
+  /// No description provided for @dealsEmpty.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucune affaire.'**
+  String get dealsEmpty;
+
+  /// No description provided for @dealsOpenTotal.
+  ///
+  /// In fr, this message translates to:
+  /// **'En cours : {amount}'**
+  String dealsOpenTotal(String amount);
+
+  /// No description provided for @pipelineTotals.
+  ///
+  /// In fr, this message translates to:
+  /// **'En cours : {open} · Pondéré : {weighted}'**
+  String pipelineTotals(String open, String weighted);
+
+  /// No description provided for @pipelineConfigure.
+  ///
+  /// In fr, this message translates to:
+  /// **'Configurer'**
+  String get pipelineConfigure;
+
+  /// No description provided for @pipelineNew.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouveau pipeline'**
+  String get pipelineNew;
+
+  /// No description provided for @pipelineName.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nom du pipeline'**
+  String get pipelineName;
+
+  /// No description provided for @pipelineKind.
+  ///
+  /// In fr, this message translates to:
+  /// **'Type'**
+  String get pipelineKind;
+
+  /// No description provided for @pipelineArchived.
+  ///
+  /// In fr, this message translates to:
+  /// **'Archivé (masqué du Kanban)'**
+  String get pipelineArchived;
+
+  /// No description provided for @pipelineCreateDefaults.
+  ///
+  /// In fr, this message translates to:
+  /// **'Créer les pipelines Collectivités et Festivals'**
+  String get pipelineCreateDefaults;
+
+  /// No description provided for @pipelineSetupFirst.
+  ///
+  /// In fr, this message translates to:
+  /// **'Configurer un pipeline'**
+  String get pipelineSetupFirst;
+
+  /// No description provided for @pipelinesEmptyTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun pipeline'**
+  String get pipelinesEmptyTitle;
+
+  /// No description provided for @pipelinesEmptyMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Créez les pipelines par défaut (étapes modifiables ensuite) ou un pipeline sur mesure.'**
+  String get pipelinesEmptyMessage;
+
+  /// No description provided for @pipelinesEmptyReadOnly.
+  ///
+  /// In fr, this message translates to:
+  /// **'Un administrateur doit configurer les pipelines.'**
+  String get pipelinesEmptyReadOnly;
+
+  /// No description provided for @stagesTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Étapes'**
+  String get stagesTitle;
+
+  /// No description provided for @stagesEmpty.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ce pipeline n\'a pas d\'étape.'**
+  String get stagesEmpty;
+
+  /// No description provided for @stageNew.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ajouter une étape'**
+  String get stageNew;
+
+  /// No description provided for @stageEdit.
+  ///
+  /// In fr, this message translates to:
+  /// **'Modifier l\'étape'**
+  String get stageEdit;
+
+  /// No description provided for @stageName.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nom de l\'étape'**
+  String get stageName;
+
+  /// No description provided for @stageOutcome.
+  ///
+  /// In fr, this message translates to:
+  /// **'Issue'**
+  String get stageOutcome;
+
+  /// No description provided for @stageDefaultNew.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouveau'**
+  String get stageDefaultNew;
+
+  /// No description provided for @stageInUse.
+  ///
+  /// In fr, this message translates to:
+  /// **'Déplacez d\'abord les affaires de cette étape.'**
+  String get stageInUse;
+
+  /// No description provided for @activityNew.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouvelle activité'**
+  String get activityNew;
+
+  /// No description provided for @activityEdit.
+  ///
+  /// In fr, this message translates to:
+  /// **'Modifier l\'activité'**
+  String get activityEdit;
+
+  /// No description provided for @activitySaved.
+  ///
+  /// In fr, this message translates to:
+  /// **'Activité enregistrée.'**
+  String get activitySaved;
+
+  /// No description provided for @activityKind.
+  ///
+  /// In fr, this message translates to:
+  /// **'Type'**
+  String get activityKind;
+
+  /// No description provided for @activitySubject.
+  ///
+  /// In fr, this message translates to:
+  /// **'Objet'**
+  String get activitySubject;
+
+  /// No description provided for @activityBody.
+  ///
+  /// In fr, this message translates to:
+  /// **'Contenu'**
+  String get activityBody;
+
+  /// No description provided for @activityStart.
+  ///
+  /// In fr, this message translates to:
+  /// **'Début'**
+  String get activityStart;
+
+  /// No description provided for @activityEnd.
+  ///
+  /// In fr, this message translates to:
+  /// **'Fin'**
+  String get activityEnd;
+
+  /// No description provided for @activityDue.
+  ///
+  /// In fr, this message translates to:
+  /// **'Échéance'**
+  String get activityDue;
+
+  /// No description provided for @activityRemind.
+  ///
+  /// In fr, this message translates to:
+  /// **'Rappel'**
+  String get activityRemind;
+
+  /// No description provided for @activityDone.
+  ///
+  /// In fr, this message translates to:
+  /// **'Terminée'**
+  String get activityDone;
+
+  /// No description provided for @activityDeal.
+  ///
+  /// In fr, this message translates to:
+  /// **'Affaire'**
+  String get activityDeal;
+
+  /// No description provided for @activityOpenTasks.
+  ///
+  /// In fr, this message translates to:
+  /// **'Tâches à faire'**
+  String get activityOpenTasks;
+
+  /// No description provided for @activityHistory.
+  ///
+  /// In fr, this message translates to:
+  /// **'Historique'**
+  String get activityHistory;
+
+  /// No description provided for @activityEmpty.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucune activité.'**
+  String get activityEmpty;
+
+  /// No description provided for @activityDueOn.
+  ///
+  /// In fr, this message translates to:
+  /// **'échéance {date}'**
+  String activityDueOn(String date);
+
+  /// No description provided for @tasksSubtitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Tâches à faire et journal des échanges.'**
+  String get tasksSubtitle;
+
+  /// No description provided for @taskNew.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouvelle tâche'**
+  String get taskNew;
+
+  /// No description provided for @tasksTodo.
+  ///
+  /// In fr, this message translates to:
+  /// **'À faire ({count})'**
+  String tasksTodo(int count);
+
+  /// No description provided for @tasksOverdue.
+  ///
+  /// In fr, this message translates to:
+  /// **'En retard ({count})'**
+  String tasksOverdue(int count);
+
+  /// No description provided for @tasksToday.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aujourd\'hui ({count})'**
+  String tasksToday(int count);
+
+  /// No description provided for @tasksDone.
+  ///
+  /// In fr, this message translates to:
+  /// **'Terminées'**
+  String get tasksDone;
+
+  /// No description provided for @tasksActivities.
+  ///
+  /// In fr, this message translates to:
+  /// **'Activités'**
+  String get tasksActivities;
+
+  /// No description provided for @tasksMine.
+  ///
+  /// In fr, this message translates to:
+  /// **'Mes tâches uniquement'**
+  String get tasksMine;
+
+  /// No description provided for @tasksEmpty.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucune tâche.'**
+  String get tasksEmpty;
+
+  /// No description provided for @attachmentAdd.
+  ///
+  /// In fr, this message translates to:
+  /// **'Joindre un fichier'**
+  String get attachmentAdd;
+
+  /// No description provided for @attachmentDownload.
+  ///
+  /// In fr, this message translates to:
+  /// **'Télécharger'**
+  String get attachmentDownload;
+
+  /// No description provided for @attachmentsHint.
+  ///
+  /// In fr, this message translates to:
+  /// **'Fichiers partagés avec l\'équipe (25 Mo maximum, connexion au serveur requise).'**
+  String get attachmentsHint;
+
+  /// No description provided for @attachmentsEmpty.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun fichier joint.'**
+  String get attachmentsEmpty;
+
+  /// No description provided for @attachmentUploaded.
+  ///
+  /// In fr, this message translates to:
+  /// **'Fichier joint.'**
+  String get attachmentUploaded;
+
+  /// No description provided for @attachmentDownloaded.
+  ///
+  /// In fr, this message translates to:
+  /// **'Fichier enregistré.'**
+  String get attachmentDownloaded;
+
+  /// No description provided for @attachmentTooLarge.
+  ///
+  /// In fr, this message translates to:
+  /// **'Fichier trop volumineux (25 Mo maximum).'**
+  String get attachmentTooLarge;
+
+  /// No description provided for @tagAdd.
+  ///
+  /// In fr, this message translates to:
+  /// **'Tag'**
+  String get tagAdd;
+
+  /// No description provided for @tagAddTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ajouter un tag'**
+  String get tagAddTitle;
+
+  /// No description provided for @tagApplyTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Appliquer un tag'**
+  String get tagApplyTitle;
+
+  /// No description provided for @tagApplied.
+  ///
+  /// In fr, this message translates to:
+  /// **'{count, plural, =0{Tag déjà appliqué.} =1{Tag appliqué à 1 élément.} other{Tag appliqué à {count} éléments.}}'**
+  String tagApplied(int count);
+
+  /// No description provided for @segments.
+  ///
+  /// In fr, this message translates to:
+  /// **'Segments'**
+  String get segments;
+
+  /// No description provided for @segmentNone.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun segment partagé'**
+  String get segmentNone;
+
+  /// No description provided for @segmentSaveAs.
+  ///
+  /// In fr, this message translates to:
+  /// **'Enregistrer comme segment…'**
+  String get segmentSaveAs;
+
+  /// No description provided for @segmentSaveDescription.
+  ///
+  /// In fr, this message translates to:
+  /// **'Les filtres et la recherche actuels seront partagés avec toute l\'équipe.'**
+  String get segmentSaveDescription;
+
+  /// No description provided for @segmentName.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nom du segment'**
+  String get segmentName;
+
+  /// No description provided for @segmentDescription.
+  ///
+  /// In fr, this message translates to:
+  /// **'Description'**
+  String get segmentDescription;
+
+  /// No description provided for @segmentSaved.
+  ///
+  /// In fr, this message translates to:
+  /// **'Segment enregistré.'**
+  String get segmentSaved;
+
+  /// No description provided for @segmentDelete.
+  ///
+  /// In fr, this message translates to:
+  /// **'Supprimer « {name} »'**
+  String segmentDelete(String name);
+
+  /// No description provided for @exportCsv.
+  ///
+  /// In fr, this message translates to:
+  /// **'Exporter en CSV'**
+  String get exportCsv;
+
+  /// No description provided for @exportDone.
+  ///
+  /// In fr, this message translates to:
+  /// **'{count, plural, =1{1 ligne exportée.} other{{count} lignes exportées.}}'**
+  String exportDone(int count);
+
+  /// No description provided for @mapSubtitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'{shown} organisations affichées · {missing} sans coordonnées'**
+  String mapSubtitle(int shown, int missing);
+
+  /// No description provided for @mapAllKinds.
+  ///
+  /// In fr, this message translates to:
+  /// **'Tous les types'**
+  String get mapAllKinds;
+
+  /// No description provided for @mapEmpty.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucune organisation n\'a de coordonnées (latitude et longitude).'**
+  String get mapEmpty;
+
+  /// No description provided for @customFieldsDescription.
+  ///
+  /// In fr, this message translates to:
+  /// **'Champs supplémentaires affichés dans les fiches, les tableaux et l\'import.'**
+  String get customFieldsDescription;
+
+  /// No description provided for @customFieldsEmpty.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun champ personnalisé.'**
+  String get customFieldsEmpty;
+
+  /// No description provided for @customFieldNew.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ajouter un champ'**
+  String get customFieldNew;
+
+  /// No description provided for @customFieldEdit.
+  ///
+  /// In fr, this message translates to:
+  /// **'Modifier le champ'**
+  String get customFieldEdit;
+
+  /// No description provided for @customFieldLabel.
+  ///
+  /// In fr, this message translates to:
+  /// **'Libellé'**
+  String get customFieldLabel;
+
+  /// No description provided for @customFieldType.
+  ///
+  /// In fr, this message translates to:
+  /// **'Type'**
+  String get customFieldType;
+
+  /// No description provided for @customFieldOptions.
+  ///
+  /// In fr, this message translates to:
+  /// **'Choix (liste)'**
+  String get customFieldOptions;
+
+  /// No description provided for @customFieldOptionsHint.
+  ///
+  /// In fr, this message translates to:
+  /// **'Choix séparés par des virgules'**
+  String get customFieldOptionsHint;
+
+  /// No description provided for @duplicatesSubtitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Organisations et contacts probablement saisis plusieurs fois.'**
+  String get duplicatesSubtitle;
+
+  /// No description provided for @duplicatesNone.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun doublon détecté'**
+  String get duplicatesNone;
+
+  /// No description provided for @duplicatesNoneMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Comparaison sur SIRET, SIREN, code INSEE, nom + lieu, email et mobile.'**
+  String get duplicatesNoneMessage;
+
+  /// No description provided for @duplicatesGroup.
+  ///
+  /// In fr, this message translates to:
+  /// **'{count} fiches semblables'**
+  String duplicatesGroup(int count);
+
+  /// No description provided for @duplicatesIgnore.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ce ne sont pas des doublons'**
+  String get duplicatesIgnore;
+
+  /// No description provided for @duplicatesMerge.
+  ///
+  /// In fr, this message translates to:
+  /// **'Fusionner'**
+  String get duplicatesMerge;
+
+  /// No description provided for @duplicatesKept.
+  ///
+  /// In fr, this message translates to:
+  /// **'Conservée'**
+  String get duplicatesKept;
+
+  /// No description provided for @duplicatesCreated.
+  ///
+  /// In fr, this message translates to:
+  /// **'créée {when}'**
+  String duplicatesCreated(String when);
+
+  /// No description provided for @duplicatesMergeTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Fusionner les fiches ?'**
+  String get duplicatesMergeTitle;
+
+  /// No description provided for @duplicatesMergeMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'{count, plural, =1{La fiche en double sera supprimée ; ses informations manquantes, contacts, affaires, activités, fichiers et tags sont reportés sur la fiche conservée.} other{Les {count} fiches en double seront supprimées ; leurs informations manquantes, contacts, affaires, activités, fichiers et tags sont reportés sur la fiche conservée.}}'**
+  String duplicatesMergeMessage(int count);
+
+  /// No description provided for @duplicatesMerged.
+  ///
+  /// In fr, this message translates to:
+  /// **'Fiches fusionnées.'**
+  String get duplicatesMerged;
+
+  /// No description provided for @importCsv.
+  ///
+  /// In fr, this message translates to:
+  /// **'Importer'**
+  String get importCsv;
+
+  /// No description provided for @importTitleOrganisations.
+  ///
+  /// In fr, this message translates to:
+  /// **'Importer des organisations'**
+  String get importTitleOrganisations;
+
+  /// No description provided for @importTitleContacts.
+  ///
+  /// In fr, this message translates to:
+  /// **'Importer des contacts'**
+  String get importTitleContacts;
+
+  /// No description provided for @importPickHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'Choisissez un fichier CSV (export Excel « CSV UTF-8 » ou séparateur point-virgule). La première ligne doit contenir les en-têtes. Colonnes reconnues automatiquement :'**
+  String get importPickHelp;
+
+  /// No description provided for @importChooseFile.
+  ///
+  /// In fr, this message translates to:
+  /// **'Choisir un fichier CSV'**
+  String get importChooseFile;
+
+  /// No description provided for @importEmptyFile.
+  ///
+  /// In fr, this message translates to:
+  /// **'Le fichier est vide ou illisible.'**
+  String get importEmptyFile;
+
+  /// No description provided for @importFileSummary.
+  ///
+  /// In fr, this message translates to:
+  /// **'{name} : {count} lignes'**
+  String importFileSummary(String name, int count);
+
+  /// No description provided for @importMappingHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'Associez chaque colonne à un champ (les colonnes ignorées ne sont pas importées).'**
+  String get importMappingHelp;
+
+  /// No description provided for @importIgnore.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ignorer'**
+  String get importIgnore;
+
+  /// No description provided for @importDefaultKind.
+  ///
+  /// In fr, this message translates to:
+  /// **'Type par défaut'**
+  String get importDefaultKind;
+
+  /// No description provided for @importDefaultStatus.
+  ///
+  /// In fr, this message translates to:
+  /// **'Statut par défaut'**
+  String get importDefaultStatus;
+
+  /// No description provided for @importSkipDuplicates.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ignorer les doublons ({count} détectés : SIRET, INSEE, nom + lieu, email…)'**
+  String importSkipDuplicates(int count);
+
+  /// No description provided for @importRequiredMissing.
+  ///
+  /// In fr, this message translates to:
+  /// **'Associez une colonne au champ obligatoire « {field} ».'**
+  String importRequiredMissing(String field);
+
+  /// No description provided for @importProblems.
+  ///
+  /// In fr, this message translates to:
+  /// **'{count} valeurs non reconnues (valeur par défaut appliquée) :'**
+  String importProblems(int count);
+
+  /// No description provided for @importProblemKind.
+  ///
+  /// In fr, this message translates to:
+  /// **'type inconnu « {value} »'**
+  String importProblemKind(String value);
+
+  /// No description provided for @importProblemStatus.
+  ///
+  /// In fr, this message translates to:
+  /// **'statut inconnu « {value} »'**
+  String importProblemStatus(String value);
+
+  /// No description provided for @importProblemNumber.
+  ///
+  /// In fr, this message translates to:
+  /// **'nombre invalide « {value} »'**
+  String importProblemNumber(String value);
+
+  /// No description provided for @importLine.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ligne {line} : {message}'**
+  String importLine(int line, String message);
+
+  /// No description provided for @importRgpdNotice.
+  ///
+  /// In fr, this message translates to:
+  /// **'La source (nom du fichier) et la date de collecte sont enregistrées sur chaque fiche importée (RGPD).'**
+  String get importRgpdNotice;
+
+  /// No description provided for @importSource.
+  ///
+  /// In fr, this message translates to:
+  /// **'Import CSV {file}'**
+  String importSource(String file);
+
+  /// No description provided for @importBack.
+  ///
+  /// In fr, this message translates to:
+  /// **'Retour'**
+  String get importBack;
+
+  /// No description provided for @importRun.
+  ///
+  /// In fr, this message translates to:
+  /// **'Importer {count} lignes'**
+  String importRun(int count);
+
+  /// No description provided for @importProgress.
+  ///
+  /// In fr, this message translates to:
+  /// **'{done} / {total} lignes traitées'**
+  String importProgress(int done, int total);
+
+  /// No description provided for @importDone.
+  ///
+  /// In fr, this message translates to:
+  /// **'{count, plural, =0{Aucune fiche importée.} =1{1 fiche importée.} other{{count} fiches importées.}}'**
+  String importDone(int count);
+
+  /// No description provided for @importDuplicatesSkipped.
+  ///
+  /// In fr, this message translates to:
+  /// **'Doublons ignorés'**
+  String get importDuplicatesSkipped;
+
+  /// No description provided for @importOrganisationsCreated.
+  ///
+  /// In fr, this message translates to:
+  /// **'Organisations créées'**
+  String get importOrganisationsCreated;
+
+  /// No description provided for @importTagsCreated.
+  ///
+  /// In fr, this message translates to:
+  /// **'Tags créés'**
+  String get importTagsCreated;
+
+  /// No description provided for @importRejected.
+  ///
+  /// In fr, this message translates to:
+  /// **'Lignes refusées'**
+  String get importRejected;
 }
 
 class _AppLocalizationsDelegate

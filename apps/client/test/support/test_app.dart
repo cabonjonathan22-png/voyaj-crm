@@ -13,22 +13,13 @@ import 'package:voyaj_client/data/local/database.dart';
 import 'package:voyaj_client/data/sync/local_clock.dart';
 import 'package:voyaj_shared/voyaj_shared.dart';
 
-const testUser = CurrentUser(
+final testUser = CurrentUser(
   id: '01a0e2e2-342f-724e-8b9a-9d12d8be87cd',
   email: 'camille.martin@voyaj.fr',
   displayName: 'Camille Martin',
   totpEnabled: true,
   roles: ['admin'],
-  permissions: [
-    'audit.read',
-    'role.manage',
-    'sync.conflict.manage',
-    'sync.conflict.read',
-    'tag.read',
-    'tag.write',
-    'user.manage',
-    'user.read',
-  ],
+  permissions: [for (final p in Permission.values) p.key],
 );
 
 /// Démarrage de test : base en mémoire, coffre simulé, utilisateur connecté.

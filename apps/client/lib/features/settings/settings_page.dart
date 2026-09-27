@@ -6,6 +6,7 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 import '../../app/app.dart';
 import '../../design_system/design_system.dart';
 import 'appearance_section.dart';
+import 'custom_fields_section.dart';
 import 'security_section.dart';
 import 'server_section.dart';
 
@@ -17,7 +18,12 @@ enum SettingsSection {
     LucideIcons.shieldCheck,
     'mot de passe 2fa double authentification sessions',
   ),
-  server('Serveur et données', LucideIcons.server, 'connexion poste cache');
+  server('Serveur et données', LucideIcons.server, 'connexion poste cache'),
+  customFields(
+    'Champs personnalisés',
+    LucideIcons.textCursorInput,
+    'attributs colonnes formulaire',
+  );
 
   const SettingsSection(this.label, this.icon, this.keywords);
 
@@ -67,6 +73,8 @@ class SettingsPage extends ConsumerWidget {
                       SettingsSection.appearance => const AppearanceSection(),
                       SettingsSection.security => const SecuritySection(),
                       SettingsSection.server => const ServerSection(),
+                      SettingsSection.customFields =>
+                        const CustomFieldsSection(),
                     },
                   ),
                 ),
