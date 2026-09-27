@@ -240,6 +240,15 @@ final commandsProvider = Provider<List<AppCommand>>((ref) {
         keywords: 'droits administration',
         run: (context, _) => context.go(Routes.roles),
       ),
+    if (can(Permission.publicDataManage))
+      AppCommand(
+        id: 'nav.public-data',
+        label: 'Aller aux données publiques',
+        group: CommandGroup.navigation,
+        icon: LucideIcons.landmark,
+        keywords: 'communes epci aom festivals import insee geo',
+        run: (context, _) => context.go(Routes.publicData),
+      ),
     if (can(Permission.auditRead))
       AppCommand(
         id: 'nav.audit',

@@ -10,6 +10,7 @@ import 'package:voyaj_client/features/crm/map/map_page.dart';
 import 'package:voyaj_shared/voyaj_shared.dart';
 
 import 'support/crm_seed.dart';
+import 'support/fake_api.dart';
 import 'support/test_app.dart';
 
 /// Rend chaque écran (thèmes clair et sombre) et vérifie qu'aucune
@@ -30,6 +31,7 @@ void main() {
     'map': Routes.map,
     'duplicates': Routes.duplicates,
     'settings_custom_fields': '${Routes.settings}/customFields',
+    'public_data': Routes.publicData,
     'tags': Routes.tags,
     'tag_detail': '${Routes.tags}?id=tag-1',
     'tag_new': '${Routes.tags}?new=1',
@@ -62,6 +64,7 @@ void main() {
             bootstrapProvider.overrideWithValue(boot),
             syncEngineProvider.overrideWithValue(null),
             mapTilesEnabledProvider.overrideWithValue(false),
+            apiClientProvider.overrideWithValue(fakeApi(boot)),
           ],
         );
 

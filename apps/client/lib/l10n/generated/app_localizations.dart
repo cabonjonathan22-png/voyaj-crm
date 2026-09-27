@@ -2576,6 +2576,150 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Lignes refusées'**
   String get importRejected;
+
+  /// No description provided for @refresh.
+  ///
+  /// In fr, this message translates to:
+  /// **'Actualiser'**
+  String get refresh;
+
+  /// No description provided for @navPublicData.
+  ///
+  /// In fr, this message translates to:
+  /// **'Données publiques'**
+  String get navPublicData;
+
+  /// No description provided for @publicDataSubtitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Collectivités, AOM et festivals importés depuis les sources officielles.'**
+  String get publicDataSubtitle;
+
+  /// No description provided for @publicDataHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'Les imports créent ou mettent à jour des organisations (statut « À prospecter » à la création), rattachées à leur parent (commune → EPCI → département → région). Un champ modifié par un utilisateur n\'est jamais écrasé, une fiche supprimée n\'est pas recréée. Les sources activées sont réimportées chaque nuit.'**
+  String get publicDataHelp;
+
+  /// No description provided for @publicDataProvider.
+  ///
+  /// In fr, this message translates to:
+  /// **'Source : {provider}'**
+  String publicDataProvider(String provider);
+
+  /// No description provided for @publicDataDaily.
+  ///
+  /// In fr, this message translates to:
+  /// **'Import quotidien'**
+  String get publicDataDaily;
+
+  /// No description provided for @publicDataRunNow.
+  ///
+  /// In fr, this message translates to:
+  /// **'Importer maintenant'**
+  String get publicDataRunNow;
+
+  /// No description provided for @publicDataStarted.
+  ///
+  /// In fr, this message translates to:
+  /// **'Import lancé : il se poursuit sur le serveur.'**
+  String get publicDataStarted;
+
+  /// No description provided for @publicDataScope.
+  ///
+  /// In fr, this message translates to:
+  /// **'Périmètre'**
+  String get publicDataScope;
+
+  /// No description provided for @publicDataScopeAll.
+  ///
+  /// In fr, this message translates to:
+  /// **'Toute la France'**
+  String get publicDataScopeAll;
+
+  /// No description provided for @publicDataScopeHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'Codes des départements à importer, séparés par des virgules. Laisser vide pour toute la France.'**
+  String get publicDataScopeHelp;
+
+  /// No description provided for @publicDataScopeCodes.
+  ///
+  /// In fr, this message translates to:
+  /// **'Départements'**
+  String get publicDataScopeCodes;
+
+  /// No description provided for @publicDataScopeInvalid.
+  ///
+  /// In fr, this message translates to:
+  /// **'Codes invalides : {codes}'**
+  String publicDataScopeInvalid(String codes);
+
+  /// No description provided for @publicDataCommunesWarning.
+  ///
+  /// In fr, this message translates to:
+  /// **'Sans périmètre, les 35 000 communes de France seront importées : choisissez plutôt vos départements.'**
+  String get publicDataCommunesWarning;
+
+  /// No description provided for @publicDataLastRun.
+  ///
+  /// In fr, this message translates to:
+  /// **'Dernier import'**
+  String get publicDataLastRun;
+
+  /// No description provided for @publicDataNever.
+  ///
+  /// In fr, this message translates to:
+  /// **'Jamais importé'**
+  String get publicDataNever;
+
+  /// No description provided for @publicDataRunning.
+  ///
+  /// In fr, this message translates to:
+  /// **'Import en cours…'**
+  String get publicDataRunning;
+
+  /// No description provided for @publicDataCounts.
+  ///
+  /// In fr, this message translates to:
+  /// **'{fetched} lues · {created} créées · {updated} mises à jour · {unchanged} inchangées'**
+  String publicDataCounts(int fetched, int created, int updated, int unchanged);
+
+  /// No description provided for @publicDataStatusRunning.
+  ///
+  /// In fr, this message translates to:
+  /// **'En cours'**
+  String get publicDataStatusRunning;
+
+  /// No description provided for @publicDataStatusSucceeded.
+  ///
+  /// In fr, this message translates to:
+  /// **'Terminé'**
+  String get publicDataStatusSucceeded;
+
+  /// No description provided for @publicDataStatusFailed.
+  ///
+  /// In fr, this message translates to:
+  /// **'Échec'**
+  String get publicDataStatusFailed;
+
+  /// No description provided for @publicDataHistory.
+  ///
+  /// In fr, this message translates to:
+  /// **'Historique des imports'**
+  String get publicDataHistory;
+
+  /// No description provided for @publicDataTriggerSchedule.
+  ///
+  /// In fr, this message translates to:
+  /// **'Planifié'**
+  String get publicDataTriggerSchedule;
+
+  /// No description provided for @publicDataTriggerManual.
+  ///
+  /// In fr, this message translates to:
+  /// **'Manuel'**
+  String get publicDataTriggerManual;
 }
 
 class _AppLocalizationsDelegate

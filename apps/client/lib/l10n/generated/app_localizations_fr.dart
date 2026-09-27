@@ -1476,4 +1476,92 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get importRejected => 'Lignes refusées';
+
+  @override
+  String get refresh => 'Actualiser';
+
+  @override
+  String get navPublicData => 'Données publiques';
+
+  @override
+  String get publicDataSubtitle =>
+      'Collectivités, AOM et festivals importés depuis les sources officielles.';
+
+  @override
+  String get publicDataHelp =>
+      'Les imports créent ou mettent à jour des organisations (statut « À prospecter » à la création), rattachées à leur parent (commune → EPCI → département → région). Un champ modifié par un utilisateur n\'est jamais écrasé, une fiche supprimée n\'est pas recréée. Les sources activées sont réimportées chaque nuit.';
+
+  @override
+  String publicDataProvider(String provider) {
+    return 'Source : $provider';
+  }
+
+  @override
+  String get publicDataDaily => 'Import quotidien';
+
+  @override
+  String get publicDataRunNow => 'Importer maintenant';
+
+  @override
+  String get publicDataStarted =>
+      'Import lancé : il se poursuit sur le serveur.';
+
+  @override
+  String get publicDataScope => 'Périmètre';
+
+  @override
+  String get publicDataScopeAll => 'Toute la France';
+
+  @override
+  String get publicDataScopeHelp =>
+      'Codes des départements à importer, séparés par des virgules. Laisser vide pour toute la France.';
+
+  @override
+  String get publicDataScopeCodes => 'Départements';
+
+  @override
+  String publicDataScopeInvalid(String codes) {
+    return 'Codes invalides : $codes';
+  }
+
+  @override
+  String get publicDataCommunesWarning =>
+      'Sans périmètre, les 35 000 communes de France seront importées : choisissez plutôt vos départements.';
+
+  @override
+  String get publicDataLastRun => 'Dernier import';
+
+  @override
+  String get publicDataNever => 'Jamais importé';
+
+  @override
+  String get publicDataRunning => 'Import en cours…';
+
+  @override
+  String publicDataCounts(
+    int fetched,
+    int created,
+    int updated,
+    int unchanged,
+  ) {
+    return '$fetched lues · $created créées · $updated mises à jour · $unchanged inchangées';
+  }
+
+  @override
+  String get publicDataStatusRunning => 'En cours';
+
+  @override
+  String get publicDataStatusSucceeded => 'Terminé';
+
+  @override
+  String get publicDataStatusFailed => 'Échec';
+
+  @override
+  String get publicDataHistory => 'Historique des imports';
+
+  @override
+  String get publicDataTriggerSchedule => 'Planifié';
+
+  @override
+  String get publicDataTriggerManual => 'Manuel';
 }

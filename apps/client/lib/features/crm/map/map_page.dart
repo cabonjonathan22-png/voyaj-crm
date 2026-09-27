@@ -15,6 +15,7 @@ import '../../../data/local/database.dart';
 import '../../../design_system/design_system.dart';
 import '../crm_data.dart';
 import '../crm_format.dart';
+import 'clusters.dart';
 
 /// Fonds de carte OpenStreetMap (désactivés dans les tests : pas de
 /// réseau).
@@ -33,8 +34,16 @@ class MapPage extends ConsumerStatefulWidget {
 
 class _MapPageState extends ConsumerState<MapPage> {
   final Set<String> _hiddenStatuses = {};
+  final _map = MapController();
   String? _kind;
   OrganisationRow? _selected;
+  double _zoom = 5.5;
+
+  @override
+  void dispose() {
+    _map.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +66,12 @@ class _MapPageState extends ConsumerState<MapPage> {
       counts.update(o.status, (n) => n + 1, ifAbsent: () => 1);
     }
     final points = [for (final o in shown) LatLng(o.latitude!, o.longitude!)];
+    final clusters = clusterPoints(
+      shown,
+      zoom: _zoom,
+      latitude: (o) => o.latitude!,
+      longitude: (o) => o.longitude!,
+    );
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -112,7 +127,13 @@ class _MapPageState extends ConsumerState<MapPage> {
               children: [
                 FlutterMap(
                   key: ValueKey(_kind),
+                  mapController: _map,
                   options: MapOptions(
+                    onPositionChanged: (camera, _) {
+                      // Regroupement recalculé par demi-niveau de zoom.
+                      final zoom = (camera.zoom * 2).round() / 2;
+                      if (zoom != _zoom) setState(() => _zoom = zoom);
+                    },
                     initialCenter: _france,
                     initialZoom: 5.5,
                     minZoom: 3,
@@ -136,25 +157,48 @@ class _MapPageState extends ConsumerState<MapPage> {
                       ),
                     MarkerLayer(
                       markers: [
-                        for (final o in shown)
-                          Marker(
-                            point: LatLng(o.latitude!, o.longitude!),
-                            width: 18,
-                            height: 18,
-                            child: _Pin(
-                              color: c.toneColor(
-                                statusTone(
-                                  enumByKey(
-                                    OrganisationStatus.values,
-                                    o.status,
+                        for (final cluster in clusters)
+                          if (cluster.items.length == 1)
+                            Marker(
+                              point: LatLng(
+                                cluster.latitude,
+                                cluster.longitude,
+                              ),
+                              width: 18,
+                              height: 18,
+                              child: _Pin(
+                                color: c.toneColor(
+                                  statusTone(
+                                    enumByKey(
+                                      OrganisationStatus.values,
+                                      cluster.items.single.status,
+                                    ),
                                   ),
                                 ),
+                                selected:
+                                    _selected?.id == cluster.items.single.id,
+                                label: cluster.items.single.name,
+                                onTap: () => setState(
+                                  () => _selected = cluster.items.single,
+                                ),
                               ),
-                              selected: _selected?.id == o.id,
-                              label: o.name,
-                              onTap: () => setState(() => _selected = o),
+                            )
+                          else
+                            Marker(
+                              point: LatLng(
+                                cluster.latitude,
+                                cluster.longitude,
+                              ),
+                              width: 40,
+                              height: 40,
+                              child: _ClusterPin(
+                                count: cluster.items.length,
+                                onTap: () => _map.move(
+                                  LatLng(cluster.latitude, cluster.longitude),
+                                  _zoom + 2,
+                                ),
+                              ),
                             ),
-                          ),
                       ],
                     ),
                     RichAttributionWidget(
@@ -276,6 +320,36 @@ class _Pin extends StatelessWidget {
             ),
             boxShadow: VShadows.sm(dark: c.isDark),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _ClusterPin extends StatelessWidget {
+  const _ClusterPin({required this.count, required this.onTap});
+
+  final int count;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.colors;
+    return Pressable(
+      onPressed: onTap,
+      semanticLabel: '$count',
+      builder: (context, s) => AnimatedContainer(
+        duration: VMotion.fast,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: s.hovered ? c.accentHover : c.accent,
+          shape: BoxShape.circle,
+          border: Border.all(color: c.surface, width: 3),
+          boxShadow: VShadows.md(dark: c.isDark),
+        ),
+        child: Text(
+          count > 999 ? '${count ~/ 1000}k' : '$count',
+          style: context.text.caption.copyWith(color: c.textOnAccent),
         ),
       ),
     );

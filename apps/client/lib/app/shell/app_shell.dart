@@ -177,6 +177,8 @@ class _Sidebar extends ConsumerWidget {
         _NavItem(LucideIcons.users, l10n.navUsers, Routes.users),
       if (can(Permission.userRead))
         _NavItem(LucideIcons.shieldCheck, l10n.navRoles, Routes.roles),
+      if (can(Permission.publicDataManage))
+        _NavItem(LucideIcons.landmark, l10n.navPublicData, Routes.publicData),
       if (can(Permission.auditRead))
         _NavItem(LucideIcons.scrollText, l10n.navAudit, Routes.audit),
     ];

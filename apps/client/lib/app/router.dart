@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import '../design_system/design_system.dart';
 import '../features/admin/audit_page.dart';
+import '../features/admin/public_data_page.dart';
 import '../features/admin/roles_page.dart';
 import '../features/admin/users_page.dart';
 import '../features/auth/auth_state.dart';
@@ -45,6 +46,7 @@ abstract final class Routes {
   static const users = '/admin/users';
   static const roles = '/admin/roles';
   static const audit = '/admin/audit';
+  static const publicData = '/admin/donnees-publiques';
   static const designSystem = '/dev/design-system';
 
   static const _public = {setup, login, mfa};
@@ -196,6 +198,10 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: Routes.roles,
             pageBuilder: (_, state) => _instant(state, const RolesPage()),
+          ),
+          GoRoute(
+            path: Routes.publicData,
+            pageBuilder: (_, state) => _instant(state, const PublicDataPage()),
           ),
           GoRoute(
             path: Routes.audit,
