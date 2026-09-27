@@ -42,6 +42,7 @@ final class TestServer {
     http.Client? webhookClient,
     BoampClient? boampClient,
     http.Client? yousignHttp,
+    http.Client? aiHttp,
     Map<String, String> extraConfig = const {},
   }) async {
     final config = ServerConfig.fromMap({
@@ -65,6 +66,7 @@ final class TestServer {
       webhookClient: webhookClient,
       boampClient: boampClient,
       yousignHttp: yousignHttp,
+      aiHttp: aiHttp,
     );
     await server.services.users.createAdmin(
       email: adminEmail,
@@ -93,6 +95,7 @@ final class TestServer {
     backupHour: null,
     yousignApiKey: c.yousignApiKey,
     yousignWebhookSecret: c.yousignWebhookSecret,
+    anthropicApiKey: c.anthropicApiKey,
   );
 
   static Future<void> _resetDatabase(DatabaseConfig db) async {

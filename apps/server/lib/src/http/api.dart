@@ -8,6 +8,7 @@ import 'package:voyaj_shared/voyaj_shared.dart';
 
 import '../admin/backup_service.dart';
 import '../admin/gdpr_service.dart';
+import '../ai/ai_service.dart';
 import '../audit/audit_log.dart';
 import '../auth/auth_context.dart';
 import '../auth/auth_service.dart';
@@ -49,6 +50,7 @@ Handler buildHandler({
   required BackupService backups,
   required TenderService tenders,
   required SignatureService signatures,
+  required AiService ai,
   required bool trustProxy,
   required bool hsts,
 }) {
@@ -625,6 +627,21 @@ Handler buildHandler({
       final ctx = await authed(r);
       final body = await readJson(r, UpdateTenderRequest.fromJson);
       return jsonResponse((await tenders.update(ctx, id, body)).toJson());
+    })
+    // ── Assistant IA ──
+    ..get('/ai/status', (Request r) async {
+      (await authed(r)).require(Permission.aiUse);
+      return jsonResponse({'enabled': ai.enabled});
+    })
+    ..post('/ai/organisations/<id>/summary', (Request r, String id) async {
+      return jsonResponse(
+        (await ai.summarizeOrganisation(await authed(r), id)).toJson(),
+      );
+    })
+    ..post('/ai/email-draft', (Request r) async {
+      final ctx = await authed(r);
+      final body = await readJson(r, DraftEmailRequest.fromJson);
+      return jsonResponse((await ai.draftEmail(ctx, body)).toJson());
     })
     // ── RGPD ──
     ..get('/gdpr/contacts/<id>/export', (Request r, String id) async {

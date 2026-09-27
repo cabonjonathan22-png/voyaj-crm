@@ -10,7 +10,7 @@
 | 4 — Emails | IMAP/SMTP, OAuth Gmail/Microsoft, boîte de réception, modèles, séquences | ✅ Terminée (OAuth à configurer, voir ci-dessous) |
 | 5 — Facturation & compta | Devis/factures/avoirs, Factur-X, Chorus Pro, FEC, TVA — **validation expert-comptable** | ✅ Terminée (à valider par l'expert-comptable, voir ci-dessous) |
 | 6 — Connecteurs | Supabase, Firebase, MySQL, MongoDB, REST, webhooks, éditeur de mapping | ✅ Terminée (à valider sur vos sources réelles, voir ci-dessous) |
-| 7 — Avancé | Tableaux de bord, BOAMP, agenda, signature, IA, API publique, sauvegardes, RGPD | À venir |
+| 7 — Avancé | Tableaux de bord, BOAMP, agenda, signature, IA, API publique, sauvegardes, RGPD | ✅ Terminée (services externes à configurer, voir ci-dessous) |
 
 ## Éléments reportés ou à compléter
 
@@ -107,6 +107,26 @@
   sortants couvrent l'envoi des changements.
 - Webhooks sortants : pas de liste des livraisons individuelles (dernier état seulement).
 
+### Avancé (Phase 7)
+- **BOAMP** : noms des champs de l'API Opendatasoft de la DILA (`idweb`, `objet`, `nomacheteur`,
+  `dateparution`, `datelimitereponse`, `code_departement`…) repris de la documentation, non
+  vérifiés en réel (réseau bloqué en développement) ; le parseur tolère des variantes. À
+  valider à la première recherche.
+- **Signature électronique** : Yousign v3 testé sur réponses simulées ; à valider en
+  environnement de test Yousign (clé sandbox), en particulier la détection de l'ancre
+  `{{s1|signature|180|48}}` placée dans le PDF des devis. Un seul signataire par devis.
+- **Assistant IA** : synthèse d'organisation et brouillon d'email (Claude, API Anthropic en HTTP,
+  pas de SDK Dart officiel). Pas encore : réponses en flux, recherche dans toute la base,
+  qualification automatique des avis BOAMP.
+- **Tableau de bord** : indicateurs fixes ; tableaux de bord personnalisables (widgets,
+  filtres par commercial, période) à ajouter.
+- **Agenda** : vue mensuelle ; vues semaine / jour et glisser-déposer à ajouter ; pas de
+  synchronisation bidirectionnelle avec Outlook / Google (abonnement ICS en lecture).
+- **API publique** : pas de limitation de débit par jeton ni de webhooks par jeton ;
+  documentation OpenAPI à générer.
+- **Sauvegardes** : non chiffrées par Voyaj (chiffrer le stockage hors site) ; pas de
+  restauration depuis l'interface.
+
 ### Serveur
 - Limiteur de tentatives en mémoire : à déplacer en base (ou Redis) si plusieurs instances.
 - Purge planifiée des sessions expirées, rétention de `change_log` et `sync_ops`.
@@ -188,4 +208,17 @@
 | MySQL : une seule requête SELECT (pas de `;`) ; lecture seule | Le connecteur ne peut pas modifier la base source. |
 | Webhook entrant authentifié par jeton (empreinte SHA-256 stockée, affiché une fois), 5 Mo et 5 000 enregistrements maximum par appel | Pas de session utilisateur pour un système externe ; jeton révocable. |
 | Webhooks sortants : lots de 100 derniers états (curseur `seq`), signature HMAC-SHA256 (`x-voyaj-signature`), nouvel essai exponentiel jusqu'à 1 h | Livraison au moins une fois et dans l'ordre, vérifiable par le destinataire. |
+
+## Décisions (Phase 7)
+
+| Décision | Raison |
+|---|---|
+| Tableau de bord calculé sur le poste (données locales) | Disponible hors ligne, sans requête serveur ; même source que les listes. |
+| Agenda par abonnement ICS (jeton personnel révocable dans l'URL) | Compatible avec tous les agendas sans OAuth ; lecture seule, aucune donnée ne revient dans Voyaj. |
+| API publique = jetons personnels `vpat_` (empreinte stockée, permissions ⊂ droits actuels) et points d'accès `/records` qui passent par la même écriture que la synchronisation | Mêmes contrôles (droits, validation, verrous, audit) que les postes ; un jeton ne peut pas élever ses droits ni gérer d'autres jetons. |
+| RGPD : anonymisation plutôt que suppression physique (historique des modifications et emails effacés, fiche anonyme conservée) | Garde la cohérence des affaires et statistiques ; empêche une réimportation (champs marqués comme saisis par un utilisateur). |
+| Sauvegardes par `pg_dump -Fc` + copie incrémentale des fichiers (adressés par empreinte) | Format standard restaurable par `pg_restore` ; fichiers copiés une seule fois. |
+| Veille BOAMP côté serveur (table non synchronisée), suivi = création d'une affaire | Volume et renouvellement des avis importants ; seule l'affaire, utile hors ligne, est synchronisée. |
+| Signature par Yousign (API v3, eIDAS signature simple, code par email) avec ancre dans le PDF du devis | Prestataire français ; l'ancre évite de coder la position de la signature. |
+| Assistant IA : Claude (`claude-opus-5`), réflexion adaptative, effort moyen, repli serveur `fallbacks: "default"` ; appels côté serveur uniquement, désactivé sans `ANTHROPIC_API_KEY` | Clé jamais sur les postes ; seules les données de la fiche concernée sont envoyées ; sortie structurée (JSON Schema) pour les brouillons d'email. |
 

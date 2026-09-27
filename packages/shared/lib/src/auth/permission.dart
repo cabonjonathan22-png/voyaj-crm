@@ -60,6 +60,7 @@ enum Permission {
     'connector.manage',
     'Configurer les connecteurs, imports externes et webhooks',
   ),
+  aiUse('ai.use', 'Utiliser l’assistant IA (synthèses, brouillons d’emails)'),
   gdprManage(
     'gdpr.manage',
     'Exercer les droits RGPD : export et anonymisation des personnes',
@@ -110,6 +111,7 @@ enum SystemRole {
       Permission.dataImport,
       Permission.dataExport,
       Permission.emailUse,
+      Permission.aiUse,
       Permission.emailTemplateWrite,
       Permission.invoiceRead,
       Permission.invoiceWrite,

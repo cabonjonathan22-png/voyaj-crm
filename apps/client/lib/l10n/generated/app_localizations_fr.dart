@@ -3012,4 +3012,30 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get signatureEnded => 'Clos';
+
+  @override
+  String get aiSummary => 'Synthèse IA';
+
+  @override
+  String get aiRegenerate => 'Régénérer';
+
+  @override
+  String get aiWorking => 'L\'assistant rédige…';
+
+  @override
+  String get aiDisclaimer =>
+      'Texte généré par une IA (Claude, Anthropic) à partir des données de la fiche : à vérifier avant usage.';
+
+  @override
+  String get aiEmail => 'Email avec l\'IA';
+
+  @override
+  String get aiEmailGoal => 'Objectif de l\'email';
+
+  @override
+  String get aiEmailGoalHint =>
+      'Ex. : relancer sur le devis envoyé et proposer un appel la semaine prochaine';
+
+  @override
+  String get aiWrite => 'Rédiger';
 }

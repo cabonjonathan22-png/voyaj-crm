@@ -16,6 +16,7 @@ import '../../../core/format.dart';
 import '../../../data/local/database.dart';
 import '../../../design_system/design_system.dart';
 import '../../admin/gdpr_actions.dart';
+import '../../ai/ai_actions.dart';
 import '../../email/contact_emails.dart';
 import '../crm_data.dart';
 import '../crm_format.dart';
@@ -150,6 +151,7 @@ class _ContactPageState extends ConsumerState<ContactPage> {
                       showContactForm(context, ref, contact: contact),
                     ),
                   ),
+                AiEmailButton(contact: contact),
                 if (ref.watch(permissionProvider(Permission.gdprManage)))
                   GdprButton(contact: contact),
                 if (canWrite)

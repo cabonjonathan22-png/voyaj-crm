@@ -15,6 +15,7 @@ import '../../../app/shell/work_tabs.dart';
 import '../../../core/format.dart';
 import '../../../data/local/database.dart';
 import '../../../design_system/design_system.dart';
+import '../../ai/ai_actions.dart';
 import '../../billing/billing_data.dart';
 import '../../billing/billing_page.dart';
 import '../contacts/contact_forms.dart';
@@ -171,6 +172,7 @@ class _OrganisationPageState extends ConsumerState<OrganisationPage> {
                         )
                       : null,
                 ),
+                AiSummaryButton(organisationId: o.id),
                 if (canWrite)
                   VButton(
                     label: l10n.edit,

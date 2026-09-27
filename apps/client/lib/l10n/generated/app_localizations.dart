@@ -5186,6 +5186,54 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Clos'**
   String get signatureEnded;
+
+  /// No description provided for @aiSummary.
+  ///
+  /// In fr, this message translates to:
+  /// **'Synthèse IA'**
+  String get aiSummary;
+
+  /// No description provided for @aiRegenerate.
+  ///
+  /// In fr, this message translates to:
+  /// **'Régénérer'**
+  String get aiRegenerate;
+
+  /// No description provided for @aiWorking.
+  ///
+  /// In fr, this message translates to:
+  /// **'L\'assistant rédige…'**
+  String get aiWorking;
+
+  /// No description provided for @aiDisclaimer.
+  ///
+  /// In fr, this message translates to:
+  /// **'Texte généré par une IA (Claude, Anthropic) à partir des données de la fiche : à vérifier avant usage.'**
+  String get aiDisclaimer;
+
+  /// No description provided for @aiEmail.
+  ///
+  /// In fr, this message translates to:
+  /// **'Email avec l\'IA'**
+  String get aiEmail;
+
+  /// No description provided for @aiEmailGoal.
+  ///
+  /// In fr, this message translates to:
+  /// **'Objectif de l\'email'**
+  String get aiEmailGoal;
+
+  /// No description provided for @aiEmailGoalHint.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ex. : relancer sur le devis envoyé et proposer un appel la semaine prochaine'**
+  String get aiEmailGoalHint;
+
+  /// No description provided for @aiWrite.
+  ///
+  /// In fr, this message translates to:
+  /// **'Rédiger'**
+  String get aiWrite;
 }
 
 class _AppLocalizationsDelegate

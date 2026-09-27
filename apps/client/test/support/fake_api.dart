@@ -165,6 +165,7 @@ ApiClient fakeApi(Bootstrap boot) {
         '/api/v1/email/messages' => [for (final m in messages) m.toJson()],
         '/api/v1/connectors' => [for (final c in connectors) c.toJson()],
         '/api/v1/webhooks' => [for (final w in webhooks) w.toJson()],
+        '/api/v1/ai/status' => const {'enabled': true},
         '/api/v1/tenders/watch' => TenderWatch(
           enabled: true,
           keywords: const ['transport de voyageurs', 'navette'],

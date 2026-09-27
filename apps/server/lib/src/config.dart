@@ -56,6 +56,8 @@ final class ServerConfig {
     this.yousignApiKey,
     this.yousignSandbox = true,
     this.yousignWebhookSecret,
+    this.anthropicApiKey,
+    this.aiModel = 'claude-opus-5',
   });
 
   /// Charge la configuration depuis l'environnement et les fichiers.
@@ -160,6 +162,8 @@ final class ServerConfig {
       yousignApiKey: read('VOYAJ_YOUSIGN_API_KEY'),
       yousignSandbox: readBool('VOYAJ_YOUSIGN_SANDBOX', fallback: true),
       yousignWebhookSecret: read('VOYAJ_YOUSIGN_WEBHOOK_SECRET'),
+      anthropicApiKey: read('ANTHROPIC_API_KEY'),
+      aiModel: read('VOYAJ_AI_MODEL') ?? 'claude-opus-5',
       publicDataHour: switch (read('VOYAJ_PUBLIC_DATA_HOUR')?.toLowerCase()) {
         null => 3,
         'off' || 'non' || 'false' => null,
@@ -229,6 +233,11 @@ final class ServerConfig {
   final String? yousignApiKey;
   final bool yousignSandbox;
   final String? yousignWebhookSecret;
+
+  /// Assistant IA (Claude) : clé d'API Anthropic (`null` : désactivé) et
+  /// modèle.
+  final String? anthropicApiKey;
+  final String aiModel;
 
   bool get tlsEnabled => tlsCertPath != null && tlsKeyPath != null;
 

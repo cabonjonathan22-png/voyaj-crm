@@ -33,6 +33,11 @@ référent RGPD / DPO.**
 
 ## Points d'attention
 
+- **Sous-traitants** activables : Anthropic (assistant IA : seules les données de la fiche
+  concernée sont envoyées, à la demande de l'utilisateur), Yousign (signature des devis :
+  nom et email du signataire, PDF du devis), Google / Microsoft (comptes email). Les inscrire
+  au registre et vérifier leurs clauses (DPA, transferts hors UE) avant activation.
+
 - Les emails des séquences doivent comporter une information et un moyen d'opposition
   (lien ou mention « répondez STOP ») : à intégrer dans vos modèles.
 - Les sauvegardes contiennent des données personnelles : conservation limitée (14 jours par

@@ -967,5 +967,13 @@
   "signatureDone": "Signé",
   "signatureOngoing": "En attente",
   "signatureDeclined": "Refusé",
-  "signatureEnded": "Clos"
+  "signatureEnded": "Clos",
+  "aiSummary": "Synthèse IA",
+  "aiRegenerate": "Régénérer",
+  "aiWorking": "L'assistant rédige…",
+  "aiDisclaimer": "Texte généré par une IA (Claude, Anthropic) à partir des données de la fiche : à vérifier avant usage.",
+  "aiEmail": "Email avec l'IA",
+  "aiEmailGoal": "Objectif de l'email",
+  "aiEmailGoalHint": "Ex. : relancer sur le devis envoyé et proposer un appel la semaine prochaine",
+  "aiWrite": "Rédiger"
 }

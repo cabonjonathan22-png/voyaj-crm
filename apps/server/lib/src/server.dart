@@ -10,6 +10,8 @@ import 'package:voyaj_shared/voyaj_shared.dart';
 
 import 'admin/backup_service.dart';
 import 'admin/gdpr_service.dart';
+import 'ai/ai_service.dart';
+import 'ai/claude_client.dart';
 import 'auth/auth_service.dart';
 import 'auth/users_service.dart';
 import 'billing/billing_service.dart';
@@ -55,6 +57,7 @@ final class Services {
     this.backups,
     this.tenders,
     this.signatures,
+    this.ai,
   );
 
   factory Services.create(
@@ -68,6 +71,7 @@ final class Services {
     http.Client? webhookClient,
     BoampClient? boampClient,
     http.Client? yousignHttp,
+    http.Client? aiHttp,
   }) {
     final cipher = SecretCipher(config.masterKey);
     final hasher = PasswordHasher(
@@ -171,6 +175,16 @@ final class Services {
               ),
         webhookSecret: config.yousignWebhookSecret,
       ),
+      AiService(
+        db: db,
+        client: config.anthropicApiKey == null
+            ? null
+            : ClaudeClient(
+                apiKey: config.anthropicApiKey!,
+                model: config.aiModel,
+                httpClient: aiHttp,
+              ),
+      ),
     );
   }
 
@@ -190,6 +204,7 @@ final class Services {
   final BackupService backups;
   final TenderService tenders;
   final SignatureService signatures;
+  final AiService ai;
 }
 
 /// Serveur HTTP en cours d'exécution.
@@ -213,6 +228,7 @@ final class VoyajServer {
     http.Client? webhookClient,
     BoampClient? boampClient,
     http.Client? yousignHttp,
+    http.Client? aiHttp,
   }) async {
     final db = Database.open(config.database, poolSize: config.dbPoolSize);
     if (config.autoMigrate) {
@@ -230,6 +246,7 @@ final class VoyajServer {
       webhookClient: webhookClient,
       boampClient: boampClient,
       yousignHttp: yousignHttp,
+      aiHttp: aiHttp,
     );
     await services.users.syncSystemRoles();
     await services.publicData.recoverInterrupted();
@@ -253,6 +270,7 @@ final class VoyajServer {
       backups: services.backups,
       tenders: services.tenders,
       signatures: services.signatures,
+      ai: services.ai,
       trustProxy: config.trustProxy,
       hsts: config.tlsEnabled || config.trustProxy,
     );

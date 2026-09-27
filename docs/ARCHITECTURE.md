@@ -165,6 +165,14 @@ curseur, HLC, poste, vues de tableaux, onglets de travail).
 | POST / GET | `/api/v1/connectors/preview?id=`, `/connectors/{id}/run` (202), `/connectors/{id}/runs`, `/connectors/{id}/webhook-token` | aperçu, import en arrière-plan, historique, jeton du webhook entrant |
 | POST | `/api/v1/hooks/{id}` | webhook entrant (jeton `Authorization: Bearer`, sans session) |
 | GET / POST / PUT / DELETE | `/api/v1/webhooks`, `/webhooks/{id}`, POST `/webhooks/{id}/ping` | webhooks sortants |
+| GET / POST / DELETE | `/api/v1/calendar/feed`, GET `/calendar/{jeton}.ics` | abonnement d'agenda (flux ICS sans session) |
+| GET / POST / DELETE | `/api/v1/auth/api-tokens`, `/auth/api-tokens/{id}` | jetons d'API personnels |
+| GET / POST / PATCH / DELETE | `/api/v1/records/{entité}`, `/records/{entité}/{id}` | API publique (voir docs/API.md) |
+| GET / PUT / POST / PATCH | `/api/v1/tenders`, `/tenders/watch`, `/tenders/run`, `/tenders/{id}` | veille des appels d'offres (BOAMP) |
+| GET / POST | `/api/v1/billing/documents/{id}/signatures`, `/signatures/{id}/refresh`, POST `/signatures/webhook` | signature électronique (Yousign) |
+| GET / POST | `/api/v1/ai/status`, `/ai/organisations/{id}/summary`, `/ai/email-draft` | assistant IA (Claude) |
+| GET / POST | `/api/v1/gdpr/contacts/{id}/export`, `/gdpr/contacts/{id}/erase` | droits RGPD |
+| GET / POST | `/api/v1/admin/backups` | sauvegardes |
 | GET | `/api/v1/audit?limit=&before=` | journal d'audit |
 | WS | `/ws` | notifications temps réel (1er message : authentification) |
 
@@ -280,4 +288,18 @@ flowchart LR
   db -->|changes seq| wh["WebhookService"]
   wh -->|POST signé| dest["Destinataire"]
 ```
+
+## Avancé (Phase 7)
+
+| Table | Contenu |
+|---|---|
+| `calendar_tokens` (0007) | jeton d'abonnement ICS par utilisateur (empreinte) |
+| `api_tokens` (0008) | jetons d'API personnels : empreinte, permissions, expiration, révocation, dernier usage |
+| `tender_watch`, `tenders` (0009) | veille BOAMP (mots-clés, départements) et avis repérés (nouveau, suivi → affaire, ignoré) |
+| `signature_requests` (0010) | demandes de signature Yousign : devis, signataire, état, PDF signé |
+
+- Tâche de fond toutes les 10 minutes : imports planifiés (données publiques, connecteurs),
+  veille BOAMP quotidienne, sauvegarde quotidienne (`VOYAJ_BACKUP_HOUR`).
+- Assistant IA : `ClaudeClient` (HTTP `POST /v1/messages`, en-tête
+  `anthropic-beta: server-side-fallback-2026-07-01`), gestion du refus (`stop_reason`).
 
