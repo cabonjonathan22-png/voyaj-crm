@@ -73,7 +73,9 @@ final class SyncEngine {
   int _reconnectAttempt = 0;
   bool _running = false;
   Future<void>? _syncing;
-  bool _syncAgain = false;
+
+  /// Synchronisation demandée pendant une synchronisation en cours.
+  Future<void>? _queued;
 
   SyncStatus get status => _current;
   Stream<SyncStatus> get statusStream => _status.stream;
@@ -121,22 +123,23 @@ final class SyncEngine {
     );
   }
 
-  /// Synchronise maintenant (une seule synchronisation à la fois ; une
-  /// demande pendant une synchronisation en relance une à la fin).
+  /// Synchronise maintenant. Une seule synchronisation à la fois : une
+  /// demande pendant une synchronisation en programme une nouvelle à la fin
+  /// (les demandes simultanées sont regroupées), et le futur retourné ne se
+  /// termine qu'après celle-ci : les écritures faites avant l'appel sont
+  /// donc envoyées.
   Future<void> syncNow() {
     if (!_running) return Future.value();
-    if (_syncing != null) {
-      _syncAgain = true;
-      return _syncing!;
-    }
-    return _syncing = _runSync().whenComplete(() {
-      _syncing = null;
-      if (_syncAgain && _running) {
-        _syncAgain = false;
-        unawaited(syncNow());
-      }
+    final current = _syncing;
+    if (current == null) return _startSync();
+    return _queued ??= current.then((_) {
+      _queued = null;
+      return _running ? _startSync() : null;
     });
   }
+
+  Future<void> _startSync() =>
+      _syncing = _runSync().whenComplete(() => _syncing = null);
 
   Future<void> _runSync() async {
     _emit(_current.copyWith(syncing: true));
