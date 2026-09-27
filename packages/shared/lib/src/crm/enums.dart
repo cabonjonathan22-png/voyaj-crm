@@ -228,3 +228,76 @@ enum EnrollmentStatus implements KeyedEnum {
   @override
   final String label;
 }
+
+/// Type de document commercial.
+enum DocumentKind implements KeyedEnum {
+  quote('quote', 'Devis', 'D'),
+  invoice('invoice', 'Facture', 'F'),
+  creditNote('credit_note', 'Avoir', 'A');
+
+  const DocumentKind(this.key, this.label, this.prefix);
+
+  @override
+  final String key;
+  @override
+  final String label;
+
+  /// Préfixe de numérotation (`F2026-00001`).
+  final String prefix;
+}
+
+/// État d'un document commercial.
+enum DocumentStatus implements KeyedEnum {
+  draft('draft', 'Brouillon'),
+  sent('sent', 'Envoyé'),
+  accepted('accepted', 'Accepté'),
+  refused('refused', 'Refusé'),
+  issued('issued', 'Émise'),
+  paid('paid', 'Payée'),
+  cancelled('cancelled', 'Annulé');
+
+  const DocumentStatus(this.key, this.label);
+
+  @override
+  final String key;
+  @override
+  final String label;
+}
+
+/// Mode de paiement.
+enum PaymentMethod implements KeyedEnum {
+  transfer('transfer', 'Virement'),
+  directDebit('direct_debit', 'Prélèvement'),
+  check('check', 'Chèque'),
+  card('card', 'Carte bancaire'),
+  cash('cash', 'Espèces'),
+  treasury('treasury', 'Mandat administratif (Trésor public)'),
+  other('other', 'Autre');
+
+  const PaymentMethod(this.key, this.label);
+
+  @override
+  final String key;
+  @override
+  final String label;
+}
+
+/// Taux de TVA français (points de base : 2000 = 20 %).
+const vatRates = {
+  2000: '20 %',
+  1000: '10 %',
+  550: '5,5 %',
+  210: '2,1 %',
+  0: '0 %',
+};
+
+/// États autorisés d'un document émis, par type.
+Set<String> allowedIssuedStatuses(String? kind) => switch (kind) {
+  'quote' => {
+    DocumentStatus.sent.key,
+    DocumentStatus.accepted.key,
+    DocumentStatus.refused.key,
+    DocumentStatus.cancelled.key,
+  },
+  _ => {DocumentStatus.issued.key, DocumentStatus.paid.key},
+};

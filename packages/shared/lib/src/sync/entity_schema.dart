@@ -112,6 +112,8 @@ final class EntitySchema {
     required this.writePermission,
     required List<ValidationIssue> Function(Map<String, Object?> record)
     validate,
+    this.serverFields = const {},
+    this.lockedFields,
   }) : fields = {
          ...fields,
          SyncColumns.deletedAt: const FieldSpec(FieldType.dateTime),
@@ -132,6 +134,44 @@ final class EntitySchema {
   final Permission readPermission;
   final Permission writePermission;
   final List<ValidationIssue> Function(Map<String, Object?> record) _validator;
+
+  /// Champs écrits uniquement par le serveur (ex. numéro de facture) :
+  /// refusés dans les opérations des clients.
+  final Set<String> serverFields;
+
+  /// Champs verrouillés selon l'état de l'enregistrement (`null` : aucun).
+  final Set<String> Function(Map<String, Object?> current)? lockedFields;
+
+  /// Refus des champs verrouillés : un document émis (facture numérotée)
+  /// n'est plus modifiable, sauf les champs laissés libres par l'entité.
+  List<ValidationIssue> checkLocks(
+    Map<String, Object?> current,
+    Map<String, Object?> incoming,
+  ) {
+    final locked = lockedFields?.call(current) ?? const <String>{};
+    return [
+      for (final field in incoming.keys)
+        if (locked.contains(field))
+          ValidationIssue(
+            field: field,
+            code: ValidationCodes.readOnly,
+            message: 'Document émis : « $field » ne peut plus être modifié.',
+          ),
+    ];
+  }
+
+  /// Vérifie une opération d'un client : champs connus et typés, hors
+  /// champs réservés au serveur.
+  List<ValidationIssue> checkClientFields(Map<String, Object?> incoming) => [
+    ...checkFields(incoming),
+    for (final field in incoming.keys)
+      if (serverFields.contains(field))
+        ValidationIssue(
+          field: field,
+          code: ValidationCodes.readOnly,
+          message: 'Le champ $field est attribué par le serveur.',
+        ),
+  ];
 
   /// Vérifie que les champs d'une opération existent et ont le bon type.
   List<ValidationIssue> checkFields(Map<String, Object?> incoming) => [

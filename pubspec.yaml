@@ -8,6 +8,7 @@ workspace:
   - apps/client
   - apps/server
   - packages/fr_public_data
+  - packages/invoicing
   - packages/shared
 
 dev_dependencies:

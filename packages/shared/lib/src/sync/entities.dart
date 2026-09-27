@@ -296,6 +296,117 @@ abstract final class SyncEntities {
     validate: validateEnrollmentRecord,
   );
 
+  static final products = EntitySchema(
+    name: 'products',
+    fields: const {
+      'name': _requiredText,
+      'description': _text,
+      'unit_price_cents': _int,
+      'vat_rate': _int,
+      'unit': _text,
+      'account_code': _text,
+      'active': _bool,
+    },
+    readPermission: Permission.invoiceRead,
+    writePermission: Permission.invoiceWrite,
+    validate: validateProductRecord,
+  );
+
+  /// Champs d'un document attribués par le serveur à l'émission.
+  static const invoiceServerFields = {
+    'number',
+    'issue_date',
+    'vat_breakdown',
+    'buyer',
+    'seller',
+    'pdf_file_id',
+    'chorus_flux',
+    'chorus_status',
+  };
+
+  /// Devis, factures et avoirs. Brouillons préparés hors ligne ;
+  /// l'émission (numéro, totaux, PDF Factur-X) est faite par le serveur,
+  /// après quoi seul l'état reste modifiable.
+  static final invoices = EntitySchema(
+    name: 'invoices',
+    fields: {
+      'kind': FieldSpec.oneOf(keysOf(DocumentKind.values), nullable: false),
+      'status': FieldSpec.oneOf(keysOf(DocumentStatus.values), nullable: false),
+      'number': _text,
+      'subject': _text,
+      'organisation_id': _text,
+      'contact_id': _text,
+      'deal_id': _text,
+      'quote_id': _text,
+      'original_invoice_id': _text,
+      'issue_date': _date,
+      'service_date': _date,
+      'due_date': _date,
+      'valid_until': _date,
+      'lines': const FieldSpec(FieldType.json, nullable: false),
+      'total_ht_cents': _int,
+      'total_vat_cents': _int,
+      'total_ttc_cents': _int,
+      'vat_breakdown': _json,
+      'buyer': _json,
+      'seller': _json,
+      'notes': _text,
+      'payment_terms': _text,
+      'buyer_reference': _text,
+      'service_code': _text,
+      'pdf_file_id': _text,
+      'chorus_flux': _text,
+      'chorus_status': _text,
+      'sent_at': _dateTime,
+      'owner_id': _text,
+    },
+    readPermission: Permission.invoiceRead,
+    writePermission: Permission.invoiceWrite,
+    validate: validateInvoiceRecord,
+    serverFields: invoiceServerFields,
+    lockedFields: (current) => current['number'] == null
+        ? const {}
+        : {
+            for (final field in [
+              'kind',
+              'subject',
+              'organisation_id',
+              'contact_id',
+              'deal_id',
+              'quote_id',
+              'original_invoice_id',
+              'service_date',
+              'due_date',
+              'valid_until',
+              'lines',
+              'total_ht_cents',
+              'total_vat_cents',
+              'total_ttc_cents',
+              'notes',
+              'payment_terms',
+              'buyer_reference',
+              'service_code',
+              SyncColumns.deletedAt,
+            ])
+              field,
+          },
+  );
+
+  static final payments = EntitySchema(
+    name: 'payments',
+    fields: {
+      'invoice_id': _requiredText,
+      'amount_cents': const FieldSpec(FieldType.integer, nullable: false),
+      'paid_on': _date,
+      'method': FieldSpec.oneOf(keysOf(PaymentMethod.values)),
+      'reference': _text,
+      'notes': _text,
+    },
+    readPermission: Permission.invoiceRead,
+    writePermission: Permission.invoiceWrite,
+    validate: validatePaymentRecord,
+  );
+
   static final List<EntitySchema> all = [
     tags,
     organisations,
@@ -312,6 +423,9 @@ abstract final class SyncEntities {
     emailTemplates,
     emailSequences,
     sequenceEnrollments,
+    products,
+    invoices,
+    payments,
   ];
 
   static final Map<String, EntitySchema> _byName = {

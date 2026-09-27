@@ -39,6 +39,19 @@ enum Permission {
     'email.template.write',
     'Créer et modifier les modèles et séquences d’emails',
   ),
+  invoiceRead('invoice.read', 'Consulter les devis, factures et paiements'),
+  invoiceWrite(
+    'invoice.write',
+    'Préparer les devis et factures, enregistrer les paiements',
+  ),
+  invoiceIssue(
+    'invoice.issue',
+    'Émettre (numéroter) devis, factures et avoirs, déposer sur Chorus Pro',
+  ),
+  billingSettings(
+    'billing.settings',
+    'Configurer la facturation (identité, comptes, Chorus Pro) et exporter le FEC',
+  ),
   publicDataManage(
     'publicdata.manage',
     'Configurer et lancer les imports de données publiques',
@@ -89,6 +102,9 @@ enum SystemRole {
       Permission.dataExport,
       Permission.emailUse,
       Permission.emailTemplateWrite,
+      Permission.invoiceRead,
+      Permission.invoiceWrite,
+      Permission.invoiceIssue,
       Permission.syncConflictRead,
       Permission.userRead,
     ],
@@ -98,6 +114,7 @@ enum SystemRole {
     Permission.contactRead,
     Permission.dealRead,
     Permission.activityRead,
+    Permission.invoiceRead,
     Permission.tagRead,
     Permission.userRead,
   ]);

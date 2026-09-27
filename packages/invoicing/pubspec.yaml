@@ -1,0 +1,18 @@
+name: invoicing
+description: Facturation Voyaj — totaux et TVA, numérotation, Factur-X (CII EN 16931), PDF/A-3, FEC et rapport de TVA.
+version: 0.1.0
+publish_to: none
+resolution: workspace
+
+environment:
+  sdk: ^3.12.0
+
+dependencies:
+  meta: ^1.16.0
+  pdf: '>=3.11.0 <3.13.0'
+  voyaj_shared: any
+
+dev_dependencies:
+  lints: ^6.1.0
+  test: ^1.26.0
+  xml: ^6.5.0

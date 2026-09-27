@@ -283,3 +283,109 @@ List<ValidationIssue> validateEnrollmentRecord(Map<String, Object?> r) =>
       _requiredId('owner_id', r['owner_id'], "L'expéditeur"),
       _range('step', r['step'], 0, 1000, "L'étape"),
     ]);
+
+List<ValidationIssue> validateProductRecord(Map<String, Object?> r) =>
+    collectIssues([
+      validateRequiredText('name', r['name'], label: 'Le nom', max: 200),
+      _range('unit_price_cents', r['unit_price_cents'], -1e12, 1e12, 'Le prix'),
+      if (r['vat_rate'] != null && !vatRates.containsKey(r['vat_rate']))
+        _issue(
+          'vat_rate',
+          ValidationCodes.invalidFormat,
+          'Taux de TVA inconnu.',
+        ),
+    ]);
+
+/// Problèmes d'une ligne de document (`lines`), ou `null`.
+String? _lineProblem(Object? line) {
+  if (line is! Map) return 'Ligne invalide.';
+  final description = line['description'];
+  if (description is! String || description.trim().isEmpty) {
+    return 'Chaque ligne a une désignation.';
+  }
+  final quantity = line['quantity'];
+  if (quantity is! num || quantity <= 0 || quantity > 1e9) {
+    return 'Quantité invalide (« $description »).';
+  }
+  final price = line['unit_price_cents'];
+  if (price is! int || price.abs() > 1e12) {
+    return 'Prix unitaire invalide (« $description »).';
+  }
+  if (!vatRates.containsKey(line['vat_rate'])) {
+    return 'Taux de TVA invalide (« $description »).';
+  }
+  final discount = line['discount_percent'];
+  if (discount != null &&
+      (discount is! num || discount < 0 || discount > 100)) {
+    return 'Remise invalide (« $description »).';
+  }
+  return null;
+}
+
+List<ValidationIssue> validateInvoiceRecord(Map<String, Object?> r) {
+  final lines = r['lines'];
+  final problems = [
+    if (lines is! List)
+      'Lignes invalides.'
+    else
+      for (final line in lines) ?_lineProblem(line),
+  ];
+  final status = r['status'];
+  final numbered = r['number'] != null;
+  return collectIssues([
+    validateOptionalText('subject', r['subject'], label: "L'objet", max: 300),
+    _optionalId('organisation_id', r['organisation_id'], 'Client'),
+    _optionalId('contact_id', r['contact_id'], 'Contact'),
+    _optionalId('original_invoice_id', r['original_invoice_id'], 'Facture'),
+    if (problems.isNotEmpty)
+      _issue('lines', ValidationCodes.invalidFormat, problems.first),
+    if (lines is List && lines.length > 500)
+      _issue('lines', ValidationCodes.invalidFormat, '500 lignes maximum.'),
+    if (!numbered && status != DocumentStatus.draft.key)
+      _issue(
+        'status',
+        ValidationCodes.invalidFormat,
+        'Un document non émis reste en brouillon.',
+      ),
+    if (numbered &&
+        !allowedIssuedStatuses(r['kind'] as String?).contains(status))
+      _issue(
+        'status',
+        ValidationCodes.invalidFormat,
+        'État impossible pour ce document émis.',
+      ),
+    if (r['kind'] == DocumentKind.creditNote.key &&
+        numbered &&
+        r['original_invoice_id'] == null)
+      _issue(
+        'original_invoice_id',
+        ValidationCodes.required,
+        'Un avoir se rapporte à une facture.',
+      ),
+    _dateOrder(
+      'due_date',
+      r['issue_date'],
+      r['due_date'],
+      "L'échéance suit la date d'émission.",
+    ),
+  ]);
+}
+
+List<ValidationIssue> validatePaymentRecord(Map<String, Object?> r) =>
+    collectIssues([
+      _requiredId('invoice_id', r['invoice_id'], 'La facture'),
+      if (r['amount_cents'] is! int || (r['amount_cents']! as int) <= 0)
+        _issue(
+          'amount_cents',
+          ValidationCodes.invalidFormat,
+          'Le montant doit être positif.',
+        ),
+      if (r['paid_on'] == null)
+        _issue('paid_on', ValidationCodes.required, 'La date est obligatoire.'),
+      validateOptionalText(
+        'reference',
+        r['reference'],
+        label: 'La référence',
+        max: 200,
+      ),
+    ]);
