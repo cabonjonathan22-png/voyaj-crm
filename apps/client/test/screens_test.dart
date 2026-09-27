@@ -32,6 +32,7 @@ void main() {
     'duplicates': Routes.duplicates,
     'settings_custom_fields': '${Routes.settings}/customFields',
     'public_data': Routes.publicData,
+    'connectors': Routes.connectors,
     'emails': Routes.emails,
     'billing': Routes.billing,
     'settings_billing': '${Routes.settings}/billing',

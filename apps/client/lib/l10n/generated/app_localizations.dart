@@ -3956,6 +3956,558 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Chorus Pro : flux {flux}'**
   String chorusFlux(String flux);
+
+  /// No description provided for @navConnectors.
+  ///
+  /// In fr, this message translates to:
+  /// **'Connecteurs'**
+  String get navConnectors;
+
+  /// No description provided for @connectorsSubtitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Imports depuis vos outils (API REST, Supabase, Firebase, MySQL, MongoDB, webhooks) et envoi des changements.'**
+  String get connectorsSubtitle;
+
+  /// No description provided for @connectorsTab.
+  ///
+  /// In fr, this message translates to:
+  /// **'Sources'**
+  String get connectorsTab;
+
+  /// No description provided for @webhooksTab.
+  ///
+  /// In fr, this message translates to:
+  /// **'Webhooks sortants'**
+  String get webhooksTab;
+
+  /// No description provided for @connectorsEmpty.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun connecteur'**
+  String get connectorsEmpty;
+
+  /// No description provided for @connectorsEmptyMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Branchez une source externe pour alimenter automatiquement organisations et contacts.'**
+  String get connectorsEmptyMessage;
+
+  /// No description provided for @connectorNew.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouveau connecteur'**
+  String get connectorNew;
+
+  /// No description provided for @connectorEdit.
+  ///
+  /// In fr, this message translates to:
+  /// **'Modifier le connecteur'**
+  String get connectorEdit;
+
+  /// No description provided for @connectorName.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nom'**
+  String get connectorName;
+
+  /// No description provided for @connectorKind.
+  ///
+  /// In fr, this message translates to:
+  /// **'Type de source'**
+  String get connectorKind;
+
+  /// No description provided for @connectorSource.
+  ///
+  /// In fr, this message translates to:
+  /// **'Source'**
+  String get connectorSource;
+
+  /// No description provided for @connectorUrl.
+  ///
+  /// In fr, this message translates to:
+  /// **'URL'**
+  String get connectorUrl;
+
+  /// No description provided for @connectorRecordsPath.
+  ///
+  /// In fr, this message translates to:
+  /// **'Chemin de la liste dans la réponse'**
+  String get connectorRecordsPath;
+
+  /// No description provided for @connectorAuthHeader.
+  ///
+  /// In fr, this message translates to:
+  /// **'En-tête portant le secret'**
+  String get connectorAuthHeader;
+
+  /// No description provided for @connectorPageParam.
+  ///
+  /// In fr, this message translates to:
+  /// **'Paramètre de page (pagination)'**
+  String get connectorPageParam;
+
+  /// No description provided for @connectorNextPath.
+  ///
+  /// In fr, this message translates to:
+  /// **'Chemin de l\'URL de la page suivante'**
+  String get connectorNextPath;
+
+  /// No description provided for @connectorProjectUrl.
+  ///
+  /// In fr, this message translates to:
+  /// **'URL du projet'**
+  String get connectorProjectUrl;
+
+  /// No description provided for @connectorTable.
+  ///
+  /// In fr, this message translates to:
+  /// **'Table'**
+  String get connectorTable;
+
+  /// No description provided for @connectorSelect.
+  ///
+  /// In fr, this message translates to:
+  /// **'Colonnes'**
+  String get connectorSelect;
+
+  /// No description provided for @connectorFilter.
+  ///
+  /// In fr, this message translates to:
+  /// **'Filtres (syntaxe PostgREST)'**
+  String get connectorFilter;
+
+  /// No description provided for @connectorOrder.
+  ///
+  /// In fr, this message translates to:
+  /// **'Tri'**
+  String get connectorOrder;
+
+  /// No description provided for @connectorProject.
+  ///
+  /// In fr, this message translates to:
+  /// **'Identifiant du projet'**
+  String get connectorProject;
+
+  /// No description provided for @connectorCollection.
+  ///
+  /// In fr, this message translates to:
+  /// **'Collection'**
+  String get connectorCollection;
+
+  /// No description provided for @connectorDatabase.
+  ///
+  /// In fr, this message translates to:
+  /// **'Base de données'**
+  String get connectorDatabase;
+
+  /// No description provided for @connectorHost.
+  ///
+  /// In fr, this message translates to:
+  /// **'Serveur'**
+  String get connectorHost;
+
+  /// No description provided for @connectorPort.
+  ///
+  /// In fr, this message translates to:
+  /// **'Port'**
+  String get connectorPort;
+
+  /// No description provided for @connectorUser.
+  ///
+  /// In fr, this message translates to:
+  /// **'Utilisateur'**
+  String get connectorUser;
+
+  /// No description provided for @connectorQuery.
+  ///
+  /// In fr, this message translates to:
+  /// **'Requête SELECT'**
+  String get connectorQuery;
+
+  /// No description provided for @connectorMongoFilter.
+  ///
+  /// In fr, this message translates to:
+  /// **'Filtre (JSON)'**
+  String get connectorMongoFilter;
+
+  /// No description provided for @connectorSecretRest.
+  ///
+  /// In fr, this message translates to:
+  /// **'Valeur de l\'en-tête (ex. Bearer …)'**
+  String get connectorSecretRest;
+
+  /// No description provided for @connectorSecretSupabase.
+  ///
+  /// In fr, this message translates to:
+  /// **'Clé d\'API'**
+  String get connectorSecretSupabase;
+
+  /// No description provided for @connectorSecretFirebase.
+  ///
+  /// In fr, this message translates to:
+  /// **'Clé d\'API web ou « Bearer <jeton> »'**
+  String get connectorSecretFirebase;
+
+  /// No description provided for @connectorSecretMysql.
+  ///
+  /// In fr, this message translates to:
+  /// **'Mot de passe'**
+  String get connectorSecretMysql;
+
+  /// No description provided for @connectorSecretMongo.
+  ///
+  /// In fr, this message translates to:
+  /// **'Chaîne de connexion (mongodb://…)'**
+  String get connectorSecretMongo;
+
+  /// No description provided for @connectorSecure.
+  ///
+  /// In fr, this message translates to:
+  /// **'Connexion chiffrée (TLS)'**
+  String get connectorSecure;
+
+  /// No description provided for @connectorWebhookHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'Le système externe envoie ses données en POST JSON à l\'URL du webhook, avec le jeton en en-tête. Générez le jeton après l\'enregistrement.'**
+  String get connectorWebhookHelp;
+
+  /// No description provided for @connectorMapping.
+  ///
+  /// In fr, this message translates to:
+  /// **'Mappage'**
+  String get connectorMapping;
+
+  /// No description provided for @connectorEntity.
+  ///
+  /// In fr, this message translates to:
+  /// **'Alimente'**
+  String get connectorEntity;
+
+  /// No description provided for @connectorRefPath.
+  ///
+  /// In fr, this message translates to:
+  /// **'Identifiant dans la source'**
+  String get connectorRefPath;
+
+  /// No description provided for @connectorRefPathHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'Chemin d\'une valeur stable et unique (id, code…).'**
+  String get connectorRefPathHelp;
+
+  /// No description provided for @connectorMatchField.
+  ///
+  /// In fr, this message translates to:
+  /// **'Rapprocher des fiches existantes par'**
+  String get connectorMatchField;
+
+  /// No description provided for @connectorSchedule.
+  ///
+  /// In fr, this message translates to:
+  /// **'Import automatique'**
+  String get connectorSchedule;
+
+  /// No description provided for @connectorScheduleManual.
+  ///
+  /// In fr, this message translates to:
+  /// **'Manuel'**
+  String get connectorScheduleManual;
+
+  /// No description provided for @connectorEveryMinutes.
+  ///
+  /// In fr, this message translates to:
+  /// **'Toutes les {minutes} min'**
+  String connectorEveryMinutes(int minutes);
+
+  /// No description provided for @connectorEveryHours.
+  ///
+  /// In fr, this message translates to:
+  /// **'{hours, plural, =1{Toutes les heures} other{Toutes les {hours} h}}'**
+  String connectorEveryHours(int hours);
+
+  /// No description provided for @connectorLookupSource.
+  ///
+  /// In fr, this message translates to:
+  /// **'Organisation : chemin dans la source'**
+  String get connectorLookupSource;
+
+  /// No description provided for @connectorLookupHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'Rattache le contact à l\'organisation existante de même valeur.'**
+  String get connectorLookupHelp;
+
+  /// No description provided for @connectorLookupField.
+  ///
+  /// In fr, this message translates to:
+  /// **'Organisation : champ comparé'**
+  String get connectorLookupField;
+
+  /// No description provided for @connectorTarget.
+  ///
+  /// In fr, this message translates to:
+  /// **'Champ Voyaj'**
+  String get connectorTarget;
+
+  /// No description provided for @connectorSourcePath.
+  ///
+  /// In fr, this message translates to:
+  /// **'Chemin dans la source'**
+  String get connectorSourcePath;
+
+  /// No description provided for @connectorTransform.
+  ///
+  /// In fr, this message translates to:
+  /// **'Transformation'**
+  String get connectorTransform;
+
+  /// No description provided for @connectorConstant.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ou valeur fixe'**
+  String get connectorConstant;
+
+  /// No description provided for @connectorChooseField.
+  ///
+  /// In fr, this message translates to:
+  /// **'Choisir…'**
+  String get connectorChooseField;
+
+  /// No description provided for @connectorAddField.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ajouter un champ'**
+  String get connectorAddField;
+
+  /// No description provided for @connectorPreview.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aperçu'**
+  String get connectorPreview;
+
+  /// No description provided for @connectorPreviewTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aperçu : {count} enregistrements lus'**
+  String connectorPreviewTitle(int count);
+
+  /// No description provided for @connectorPaths.
+  ///
+  /// In fr, this message translates to:
+  /// **'Chemins détectés : {paths}'**
+  String connectorPaths(String paths);
+
+  /// No description provided for @connectorRun.
+  ///
+  /// In fr, this message translates to:
+  /// **'Importer'**
+  String get connectorRun;
+
+  /// No description provided for @connectorStarted.
+  ///
+  /// In fr, this message translates to:
+  /// **'Import lancé.'**
+  String get connectorStarted;
+
+  /// No description provided for @connectorHistory.
+  ///
+  /// In fr, this message translates to:
+  /// **'Historique'**
+  String get connectorHistory;
+
+  /// No description provided for @connectorHistoryOf.
+  ///
+  /// In fr, this message translates to:
+  /// **'Historique — {name}'**
+  String connectorHistoryOf(String name);
+
+  /// No description provided for @connectorNeverRun.
+  ///
+  /// In fr, this message translates to:
+  /// **'Jamais importé.'**
+  String get connectorNeverRun;
+
+  /// No description provided for @connectorDisabled.
+  ///
+  /// In fr, this message translates to:
+  /// **'Désactivé'**
+  String get connectorDisabled;
+
+  /// No description provided for @connectorRunSucceeded.
+  ///
+  /// In fr, this message translates to:
+  /// **'Réussi'**
+  String get connectorRunSucceeded;
+
+  /// No description provided for @connectorRunFailed.
+  ///
+  /// In fr, this message translates to:
+  /// **'Échec'**
+  String get connectorRunFailed;
+
+  /// No description provided for @connectorRunRunning.
+  ///
+  /// In fr, this message translates to:
+  /// **'En cours'**
+  String get connectorRunRunning;
+
+  /// No description provided for @connectorRunStats.
+  ///
+  /// In fr, this message translates to:
+  /// **'{fetched} lus · {created} créés · {updated} mis à jour · {unchanged} inchangés · {rejected} rejetés'**
+  String connectorRunStats(
+    int fetched,
+    int created,
+    int updated,
+    int unchanged,
+    int rejected,
+  );
+
+  /// No description provided for @connectorDeleteTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Supprimer « {name} » ?'**
+  String connectorDeleteTitle(String name);
+
+  /// No description provided for @connectorDeleteMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Les fiches déjà importées sont conservées.'**
+  String get connectorDeleteMessage;
+
+  /// No description provided for @connectorToken.
+  ///
+  /// In fr, this message translates to:
+  /// **'Jeton du webhook'**
+  String get connectorToken;
+
+  /// No description provided for @connectorTokenRenew.
+  ///
+  /// In fr, this message translates to:
+  /// **'Générer'**
+  String get connectorTokenRenew;
+
+  /// No description provided for @connectorTokenRenewTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Générer un nouveau jeton ?'**
+  String get connectorTokenRenewTitle;
+
+  /// No description provided for @connectorTokenRenewMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'L\'ancien jeton cessera immédiatement de fonctionner.'**
+  String get connectorTokenRenewMessage;
+
+  /// No description provided for @connectorTokenOnce.
+  ///
+  /// In fr, this message translates to:
+  /// **'Copiez le jeton maintenant : il ne sera plus affiché.'**
+  String get connectorTokenOnce;
+
+  /// No description provided for @connectorTokenUrl.
+  ///
+  /// In fr, this message translates to:
+  /// **'URL'**
+  String get connectorTokenUrl;
+
+  /// No description provided for @connectorTokenValue.
+  ///
+  /// In fr, this message translates to:
+  /// **'Jeton'**
+  String get connectorTokenValue;
+
+  /// No description provided for @connectorTokenUsage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Envoyer en POST un objet ou une liste JSON, avec l\'en-tête « Authorization: Bearer <jeton> ».'**
+  String get connectorTokenUsage;
+
+  /// No description provided for @webhookNew.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouveau webhook'**
+  String get webhookNew;
+
+  /// No description provided for @webhookEdit.
+  ///
+  /// In fr, this message translates to:
+  /// **'Modifier le webhook'**
+  String get webhookEdit;
+
+  /// No description provided for @webhookUrl.
+  ///
+  /// In fr, this message translates to:
+  /// **'URL de destination'**
+  String get webhookUrl;
+
+  /// No description provided for @webhookSecret.
+  ///
+  /// In fr, this message translates to:
+  /// **'Secret de signature'**
+  String get webhookSecret;
+
+  /// No description provided for @webhookSecretHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'Signature HMAC-SHA256 du corps dans l\'en-tête x-voyaj-signature.'**
+  String get webhookSecretHelp;
+
+  /// No description provided for @webhookEntities.
+  ///
+  /// In fr, this message translates to:
+  /// **'Entités envoyées'**
+  String get webhookEntities;
+
+  /// No description provided for @webhookEnabled.
+  ///
+  /// In fr, this message translates to:
+  /// **'Actif'**
+  String get webhookEnabled;
+
+  /// No description provided for @webhooksHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'Chaque changement des entités choisies est envoyé (POST JSON, lots de 100) à l\'URL. En cas d\'échec, nouvel essai avec un délai croissant jusqu\'à une heure.'**
+  String get webhooksHelp;
+
+  /// No description provided for @webhooksEmpty.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun webhook sortant.'**
+  String get webhooksEmpty;
+
+  /// No description provided for @webhookPing.
+  ///
+  /// In fr, this message translates to:
+  /// **'Tester'**
+  String get webhookPing;
+
+  /// No description provided for @webhookPingOk.
+  ///
+  /// In fr, this message translates to:
+  /// **'Le destinataire a répondu {status}.'**
+  String webhookPingOk(int status);
+
+  /// No description provided for @webhookHealthy.
+  ///
+  /// In fr, this message translates to:
+  /// **'Livré'**
+  String get webhookHealthy;
+
+  /// No description provided for @webhookFailing.
+  ///
+  /// In fr, this message translates to:
+  /// **'{count, plural, =1{1 échec} other{{count} échecs}}'**
+  String webhookFailing(int count);
+
+  /// No description provided for @webhookLastDelivery.
+  ///
+  /// In fr, this message translates to:
+  /// **'Dernier envoi : {date}'**
+  String webhookLastDelivery(String date);
 }
 
 class _AppLocalizationsDelegate

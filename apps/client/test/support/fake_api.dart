@@ -101,6 +101,56 @@ ApiClient fakeApi(Bootstrap boot) {
       contact: sid('ct-3'),
     ),
   ];
+  final connectors = [
+    ConnectorInfo(
+      id: newId(),
+      name: 'Référentiel des communes (Supabase)',
+      kind: ConnectorKind.supabase.key,
+      config: const {'url': 'https://abcd.supabase.co', 'table': 'communes'},
+      mapping: const ConnectorMapping(
+        refPath: 'code_insee',
+        matchField: 'insee_code',
+        fields: [
+          FieldMapping(target: 'name', source: 'nom'),
+          FieldMapping(target: 'insee_code', source: 'code_insee'),
+        ],
+      ),
+      scheduleMinutes: 1440,
+      hasSecret: true,
+      lastRun: ConnectorRun(
+        id: newId(),
+        connectorId: 'c1',
+        trigger: 'schedule',
+        status: 'succeeded',
+        startedAt: now.subtract(const Duration(hours: 3)),
+        finishedAt: now.subtract(const Duration(hours: 3)),
+        fetched: 285,
+        created: 4,
+        updated: 12,
+        unchanged: 267,
+        rejected: 2,
+      ),
+    ),
+    ConnectorInfo(
+      id: newId(),
+      name: 'Formulaire du site',
+      kind: ConnectorKind.webhook.key,
+      mapping: const ConnectorMapping(entity: 'contacts', refPath: 'email'),
+      hasWebhookToken: true,
+    ),
+  ];
+  final webhooks = [
+    WebhookInfo(
+      id: newId(),
+      name: 'Entrepôt de données',
+      url: 'https://hooks.exemple.fr/voyaj',
+      entities: const ['organisations', 'deals'],
+      hasSecret: true,
+      lastSeq: 1200,
+      lastDeliveryAt: now.subtract(const Duration(minutes: 8)),
+      lastStatus: 200,
+    ),
+  ];
   return ApiClient(
     baseUri: boot.serverUrl!,
     loadTokens: () async => boot.tokens,
@@ -113,6 +163,8 @@ ApiClient fakeApi(Bootstrap boot) {
         '/api/v1/email/providers' => ['imap', 'google', 'microsoft'],
         '/api/v1/email/accounts' => [for (final a in accounts) a.toJson()],
         '/api/v1/email/messages' => [for (final m in messages) m.toJson()],
+        '/api/v1/connectors' => [for (final c in connectors) c.toJson()],
+        '/api/v1/webhooks' => [for (final w in webhooks) w.toJson()],
         '/api/v1/billing/settings' => const BillingSettings(
           legalName: 'Voyaj SAS',
           siren: '123456782',

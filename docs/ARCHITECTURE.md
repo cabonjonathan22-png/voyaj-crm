@@ -39,6 +39,7 @@ flowchart TB
 | `voyaj_server` | CLI `voyaj_server` (`serve`, `migrate`, `create-admin`, `gen-key`, `audit-verify`), API REST, WebSocket, services (auth, utilisateurs, synchro, audit). |
 | `fr_public_data` | Lecture des données publiques (geo.api.gouv.fr, transport.data.gouv.fr, data.culture.gouv.fr) et conversion en organisations : régions, départements, EPCI, communes, AOM, festivals. |
 | `invoicing` | Facturation (Dart pur) : lignes et totaux (centimes, TVA par taux), numérotation, XML Factur-X (CII EN 16931), PDF/A-3 avec XML embarqué, FEC, TVA sur débits et encaissements. |
+| `connectors` | Sources externes (REST paginé, Supabase/PostgREST, Firestore, MySQL, MongoDB), mappage des enregistrements vers les champs Voyaj (chemins, transformations), signature HMAC des webhooks. |
 | `voyaj_client` | Application desktop : design system, shell, base locale, moteur de synchro, écrans. |
 
 ## Synchronisation
@@ -160,6 +161,10 @@ curseur, HLC, poste, vues de tableaux, onglets de travail).
 | GET / PUT | `/api/v1/billing/settings` | paramètres de facturation (secrets en écriture seule) |
 | POST | `/api/v1/billing/documents/{id}/issue`, `/billing/documents/{id}/chorus` | émission d'un brouillon (numéro, PDF), dépôt Chorus Pro |
 | GET | `/api/v1/billing/documents/{id}/pdf`, `/billing/fec?year=`, `/billing/vat?from=&to=` | PDF émis, FEC de l'exercice, TVA collectée |
+| GET / POST / PUT / DELETE | `/api/v1/connectors`, `/connectors/{id}` | connecteurs (secret en écriture seule) |
+| POST / GET | `/api/v1/connectors/preview?id=`, `/connectors/{id}/run` (202), `/connectors/{id}/runs`, `/connectors/{id}/webhook-token` | aperçu, import en arrière-plan, historique, jeton du webhook entrant |
+| POST | `/api/v1/hooks/{id}` | webhook entrant (jeton `Authorization: Bearer`, sans session) |
+| GET / POST / PUT / DELETE | `/api/v1/webhooks`, `/webhooks/{id}`, POST `/webhooks/{id}/ping` | webhooks sortants |
 | GET | `/api/v1/audit?limit=&before=` | journal d'audit |
 | WS | `/ws` | notifications temps réel (1er message : authentification) |
 
@@ -257,4 +262,22 @@ sequenceDiagram
 - Un document émis n'accepte plus que des changements d'état (payée, acceptée…) : le serveur
   refuse les autres champs (`lockedFields`) et tout champ attribué par lui (`serverFields`).
 - Le client calcule l'aperçu des totaux avec le même package `invoicing` que le serveur.
+
+## Connecteurs (Phase 6)
+
+| Table (migration 0006) | Contenu |
+|---|---|
+| `connectors` | type, configuration (JSON), mappage (JSON), secret **chiffré**, empreinte du jeton de webhook entrant, planification |
+| `connector_runs` | historique : déclenchement (manuel, planifié, webhook), compteurs, premiers rejets, erreur |
+| `webhooks` | webhooks sortants : URL, entités, secret de signature chiffré, curseur `last_seq`, échecs et prochain essai |
+
+```mermaid
+flowchart LR
+  src["Source externe<br/>REST · Supabase · Firestore<br/>MySQL · MongoDB"] -->|fetch| conn["ConnectorService"]
+  ext["Système externe"] -->|POST /hooks/id + jeton| conn
+  conn -->|mapRecord| up["SyncService.upsertFromSource"]
+  up --> db[(PostgreSQL)]
+  db -->|changes seq| wh["WebhookService"]
+  wh -->|POST signé| dest["Destinataire"]
+```
 

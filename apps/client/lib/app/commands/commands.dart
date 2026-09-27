@@ -265,6 +265,15 @@ final commandsProvider = Provider<List<AppCommand>>((ref) {
         keywords: 'communes epci aom festivals import insee geo',
         run: (context, _) => context.go(Routes.publicData),
       ),
+    if (can(Permission.connectorManage))
+      AppCommand(
+        id: 'nav.connectors',
+        label: 'Aller aux connecteurs',
+        group: CommandGroup.navigation,
+        icon: LucideIcons.plug,
+        keywords: 'import api rest supabase firebase mysql mongodb webhook',
+        run: (context, _) => context.go(Routes.connectors),
+      ),
     if (can(Permission.auditRead))
       AppCommand(
         id: 'nav.audit',

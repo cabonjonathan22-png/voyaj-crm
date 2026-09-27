@@ -9,7 +9,7 @@
 | 3 — Données publiques | `packages/fr_public_data`, import des collectivités (régions, départements, EPCI, communes), festivals, AOM, mises à jour planifiées | ✅ Terminée (à valider sur les API réelles, voir ci-dessous) |
 | 4 — Emails | IMAP/SMTP, OAuth Gmail/Microsoft, boîte de réception, modèles, séquences | ✅ Terminée (OAuth à configurer, voir ci-dessous) |
 | 5 — Facturation & compta | Devis/factures/avoirs, Factur-X, Chorus Pro, FEC, TVA — **validation expert-comptable** | ✅ Terminée (à valider par l'expert-comptable, voir ci-dessous) |
-| 6 — Connecteurs | Supabase, Firebase, MySQL, MongoDB, REST, webhooks, éditeur de mapping | À venir |
+| 6 — Connecteurs | Supabase, Firebase, MySQL, MongoDB, REST, webhooks, éditeur de mapping | ✅ Terminée (à valider sur vos sources réelles, voir ci-dessous) |
 | 7 — Avancé | Tableaux de bord, BOAMP, agenda, signature, IA, API publique, sauvegardes, RGPD | À venir |
 
 ## Éléments reportés ou à compléter
@@ -92,6 +92,21 @@
 - Aperçu PDF d'un brouillon (avant émission) : non disponible ; seul le PDF émis est téléchargé.
 - Police du PDF : Liberation Sans intégrée (licence OFL).
 
+### Connecteurs (Phase 6)
+- **À valider sur des sources réelles** : MySQL (`mysql_client_plus`) et MongoDB (`mongo_dart`)
+  n'ont pas pu être testés contre de vrais serveurs dans l'environnement de développement
+  (seuls la validation de configuration et le mappage sont testés) ; REST, Supabase et Firestore
+  sont testés sur des réponses simulées.
+- Firebase : lecture par clé d'API web (règles de sécurité autorisant la lecture) ou jeton
+  « Bearer » fourni ; l'authentification par compte de service (JWT signé) reste à ajouter.
+- Import complet à chaque exécution (20 000 enregistrements maximum) : pas d'import
+  incrémental (« modifiés depuis »), pas de suppression des fiches disparues de la source.
+- Entités alimentables : organisations et contacts (champs de provenance) ; affaires et
+  activités à ajouter si besoin (migration des colonnes de provenance).
+- Écriture vers les sources (synchronisation bidirectionnelle) : non prévue ; les webhooks
+  sortants couvrent l'envoi des changements.
+- Webhooks sortants : pas de liste des livraisons individuelles (dernier état seulement).
+
 ### Serveur
 - Limiteur de tentatives en mémoire : à déplacer en base (ou Redis) si plusieurs instances.
 - Purge planifiée des sessions expirées, rétention de `change_log` et `sync_ops`.
@@ -161,4 +176,16 @@
 | `pdf` < 3.13 | La 3.13 exige `xml` 7, incompatible avec `enough_mail` (xml 6). |
 | Secrets Chorus Pro (mot de passe du compte technique, secret PISTE) chiffrés par la clé maître, jamais renvoyés | Même règle que les comptes email. |
 | FEC et TVA calculés à la demande depuis les documents émis et les paiements | Pas de double saisie ; l'export reflète toujours l'état validé. |
+
+## Décisions (Phase 6)
+
+| Décision | Raison |
+|---|---|
+| `packages/connectors` (Dart pur) : une interface `RecordSource` par type de source, mappage déclaratif (chemin, transformation, valeur fixe) | Ajouter une source = une classe ; le mappage est identique pour toutes. |
+| Les connecteurs tournent **sur le serveur** (secrets chiffrés), imports manuels ou planifiés (15 min à 7 jours), historique des exécutions | Les postes n'ont aucun identifiant de base externe ; imports possibles postes éteints. |
+| Écriture par `SyncService.upsertFromSource` (source `connector:<id>`, identifiant source `source_ref`) | Même mécanisme que les données publiques : fiches synchronisées, champ modifié par un utilisateur jamais écrasé, fiche supprimée jamais recréée. |
+| Rapprochement facultatif avec une fiche existante (SIREN, SIRET, code INSEE, email) ; rattachement des contacts à une organisation par valeur | Évite les doublons dès le premier import. |
+| MySQL : une seule requête SELECT (pas de `;`) ; lecture seule | Le connecteur ne peut pas modifier la base source. |
+| Webhook entrant authentifié par jeton (empreinte SHA-256 stockée, affiché une fois), 5 Mo et 5 000 enregistrements maximum par appel | Pas de session utilisateur pour un système externe ; jeton révocable. |
+| Webhooks sortants : lots de 100 derniers états (curseur `seq`), signature HMAC-SHA256 (`x-voyaj-signature`), nouvel essai exponentiel jusqu'à 1 h | Livraison au moins une fois et dans l'ordre, vérifiable par le destinataire. |
 

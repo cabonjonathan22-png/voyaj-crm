@@ -9,6 +9,7 @@ import 'package:voyaj_client/design_system/design_system.dart';
 import 'package:voyaj_client/features/crm/map/map_page.dart';
 
 import 'support/crm_seed.dart';
+import 'support/fake_api.dart';
 import 'support/test_app.dart';
 
 /// Parcours utilisateur dans les écrans du CRM.
@@ -17,8 +18,9 @@ void main() {
 
   Future<(ProviderContainer, Bootstrap)> start(
     WidgetTester tester,
-    String route,
-  ) async {
+    String route, {
+    bool online = false,
+  }) async {
     tester.view
       ..physicalSize = const Size(1440, 900)
       ..devicePixelRatio = 1;
@@ -33,6 +35,7 @@ void main() {
         bootstrapProvider.overrideWithValue(boot),
         syncEngineProvider.overrideWithValue(null),
         mapTilesEnabledProvider.overrideWithValue(false),
+        if (online) apiClientProvider.overrideWithValue(fakeApi(boot)),
       ],
     );
     await tester.pumpWidget(
@@ -179,6 +182,28 @@ void main() {
     expect(created.kind, 'invoice');
     expect(created.number, isNull);
     expect(created.lines, contains('Navette estivale'));
+
+    await stop(tester, container, boot);
+  });
+
+  testWidgets('éditeur de connecteur : champs selon le type', (tester) async {
+    final (container, boot) = await start(
+      tester,
+      Routes.connectors,
+      online: true,
+    );
+    await tester.tap(find.text('Nouveau connecteur'));
+    await settle(tester);
+    expect(find.byType(VModal), findsOneWidget);
+    expect(find.text('Mappage'), findsOneWidget);
+    expect(find.text('Chemin de la liste dans la réponse'), findsOneWidget);
+
+    await tester.tap(find.text('API REST (JSON)'));
+    await settle(tester);
+    await tester.tap(find.text('MySQL / MariaDB').last);
+    await settle(tester);
+    expect(find.text('Requête SELECT'), findsOneWidget);
+    expect(find.text('Connexion chiffrée (TLS)'), findsOneWidget);
 
     await stop(tester, container, boot);
   });

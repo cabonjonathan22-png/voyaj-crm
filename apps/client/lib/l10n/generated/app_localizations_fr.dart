@@ -2254,4 +2254,326 @@ class AppLocalizationsFr extends AppLocalizations {
   String chorusFlux(String flux) {
     return 'Chorus Pro : flux $flux';
   }
+
+  @override
+  String get navConnectors => 'Connecteurs';
+
+  @override
+  String get connectorsSubtitle =>
+      'Imports depuis vos outils (API REST, Supabase, Firebase, MySQL, MongoDB, webhooks) et envoi des changements.';
+
+  @override
+  String get connectorsTab => 'Sources';
+
+  @override
+  String get webhooksTab => 'Webhooks sortants';
+
+  @override
+  String get connectorsEmpty => 'Aucun connecteur';
+
+  @override
+  String get connectorsEmptyMessage =>
+      'Branchez une source externe pour alimenter automatiquement organisations et contacts.';
+
+  @override
+  String get connectorNew => 'Nouveau connecteur';
+
+  @override
+  String get connectorEdit => 'Modifier le connecteur';
+
+  @override
+  String get connectorName => 'Nom';
+
+  @override
+  String get connectorKind => 'Type de source';
+
+  @override
+  String get connectorSource => 'Source';
+
+  @override
+  String get connectorUrl => 'URL';
+
+  @override
+  String get connectorRecordsPath => 'Chemin de la liste dans la réponse';
+
+  @override
+  String get connectorAuthHeader => 'En-tête portant le secret';
+
+  @override
+  String get connectorPageParam => 'Paramètre de page (pagination)';
+
+  @override
+  String get connectorNextPath => 'Chemin de l\'URL de la page suivante';
+
+  @override
+  String get connectorProjectUrl => 'URL du projet';
+
+  @override
+  String get connectorTable => 'Table';
+
+  @override
+  String get connectorSelect => 'Colonnes';
+
+  @override
+  String get connectorFilter => 'Filtres (syntaxe PostgREST)';
+
+  @override
+  String get connectorOrder => 'Tri';
+
+  @override
+  String get connectorProject => 'Identifiant du projet';
+
+  @override
+  String get connectorCollection => 'Collection';
+
+  @override
+  String get connectorDatabase => 'Base de données';
+
+  @override
+  String get connectorHost => 'Serveur';
+
+  @override
+  String get connectorPort => 'Port';
+
+  @override
+  String get connectorUser => 'Utilisateur';
+
+  @override
+  String get connectorQuery => 'Requête SELECT';
+
+  @override
+  String get connectorMongoFilter => 'Filtre (JSON)';
+
+  @override
+  String get connectorSecretRest => 'Valeur de l\'en-tête (ex. Bearer …)';
+
+  @override
+  String get connectorSecretSupabase => 'Clé d\'API';
+
+  @override
+  String get connectorSecretFirebase => 'Clé d\'API web ou « Bearer <jeton> »';
+
+  @override
+  String get connectorSecretMysql => 'Mot de passe';
+
+  @override
+  String get connectorSecretMongo => 'Chaîne de connexion (mongodb://…)';
+
+  @override
+  String get connectorSecure => 'Connexion chiffrée (TLS)';
+
+  @override
+  String get connectorWebhookHelp =>
+      'Le système externe envoie ses données en POST JSON à l\'URL du webhook, avec le jeton en en-tête. Générez le jeton après l\'enregistrement.';
+
+  @override
+  String get connectorMapping => 'Mappage';
+
+  @override
+  String get connectorEntity => 'Alimente';
+
+  @override
+  String get connectorRefPath => 'Identifiant dans la source';
+
+  @override
+  String get connectorRefPathHelp =>
+      'Chemin d\'une valeur stable et unique (id, code…).';
+
+  @override
+  String get connectorMatchField => 'Rapprocher des fiches existantes par';
+
+  @override
+  String get connectorSchedule => 'Import automatique';
+
+  @override
+  String get connectorScheduleManual => 'Manuel';
+
+  @override
+  String connectorEveryMinutes(int minutes) {
+    return 'Toutes les $minutes min';
+  }
+
+  @override
+  String connectorEveryHours(int hours) {
+    String _temp0 = intl.Intl.pluralLogic(
+      hours,
+      locale: localeName,
+      other: 'Toutes les $hours h',
+      one: 'Toutes les heures',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get connectorLookupSource => 'Organisation : chemin dans la source';
+
+  @override
+  String get connectorLookupHelp =>
+      'Rattache le contact à l\'organisation existante de même valeur.';
+
+  @override
+  String get connectorLookupField => 'Organisation : champ comparé';
+
+  @override
+  String get connectorTarget => 'Champ Voyaj';
+
+  @override
+  String get connectorSourcePath => 'Chemin dans la source';
+
+  @override
+  String get connectorTransform => 'Transformation';
+
+  @override
+  String get connectorConstant => 'Ou valeur fixe';
+
+  @override
+  String get connectorChooseField => 'Choisir…';
+
+  @override
+  String get connectorAddField => 'Ajouter un champ';
+
+  @override
+  String get connectorPreview => 'Aperçu';
+
+  @override
+  String connectorPreviewTitle(int count) {
+    return 'Aperçu : $count enregistrements lus';
+  }
+
+  @override
+  String connectorPaths(String paths) {
+    return 'Chemins détectés : $paths';
+  }
+
+  @override
+  String get connectorRun => 'Importer';
+
+  @override
+  String get connectorStarted => 'Import lancé.';
+
+  @override
+  String get connectorHistory => 'Historique';
+
+  @override
+  String connectorHistoryOf(String name) {
+    return 'Historique — $name';
+  }
+
+  @override
+  String get connectorNeverRun => 'Jamais importé.';
+
+  @override
+  String get connectorDisabled => 'Désactivé';
+
+  @override
+  String get connectorRunSucceeded => 'Réussi';
+
+  @override
+  String get connectorRunFailed => 'Échec';
+
+  @override
+  String get connectorRunRunning => 'En cours';
+
+  @override
+  String connectorRunStats(
+    int fetched,
+    int created,
+    int updated,
+    int unchanged,
+    int rejected,
+  ) {
+    return '$fetched lus · $created créés · $updated mis à jour · $unchanged inchangés · $rejected rejetés';
+  }
+
+  @override
+  String connectorDeleteTitle(String name) {
+    return 'Supprimer « $name » ?';
+  }
+
+  @override
+  String get connectorDeleteMessage =>
+      'Les fiches déjà importées sont conservées.';
+
+  @override
+  String get connectorToken => 'Jeton du webhook';
+
+  @override
+  String get connectorTokenRenew => 'Générer';
+
+  @override
+  String get connectorTokenRenewTitle => 'Générer un nouveau jeton ?';
+
+  @override
+  String get connectorTokenRenewMessage =>
+      'L\'ancien jeton cessera immédiatement de fonctionner.';
+
+  @override
+  String get connectorTokenOnce =>
+      'Copiez le jeton maintenant : il ne sera plus affiché.';
+
+  @override
+  String get connectorTokenUrl => 'URL';
+
+  @override
+  String get connectorTokenValue => 'Jeton';
+
+  @override
+  String get connectorTokenUsage =>
+      'Envoyer en POST un objet ou une liste JSON, avec l\'en-tête « Authorization: Bearer <jeton> ».';
+
+  @override
+  String get webhookNew => 'Nouveau webhook';
+
+  @override
+  String get webhookEdit => 'Modifier le webhook';
+
+  @override
+  String get webhookUrl => 'URL de destination';
+
+  @override
+  String get webhookSecret => 'Secret de signature';
+
+  @override
+  String get webhookSecretHelp =>
+      'Signature HMAC-SHA256 du corps dans l\'en-tête x-voyaj-signature.';
+
+  @override
+  String get webhookEntities => 'Entités envoyées';
+
+  @override
+  String get webhookEnabled => 'Actif';
+
+  @override
+  String get webhooksHelp =>
+      'Chaque changement des entités choisies est envoyé (POST JSON, lots de 100) à l\'URL. En cas d\'échec, nouvel essai avec un délai croissant jusqu\'à une heure.';
+
+  @override
+  String get webhooksEmpty => 'Aucun webhook sortant.';
+
+  @override
+  String get webhookPing => 'Tester';
+
+  @override
+  String webhookPingOk(int status) {
+    return 'Le destinataire a répondu $status.';
+  }
+
+  @override
+  String get webhookHealthy => 'Livré';
+
+  @override
+  String webhookFailing(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count échecs',
+      one: '1 échec',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String webhookLastDelivery(String date) {
+    return 'Dernier envoi : $date';
+  }
 }

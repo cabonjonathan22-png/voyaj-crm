@@ -25,8 +25,8 @@ deploy/windows/     Service Windows (WinSW) et installeur client (Inno Setup)
 docs/               ARCHITECTURE.md, ROADMAP.md
 ```
 
-`packages/fr_public_data` (Phase 3) : lecture des données publiques. Packages prévus, créés dans
-leur phase : `packages/invoicing` (5), `packages/connectors` (6).
+Autres packages : `packages/fr_public_data` (Phase 3, données publiques), `packages/invoicing`
+(Phase 5, facturation), `packages/connectors` (Phase 6, sources externes et webhooks).
 
 ## Commandes
 
