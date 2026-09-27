@@ -43,6 +43,12 @@ final class ServerConfig {
     this.argon2Iterations = 2,
     this.dataDir = 'data',
     this.publicDataHour = 3,
+    this.publicUrl,
+    this.googleClientId,
+    this.googleClientSecret,
+    this.microsoftClientId,
+    this.microsoftClientSecret,
+    this.microsoftTenant = 'common',
   });
 
   /// Charge la configuration depuis l'environnement et les fichiers.
@@ -120,6 +126,17 @@ final class ServerConfig {
       argon2MemoryKib: readInt('VOYAJ_ARGON2_MEMORY_KIB', 19456),
       argon2Iterations: readInt('VOYAJ_ARGON2_ITERATIONS', 2),
       dataDir: read('VOYAJ_DATA_DIR') ?? 'data',
+      publicUrl: switch (read('VOYAJ_PUBLIC_URL')) {
+        null => null,
+        final url =>
+          Uri.tryParse(url) ??
+              (throw const ConfigException('VOYAJ_PUBLIC_URL invalide')),
+      },
+      googleClientId: read('VOYAJ_GOOGLE_CLIENT_ID'),
+      googleClientSecret: read('VOYAJ_GOOGLE_CLIENT_SECRET'),
+      microsoftClientId: read('VOYAJ_MICROSOFT_CLIENT_ID'),
+      microsoftClientSecret: read('VOYAJ_MICROSOFT_CLIENT_SECRET'),
+      microsoftTenant: read('VOYAJ_MICROSOFT_TENANT') ?? 'common',
       publicDataHour: switch (read('VOYAJ_PUBLIC_DATA_HOUR')?.toLowerCase()) {
         null => 3,
         'off' || 'non' || 'false' => null,
@@ -161,6 +178,17 @@ final class ServerConfig {
   /// Heure locale de l'import quotidien des données publiques (`null` :
   /// désactivé).
   final int? publicDataHour;
+
+  /// Adresse publique du serveur (ex. `https://crm.voyaj.fr`), nécessaire
+  /// aux connexions OAuth (retour du navigateur).
+  final Uri? publicUrl;
+
+  /// Application OAuth Google (Gmail) et Microsoft (Outlook / 365).
+  final String? googleClientId;
+  final String? googleClientSecret;
+  final String? microsoftClientId;
+  final String? microsoftClientSecret;
+  final String microsoftTenant;
 
   bool get tlsEnabled => tlsCertPath != null && tlsKeyPath != null;
 

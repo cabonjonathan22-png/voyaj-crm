@@ -10,6 +10,8 @@ import '../auth/auth_context.dart';
 import '../auth/auth_service.dart';
 import '../auth/users_service.dart';
 import '../db/database.dart';
+import '../email/email_service.dart';
+import '../email/mail_transport.dart';
 import '../errors.dart';
 import '../files/file_store.dart';
 import '../public_data/public_data_service.dart';
@@ -29,6 +31,7 @@ Handler buildHandler({
   required RealtimeHub hub,
   required FileStore files,
   required PublicDataService publicData,
+  required EmailService email,
   required bool trustProxy,
   required bool hsts,
 }) {
@@ -191,6 +194,75 @@ Handler buildHandler({
           'content-disposition': 'attachment',
         },
       );
+    })
+    // ── Messagerie ──
+    ..get('/email/providers', (Request r) async {
+      (await authed(r)).require(Permission.emailUse);
+      return jsonResponse([for (final p in email.availableProviders()) p.name]);
+    })
+    ..get('/email/accounts', (Request r) async {
+      final list = await email.listAccounts(await authed(r));
+      return jsonResponse([for (final a in list) a.toJson()]);
+    })
+    ..post('/email/accounts', (Request r) async {
+      final ctx = await authed(r);
+      final body = await readJson(r, CreateImapAccountRequest.fromJson);
+      return jsonResponse(
+        (await email.createImapAccount(ctx, body)).toJson(),
+        status: 201,
+      );
+    })
+    ..delete('/email/accounts/<id>', (Request r, String id) async {
+      await email.deleteAccount(await authed(r), id);
+      return noContent();
+    })
+    ..post('/email/accounts/<id>/sync', (Request r, String id) async {
+      return jsonResponse(
+        (await email.syncAccount(await authed(r), id)).toJson(),
+      );
+    })
+    ..get('/email/oauth/callback', (Request r) async {
+      final q = r.url.queryParameters;
+      try {
+        final address = await email.oauthCallback(
+          code: q['code'],
+          state: q['state'],
+          error: q['error'],
+        );
+        return htmlPage(
+          'Compte connecté',
+          'Le compte $address est connecté à Voyaj CRM. Vous pouvez fermer '
+              'cette fenêtre et revenir à l’application.',
+        );
+      } on MailException catch (e) {
+        return htmlPage('Connexion impossible', e.message, status: 400);
+      }
+    })
+    ..get('/email/oauth/<provider>/start', (Request r, String provider) async {
+      return jsonResponse(
+        (await email.oauthStart(await authed(r), provider)).toJson(),
+      );
+    })
+    ..get('/email/messages', (Request r) async {
+      final q = r.url.queryParameters;
+      final list = await email.listMessages(
+        await authed(r),
+        accountId: q['account'],
+        contactId: q['contact'],
+        before: q['before'] == null ? null : DateTime.tryParse(q['before']!),
+        limit: intParam(r, 'limit') ?? 50,
+      );
+      return jsonResponse([for (final m in list) m.toJson()]);
+    })
+    ..get('/email/messages/<id>', (Request r, String id) async {
+      return jsonResponse(
+        (await email.getMessage(await authed(r), id)).toJson(),
+      );
+    })
+    ..post('/email/send', (Request r) async {
+      final ctx = await authed(r);
+      final body = await readJson(r, SendEmailRequest.fromJson);
+      return jsonResponse((await email.send(ctx, body)).toJson(), status: 201);
     })
     // ── Données publiques ──
     ..get('/public-data', (Request r) async {

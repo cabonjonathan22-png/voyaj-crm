@@ -9,6 +9,7 @@ import 'database.dart';
 import 'migrations/m0001_initial.dart';
 import 'migrations/m0002_crm.dart';
 import 'migrations/m0003_public_data.dart';
+import 'migrations/m0004_email.dart';
 
 /// Migration SQL versionnée. Une migration appliquée ne doit plus jamais
 /// être modifiée : on en ajoute une nouvelle (le checksum est vérifié).
@@ -25,7 +26,12 @@ final class Migration {
 
 /// Liste ordonnée des migrations. Ajouter une migration : créer
 /// `migrations/mNNNN_nom.dart` et l'ajouter ici.
-const List<Migration> migrations = [m0001Initial, m0002Crm, m0003PublicData];
+const List<Migration> migrations = [
+  m0001Initial,
+  m0002Crm,
+  m0003PublicData,
+  m0004Email,
+];
 
 final _log = Logger('migrations');
 

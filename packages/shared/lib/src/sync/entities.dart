@@ -248,6 +248,54 @@ abstract final class SyncEntities {
     validate: validateSegmentRecord,
   );
 
+  static final emailTemplates = EntitySchema(
+    name: 'email_templates',
+    fields: const {
+      'name': _requiredText,
+      'subject': _requiredText,
+      'body': _requiredText,
+      'description': _text,
+    },
+    readPermission: Permission.emailUse,
+    writePermission: Permission.emailTemplateWrite,
+    validate: validateEmailTemplateRecord,
+  );
+
+  /// Séquence : étapes `[{"delay_days": 3, "template_id": "…"}]`.
+  static final emailSequences = EntitySchema(
+    name: 'email_sequences',
+    fields: const {
+      'name': _requiredText,
+      'description': _text,
+      'steps': FieldSpec(FieldType.json, nullable: false),
+      'active': _bool,
+    },
+    readPermission: Permission.emailUse,
+    writePermission: Permission.emailTemplateWrite,
+    validate: validateSequenceRecord,
+  );
+
+  /// Inscription d'un contact à une séquence ; les emails partent du
+  /// compte de `owner_id` (envoyés par le serveur).
+  static final sequenceEnrollments = EntitySchema(
+    name: 'sequence_enrollments',
+    fields: {
+      'sequence_id': _requiredText,
+      'contact_id': _requiredText,
+      'owner_id': _requiredText,
+      'step': const FieldSpec(FieldType.integer, nullable: false),
+      'next_send_at': _dateTime,
+      'status': FieldSpec.oneOf(
+        keysOf(EnrollmentStatus.values),
+        nullable: false,
+      ),
+      'last_error': _text,
+    },
+    readPermission: Permission.emailUse,
+    writePermission: Permission.emailUse,
+    validate: validateEnrollmentRecord,
+  );
+
   static final List<EntitySchema> all = [
     tags,
     organisations,
@@ -261,6 +309,9 @@ abstract final class SyncEntities {
     taggings,
     customFields,
     segments,
+    emailTemplates,
+    emailSequences,
+    sequenceEnrollments,
   ];
 
   static final Map<String, EntitySchema> _byName = {

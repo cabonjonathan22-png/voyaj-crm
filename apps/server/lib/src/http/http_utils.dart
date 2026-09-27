@@ -23,6 +23,22 @@ Response jsonResponse(Object? body, {int status = 200}) =>
 
 Response noContent() => Response(204);
 
+/// Page HTML minimale (retour de navigateur, ex. connexion OAuth).
+Response htmlPage(String title, String message, {int status = 200}) {
+  const escape = HtmlEscape();
+  return Response(
+    status,
+    body:
+        '<!doctype html><html lang="fr"><head><meta charset="utf-8">'
+        '<title>${escape.convert(title)}</title><style>body{font-family:'
+        'system-ui,sans-serif;max-width:32rem;margin:15vh auto;padding:0 1rem;'
+        'color:#18181b}h1{font-size:1.4rem}</style></head><body><h1>'
+        '${escape.convert(title)}</h1><p>${escape.convert(message)}</p>'
+        '</body></html>',
+    headers: {HttpHeaders.contentTypeHeader: 'text/html; charset=utf-8'},
+  );
+}
+
 /// Lit et décode le corps JSON de [request] avec [fromJson].
 Future<T> readJson<T>(
   Request request,

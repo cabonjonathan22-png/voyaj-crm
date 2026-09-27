@@ -41,6 +41,16 @@ final class SourceRecord {
   final (String field, String value, Set<String> kinds)? parent;
 }
 
+/// Écriture système refusée par les règles de validation.
+final class SystemWriteException implements Exception {
+  const SystemWriteException(this.issues);
+
+  final List<ValidationIssue> issues;
+
+  @override
+  String toString() => issues.map((i) => i.message).join(' ');
+}
+
 /// Bilan d'un import depuis une source.
 final class SourceUpsertStats {
   int created = 0;
@@ -415,6 +425,66 @@ final class SyncService {
       'op': op.opId,
     },
   );
+
+  // ── Écritures du serveur ─────────────────────────────────────────────
+
+  /// Crée ([id] absent ou inconnu) ou modifie un enregistrement au nom du
+  /// serveur (attribué à [userId] s'il est fourni), synchronisé comme une
+  /// écriture de client. Retourne l'identifiant.
+  Future<String> writeSystem(
+    EntitySchema schema,
+    Map<String, Object?> fields, {
+    String? id,
+    String? userId,
+  }) async {
+    final recordId = id ?? newId();
+    final issues = schema.checkFields(fields);
+    if (issues.isNotEmpty) throw SystemWriteException(issues);
+    final seq = await _db.tx((tx) async {
+      await tx.query('SELECT pg_advisory_xact_lock(@k)', {'k': _writeLockKey});
+      final row = await tx.queryOne(
+        'SELECT * FROM ${schema.name} WHERE id = @id FOR UPDATE',
+        {'id': recordId},
+      );
+      final version = row?['version'] as int? ?? 0;
+      final current = <String, Object?>{
+        if (row != null)
+          for (final field in schema.fields.keys)
+            field: _toWire(row[field], schema.fields[field]!.type),
+      };
+      final hlc = _hlc.now();
+      final merge = mergeFields(
+        current: current,
+        stamps: decodeFieldMeta(
+          (row?['field_meta'] as Map?)?.cast<String, dynamic>(),
+        ),
+        incoming: fields,
+        hlc: hlc,
+        baseVersion: version,
+        nextVersion: version + 1,
+        userId: userId,
+      );
+      if (!merge.changed) return 0;
+      final problems = schema.validate({
+        ...current,
+        ...merge.applied,
+        'id': recordId,
+      });
+      if (problems.isNotEmpty) throw SystemWriteException(problems);
+      return _persist(
+        tx,
+        schema,
+        entityId: recordId,
+        isInsert: row == null,
+        version: version + 1,
+        merge: merge,
+        hlc: hlc.toString(),
+        userId: userId,
+      );
+    });
+    if (seq > 0) _changes.add(seq);
+    return recordId;
+  }
 
   // ── Import depuis une source externe ─────────────────────────────────
 

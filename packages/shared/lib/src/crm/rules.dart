@@ -245,3 +245,41 @@ List<ValidationIssue> validateSegmentRecord(Map<String, Object?> r) =>
     collectIssues([
       validateRequiredText('name', r['name'], label: 'Le nom', max: 120),
     ]);
+
+List<ValidationIssue> validateEmailTemplateRecord(Map<String, Object?> r) =>
+    collectIssues([
+      validateRequiredText('name', r['name'], label: 'Le nom', max: 120),
+      validateRequiredText('subject', r['subject'], label: "L'objet", max: 250),
+      validateRequiredText('body', r['body'], label: 'Le message', max: 50000),
+    ]);
+
+List<ValidationIssue> validateSequenceRecord(Map<String, Object?> r) {
+  final steps = r['steps'];
+  return collectIssues([
+    validateRequiredText('name', r['name'], label: 'Le nom', max: 120),
+    if (steps is! List || steps.isEmpty)
+      _issue('steps', ValidationCodes.required, 'Ajoutez au moins une étape.')
+    else if (!steps.every(
+      (s) =>
+          s is Map &&
+          s['delay_days'] is int &&
+          (s['delay_days'] as int) >= 0 &&
+          (s['delay_days'] as int) <= 365 &&
+          s['template_id'] is String &&
+          isValidId(s['template_id'] as String),
+    ))
+      _issue(
+        'steps',
+        ValidationCodes.invalidFormat,
+        'Chaque étape indique un délai (0 à 365 jours) et un modèle.',
+      ),
+  ]);
+}
+
+List<ValidationIssue> validateEnrollmentRecord(Map<String, Object?> r) =>
+    collectIssues([
+      _requiredId('sequence_id', r['sequence_id'], 'La séquence'),
+      _requiredId('contact_id', r['contact_id'], 'Le contact'),
+      _requiredId('owner_id', r['owner_id'], "L'expéditeur"),
+      _range('step', r['step'], 0, 1000, "L'étape"),
+    ]);

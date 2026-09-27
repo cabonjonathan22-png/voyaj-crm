@@ -10,6 +10,8 @@ export 'src/crm/csv.dart';
 export 'src/crm/duplicates.dart';
 export 'src/crm/enums.dart';
 export 'src/crm/rules.dart';
+export 'src/email/email_dto.dart';
+export 'src/email/templating.dart';
 export 'src/ids.dart';
 export 'src/models/tag.dart';
 export 'src/public_data/public_data.dart';

@@ -33,7 +33,12 @@ final class TestServer {
   final VoyajServer server;
   final Uri baseUri;
 
-  static Future<TestServer> start({PublicDataClient? publicDataClient}) async {
+  static Future<TestServer> start({
+    PublicDataClient? publicDataClient,
+    MailTransport? mailTransport,
+    OAuthClient? oauthClient,
+    Map<String, String> extraConfig = const {},
+  }) async {
     final config = ServerConfig.fromMap({
       'DATABASE_URL': testDatabaseUrl()!,
       'VOYAJ_MASTER_KEY': base64.encode(List.filled(32, 42)),
@@ -42,11 +47,14 @@ final class TestServer {
       'VOYAJ_ARGON2_ITERATIONS': '1',
       'VOYAJ_AUTO_MIGRATE': 'true',
       'VOYAJ_DATA_DIR': Directory.systemTemp.createTempSync('voyaj-data').path,
+      ...extraConfig,
     });
     await _resetDatabase(config.database);
     final server = await VoyajServer.start(
       _withPort0(config),
       publicDataClient: publicDataClient,
+      mailTransport: mailTransport,
+      oauthClient: oauthClient,
     );
     await server.services.users.createAdmin(
       email: adminEmail,
@@ -66,6 +74,11 @@ final class TestServer {
     argon2Iterations: c.argon2Iterations,
     dataDir: c.dataDir,
     publicDataHour: null,
+    publicUrl: c.publicUrl,
+    googleClientId: c.googleClientId,
+    googleClientSecret: c.googleClientSecret,
+    microsoftClientId: c.microsoftClientId,
+    microsoftClientSecret: c.microsoftClientSecret,
   );
 
   static Future<void> _resetDatabase(DatabaseConfig db) async {

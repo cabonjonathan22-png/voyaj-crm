@@ -4,12 +4,16 @@ import 'dart:io';
 import 'package:fr_public_data/fr_public_data.dart';
 import 'package:logging/logging.dart';
 import 'package:shelf/shelf_io.dart' as shelf_io;
+import 'package:voyaj_shared/voyaj_shared.dart';
 
 import 'auth/auth_service.dart';
 import 'auth/users_service.dart';
 import 'config.dart';
 import 'db/database.dart';
 import 'db/migrations.dart';
+import 'email/email_service.dart';
+import 'email/mail_transport.dart';
+import 'email/oauth.dart';
 import 'files/file_store.dart';
 import 'http/api.dart';
 import 'public_data/public_data_service.dart';
@@ -30,13 +34,17 @@ final class Services {
     this.hub,
     this.files,
     this.publicData,
+    this.email,
   );
 
   factory Services.create(
     ServerConfig config,
     Database db, {
     PublicDataClient? publicDataClient,
+    MailTransport? mailTransport,
+    OAuthClient? oauthClient,
   }) {
+    final cipher = SecretCipher(config.masterKey);
     final hasher = PasswordHasher(
       memoryKib: config.argon2MemoryKib,
       iterations: config.argon2Iterations,
@@ -44,7 +52,7 @@ final class Services {
     final auth = AuthService(
       db: db,
       hasher: hasher,
-      cipher: SecretCipher(config.masterKey),
+      cipher: cipher,
       accessTtl: config.accessTokenTtl,
       refreshTtl: config.refreshTokenTtl,
     );
@@ -70,6 +78,29 @@ final class Services {
         client: publicDataClient ?? PublicDataClient(),
         scheduleHour: config.publicDataHour,
       ),
+      EmailService(
+        db: db,
+        sync: sync,
+        cipher: cipher,
+        transport: mailTransport ?? const ImapSmtpTransport(),
+        oauth: oauthClient ?? OAuthClient(),
+        publicUrl: config.publicUrl,
+        oauthApps: {
+          if (config.googleClientId != null &&
+              config.googleClientSecret != null)
+            EmailProvider.google: OAuthApp.google(
+              clientId: config.googleClientId!,
+              clientSecret: config.googleClientSecret!,
+            ),
+          if (config.microsoftClientId != null &&
+              config.microsoftClientSecret != null)
+            EmailProvider.microsoft: OAuthApp.microsoft(
+              clientId: config.microsoftClientId!,
+              clientSecret: config.microsoftClientSecret!,
+              tenant: config.microsoftTenant,
+            ),
+        },
+      ),
     );
   }
 
@@ -80,15 +111,16 @@ final class Services {
   final RealtimeHub hub;
   final FileStore files;
   final PublicDataService publicData;
+  final EmailService email;
 }
 
 /// Serveur HTTP en cours d'exécution.
 final class VoyajServer {
-  VoyajServer._(this._http, this.services, this._housekeeping);
+  VoyajServer._(this._http, this.services, this._timers);
 
   final HttpServer _http;
   final Services services;
-  final Timer _housekeeping;
+  final List<Timer> _timers;
 
   int get port => _http.port;
 
@@ -96,6 +128,8 @@ final class VoyajServer {
   static Future<VoyajServer> start(
     ServerConfig config, {
     PublicDataClient? publicDataClient,
+    MailTransport? mailTransport,
+    OAuthClient? oauthClient,
   }) async {
     final db = Database.open(config.database, poolSize: config.dbPoolSize);
     if (config.autoMigrate) {
@@ -106,6 +140,8 @@ final class VoyajServer {
       config,
       db,
       publicDataClient: publicDataClient,
+      mailTransport: mailTransport,
+      oauthClient: oauthClient,
     );
     await services.users.syncSystemRoles();
     await services.publicData.recoverInterrupted();
@@ -118,6 +154,7 @@ final class VoyajServer {
       hub: services.hub,
       files: services.files,
       publicData: services.publicData,
+      email: services.email,
       trustProxy: config.trustProxy,
       hsts: config.tlsEnabled || config.trustProxy,
     );
@@ -154,11 +191,24 @@ final class VoyajServer {
       'Voyaj CRM serveur $serverVersion à l’écoute sur '
       '${config.tlsEnabled ? 'https' : 'http'}://${config.host}:${http.port}',
     );
-    return VoyajServer._(http, services, housekeeping);
+    // Messagerie : réception et envoi des séquences toutes les 5 minutes.
+    final mail = Timer.periodic(const Duration(minutes: 5), (_) {
+      unawaited(
+        () async {
+          await services.email.syncAll();
+          await services.email.processSequences();
+        }().catchError(
+          (Object e) => _log.warning('Messagerie (tâche périodique)', e),
+        ),
+      );
+    });
+    return VoyajServer._(http, services, [housekeeping, mail]);
   }
 
   Future<void> close() async {
-    _housekeeping.cancel();
+    for (final timer in _timers) {
+      timer.cancel();
+    }
     await _http.close(force: true);
     await services.hub.close();
     await services.sync.close();

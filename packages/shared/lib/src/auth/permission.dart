@@ -31,6 +31,14 @@ enum Permission {
   ),
   dataImport('data.import', 'Importer des données (CSV, Excel)'),
   dataExport('data.export', 'Exporter des données (CSV, Excel)'),
+  emailUse(
+    'email.use',
+    'Connecter ses comptes email, lire et envoyer des emails',
+  ),
+  emailTemplateWrite(
+    'email.template.write',
+    'Créer et modifier les modèles et séquences d’emails',
+  ),
   publicDataManage(
     'publicdata.manage',
     'Configurer et lancer les imports de données publiques',
@@ -79,6 +87,8 @@ enum SystemRole {
       Permission.segmentWrite,
       Permission.dataImport,
       Permission.dataExport,
+      Permission.emailUse,
+      Permission.emailTemplateWrite,
       Permission.syncConflictRead,
       Permission.userRead,
     ],

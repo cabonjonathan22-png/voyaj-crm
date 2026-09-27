@@ -31,6 +31,8 @@ abstract final class AuditActions {
   static const conflictReviewed = 'sync.conflict.reviewed';
   static const publicDataConfigured = 'public_data.configured';
   static const publicDataRun = 'public_data.run';
+  static const emailAccountConnected = 'email.account.connected';
+  static const emailAccountRemoved = 'email.account.removed';
 }
 
 /// Événement à journaliser.

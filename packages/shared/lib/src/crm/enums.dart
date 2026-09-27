@@ -212,3 +212,19 @@ const frenchRegions = {
   '93': "Provence-Alpes-Côte d'Azur",
   '94': 'Corse',
 };
+
+/// État de l'inscription d'un contact à une séquence d'emails.
+enum EnrollmentStatus implements KeyedEnum {
+  active('active', 'En cours'),
+  completed('completed', 'Terminée'),
+  replied('replied', 'A répondu'),
+  stopped('stopped', 'Arrêtée'),
+  failed('failed', 'Échec d’envoi');
+
+  const EnrollmentStatus(this.key, this.label);
+
+  @override
+  final String key;
+  @override
+  final String label;
+}

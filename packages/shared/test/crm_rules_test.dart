@@ -147,6 +147,6 @@ void main() {
     for (final schema in SyncEntities.all) {
       expect(SyncEntities.byName(schema.name), same(schema));
     }
-    expect(SyncEntities.all.map((e) => e.name).toSet(), hasLength(12));
+    expect(SyncEntities.all.map((e) => e.name).toSet(), hasLength(15));
   });
 }
