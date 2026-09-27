@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -38,7 +39,9 @@ final class Bootstrap {
     if (created) await _deleteOrphanDatabase();
     final db = AppDatabase.open(encryptionKey: key);
 
-    final serverUrl = await db.readSetting<String>(SettingKeys.serverUrl);
+    final serverUrl =
+        await db.readSetting<String>(SettingKeys.serverUrl) ??
+        _defaultServerUrl();
     final userJson = await db.readSetting<Map<String, dynamic>>(
       SettingKeys.currentUser,
     );
@@ -57,6 +60,23 @@ final class Bootstrap {
       sidebarCollapsed:
           await db.readSetting<bool>(SettingKeys.sidebarCollapsed) ?? false,
     );
+  }
+
+  /// Adresse du serveur fournie par l'installeur (`voyaj.json` à côté de
+  /// l'exécutable) : les utilisateurs n'ont rien à saisir.
+  static String? _defaultServerUrl() {
+    final file = File(
+      p.join(p.dirname(Platform.resolvedExecutable), 'voyaj.json'),
+    );
+    if (!file.existsSync()) return null;
+    try {
+      final json = jsonDecode(file.readAsStringSync());
+      return json is Map<String, dynamic>
+          ? json['server_url'] as String?
+          : null;
+    } on FormatException {
+      return null;
+    }
   }
 
   /// Nouvelle clé (coffre réinitialisé) : une ancienne base serait

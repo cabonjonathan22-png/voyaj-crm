@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "fr.voyaj" "\0"
-            VALUE "FileDescription", "voyaj_client" "\0"
+            VALUE "CompanyName", "Voyaj" "\0"
+            VALUE "FileDescription", "Voyaj CRM" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "voyaj_client" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2026 fr.voyaj. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2026 Voyaj" "\0"
             VALUE "OriginalFilename", "voyaj_client.exe" "\0"
-            VALUE "ProductName", "voyaj_client" "\0"
+            VALUE "ProductName", "Voyaj CRM" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

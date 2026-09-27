@@ -28,3 +28,6 @@ Thumbs.db
 *.sqlite
 *.sqlite-journal
 *.db
+
+# Installeurs générés
+dist/
