@@ -1,0 +1,7 @@
+# Reverse proxy HTTPS (certificat Let's Encrypt automatique pour VOYAJ_DOMAIN).
+# Le WebSocket /ws est relayé automatiquement.
+{$VOYAJ_DOMAIN} {
+	encode zstd gzip
+	reverse_proxy server:8080
+	header -Server
+}

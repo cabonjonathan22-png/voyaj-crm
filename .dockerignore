@@ -1,0 +1,9 @@
+.git
+**/.dart_tool
+**/build
+**/.env
+apps/client/windows
+apps/client/linux
+apps/client/macos
+apps/client/assets
+deploy/windows

@@ -1,0 +1,65 @@
+# Déploiement cloud / serveur dédié : serveur Voyaj + PostgreSQL + Caddy (HTTPS
+# automatique Let's Encrypt).
+#
+#   cp .env.example .env    # puis renseigner les valeurs
+#   docker compose up -d --build
+#   docker compose run --rm server create-admin --email vous@exemple.fr --name "Vous"
+
+name: voyaj
+
+services:
+  postgres:
+    image: postgres:18-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: voyaj
+      POSTGRES_USER: voyaj
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD manquant}
+    volumes:
+      - pgdata:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U voyaj -d voyaj"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  server:
+    build:
+      context: ../..
+      dockerfile: deploy/docker/Dockerfile
+    image: voyaj/server:latest
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      VOYAJ_HOST: 0.0.0.0
+      VOYAJ_PORT: "8080"
+      # TLS assuré par Caddy ; le serveur fait confiance à X-Forwarded-For.
+      VOYAJ_TRUST_PROXY: "true"
+      DATABASE_URL: postgres://voyaj:${POSTGRES_PASSWORD}@postgres:5432/voyaj
+      VOYAJ_MASTER_KEY: ${VOYAJ_MASTER_KEY:?VOYAJ_MASTER_KEY manquant}
+      VOYAJ_LOG_LEVEL: ${VOYAJ_LOG_LEVEL:-INFO}
+    expose:
+      - "8080"
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on:
+      - server
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      VOYAJ_DOMAIN: ${VOYAJ_DOMAIN:?VOYAJ_DOMAIN manquant}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  pgdata:
+  caddy_data:
+  caddy_config:
