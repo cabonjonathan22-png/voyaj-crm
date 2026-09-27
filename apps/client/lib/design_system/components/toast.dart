@@ -71,35 +71,59 @@ final class ToastController extends ChangeNotifier {
 }
 
 /// Zone d'affichage des toasts, à placer au-dessus de l'application.
-class ToastHost extends StatelessWidget {
+///
+/// Les toasts ont leur propre [Overlay] : placés hors du navigateur, leurs
+/// infobulles (bouton de fermeture) en ont besoin.
+class ToastHost extends StatefulWidget {
   const ToastHost({super.key, required this.controller, required this.child});
 
   final ToastController controller;
   final Widget child;
 
   @override
-  Widget build(BuildContext context) => Stack(
-    children: [
-      child,
-      Positioned(
-        right: VSpace.x5,
-        bottom: VSpace.x5,
-        child: ListenableBuilder(
-          listenable: controller,
-          builder: (context, _) => Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              for (final (id, toast) in controller.toasts)
-                _ToastCard(
-                  key: ValueKey(id),
-                  toast: toast,
-                  onClose: () => controller.dismiss(id),
-                ),
-            ],
+  State<ToastHost> createState() => _ToastHostState();
+}
+
+class _ToastHostState extends State<ToastHost> {
+  late final _entry = OverlayEntry(
+    builder: (context) => Stack(
+      children: [
+        Positioned(
+          right: VSpace.x5,
+          bottom: VSpace.x5,
+          child: ListenableBuilder(
+            listenable: widget.controller,
+            builder: (context, _) => Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                for (final (id, toast) in widget.controller.toasts)
+                  _ToastCard(
+                    key: ValueKey(id),
+                    toast: toast,
+                    onClose: () => widget.controller.dismiss(id),
+                  ),
+              ],
+            ),
           ),
         ),
-      ),
+      ],
+    ),
+  );
+
+  @override
+  void dispose() {
+    _entry
+      ..remove()
+      ..dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => Stack(
+    children: [
+      widget.child,
+      Positioned.fill(child: Overlay(initialEntries: [_entry])),
     ],
   );
 }
