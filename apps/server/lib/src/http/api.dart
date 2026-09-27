@@ -45,8 +45,31 @@ Handler buildHandler({
 }) {
   RequestMeta meta(Request r) => requestMeta(r, trustProxy: trustProxy);
 
-  Future<AuthContext> authed(Request r) async =>
-      (await auth.authenticate(bearerToken(r))).withMeta(meta(r));
+  // Jetons d'API personnels : API publique (`/records`) et `/auth/me`
+  // seulement.
+  Future<AuthContext> authed(Request r) async {
+    final ctx = (await auth.authenticate(bearerToken(r))).withMeta(meta(r));
+    if (ctx.viaApiToken &&
+        !r.url.path.startsWith('records/') &&
+        r.url.path != 'records' &&
+        r.url.path != 'auth/me') {
+      throw const ApiException.forbidden(
+        'Point d’accès non disponible avec un jeton d’API.',
+      );
+    }
+    return ctx;
+  }
+
+  EntitySchema entityOf(String name) =>
+      SyncEntities.byName(name) ??
+      (throw const ApiException.notFound('Entité inconnue.'));
+
+  Response writeResult(OpResult result, {int status = 200}) =>
+      switch (result.status) {
+        OpStatus.forbidden => throw const ApiException.forbidden(),
+        OpStatus.invalid => throw ApiException.validation(result.issues),
+        _ => jsonResponse(result.record?.toJson(), status: status),
+      };
 
   final api = Router()
     // ── Authentification ──
@@ -464,6 +487,86 @@ Handler buildHandler({
           HttpHeaders.cacheControlHeader: 'private, max-age=300',
         },
       );
+    })
+    // ── Jetons d'API personnels ──
+    ..get('/auth/api-tokens', (Request r) async {
+      final list = await auth.listApiTokens(await authed(r));
+      return jsonResponse([for (final t in list) t.toJson()]);
+    })
+    ..post('/auth/api-tokens', (Request r) async {
+      final ctx = await authed(r);
+      final body = await readJson(r, CreateApiTokenRequest.fromJson);
+      return jsonResponse(
+        (await auth.createApiToken(ctx, body)).toJson(),
+        status: 201,
+      );
+    })
+    ..delete('/auth/api-tokens/<id>', (Request r, String id) async {
+      await auth.revokeApiToken(await authed(r), id);
+      return noContent();
+    })
+    // ── API publique : enregistrements ──
+    ..get('/records/<entity>', (Request r, String entity) async {
+      final page = await sync.listRecords(
+        await authed(r),
+        entityOf(entity),
+        cursor: intParam(r, 'cursor') ?? 0,
+        limit: intParam(r, 'limit') ?? 100,
+      );
+      return jsonResponse({
+        'records': [for (final rec in page.records) rec.toJson()],
+        'cursor': page.cursor,
+        'has_more': page.hasMore,
+      });
+    })
+    ..get('/records/<entity>/<id>', (
+      Request r,
+      String entity,
+      String id,
+    ) async {
+      final record = await sync.getRecord(
+        await authed(r),
+        entityOf(entity),
+        id,
+      );
+      return jsonResponse(record.toJson());
+    })
+    ..post('/records/<entity>', (Request r, String entity) async {
+      final ctx = await authed(r);
+      final fields = await readJson(r, (json) => json);
+      final id = switch (fields.remove('id')) {
+        final String given when isValidId(given) => given,
+        null => newId(),
+        _ => throw const ApiException.badRequest('Identifiant invalide.'),
+      };
+      final result = await sync.writeRecord(ctx, entityOf(entity), id, fields);
+      return writeResult(result, status: 201);
+    })
+    ..patch('/records/<entity>/<id>', (
+      Request r,
+      String entity,
+      String id,
+    ) async {
+      final ctx = await authed(r);
+      final schema = entityOf(entity);
+      await sync.getRecord(ctx, schema, id);
+      final fields = await readJson(r, (json) => json);
+      return writeResult(await sync.writeRecord(ctx, schema, id, fields));
+    })
+    ..delete('/records/<entity>/<id>', (
+      Request r,
+      String entity,
+      String id,
+    ) async {
+      final ctx = await authed(r);
+      final schema = entityOf(entity);
+      await sync.getRecord(ctx, schema, id);
+      writeResult(
+        await sync.writeRecord(ctx, schema, id, {
+          SyncColumns.deletedAt: DateTime.now().toUtc().toIso8601String(),
+        }),
+      );
+      return noContent();
     })
     // ── Audit ──
     ..get('/audit', (Request r) async {

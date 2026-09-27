@@ -23,6 +23,7 @@ final class AuthContext {
     required this.displayName,
     required this.permissions,
     this.meta = const RequestMeta(),
+    this.viaApiToken = false,
   });
 
   final String userId;
@@ -32,6 +33,10 @@ final class AuthContext {
   final String displayName;
   final Set<String> permissions;
   final RequestMeta meta;
+
+  /// Appel authentifié par un jeton d'API personnel ([sessionId] et
+  /// [deviceId] valent alors l'identifiant du jeton).
+  final bool viaApiToken;
 
   bool can(Permission permission) => permissions.contains(permission.key);
 
@@ -52,5 +57,6 @@ final class AuthContext {
     displayName: displayName,
     permissions: permissions,
     meta: meta,
+    viaApiToken: viaApiToken,
   );
 }

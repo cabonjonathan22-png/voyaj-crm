@@ -165,6 +165,16 @@ ApiClient fakeApi(Bootstrap boot) {
         '/api/v1/email/messages' => [for (final m in messages) m.toJson()],
         '/api/v1/connectors' => [for (final c in connectors) c.toJson()],
         '/api/v1/webhooks' => [for (final w in webhooks) w.toJson()],
+        '/api/v1/auth/api-tokens' => [
+          ApiTokenInfo(
+            id: newId(),
+            name: 'Synchronisation ERP',
+            permissions: const ['organisation.read', 'invoice.read'],
+            createdAt: now.subtract(const Duration(days: 40)),
+            lastUsedAt: now.subtract(const Duration(hours: 2)),
+            expiresAt: now.add(const Duration(days: 325)),
+          ).toJson(),
+        ],
         '/api/v1/billing/settings' => const BillingSettings(
           legalName: 'Voyaj SAS',
           siren: '123456782',

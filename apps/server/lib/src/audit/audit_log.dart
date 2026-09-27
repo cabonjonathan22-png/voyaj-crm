@@ -42,6 +42,8 @@ abstract final class AuditActions {
   static const connectorTokenCreated = 'connector.webhook_token.created';
   static const webhookSaved = 'webhook.saved';
   static const webhookDeleted = 'webhook.deleted';
+  static const apiTokenCreated = 'auth.api_token.created';
+  static const apiTokenRevoked = 'auth.api_token.revoked';
 }
 
 /// Événement à journaliser.

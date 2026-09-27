@@ -5,6 +5,7 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../app/app.dart';
 import '../../design_system/design_system.dart';
+import 'api_tokens_section.dart';
 import 'appearance_section.dart';
 import 'billing_section.dart';
 import 'custom_fields_section.dart';
@@ -35,6 +36,11 @@ enum SettingsSection {
     'Facturation',
     LucideIcons.receipt,
     'factures devis mentions légales siren tva chorus pro comptabilité fec',
+  ),
+  apiTokens(
+    'API et jetons',
+    LucideIcons.keyRound,
+    'api rest intégration jeton token erp zapier make',
   );
 
   const SettingsSection(this.label, this.icon, this.keywords);
@@ -90,6 +96,7 @@ class SettingsPage extends ConsumerWidget {
                       SettingsSection.customFields =>
                         const CustomFieldsSection(),
                       SettingsSection.billing => const BillingSection(),
+                      SettingsSection.apiTokens => const ApiTokensSection(),
                     },
                   ),
                 ),

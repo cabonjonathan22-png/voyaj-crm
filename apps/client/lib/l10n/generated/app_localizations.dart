@@ -4736,6 +4736,120 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Aucun lien d\'abonnement actif.'**
   String get agendaLinkNone;
+
+  /// No description provided for @apiTokensTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Jetons d\'API personnels'**
+  String get apiTokensTitle;
+
+  /// No description provided for @apiTokensHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'Pour relier Voyaj à vos outils (ERP, scripts, Make, Zapier…) : chaque jeton agit en votre nom, avec les seules permissions choisies.'**
+  String get apiTokensHelp;
+
+  /// No description provided for @apiTokensEmpty.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun jeton.'**
+  String get apiTokensEmpty;
+
+  /// No description provided for @apiTokenNew.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouveau jeton'**
+  String get apiTokenNew;
+
+  /// No description provided for @apiTokenName.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nom'**
+  String get apiTokenName;
+
+  /// No description provided for @apiTokenNameHint.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ex. : Synchronisation ERP'**
+  String get apiTokenNameHint;
+
+  /// No description provided for @apiTokenValidity.
+  ///
+  /// In fr, this message translates to:
+  /// **'Validité'**
+  String get apiTokenValidity;
+
+  /// No description provided for @apiTokenDays.
+  ///
+  /// In fr, this message translates to:
+  /// **'{days} jours'**
+  String apiTokenDays(int days);
+
+  /// No description provided for @apiTokenNoExpiry.
+  ///
+  /// In fr, this message translates to:
+  /// **'Sans expiration'**
+  String get apiTokenNoExpiry;
+
+  /// No description provided for @apiTokenScopes.
+  ///
+  /// In fr, this message translates to:
+  /// **'Permissions accordées'**
+  String get apiTokenScopes;
+
+  /// No description provided for @apiTokenPermissions.
+  ///
+  /// In fr, this message translates to:
+  /// **'{count, plural, =1{1 permission} other{{count} permissions}}'**
+  String apiTokenPermissions(int count);
+
+  /// No description provided for @apiTokenCreated.
+  ///
+  /// In fr, this message translates to:
+  /// **'créé le {date}'**
+  String apiTokenCreated(String date);
+
+  /// No description provided for @apiTokenUsed.
+  ///
+  /// In fr, this message translates to:
+  /// **'utilisé {when}'**
+  String apiTokenUsed(String when);
+
+  /// No description provided for @apiTokenExpires.
+  ///
+  /// In fr, this message translates to:
+  /// **'expire le {date}'**
+  String apiTokenExpires(String date);
+
+  /// No description provided for @apiTokenRevoke.
+  ///
+  /// In fr, this message translates to:
+  /// **'Révoquer'**
+  String get apiTokenRevoke;
+
+  /// No description provided for @apiTokenRevokeTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Révoquer « {name} » ?'**
+  String apiTokenRevokeTitle(String name);
+
+  /// No description provided for @apiTokenRevokeMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Les outils qui utilisent ce jeton perdront immédiatement l\'accès.'**
+  String get apiTokenRevokeMessage;
+
+  /// No description provided for @apiDocTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Utilisation'**
+  String get apiDocTitle;
+
+  /// No description provided for @apiDocHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'En-tête « Authorization: Bearer <jeton> ». Points d\'accès : GET /api/v1/records/<entité>?cursor=&limit= (changements depuis un curseur), GET /api/v1/records/<entité>/<id>, POST /api/v1/records/<entité>, PATCH et DELETE /api/v1/records/<entité>/<id>. Entités : organisations, contacts, deals, activities… (voir docs/API.md).'**
+  String get apiDocHelp;
 }
 
 class _AppLocalizationsDelegate

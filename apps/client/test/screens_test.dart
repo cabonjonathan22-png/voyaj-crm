@@ -38,6 +38,7 @@ void main() {
     'emails': Routes.emails,
     'billing': Routes.billing,
     'settings_billing': '${Routes.settings}/billing',
+    'settings_api_tokens': '${Routes.settings}/apiTokens',
     'settings_email_accounts': '${Routes.settings}/emailAccounts',
     'tags': Routes.tags,
     'tag_detail': '${Routes.tags}?id=tag-1',

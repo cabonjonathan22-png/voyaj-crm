@@ -412,6 +412,9 @@ final class AuthService {
 
   /// Authentifie un jeton d'accès.
   Future<AuthContext> authenticate(String accessToken) async {
+    if (accessToken.startsWith(apiTokenPrefix)) {
+      return _authenticateApiToken(accessToken);
+    }
     final row = await _db.run(
       (s) => s.queryOne(
         'SELECT s.id, s.user_id, s.device_id, s.access_expires_at, '
@@ -460,6 +463,170 @@ final class AuthService {
       displayName: row['display_name'] as String,
       permissions: await _db.run((s) => permissionsOf(s, userId)),
     );
+  }
+
+  /// Jeton d'API personnel : permissions = celles du jeton limitées à
+  /// celles, actuelles, de l'utilisateur.
+  Future<AuthContext> _authenticateApiToken(String token) async {
+    final row = await _db.run(
+      (s) => s.queryOne(
+        'SELECT t.id, t.user_id, t.permissions, t.expires_at, t.revoked_at, '
+        't.last_used_at, u.status, u.email::text AS email, u.display_name '
+        'FROM api_tokens t JOIN users u ON u.id = t.user_id '
+        'WHERE t.token_hash = @h',
+        {'h': hashToken(token)},
+      ),
+    );
+    if (row == null || row['revoked_at'] != null) {
+      throw const ApiException.unauthenticated('Jeton d’API invalide.');
+    }
+    final expires = row['expires_at'] as DateTime?;
+    if (expires != null && expires.isBefore(_now())) {
+      throw const ApiException(
+        401,
+        ApiErrorCodes.tokenExpired,
+        'Jeton d’API expiré.',
+      );
+    }
+    if (row['status'] != UserStatus.active.name) {
+      throw const ApiException(
+        403,
+        ApiErrorCodes.accountDisabled,
+        'Ce compte est désactivé.',
+      );
+    }
+    final id = row['id'] as String;
+    final userId = row['user_id'] as String;
+    final lastUsed = row['last_used_at'] as DateTime?;
+    if (lastUsed == null ||
+        _now().difference(lastUsed) > const Duration(minutes: 1)) {
+      await _db.query(
+        'UPDATE api_tokens SET last_used_at = now() WHERE id = @id',
+        {'id': id},
+      );
+    }
+    final granted = {for (final p in row['permissions'] as List) '$p'};
+    return AuthContext(
+      userId: userId,
+      sessionId: id,
+      deviceId: id,
+      email: row['email'] as String,
+      displayName: row['display_name'] as String,
+      permissions: (await _db.run((s) => permissionsOf(s, userId)))
+          .intersection(granted),
+      viaApiToken: true,
+    );
+  }
+
+  // ── Jetons d'API personnels ──────────────────────────────────────────
+
+  Future<List<ApiTokenInfo>> listApiTokens(AuthContext ctx) async {
+    final rows = await _db.run(
+      (s) => s.queryAll(
+        'SELECT * FROM api_tokens WHERE user_id = @u AND revoked_at IS NULL '
+        'ORDER BY created_at DESC',
+        {'u': ctx.userId},
+      ),
+    );
+    return [for (final r in rows) _apiTokenInfo(r)];
+  }
+
+  static ApiTokenInfo _apiTokenInfo(Map<String, dynamic> r) => ApiTokenInfo(
+    id: r['id'] as String,
+    name: r['name'] as String,
+    permissions: [for (final p in r['permissions'] as List) '$p'],
+    createdAt: r['created_at'] as DateTime,
+    lastUsedAt: r['last_used_at'] as DateTime?,
+    expiresAt: r['expires_at'] as DateTime?,
+  );
+
+  /// Crée un jeton (depuis une session uniquement, jamais par jeton) avec
+  /// au plus les permissions de l'utilisateur.
+  Future<CreatedApiToken> createApiToken(
+    AuthContext ctx,
+    CreateApiTokenRequest request,
+  ) async {
+    if (ctx.viaApiToken) {
+      throw const ApiException.forbidden(
+        'Un jeton d’API ne peut pas créer d’autres jetons.',
+      );
+    }
+    final unknown = request.permissions.where(
+      (p) => Permission.fromKey(p) == null || !ctx.permissions.contains(p),
+    );
+    final issues = collectIssues([
+      validateRequiredText('name', request.name, label: 'Le nom', max: 100),
+      if (request.permissions.isEmpty || unknown.isNotEmpty)
+        ValidationIssue(
+          field: 'permissions',
+          code: ValidationCodes.invalidFormat,
+          message: request.permissions.isEmpty
+              ? 'Choisissez au moins une permission.'
+              : 'Permissions non accordées : ${unknown.join(', ')}.',
+        ),
+      if (request.expiresInDays != null &&
+          (request.expiresInDays! < 1 || request.expiresInDays! > 3650))
+        const ValidationIssue(
+          field: 'expiresInDays',
+          code: ValidationCodes.invalidFormat,
+          message: 'Validité de 1 à 3 650 jours.',
+        ),
+    ]);
+    if (issues.isNotEmpty) throw ApiException.validation(issues);
+    final token = '$apiTokenPrefix${randomToken()}';
+    final row = await _db.tx((tx) async {
+      final row = await tx.queryOne(
+        'INSERT INTO api_tokens (id, user_id, name, token_hash, permissions, '
+        'expires_at) VALUES (@id, @u, @n, @h, @p:_text, @exp) RETURNING *',
+        {
+          'id': newId(),
+          'u': ctx.userId,
+          'n': request.name.trim(),
+          'h': hashToken(token),
+          'p': request.permissions.toSet().toList()..sort(),
+          'exp': request.expiresInDays == null
+              ? null
+              : _now().add(Duration(days: request.expiresInDays!)),
+        },
+      );
+      await AuditLog.append(
+        tx,
+        AuditEvent(
+          action: AuditActions.apiTokenCreated,
+          actorUserId: ctx.userId,
+          sessionId: ctx.sessionId,
+          entity: 'api_tokens',
+          entityId: row!['id'] as String,
+          payload: {'name': request.name, 'permissions': request.permissions},
+          ip: ctx.meta.ip,
+        ),
+      );
+      return row;
+    });
+    return CreatedApiToken(info: _apiTokenInfo(row), token: token);
+  }
+
+  Future<void> revokeApiToken(AuthContext ctx, String id) async {
+    if (!isValidId(id)) throw const ApiException.notFound('Jeton introuvable.');
+    await _db.tx((tx) async {
+      final row = await tx.queryOne(
+        'UPDATE api_tokens SET revoked_at = now() WHERE id = @id '
+        'AND user_id = @u AND revoked_at IS NULL RETURNING id',
+        {'id': id, 'u': ctx.userId},
+      );
+      if (row == null) throw const ApiException.notFound('Jeton introuvable.');
+      await AuditLog.append(
+        tx,
+        AuditEvent(
+          action: AuditActions.apiTokenRevoked,
+          actorUserId: ctx.userId,
+          sessionId: ctx.sessionId,
+          entity: 'api_tokens',
+          entityId: id,
+          ip: ctx.meta.ip,
+        ),
+      );
+    });
   }
 
   // ── Sessions ─────────────────────────────────────────────────────────

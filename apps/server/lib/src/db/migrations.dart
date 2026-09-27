@@ -13,6 +13,7 @@ import 'migrations/m0004_email.dart';
 import 'migrations/m0005_billing.dart';
 import 'migrations/m0006_connectors.dart';
 import 'migrations/m0007_calendar.dart';
+import 'migrations/m0008_api_tokens.dart';
 
 /// Migration SQL versionnée. Une migration appliquée ne doit plus jamais
 /// être modifiée : on en ajoute une nouvelle (le checksum est vérifié).
@@ -37,6 +38,7 @@ const List<Migration> migrations = [
   m0005Billing,
   m0006Connectors,
   m0007Calendar,
+  m0008ApiTokens,
 ];
 
 final _log = Logger('migrations');

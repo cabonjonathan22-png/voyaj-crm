@@ -690,6 +690,71 @@ final class SyncService {
     );
   }
 
+  // ── API publique (enregistrements) ───────────────────────────────────
+
+  /// Enregistrements de [schema] modifiés après [cursor] (supprimés
+  /// compris, `deleted_at` renseigné), par ordre de séquence.
+  Future<({List<SyncRecord> records, int cursor, bool hasMore})> listRecords(
+    AuthContext ctx,
+    EntitySchema schema, {
+    int cursor = 0,
+    int limit = 100,
+  }) async {
+    ctx.require(schema.readPermission);
+    final size = limit.clamp(1, 500);
+    final rows = await _db.run(
+      (s) => s.queryAll(
+        'SELECT * FROM ${schema.name} WHERE seq > @c ORDER BY seq LIMIT @n',
+        {'c': cursor, 'n': size + 1},
+      ),
+    );
+    final records = [for (final row in rows.take(size)) _toRecord(schema, row)];
+    return (
+      records: records,
+      cursor: records.isEmpty ? cursor : records.last.seq,
+      hasMore: rows.length > size,
+    );
+  }
+
+  Future<SyncRecord> getRecord(
+    AuthContext ctx,
+    EntitySchema schema,
+    String id,
+  ) async {
+    ctx.require(schema.readPermission);
+    final record = isValidId(id)
+        ? await _db.run((s) => _loadRecord(s, schema, id))
+        : null;
+    if (record == null) {
+      throw const ApiException.notFound('Enregistrement introuvable.');
+    }
+    return record;
+  }
+
+  /// Écriture par l'API publique : mêmes contrôles qu'un envoi de poste
+  /// (droits, validation, verrous, audit), horodatée par le serveur.
+  Future<OpResult> writeRecord(
+    AuthContext ctx,
+    EntitySchema schema,
+    String id,
+    Map<String, Object?> fields,
+  ) async {
+    final current = isValidId(id)
+        ? await _db.run((s) => _loadRecord(s, schema, id))
+        : null;
+    final op = SyncOperation(
+      opId: newId(),
+      entity: schema.name,
+      entityId: id,
+      baseVersion: current?.version ?? 0,
+      hlc: _hlc.now().toString(),
+      fields: fields,
+    );
+    final (result, seq) = await _applyOperation(ctx, op);
+    notifyChange(seq);
+    return result;
+  }
+
   // ── Pull ─────────────────────────────────────────────────────────────
 
   /// Derniers états des enregistrements de [schemas] modifiés après

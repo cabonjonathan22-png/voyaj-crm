@@ -2716,4 +2716,82 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get agendaLinkNone => 'Aucun lien d\'abonnement actif.';
+
+  @override
+  String get apiTokensTitle => 'Jetons d\'API personnels';
+
+  @override
+  String get apiTokensHelp =>
+      'Pour relier Voyaj à vos outils (ERP, scripts, Make, Zapier…) : chaque jeton agit en votre nom, avec les seules permissions choisies.';
+
+  @override
+  String get apiTokensEmpty => 'Aucun jeton.';
+
+  @override
+  String get apiTokenNew => 'Nouveau jeton';
+
+  @override
+  String get apiTokenName => 'Nom';
+
+  @override
+  String get apiTokenNameHint => 'Ex. : Synchronisation ERP';
+
+  @override
+  String get apiTokenValidity => 'Validité';
+
+  @override
+  String apiTokenDays(int days) {
+    return '$days jours';
+  }
+
+  @override
+  String get apiTokenNoExpiry => 'Sans expiration';
+
+  @override
+  String get apiTokenScopes => 'Permissions accordées';
+
+  @override
+  String apiTokenPermissions(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count permissions',
+      one: '1 permission',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String apiTokenCreated(String date) {
+    return 'créé le $date';
+  }
+
+  @override
+  String apiTokenUsed(String when) {
+    return 'utilisé $when';
+  }
+
+  @override
+  String apiTokenExpires(String date) {
+    return 'expire le $date';
+  }
+
+  @override
+  String get apiTokenRevoke => 'Révoquer';
+
+  @override
+  String apiTokenRevokeTitle(String name) {
+    return 'Révoquer « $name » ?';
+  }
+
+  @override
+  String get apiTokenRevokeMessage =>
+      'Les outils qui utilisent ce jeton perdront immédiatement l\'accès.';
+
+  @override
+  String get apiDocTitle => 'Utilisation';
+
+  @override
+  String get apiDocHelp =>
+      'En-tête « Authorization: Bearer <jeton> ». Points d\'accès : GET /api/v1/records/<entité>?cursor=&limit= (changements depuis un curseur), GET /api/v1/records/<entité>/<id>, POST /api/v1/records/<entité>, PATCH et DELETE /api/v1/records/<entité>/<id>. Entités : organisations, contacts, deals, activities… (voir docs/API.md).';
 }
