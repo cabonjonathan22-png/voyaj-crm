@@ -1,0 +1,5 @@
+[
+ {"nom":"Rodez","code":"12202","codesPostaux":["12000"],"siren":"211202023","codeEpci":"241200567","codeDepartement":"12","codeRegion":"76","population":24989,"centre":{"type":"Point","coordinates":[2.5707,44.3553]}},
+ {"nom":"Onet-le-Château","code":"12176","codesPostaux":["12850","12000"],"siren":"211201769","codeEpci":"241200567","codeDepartement":"12","codeRegion":"76","population":12200,"centre":{"type":"Point","coordinates":[2.59,44.37]}},
+ {"nom":"Millau","code":"12145","codesPostaux":["12100"],"siren":"211201454","codeEpci":"241200187","codeDepartement":"12","codeRegion":"76","population":22003,"centre":{"type":"Point","coordinates":[3.0783,44.0986]}}
+]

@@ -12,6 +12,7 @@ export 'src/crm/enums.dart';
 export 'src/crm/rules.dart';
 export 'src/ids.dart';
 export 'src/models/tag.dart';
+export 'src/public_data/public_data.dart';
 export 'src/sync/entities.dart';
 export 'src/sync/entity_schema.dart';
 export 'src/sync/field_stamp.dart';

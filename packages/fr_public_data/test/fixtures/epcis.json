@@ -1,0 +1,5 @@
+[
+ {"nom":"CA Rodez Agglomération","code":"241200567","codesDepartements":["12"],"codesRegions":["76"],"population":56011,"centre":{"type":"Point","coordinates":[2.5705,44.3572]}},
+ {"nom":"Métropole Européenne de Lille","code":"200093201","codesDepartements":["59"],"codesRegions":["32"],"population":1181052,"centre":{"type":"Point","coordinates":[3.0578,50.6311]}},
+ {"nom":"CC de Millau Grands Causses","code":"241200187","codesDepartements":["12"],"codesRegions":["76"],"population":30000}
+]

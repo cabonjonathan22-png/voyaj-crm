@@ -1,0 +1,5 @@
+{"type":"FeatureCollection","features":[
+ {"type":"Feature","geometry":null,"properties":{"nom":"Rodez Agglomération","siren":"241200567","departement":"12","region":"76","forme_juridique":"CA"}},
+ {"type":"Feature","geometry":null,"properties":{"nom":"Région Occitanie","siren":"200053791","departement":null,"forme_juridique":"Région"}},
+ {"type":"Feature","geometry":null,"properties":{"nom_aom":"SMT Artois-Gohelle","siren_aom":"256202549","code_departement":"62"}}
+]}

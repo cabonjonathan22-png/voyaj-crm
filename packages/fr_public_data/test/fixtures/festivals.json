@@ -1,0 +1,5 @@
+[
+ {"identifiant":"FEST_12145_1","nom_du_festival":"Millau Jazz Festival","commune_principale_de_deroulement":"Millau","code_postal_de_la_commune_principale_de_deroulement":"12100","code_insee_commune":"12145","site_internet_du_festival":"www.millaujazz.fr","adresse_e_mail":"contact@millaujazz.fr","discipline_dominante":"Musique","periode_principale_de_deroulement_du_festival":"Saison (21 juin - 5 septembre)","geocodage_xy":{"lon":3.0783,"lat":44.0986}},
+ {"identifiant":"FEST_19272_2","nom_du_festival":"Festival des Nuits de Nacre","commune_principale_de_deroulement":"Tulle","code_postal_de_la_commune_principale_de_deroulement":"19000","code_insee_commune":"19272","adresse_e_mail":"non communiqué","geocodage_xy":{"lon":1.7722,"lat":45.2658}},
+ {"nom_du_festival":"","commune_principale_de_deroulement":"Nulle part"}
+]

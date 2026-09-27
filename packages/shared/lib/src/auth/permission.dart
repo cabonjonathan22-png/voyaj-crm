@@ -31,6 +31,10 @@ enum Permission {
   ),
   dataImport('data.import', 'Importer des données (CSV, Excel)'),
   dataExport('data.export', 'Exporter des données (CSV, Excel)'),
+  publicDataManage(
+    'publicdata.manage',
+    'Configurer et lancer les imports de données publiques',
+  ),
   syncConflictRead('sync.conflict.read', 'Consulter le journal des conflits'),
   syncConflictManage(
     'sync.conflict.manage',
