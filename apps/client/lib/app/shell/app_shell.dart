@@ -193,6 +193,8 @@ class _Sidebar extends ConsumerWidget {
         ),
       if (can(Permission.organisationRead))
         _NavItem(LucideIcons.map, l10n.navMap, Routes.map, shortcut: 'Ctrl 5'),
+      if (can(Permission.dealRead))
+        _NavItem(LucideIcons.gavel, l10n.navTenders, Routes.tenders),
       if (can(Permission.invoiceRead))
         _NavItem(
           LucideIcons.receipt,

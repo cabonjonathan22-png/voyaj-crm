@@ -24,6 +24,7 @@ import '../files/file_store.dart';
 import '../public_data/public_data_service.dart';
 import '../realtime/realtime_hub.dart';
 import '../sync/sync_service.dart';
+import '../tenders/tender_service.dart';
 import 'http_utils.dart';
 
 /// Version de l'application serveur (exposée par /health).
@@ -45,6 +46,7 @@ Handler buildHandler({
   required CalendarService calendar,
   required GdprService gdpr,
   required BackupService backups,
+  required TenderService tenders,
   required bool trustProxy,
   required bool hsts,
 }) {
@@ -572,6 +574,30 @@ Handler buildHandler({
         }),
       );
       return noContent();
+    })
+    // ── Appels d'offres ──
+    ..get('/tenders/watch', (Request r) async {
+      return jsonResponse((await tenders.watch(await authed(r))).toJson());
+    })
+    ..put('/tenders/watch', (Request r) async {
+      final ctx = await authed(r);
+      final body = await readJson(r, TenderWatch.fromJson);
+      return jsonResponse((await tenders.configure(ctx, body)).toJson());
+    })
+    ..post('/tenders/run', (Request r) async {
+      return jsonResponse({'added': await tenders.run(await authed(r))});
+    })
+    ..get('/tenders', (Request r) async {
+      final list = await tenders.list(
+        await authed(r),
+        status: r.url.queryParameters['status'],
+      );
+      return jsonResponse([for (final t in list) t.toJson()]);
+    })
+    ..patch('/tenders/<id>', (Request r, String id) async {
+      final ctx = await authed(r);
+      final body = await readJson(r, UpdateTenderRequest.fromJson);
+      return jsonResponse((await tenders.update(ctx, id, body)).toJson());
     })
     // ── RGPD ──
     ..get('/gdpr/contacts/<id>/export', (Request r, String id) async {

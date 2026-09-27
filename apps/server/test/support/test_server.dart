@@ -40,6 +40,7 @@ final class TestServer {
     ChorusProClient? chorusClient,
     SourceOpener? sourceOpener,
     http.Client? webhookClient,
+    BoampClient? boampClient,
     Map<String, String> extraConfig = const {},
   }) async {
     final config = ServerConfig.fromMap({
@@ -61,6 +62,7 @@ final class TestServer {
       chorusClient: chorusClient,
       sourceOpener: sourceOpener,
       webhookClient: webhookClient,
+      boampClient: boampClient,
     );
     await server.services.users.createAdmin(
       email: adminEmail,

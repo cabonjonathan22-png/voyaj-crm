@@ -72,6 +72,9 @@ final class PublicDataClient {
     };
   }
 
+  /// Document JSON à [url] (erreurs en [PublicDataException]).
+  Future<Object?> getJson(String url) => _get(url);
+
   Future<Object?> _get(String url) async {
     final uri = Uri.parse(url);
     final http.Response response;

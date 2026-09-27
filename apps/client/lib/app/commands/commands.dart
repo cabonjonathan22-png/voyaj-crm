@@ -211,6 +211,14 @@ final commandsProvider = Provider<List<AppCommand>>((ref) {
         Permission.activityRead,
       ),
       (
+        Routes.tenders,
+        "Aller aux appels d'offres",
+        LucideIcons.gavel,
+        null,
+        'boamp marchés publics veille consultation',
+        Permission.dealRead,
+      ),
+      (
         Routes.duplicates,
         'Aller aux doublons',
         LucideIcons.copy,

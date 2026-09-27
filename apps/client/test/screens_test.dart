@@ -38,6 +38,7 @@ void main() {
     'gdpr': Routes.gdpr,
     'emails': Routes.emails,
     'billing': Routes.billing,
+    'tenders': Routes.tenders,
     'settings_billing': '${Routes.settings}/billing',
     'settings_api_tokens': '${Routes.settings}/apiTokens',
     'settings_email_accounts': '${Routes.settings}/emailAccounts',

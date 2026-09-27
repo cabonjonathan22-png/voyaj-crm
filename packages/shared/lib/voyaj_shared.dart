@@ -26,4 +26,5 @@ export 'src/sync/field_stamp.dart';
 export 'src/sync/hlc.dart';
 export 'src/sync/merge.dart';
 export 'src/sync/protocol.dart';
+export 'src/tenders/tender_dto.dart';
 export 'src/validation/validation.dart';

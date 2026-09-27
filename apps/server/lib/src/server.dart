@@ -30,6 +30,7 @@ import 'realtime/realtime_hub.dart';
 import 'security/passwords.dart';
 import 'security/secret_cipher.dart';
 import 'sync/sync_service.dart';
+import 'tenders/tender_service.dart';
 
 final _log = Logger('server');
 
@@ -50,6 +51,7 @@ final class Services {
     this.calendar,
     this.gdpr,
     this.backups,
+    this.tenders,
   );
 
   factory Services.create(
@@ -61,6 +63,7 @@ final class Services {
     ChorusProClient? chorusClient,
     SourceOpener? sourceOpener,
     http.Client? webhookClient,
+    BoampClient? boampClient,
   }) {
     final cipher = SecretCipher(config.masterKey);
     final hasher = PasswordHasher(
@@ -150,6 +153,7 @@ final class Services {
         keepDays: config.backupKeepDays,
         pgDump: config.pgDumpPath,
       ),
+      TenderService(db: db, boamp: boampClient ?? BoampClient()),
     );
   }
 
@@ -167,6 +171,7 @@ final class Services {
   final CalendarService calendar;
   final GdprService gdpr;
   final BackupService backups;
+  final TenderService tenders;
 }
 
 /// Serveur HTTP en cours d'exécution.
@@ -188,6 +193,7 @@ final class VoyajServer {
     ChorusProClient? chorusClient,
     SourceOpener? sourceOpener,
     http.Client? webhookClient,
+    BoampClient? boampClient,
   }) async {
     final db = Database.open(config.database, poolSize: config.dbPoolSize);
     if (config.autoMigrate) {
@@ -203,6 +209,7 @@ final class VoyajServer {
       chorusClient: chorusClient,
       sourceOpener: sourceOpener,
       webhookClient: webhookClient,
+      boampClient: boampClient,
     );
     await services.users.syncSystemRoles();
     await services.publicData.recoverInterrupted();
@@ -224,6 +231,7 @@ final class VoyajServer {
       calendar: services.calendar,
       gdpr: services.gdpr,
       backups: services.backups,
+      tenders: services.tenders,
       trustProxy: config.trustProxy,
       hsts: config.tlsEnabled || config.trustProxy,
     );
@@ -252,6 +260,11 @@ final class VoyajServer {
         services.publicData.runScheduledIfDue().catchError(
           (Object e) =>
               _log.warning('Import planifié des données publiques', e),
+        ),
+      );
+      unawaited(
+        services.tenders.runScheduledIfDue().catchError(
+          (Object e) => _log.warning('Veille des appels d’offres', e),
         ),
       );
       unawaited(

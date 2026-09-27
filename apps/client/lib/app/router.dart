@@ -31,6 +31,7 @@ import '../features/email/emails_page.dart';
 import '../features/settings/settings_page.dart';
 import '../features/sync/sync_page.dart';
 import '../features/tags/tags_page.dart';
+import '../features/tenders/tenders_page.dart';
 import 'providers.dart';
 import 'shell/app_shell.dart';
 
@@ -50,6 +51,7 @@ abstract final class Routes {
   static const duplicates = '/doublons';
   static const emails = '/emails';
   static const billing = '/facturation';
+  static const tenders = '/appels-offres';
   static const tags = '/tags';
   static const sync = '/sync';
   static const settings = '/settings';
@@ -176,6 +178,10 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: Routes.billing,
             pageBuilder: (_, state) => _instant(state, const BillingPage()),
+          ),
+          GoRoute(
+            path: Routes.tenders,
+            pageBuilder: (_, state) => _instant(state, const TendersPage()),
           ),
           GoRoute(
             path: Routes.duplicates,

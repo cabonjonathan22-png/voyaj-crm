@@ -1,0 +1,29 @@
+{
+  "total_count": 3,
+  "results": [
+    {
+      "idweb": "26-104512",
+      "objet": "Transport de voyageurs : navettes estivales vers les sites touristiques",
+      "nomacheteur": "Communauté de communes du Lévézou",
+      "dateparution": "2026-09-21",
+      "datelimitereponse": "2026-10-20T12:00:00+02:00",
+      "code_departement": ["12"],
+      "type_marche": ["SERVICES"],
+      "procedure_libelle": "Procédure adaptée",
+      "descripteur_libelle": ["Transport de voyageurs", "Tourisme"],
+      "url_avis": "https://www.boamp.fr/pages/avis/?q=idweb:26-104512"
+    },
+    {
+      "idweb": "26-103877",
+      "objet": "Service de transport à la demande",
+      "nomacheteur": "Ville de Millau",
+      "dateparution": "2026-09-18",
+      "code_departement": "12",
+      "nature_libelle": "Avis de marché"
+    },
+    {
+      "idweb": "26-100000",
+      "dateparution": "2026-09-01"
+    }
+  ]
+}

@@ -13,6 +13,7 @@ import '../widgets/record_form.dart';
 
 /// Création ([deal] `null`) ou modification d'une affaire. L'étape
 /// détermine le pipeline et le statut (gagnée, perdue, en cours).
+/// [prefill] : valeurs initiales d'une nouvelle affaire (titre…).
 Future<String?> showDealForm(
   BuildContext context,
   WidgetRef ref, {
@@ -21,6 +22,7 @@ Future<String?> showDealForm(
   String? stageId,
   String? organisationId,
   String? contactId,
+  Map<String, Object?> prefill = const {},
 }) {
   final l10n = context.l10n;
   final pipelines = {
@@ -59,6 +61,7 @@ Future<String?> showDealForm(
             'organisation_id': organisationId,
             'contact_id': contactId,
             'owner_id': ref.read(currentUserProvider)?.id,
+            ...prefill,
           }
         : rowToWire(SyncEntities.deals, deal),
     transform: (values) {

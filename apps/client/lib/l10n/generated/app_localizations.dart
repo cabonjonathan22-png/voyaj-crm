@@ -4994,6 +4994,144 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Recopiez régulièrement ce dossier hors du serveur (autre site, stockage chiffré). Restauration : voir docs/SAUVEGARDES.md (pg_restore puis recopie des fichiers joints).'**
   String get backupsRestoreHelp;
+
+  /// No description provided for @navTenders.
+  ///
+  /// In fr, this message translates to:
+  /// **'Appels d\'offres'**
+  String get navTenders;
+
+  /// No description provided for @tendersSubtitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Veille des marchés publics (BOAMP) selon vos mots-clés et départements.'**
+  String get tendersSubtitle;
+
+  /// No description provided for @tendersConfigure.
+  ///
+  /// In fr, this message translates to:
+  /// **'Configurer la veille'**
+  String get tendersConfigure;
+
+  /// No description provided for @tendersSearch.
+  ///
+  /// In fr, this message translates to:
+  /// **'Rechercher maintenant'**
+  String get tendersSearch;
+
+  /// No description provided for @tendersFound.
+  ///
+  /// In fr, this message translates to:
+  /// **'{count, plural, =0{Aucun nouvel avis.} =1{1 nouvel avis.} other{{count} nouveaux avis.}}'**
+  String tendersFound(int count);
+
+  /// No description provided for @tendersAll.
+  ///
+  /// In fr, this message translates to:
+  /// **'Tous'**
+  String get tendersAll;
+
+  /// No description provided for @tendersEmpty.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun avis.'**
+  String get tendersEmpty;
+
+  /// No description provided for @tendersNotConfigured.
+  ///
+  /// In fr, this message translates to:
+  /// **'Veille non configurée.'**
+  String get tendersNotConfigured;
+
+  /// No description provided for @tendersKeywords.
+  ///
+  /// In fr, this message translates to:
+  /// **'Mots-clés : {keywords}'**
+  String tendersKeywords(String keywords);
+
+  /// No description provided for @tendersDepartements.
+  ///
+  /// In fr, this message translates to:
+  /// **'Départements : {list}'**
+  String tendersDepartements(String list);
+
+  /// No description provided for @tendersLastRun.
+  ///
+  /// In fr, this message translates to:
+  /// **'dernière recherche {when}'**
+  String tendersLastRun(String when);
+
+  /// No description provided for @tendersKeywordsLabel.
+  ///
+  /// In fr, this message translates to:
+  /// **'Mots-clés'**
+  String get tendersKeywordsLabel;
+
+  /// No description provided for @tendersKeywordsHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'Séparés par des virgules ; un avis correspond s\'il contient l\'un d\'eux.'**
+  String get tendersKeywordsHelp;
+
+  /// No description provided for @tendersDepartementsLabel.
+  ///
+  /// In fr, this message translates to:
+  /// **'Départements (vide : toute la France)'**
+  String get tendersDepartementsLabel;
+
+  /// No description provided for @tendersDepartementsHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'Numéros séparés par des virgules.'**
+  String get tendersDepartementsHelp;
+
+  /// No description provided for @tendersDaily.
+  ///
+  /// In fr, this message translates to:
+  /// **'Recherche automatique chaque jour'**
+  String get tendersDaily;
+
+  /// No description provided for @tenderPublished.
+  ///
+  /// In fr, this message translates to:
+  /// **'paru le {date}'**
+  String tenderPublished(String date);
+
+  /// No description provided for @tenderDeadline.
+  ///
+  /// In fr, this message translates to:
+  /// **'Réponse avant le {date} ({days} j)'**
+  String tenderDeadline(String date, int days);
+
+  /// No description provided for @tenderOpen.
+  ///
+  /// In fr, this message translates to:
+  /// **'Voir l\'avis'**
+  String get tenderOpen;
+
+  /// No description provided for @tenderFollow.
+  ///
+  /// In fr, this message translates to:
+  /// **'Suivre'**
+  String get tenderFollow;
+
+  /// No description provided for @tenderIgnore.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ignorer'**
+  String get tenderIgnore;
+
+  /// No description provided for @tenderFollowed.
+  ///
+  /// In fr, this message translates to:
+  /// **'Affaire créée pour cet appel d\'offres.'**
+  String get tenderFollowed;
+
+  /// No description provided for @tenderDealDescription.
+  ///
+  /// In fr, this message translates to:
+  /// **'Appel d\'offres BOAMP {ref} — {buyer}'**
+  String tenderDealDescription(String ref, String buyer);
 }
 
 class _AppLocalizationsDelegate

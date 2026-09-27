@@ -165,6 +165,38 @@ ApiClient fakeApi(Bootstrap boot) {
         '/api/v1/email/messages' => [for (final m in messages) m.toJson()],
         '/api/v1/connectors' => [for (final c in connectors) c.toJson()],
         '/api/v1/webhooks' => [for (final w in webhooks) w.toJson()],
+        '/api/v1/tenders/watch' => TenderWatch(
+          enabled: true,
+          keywords: const ['transport de voyageurs', 'navette'],
+          departements: const ['12', '81'],
+          lastRunAt: now.subtract(const Duration(hours: 5)),
+        ).toJson(),
+        '/api/v1/tenders' => [
+          TenderInfo(
+            id: newId(),
+            ref: '26-104512',
+            title:
+                'Transport de voyageurs : navettes estivales vers les sites '
+                'touristiques',
+            buyer: 'Communauté de communes du Lévézou',
+            publishedOn: '2026-09-21',
+            deadline: now.add(const Duration(days: 23)),
+            departements: const ['12'],
+            nature: 'SERVICES',
+            procedure: 'Procédure adaptée',
+            url: 'https://www.boamp.fr/pages/avis/?q=idweb:26-104512',
+            descriptors: const ['Transport de voyageurs', 'Tourisme'],
+          ).toJson(),
+          TenderInfo(
+            id: newId(),
+            ref: '26-103877',
+            title: 'Service de transport à la demande',
+            buyer: 'Mairie de Millau',
+            publishedOn: '2026-09-18',
+            deadline: now.add(const Duration(days: 4)),
+            departements: const ['12'],
+          ).toJson(),
+        ],
         '/api/v1/admin/backups' => BackupStatus(
           directory: '/var/lib/voyaj/backups',
           hour: 2,

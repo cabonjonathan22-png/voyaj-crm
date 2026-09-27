@@ -2891,4 +2891,97 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get backupsRestoreHelp =>
       'Recopiez régulièrement ce dossier hors du serveur (autre site, stockage chiffré). Restauration : voir docs/SAUVEGARDES.md (pg_restore puis recopie des fichiers joints).';
+
+  @override
+  String get navTenders => 'Appels d\'offres';
+
+  @override
+  String get tendersSubtitle =>
+      'Veille des marchés publics (BOAMP) selon vos mots-clés et départements.';
+
+  @override
+  String get tendersConfigure => 'Configurer la veille';
+
+  @override
+  String get tendersSearch => 'Rechercher maintenant';
+
+  @override
+  String tendersFound(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count nouveaux avis.',
+      one: '1 nouvel avis.',
+      zero: 'Aucun nouvel avis.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get tendersAll => 'Tous';
+
+  @override
+  String get tendersEmpty => 'Aucun avis.';
+
+  @override
+  String get tendersNotConfigured => 'Veille non configurée.';
+
+  @override
+  String tendersKeywords(String keywords) {
+    return 'Mots-clés : $keywords';
+  }
+
+  @override
+  String tendersDepartements(String list) {
+    return 'Départements : $list';
+  }
+
+  @override
+  String tendersLastRun(String when) {
+    return 'dernière recherche $when';
+  }
+
+  @override
+  String get tendersKeywordsLabel => 'Mots-clés';
+
+  @override
+  String get tendersKeywordsHelp =>
+      'Séparés par des virgules ; un avis correspond s\'il contient l\'un d\'eux.';
+
+  @override
+  String get tendersDepartementsLabel =>
+      'Départements (vide : toute la France)';
+
+  @override
+  String get tendersDepartementsHelp => 'Numéros séparés par des virgules.';
+
+  @override
+  String get tendersDaily => 'Recherche automatique chaque jour';
+
+  @override
+  String tenderPublished(String date) {
+    return 'paru le $date';
+  }
+
+  @override
+  String tenderDeadline(String date, int days) {
+    return 'Réponse avant le $date ($days j)';
+  }
+
+  @override
+  String get tenderOpen => 'Voir l\'avis';
+
+  @override
+  String get tenderFollow => 'Suivre';
+
+  @override
+  String get tenderIgnore => 'Ignorer';
+
+  @override
+  String get tenderFollowed => 'Affaire créée pour cet appel d\'offres.';
+
+  @override
+  String tenderDealDescription(String ref, String buyer) {
+    return 'Appel d\'offres BOAMP $ref — $buyer';
+  }
 }
