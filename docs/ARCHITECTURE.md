@@ -91,8 +91,29 @@ sequenceDiagram
 | `sync_conflicts` | conflits (valeurs gagnante/perdante, HLC, auteurs, revue) |
 | `tags` | entité synchronisée : `id, name, color, description` + `version, seq, field_meta, created_*, updated_*, deleted_at` |
 
-Base locale Drift (client) : `tags` (même structure, `version` = dernière version serveur connue),
-`outbox`, `sync_errors`, `key_values` (préférences, curseur, HLC, poste, vues de tableaux).
+## Schéma PostgreSQL (migration 0002 — CRM)
+
+Toutes les tables ci-dessous sont des entités synchronisées (mêmes colonnes techniques que `tags`).
+Pas de clé étrangère entre entités synchronisées : l'ordre d'arrivée des opérations hors ligne
+n'est pas garanti, le client gère les références orphelines.
+
+| Table | Contenu |
+|---|---|
+| `organisations` | nom, type (commune, EPCI, AOM, festival…), statut commercial, SIREN/SIRET/INSEE, population, organisation parente, département, région, adresse, coordonnées GPS, contact, champs personnalisés, provenance (`source`, `source_ref`, `collected_at`) |
+| `contacts` | civilité, prénom, nom, email, téléphones, organisation, fonction, service, notes, « ne pas contacter », champs personnalisés, provenance |
+| `positions` | postes et mandats (historique) : contact, organisation, fonction, mandat électif (maire, adjoint…), délégation, dates |
+| `pipelines`, `pipeline_stages` | pipelines commerciaux et leurs étapes (ordre, probabilité, couleur, issue : en cours / gagnée / perdue) |
+| `deals` | affaires : pipeline, étape, organisation, contact, montant (centimes), probabilité, clôture prévue, statut |
+| `activities` | notes, appels, rendez-vous, tâches, emails : rattachements, dates, échéance, rappel, fait le |
+| `attachments` | fichiers joints (métadonnées) rattachés à une fiche |
+| `taggings` | tags appliqués (tag, entité, enregistrement) |
+| `custom_fields` | définitions des champs personnalisés par entité (clé, libellé, type, choix) |
+| `segments` | filtres enregistrés partagés (entité, critères JSON) |
+| `files` | contenu des fichiers joints (non synchronisé) : empreinte SHA-256, taille, type |
+
+Base locale Drift (client, schéma v2) : une table par entité synchronisée (mêmes colonnes,
+`version` = dernière version serveur connue), `outbox`, `sync_errors`, `key_values` (préférences,
+curseur, HLC, poste, vues de tableaux, onglets de travail).
 
 ## Sécurité
 
@@ -121,6 +142,7 @@ Base locale Drift (client) : `tags` (même structure, `version` = dernière vers
 | GET/POST/PATCH | `/api/v1/users`, `/users/{id}`, POST `/users/{id}/revoke-sessions` | utilisateurs |
 | GET/POST/PUT/DELETE | `/api/v1/roles`, `/roles/{id}` | rôles |
 | POST / GET | `/api/v1/sync/push`, `/sync/pull?cursor=` | synchronisation |
+| POST / GET | `/api/v1/files`, `/files/{sha256}` | fichiers joints (25 Mo max, corps brut) |
 | GET / POST | `/api/v1/sync/conflicts`, `/sync/conflicts/{id}/review` | conflits |
 | GET | `/api/v1/audit?limit=&before=` | journal d'audit |
 | WS | `/ws` | notifications temps réel (1er message : authentification) |
@@ -130,8 +152,31 @@ Base locale Drift (client) : `tags` (même structure, `version` = dernière vers
 ```
 lib/app/            bootstrap, providers Riverpod, routeur, shell, palette de commandes
 lib/core/           client API (renouvellement des jetons), coffre, formats
-lib/data/           base Drift, moteur de synchro, horloge, adaptateurs d'entités
+lib/data/           base Drift, moteur de synchro, horloge, pont local générique, RecordStore
 lib/design_system/  tokens, thème, composants, tableau de données
+lib/features/crm/   organisations, contacts, élus, pipelines, activités, carte, import, doublons
 lib/features/       auth, tags, sync, settings, admin, dev (catalogue en debug)
 lib/l10n/           fichiers ARB (fr)
 ```
+
+## Client : CRM (Phase 2)
+
+- **Écritures** : `RecordStore` valide l'enregistrement complet avec les règles partagées
+  (`voyaj_shared`), écrit la table locale et l'opération d'outbox dans une transaction, puis
+  déclenche la synchronisation. `RecordStore.write` regroupe plusieurs écritures (import, fusion).
+- **Pont local générique** (`LocalEntity`) : les colonnes locales portent les noms des champs du
+  schéma ; conversions par type (dates ISO UTC, dates calendaires `AAAA-MM-JJ` en texte, JSON en
+  texte, booléens).
+- **Lectures** : `StreamProvider` Riverpod sur les tables Drift (réactifs aux synchronisations).
+- **Formulaires** déclaratifs (`FormFieldDef` → `RecordFormModal`), champs personnalisés ajoutés
+  automatiquement, erreurs de validation affichées par champ.
+- **Fiches** à onglets (aperçu, contacts / postes, affaires, activités, fichiers) ; chaque fiche
+  ouverte devient un **onglet de travail** (barre au-dessus du contenu, Ctrl+W pour fermer,
+  mémorisés par poste).
+- **Recherche globale** (Ctrl+K) : index local (organisations, contacts, affaires, tags) en
+  minuscules sans accents, tous les mots doivent correspondre.
+- **Import CSV** : détection du séparateur et de l'encodage (UTF-8 / Windows-1252), correspondance
+  automatique des colonnes, conversion des valeurs (types, statuts, régions, nombres), doublons
+  ignorés, tags et organisations manquants créés, provenance RGPD sur chaque fiche.
+- **Doublons** : clés de rapprochement (SIRET, SIREN ou INSEE par type, nom normalisé + lieu ;
+  email, mobile, nom + organisation), regroupement transitif, fusion synchronisée.

@@ -59,7 +59,12 @@ exécution), lu dans l'environnement ou `apps/server/.env`.
   dans le même workspace. Le serveur cible 3.13 (paramètres nommés privés).
 - JSON en `snake_case` partout (`build.yaml`), dates ISO 8601 UTC.
 - Toute entité synchronisée : schéma dans `shared/lib/src/sync/entities.dart`, table serveur
-  (migration) avec les colonnes de `SyncColumns` + `seq`, table Drift + `LocalEntity` côté client.
+  (migration) avec les colonnes de `SyncColumns` + `seq`, table Drift (mixin `SyncedColumns`,
+  colonnes = noms des champs du schéma) déclarée dans `AppDatabase.syncedTables` + migration
+  Drift (`schemaVersion`). Le pont local et `RecordStore` sont génériques.
+- Écritures client : toujours via `RecordStore` (validation partagée + outbox), jamais
+  directement dans les tables synchronisées.
+- Formulaires de fiches : `showRecordForm` + `FormFieldDef` (`features/crm/widgets/record_form.dart`).
 - Migrations serveur : jamais modifier une migration appliquée (checksum vérifié) ; en ajouter une.
 - Le serveur construit son SQL uniquement à partir des noms déclarés dans `EntitySchema`
   (liste blanche) ; toujours des paramètres nommés (`@param`).
@@ -67,4 +72,6 @@ exécution), lu dans l'environnement ou `apps/server/.env`.
   brute). Textes de l'UI dans `lib/l10n/app_fr.arb` (`context.l10n`).
 - PowerShell 5.1 : ne pas éditer de fichiers texte via `Get-Content`/`Set-Content` (encodage) ;
   les scripts `.ps1` accentués doivent être en UTF-8 **avec BOM**.
+- Tests d'écrans : données de démonstration dans `apps/client/test/support/crm_seed.dart`
+  (identifiants convertis en UUID par `sid()`) ; carte sans tuiles (`mapTilesEnabledProvider`).
 - Aucun secret dans le code : `.env` (non versionné) ou variables d'environnement.

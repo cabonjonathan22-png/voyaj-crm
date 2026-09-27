@@ -7,7 +7,9 @@ collectivités (mairies, EPCI, départements, régions, AOM), festivals et parte
   **hors ligne** et se synchronise avec le serveur.
 - **Serveur** : Dart (shelf) + PostgreSQL, sur un PC Windows (service) ou dans le cloud (Docker).
 
-> État : **Phase 1 (socle) terminée**. Voir [docs/ROADMAP.md](docs/ROADMAP.md) pour la suite.
+> État : **Phase 2 (CRM cœur) terminée** : organisations, contacts, élus, pipelines Kanban,
+> activités et tâches, fichiers joints, tags, champs personnalisés, segments, recherche globale,
+> carte, import CSV et doublons. Voir [docs/ROADMAP.md](docs/ROADMAP.md) pour la suite.
 
 ## Distribuer le client aux utilisateurs
 
@@ -41,7 +43,8 @@ Prérequis : PostgreSQL 16+ et Dart/Flutter. Dans un PowerShell **administrateur
 ```
 
 La configuration (dont la **clé maître**, à sauvegarder) est dans `C:\ProgramData\Voyaj\config\.env`,
-les journaux dans `C:\ProgramData\Voyaj\logs`. Désinstallation : `uninstall-server.ps1`.
+les journaux dans `C:\ProgramData\Voyaj\logs`, les fichiers joints dans `C:\ProgramData\Voyaj\data`
+(à sauvegarder avec la base). Désinstallation : `uninstall-server.ps1`.
 
 ### Dans le cloud (serveur dédié / VPS, HTTPS automatique)
 
