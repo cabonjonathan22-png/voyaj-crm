@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:fr_public_data/fr_public_data.dart';
+import 'package:http/http.dart' as http;
 import 'package:logging/logging.dart';
 import 'package:shelf/shelf_io.dart' as shelf_io;
 import 'package:voyaj_shared/voyaj_shared.dart';
@@ -11,6 +12,8 @@ import 'auth/users_service.dart';
 import 'billing/billing_service.dart';
 import 'billing/chorus_pro.dart';
 import 'config.dart';
+import 'connectors/connector_service.dart';
+import 'connectors/webhook_service.dart';
 import 'db/database.dart';
 import 'db/migrations.dart';
 import 'email/email_service.dart';
@@ -38,6 +41,8 @@ final class Services {
     this.publicData,
     this.email,
     this.billing,
+    this.connectors,
+    this.webhooks,
   );
 
   factory Services.create(
@@ -47,6 +52,8 @@ final class Services {
     MailTransport? mailTransport,
     OAuthClient? oauthClient,
     ChorusProClient? chorusClient,
+    SourceOpener? sourceOpener,
+    http.Client? webhookClient,
   }) {
     final cipher = SecretCipher(config.masterKey);
     final hasher = PasswordHasher(
@@ -113,6 +120,19 @@ final class Services {
         cipher: cipher,
         chorus: chorusClient ?? ChorusProClient(),
       ),
+      ConnectorService(
+        db: db,
+        sync: sync,
+        cipher: cipher,
+        publicUrl: config.publicUrl,
+        sourceOpener: sourceOpener,
+      ),
+      WebhookService(
+        db: db,
+        sync: sync,
+        cipher: cipher,
+        httpClient: webhookClient,
+      ),
     );
   }
 
@@ -125,6 +145,8 @@ final class Services {
   final PublicDataService publicData;
   final EmailService email;
   final BillingService billing;
+  final ConnectorService connectors;
+  final WebhookService webhooks;
 }
 
 /// Serveur HTTP en cours d'exécution.
@@ -144,6 +166,8 @@ final class VoyajServer {
     MailTransport? mailTransport,
     OAuthClient? oauthClient,
     ChorusProClient? chorusClient,
+    SourceOpener? sourceOpener,
+    http.Client? webhookClient,
   }) async {
     final db = Database.open(config.database, poolSize: config.dbPoolSize);
     if (config.autoMigrate) {
@@ -157,9 +181,13 @@ final class VoyajServer {
       mailTransport: mailTransport,
       oauthClient: oauthClient,
       chorusClient: chorusClient,
+      sourceOpener: sourceOpener,
+      webhookClient: webhookClient,
     );
     await services.users.syncSystemRoles();
     await services.publicData.recoverInterrupted();
+    await services.connectors.recoverInterrupted();
+    services.webhooks.start();
 
     final handler = buildHandler(
       db: db,
@@ -171,6 +199,8 @@ final class VoyajServer {
       publicData: services.publicData,
       email: services.email,
       billing: services.billing,
+      connectors: services.connectors,
+      webhooks: services.webhooks,
       trustProxy: config.trustProxy,
       hsts: config.tlsEnabled || config.trustProxy,
     );
@@ -201,6 +231,11 @@ final class VoyajServer {
               _log.warning('Import planifié des données publiques', e),
         ),
       );
+      unawaited(
+        services.connectors.runScheduledIfDue().catchError(
+          (Object e) => _log.warning('Imports planifiés des connecteurs', e),
+        ),
+      );
     });
 
     _log.info(
@@ -226,6 +261,7 @@ final class VoyajServer {
       timer.cancel();
     }
     await _http.close(force: true);
+    await services.webhooks.close();
     await services.hub.close();
     await services.sync.close();
     await services.db.close();

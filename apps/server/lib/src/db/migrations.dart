@@ -11,6 +11,7 @@ import 'migrations/m0002_crm.dart';
 import 'migrations/m0003_public_data.dart';
 import 'migrations/m0004_email.dart';
 import 'migrations/m0005_billing.dart';
+import 'migrations/m0006_connectors.dart';
 
 /// Migration SQL versionnée. Une migration appliquée ne doit plus jamais
 /// être modifiée : on en ajoute une nouvelle (le checksum est vérifié).
@@ -33,6 +34,7 @@ const List<Migration> migrations = [
   m0003PublicData,
   m0004Email,
   m0005Billing,
+  m0006Connectors,
 ];
 
 final _log = Logger('migrations');

@@ -37,6 +37,11 @@ abstract final class AuditActions {
   static const documentIssued = 'billing.document.issued';
   static const fecExported = 'billing.fec.exported';
   static const chorusDeposited = 'billing.chorus.deposited';
+  static const connectorSaved = 'connector.saved';
+  static const connectorDeleted = 'connector.deleted';
+  static const connectorTokenCreated = 'connector.webhook_token.created';
+  static const webhookSaved = 'webhook.saved';
+  static const webhookDeleted = 'webhook.deleted';
 }
 
 /// Événement à journaliser.

@@ -593,13 +593,16 @@ final class SyncService {
       return 0;
     }
     final match = record.matchField;
-    if (row == null && match != null && isField(match) && isField('kind')) {
+    if (row == null && match != null && isField(match)) {
       final value = record.fields[match];
+      // Même type de fiche si l'entité en a un (organisations).
+      final byKind = isField('kind') && record.fields['kind'] != null;
       if (value != null) {
         final candidate = await tx.queryOne(
-          'SELECT * FROM ${schema.name} WHERE kind = @k AND $match = @v '
+          'SELECT * FROM ${schema.name} WHERE $match = @v '
+          '${byKind ? 'AND kind = @k ' : ''}'
           'AND deleted_at IS NULL ORDER BY created_at LIMIT 1',
-          {'k': record.fields['kind'], 'v': value},
+          {'v': value, if (byKind) 'k': record.fields['kind']},
         );
         if (candidate != null && canAdopt(candidate['source'] as String?)) {
           row = candidate;
@@ -688,6 +691,25 @@ final class SyncService {
   }
 
   // ── Pull ─────────────────────────────────────────────────────────────
+
+  /// Derniers états des enregistrements de [schemas] modifiés après
+  /// [cursor] (webhooks sortants), par ordre de séquence.
+  Future<List<SyncRecord>> changesSince(
+    List<EntitySchema> schemas,
+    int cursor, {
+    int limit = 200,
+  }) => _db.run((session) async {
+    final records = <SyncRecord>[];
+    for (final schema in schemas) {
+      final rows = await session.queryAll(
+        'SELECT * FROM ${schema.name} WHERE seq > @c ORDER BY seq LIMIT @n',
+        {'c': cursor, 'n': limit},
+      );
+      records.addAll(rows.map((r) => _toRecord(schema, r)));
+    }
+    records.sort((a, b) => a.seq.compareTo(b.seq));
+    return records.take(limit).toList();
+  });
 
   /// Enregistrements modifiés après [cursor], par ordre de séquence.
   Future<PullResponse> pull(AuthContext ctx, int cursor, {int? limit}) async {

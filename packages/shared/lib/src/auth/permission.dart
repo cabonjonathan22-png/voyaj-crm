@@ -56,6 +56,10 @@ enum Permission {
     'publicdata.manage',
     'Configurer et lancer les imports de données publiques',
   ),
+  connectorManage(
+    'connector.manage',
+    'Configurer les connecteurs, imports externes et webhooks',
+  ),
   syncConflictRead('sync.conflict.read', 'Consulter le journal des conflits'),
   syncConflictManage(
     'sync.conflict.manage',

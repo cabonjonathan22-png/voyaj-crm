@@ -38,6 +38,8 @@ final class TestServer {
     MailTransport? mailTransport,
     OAuthClient? oauthClient,
     ChorusProClient? chorusClient,
+    SourceOpener? sourceOpener,
+    http.Client? webhookClient,
     Map<String, String> extraConfig = const {},
   }) async {
     final config = ServerConfig.fromMap({
@@ -57,6 +59,8 @@ final class TestServer {
       mailTransport: mailTransport,
       oauthClient: oauthClient,
       chorusClient: chorusClient,
+      sourceOpener: sourceOpener,
+      webhookClient: webhookClient,
     );
     await server.services.users.createAdmin(
       email: adminEmail,

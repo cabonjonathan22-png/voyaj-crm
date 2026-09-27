@@ -10,6 +10,8 @@ import '../auth/auth_context.dart';
 import '../auth/auth_service.dart';
 import '../auth/users_service.dart';
 import '../billing/billing_service.dart';
+import '../connectors/connector_service.dart';
+import '../connectors/webhook_service.dart';
 import '../db/database.dart';
 import '../email/email_service.dart';
 import '../email/mail_transport.dart';
@@ -34,6 +36,8 @@ Handler buildHandler({
   required PublicDataService publicData,
   required EmailService email,
   required BillingService billing,
+  required ConnectorService connectors,
+  required WebhookService webhooks,
   required bool trustProxy,
   required bool hsts,
 }) {
@@ -341,6 +345,99 @@ Handler buildHandler({
       final report = await billing.vatReport(await authed(r), from, to);
       return jsonResponse(report.toJson());
     })
+    // ── Connecteurs ──
+    ..get('/connectors', (Request r) async {
+      final list = await connectors.list(await authed(r));
+      return jsonResponse([for (final c in list) c.toJson()]);
+    })
+    ..post('/connectors', (Request r) async {
+      final ctx = await authed(r);
+      final body = await readJson(r, ConnectorInput.fromJson);
+      return jsonResponse(
+        (await connectors.create(ctx, body)).toJson(),
+        status: 201,
+      );
+    })
+    ..post('/connectors/preview', (Request r) async {
+      final ctx = await authed(r);
+      final body = await readJson(r, ConnectorInput.fromJson);
+      final preview = await connectors.preview(
+        ctx,
+        body,
+        id: r.url.queryParameters['id'],
+      );
+      return jsonResponse(preview.toJson());
+    })
+    ..get('/connectors/<id>', (Request r, String id) async {
+      return jsonResponse((await connectors.get(await authed(r), id)).toJson());
+    })
+    ..put('/connectors/<id>', (Request r, String id) async {
+      final ctx = await authed(r);
+      final body = await readJson(r, ConnectorInput.fromJson);
+      return jsonResponse((await connectors.update(ctx, id, body)).toJson());
+    })
+    ..delete('/connectors/<id>', (Request r, String id) async {
+      await connectors.delete(await authed(r), id);
+      return noContent();
+    })
+    ..post('/connectors/<id>/run', (Request r, String id) async {
+      final run = await connectors.start(await authed(r), id);
+      return jsonResponse(run.toJson(), status: 202);
+    })
+    ..get('/connectors/<id>/runs', (Request r, String id) async {
+      final list = await connectors.runs(await authed(r), id);
+      return jsonResponse([for (final run in list) run.toJson()]);
+    })
+    ..post('/connectors/<id>/webhook-token', (Request r, String id) async {
+      final token = await connectors.createWebhookToken(await authed(r), id);
+      return jsonResponse(token.toJson());
+    })
+    // Webhook entrant : authentifié par le jeton du connecteur.
+    ..post('/hooks/<id>', (Request r, String id) async {
+      final length = r.contentLength;
+      if (length != null && length > maxHookBytes) {
+        throw const ApiException(
+          413,
+          'payload_too_large',
+          'Corps trop volumineux (5 Mo maximum).',
+        );
+      }
+      final authorization = r.headers['authorization'];
+      final token =
+          r.headers['x-voyaj-token'] ??
+          (authorization != null && authorization.startsWith('Bearer ')
+              ? authorization.substring(7)
+              : null);
+      final body = await _readLimited(r, maxHookBytes);
+      final run = await connectors.receive(id, token, body);
+      return jsonResponse(run.toJson());
+    })
+    // ── Webhooks sortants ──
+    ..get('/webhooks', (Request r) async {
+      final list = await webhooks.list(await authed(r));
+      return jsonResponse([for (final w in list) w.toJson()]);
+    })
+    ..post('/webhooks', (Request r) async {
+      final ctx = await authed(r);
+      final body = await readJson(r, WebhookInput.fromJson);
+      return jsonResponse(
+        (await webhooks.create(ctx, body)).toJson(),
+        status: 201,
+      );
+    })
+    ..put('/webhooks/<id>', (Request r, String id) async {
+      final ctx = await authed(r);
+      final body = await readJson(r, WebhookInput.fromJson);
+      return jsonResponse((await webhooks.update(ctx, id, body)).toJson());
+    })
+    ..delete('/webhooks/<id>', (Request r, String id) async {
+      await webhooks.delete(await authed(r), id);
+      return noContent();
+    })
+    ..post('/webhooks/<id>/ping', (Request r, String id) async {
+      final status = await webhooks.ping(await authed(r), id);
+      return jsonResponse({'status': status});
+    })
     // ── Audit ──
     ..get('/audit', (Request r) async {
       (await authed(r)).require(Permission.auditRead);
@@ -378,4 +475,23 @@ Handler buildHandler({
       .addMiddleware(securityHeadersMiddleware(hsts: hsts))
       .addMiddleware(errorMiddleware())
       .addHandler(root.call);
+}
+
+/// Taille maximale d'un appel de webhook entrant.
+const maxHookBytes = 5 * 1024 * 1024;
+
+/// Corps de la requête, refusé au-delà de [limit] octets.
+Future<List<int>> _readLimited(Request request, int limit) async {
+  final bytes = <int>[];
+  await for (final chunk in request.read()) {
+    bytes.addAll(chunk);
+    if (bytes.length > limit) {
+      throw const ApiException(
+        413,
+        'payload_too_large',
+        'Corps trop volumineux (5 Mo maximum).',
+      );
+    }
+  }
+  return bytes;
 }
