@@ -11,6 +11,7 @@ workspace:
 
 dev_dependencies:
   lints: ^6.1.0
+  melos: 7.8.1
 
 # Base SQLite chiffrée côté client (SQLite3 Multiple Ciphers, via les hooks du package sqlite3).
 hooks:
@@ -34,16 +35,16 @@ melos:
 
     gen:
       description: Génération de code (freezed, json_serializable, drift).
+      run: dart run build_runner build
       exec:
-        command: dart run build_runner build
         concurrency: 1
       packageFilters:
         dependsOn: build_runner
 
     test:dart:
       description: Tests des packages Dart purs (shared, server).
+      run: dart test
       exec:
-        command: dart test
         concurrency: 1
       packageFilters:
         flutter: false
@@ -51,8 +52,8 @@ melos:
 
     test:flutter:
       description: Tests du client Flutter.
+      run: flutter test
       exec:
-        command: flutter test
         concurrency: 1
       packageFilters:
         flutter: true

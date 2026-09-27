@@ -1,3 +1,4 @@
-# voyaj_client
+# Voyaj CRM — client
 
-A new Flutter project.
+Client desktop Flutter. Voir le [README principal](../../README.md) et
+[docs/ARCHITECTURE.md](../../docs/ARCHITECTURE.md).

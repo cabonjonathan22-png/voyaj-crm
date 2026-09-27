@@ -39,6 +39,8 @@ dev_dependencies:
   freezed: ^3.2.0
   json_serializable: ^6.9.0
   lints: ^6.1.0
+  postgres: ^3.5.6
+  voyaj_server: any
 
 flutter:
   uses-material-design: true

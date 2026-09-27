@@ -142,7 +142,7 @@ final class SyncEngine {
     _emit(_current.copyWith(syncing: true));
     try {
       await _push();
-      await _pull();
+      await pull();
       final now = DateTime.now().toUtc();
       await db.writeSetting(SettingKeys.lastSyncAt, now.toIso8601String());
       _emit(
@@ -242,7 +242,9 @@ final class SyncEngine {
 
   // ── Pull ─────────────────────────────────────────────────────────────
 
-  Future<void> _pull() async {
+  /// Récupère les changements du serveur (sans envoyer l'outbox). Les
+  /// champs locaux en attente sont réappliqués sur l'état reçu.
+  Future<void> pull() async {
     var cursor = await db.readSetting<int>(SettingKeys.syncCursor) ?? 0;
     while (true) {
       final response = PullResponse.fromJson(

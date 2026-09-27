@@ -32,9 +32,7 @@ const testUser = CurrentUser(
 );
 
 /// Démarrage de test : base en mémoire, coffre simulé, utilisateur connecté.
-Future<Bootstrap> testBootstrap({
-  ThemeMode themeMode = ThemeMode.light,
-}) async {
+Future<Bootstrap> testBootstrap({ThemeMode themeMode = ThemeMode.light}) async {
   FlutterSecureStorage.setMockInitialValues({});
   final db = AppDatabase(NativeDatabase.memory());
   final now = DateTime.now().toUtc();
