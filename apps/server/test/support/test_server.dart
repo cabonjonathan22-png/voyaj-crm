@@ -37,6 +37,7 @@ final class TestServer {
     PublicDataClient? publicDataClient,
     MailTransport? mailTransport,
     OAuthClient? oauthClient,
+    ChorusProClient? chorusClient,
     Map<String, String> extraConfig = const {},
   }) async {
     final config = ServerConfig.fromMap({
@@ -55,6 +56,7 @@ final class TestServer {
       publicDataClient: publicDataClient,
       mailTransport: mailTransport,
       oauthClient: oauthClient,
+      chorusClient: chorusClient,
     );
     await server.services.users.createAdmin(
       email: adminEmail,

@@ -33,6 +33,10 @@ abstract final class AuditActions {
   static const publicDataRun = 'public_data.run';
   static const emailAccountConnected = 'email.account.connected';
   static const emailAccountRemoved = 'email.account.removed';
+  static const billingSettingsUpdated = 'billing.settings.updated';
+  static const documentIssued = 'billing.document.issued';
+  static const fecExported = 'billing.fec.exported';
+  static const chorusDeposited = 'billing.chorus.deposited';
 }
 
 /// Événement à journaliser.

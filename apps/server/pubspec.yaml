@@ -15,6 +15,7 @@ dependencies:
   cryptography: ^2.7.0
   fr_public_data: any
   http: ^1.4.0
+  invoicing: any
   logging: ^1.3.0
   meta: ^1.16.0
   path: ^1.9.1

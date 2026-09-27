@@ -8,6 +8,8 @@ import 'package:voyaj_shared/voyaj_shared.dart';
 
 import 'auth/auth_service.dart';
 import 'auth/users_service.dart';
+import 'billing/billing_service.dart';
+import 'billing/chorus_pro.dart';
 import 'config.dart';
 import 'db/database.dart';
 import 'db/migrations.dart';
@@ -35,6 +37,7 @@ final class Services {
     this.files,
     this.publicData,
     this.email,
+    this.billing,
   );
 
   factory Services.create(
@@ -43,6 +46,7 @@ final class Services {
     PublicDataClient? publicDataClient,
     MailTransport? mailTransport,
     OAuthClient? oauthClient,
+    ChorusProClient? chorusClient,
   }) {
     final cipher = SecretCipher(config.masterKey);
     final hasher = PasswordHasher(
@@ -65,13 +69,14 @@ final class Services {
     );
     auth.onSessionsRevoked = hub.revokeSessions;
     users.onSessionsRevoked = hub.revokeSessions;
+    final files = FileStore(db: db, dataDir: config.dataDir);
     return Services._(
       db,
       auth,
       users,
       sync,
       hub,
-      FileStore(db: db, dataDir: config.dataDir),
+      files,
       PublicDataService(
         db: db,
         sync: sync,
@@ -101,6 +106,13 @@ final class Services {
             ),
         },
       ),
+      BillingService(
+        db: db,
+        sync: sync,
+        files: files,
+        cipher: cipher,
+        chorus: chorusClient ?? ChorusProClient(),
+      ),
     );
   }
 
@@ -112,6 +124,7 @@ final class Services {
   final FileStore files;
   final PublicDataService publicData;
   final EmailService email;
+  final BillingService billing;
 }
 
 /// Serveur HTTP en cours d'exécution.
@@ -130,6 +143,7 @@ final class VoyajServer {
     PublicDataClient? publicDataClient,
     MailTransport? mailTransport,
     OAuthClient? oauthClient,
+    ChorusProClient? chorusClient,
   }) async {
     final db = Database.open(config.database, poolSize: config.dbPoolSize);
     if (config.autoMigrate) {
@@ -142,6 +156,7 @@ final class VoyajServer {
       publicDataClient: publicDataClient,
       mailTransport: mailTransport,
       oauthClient: oauthClient,
+      chorusClient: chorusClient,
     );
     await services.users.syncSystemRoles();
     await services.publicData.recoverInterrupted();
@@ -155,6 +170,7 @@ final class VoyajServer {
       files: services.files,
       publicData: services.publicData,
       email: services.email,
+      billing: services.billing,
       trustProxy: config.trustProxy,
       hsts: config.tlsEnabled || config.trustProxy,
     );

@@ -78,12 +78,38 @@ final class FileStore {
     return (id: id, size: size);
   }
 
+  /// Enregistre un contenu produit par le serveur (ex. PDF de facture) ;
+  /// retourne son identifiant.
+  Future<String> storeBytes(
+    List<int> bytes, {
+    String? mimeType,
+    String? userId,
+  }) async {
+    final id = sha256.convert(bytes).toString();
+    final target = _fileFor(id);
+    if (!target.existsSync()) {
+      await target.parent.create(recursive: true);
+      final temp = File('${target.path}.tmp');
+      await temp.writeAsBytes(bytes, flush: true);
+      await temp.rename(target.path);
+    }
+    await _db.query(
+      'INSERT INTO files (id, size, mime_type, uploaded_by) '
+      'VALUES (@id, @size, @mime, @user) ON CONFLICT (id) DO NOTHING',
+      {'id': id, 'size': bytes.length, 'mime': mimeType, 'user': userId},
+    );
+    return id;
+  }
+
   /// Contenu d'un fichier (et son type), ou [ApiException.notFound].
+  /// Fichiers joints : droit de lecture des activités ; [permission]
+  /// remplace ce droit pour d'autres usages (PDF de facture).
   Future<({File file, String? mimeType})> open(
     AuthContext ctx,
-    String id,
-  ) async {
-    ctx.require(Permission.activityRead);
+    String id, {
+    Permission permission = Permission.activityRead,
+  }) async {
+    ctx.require(permission);
     if (!RegExp(r'^[0-9a-f]{64}$').hasMatch(id)) {
       throw const ApiException.notFound('Fichier introuvable.');
     }

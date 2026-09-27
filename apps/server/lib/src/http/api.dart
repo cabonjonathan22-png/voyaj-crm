@@ -9,6 +9,7 @@ import '../audit/audit_log.dart';
 import '../auth/auth_context.dart';
 import '../auth/auth_service.dart';
 import '../auth/users_service.dart';
+import '../billing/billing_service.dart';
 import '../db/database.dart';
 import '../email/email_service.dart';
 import '../email/mail_transport.dart';
@@ -32,6 +33,7 @@ Handler buildHandler({
   required FileStore files,
   required PublicDataService publicData,
   required EmailService email,
+  required BillingService billing,
   required bool trustProxy,
   required bool hsts,
 }) {
@@ -287,6 +289,57 @@ Handler buildHandler({
     ..post('/public-data/<source>/run', (Request r, String source) async {
       final run = await publicData.start(await authed(r), source);
       return jsonResponse(run.toJson(), status: 202);
+    })
+    // ── Facturation ──
+    ..get('/billing/settings', (Request r) async {
+      return jsonResponse((await billing.settings(await authed(r))).toJson());
+    })
+    ..put('/billing/settings', (Request r) async {
+      final ctx = await authed(r);
+      final body = await readJson(r, BillingSettings.fromJson);
+      return jsonResponse((await billing.updateSettings(ctx, body)).toJson());
+    })
+    ..post('/billing/documents/<id>/issue', (Request r, String id) async {
+      final number = await billing.issue(await authed(r), id);
+      return jsonResponse({'number': number});
+    })
+    ..get('/billing/documents/<id>/pdf', (Request r, String id) async {
+      final found = await billing.pdf(await authed(r), id);
+      return Response.ok(
+        found.file.openRead(),
+        headers: {
+          HttpHeaders.contentTypeHeader: 'application/pdf',
+          HttpHeaders.contentLengthHeader: '${found.file.lengthSync()}',
+          'content-disposition': 'attachment; filename="${found.fileName}"',
+        },
+      );
+    })
+    ..post('/billing/documents/<id>/chorus', (Request r, String id) async {
+      final flux = await billing.depositToChorus(await authed(r), id);
+      return jsonResponse({'flux': flux});
+    })
+    ..get('/billing/fec', (Request r) async {
+      final year = intParam(r, 'year');
+      if (year == null || year < 2000 || year > 2100) {
+        throw const ApiException.badRequest('Année invalide.');
+      }
+      final fec = await billing.fec(await authed(r), year);
+      return Response.ok(
+        fec.content,
+        headers: {
+          HttpHeaders.contentTypeHeader: 'text/plain; charset=utf-8',
+          'content-disposition': 'attachment; filename="${fec.fileName}"',
+        },
+      );
+    })
+    ..get('/billing/vat', (Request r) async {
+      final from = DateTime.tryParse(r.url.queryParameters['from'] ?? '');
+      final to = DateTime.tryParse(r.url.queryParameters['to'] ?? '');
+      if (from == null || to == null) {
+        throw const ApiException.badRequest('Période invalide.');
+      }
+      final report = await billing.vatReport(await authed(r), from, to);
+      return jsonResponse(report.toJson());
     })
     // ── Audit ──
     ..get('/audit', (Request r) async {

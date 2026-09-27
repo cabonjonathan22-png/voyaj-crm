@@ -135,7 +135,7 @@ final class SyncService {
     if (!isValidId(op.opId) || !isValidId(op.entityId)) {
       return (_invalid(op, 'id', 'Identifiant invalide.'), 0);
     }
-    final fieldIssues = schema.checkFields(op.fields);
+    final fieldIssues = schema.checkClientFields(op.fields);
     if (fieldIssues.isNotEmpty) {
       return (
         OpResult(opId: op.opId, status: OpStatus.invalid, issues: fieldIssues),
@@ -195,6 +195,20 @@ final class SyncService {
             for (final field in schema.fields.keys)
               field: _toWire(row[field], schema.fields[field]!.type),
         };
+        final lockIssues = row == null
+            ? const <ValidationIssue>[]
+            : schema.checkLocks(current, op.fields);
+        if (lockIssues.isNotEmpty) {
+          await tx.rollback();
+          return (
+            OpResult(
+              opId: op.opId,
+              status: OpStatus.invalid,
+              issues: lockIssues,
+            ),
+            0,
+          );
+        }
         final merge = mergeFields(
           current: current,
           stamps: decodeFieldMeta(
@@ -437,53 +451,77 @@ final class SyncService {
     String? id,
     String? userId,
   }) async {
+    final (recordId, seq) = await _db.tx(
+      (tx) => writeSystemInTx(tx, schema, fields, id: id, userId: userId),
+    );
+    notifyChange(seq);
+    return recordId;
+  }
+
+  /// Comme [writeSystem], dans la transaction [tx] de l'appelant (qui
+  /// appelle [notifyChange] après validation). Retourne l'identifiant et
+  /// le numéro de séquence (0 si rien n'a changé).
+  Future<(String, int)> writeSystemInTx(
+    TxSession tx,
+    EntitySchema schema,
+    Map<String, Object?> fields, {
+    String? id,
+    String? userId,
+  }) async {
     final recordId = id ?? newId();
     final issues = schema.checkFields(fields);
     if (issues.isNotEmpty) throw SystemWriteException(issues);
-    final seq = await _db.tx((tx) async {
-      await tx.query('SELECT pg_advisory_xact_lock(@k)', {'k': _writeLockKey});
-      final row = await tx.queryOne(
-        'SELECT * FROM ${schema.name} WHERE id = @id FOR UPDATE',
-        {'id': recordId},
-      );
-      final version = row?['version'] as int? ?? 0;
-      final current = <String, Object?>{
-        if (row != null)
-          for (final field in schema.fields.keys)
-            field: _toWire(row[field], schema.fields[field]!.type),
-      };
-      final hlc = _hlc.now();
-      final merge = mergeFields(
-        current: current,
-        stamps: decodeFieldMeta(
-          (row?['field_meta'] as Map?)?.cast<String, dynamic>(),
-        ),
-        incoming: fields,
-        hlc: hlc,
-        baseVersion: version,
-        nextVersion: version + 1,
-        userId: userId,
-      );
-      if (!merge.changed) return 0;
-      final problems = schema.validate({
-        ...current,
-        ...merge.applied,
-        'id': recordId,
-      });
-      if (problems.isNotEmpty) throw SystemWriteException(problems);
-      return _persist(
-        tx,
-        schema,
-        entityId: recordId,
-        isInsert: row == null,
-        version: version + 1,
-        merge: merge,
-        hlc: hlc.toString(),
-        userId: userId,
-      );
+    await tx.query('SELECT pg_advisory_xact_lock(@k)', {'k': _writeLockKey});
+    final row = await tx.queryOne(
+      'SELECT * FROM ${schema.name} WHERE id = @id FOR UPDATE',
+      {'id': recordId},
+    );
+    final version = row?['version'] as int? ?? 0;
+    final current = <String, Object?>{
+      if (row != null)
+        for (final field in schema.fields.keys)
+          field: _toWire(row[field], schema.fields[field]!.type),
+    };
+    final hlc = _hlc.now();
+    final merge = mergeFields(
+      current: current,
+      stamps: decodeFieldMeta(
+        (row?['field_meta'] as Map?)?.cast<String, dynamic>(),
+      ),
+      incoming: fields,
+      hlc: hlc,
+      baseVersion: version,
+      nextVersion: version + 1,
+      userId: userId,
+    );
+    if (!merge.changed) return (recordId, 0);
+    final problems = schema.validate({
+      ...current,
+      ...merge.applied,
+      'id': recordId,
     });
+    if (problems.isNotEmpty) throw SystemWriteException(problems);
+    final seq = await _persist(
+      tx,
+      schema,
+      entityId: recordId,
+      isInsert: row == null,
+      version: version + 1,
+      merge: merge,
+      hlc: hlc.toString(),
+      userId: userId,
+    );
+    return (recordId, seq);
+  }
+
+  /// Sérialise les écritures de la transaction [tx] avec les envois des
+  /// postes (à prendre avant de lire une fiche à modifier).
+  Future<void> lockWrites(TxSession tx) =>
+      tx.query('SELECT pg_advisory_xact_lock(@k)', {'k': _writeLockKey});
+
+  /// Signale aux postes connectés un changement validé.
+  void notifyChange(int seq) {
     if (seq > 0) _changes.add(seq);
-    return recordId;
   }
 
   // ── Import depuis une source externe ─────────────────────────────────
