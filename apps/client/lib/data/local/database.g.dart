@@ -659,6 +659,11048 @@ class TagsCompanion extends UpdateCompanion<TagRow> {
   }
 }
 
+class $OrganisationsTable extends Organisations
+    with TableInfo<$OrganisationsTable, OrganisationRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $OrganisationsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _versionMeta = const VerificationMeta(
+    'version',
+  );
+  @override
+  late final GeneratedColumn<int> version = GeneratedColumn<int>(
+    'version',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _fieldMetaMeta = const VerificationMeta(
+    'fieldMeta',
+  );
+  @override
+  late final GeneratedColumn<String> fieldMeta = GeneratedColumn<String>(
+    'field_meta',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('{}'),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _updatedByMeta = const VerificationMeta(
+    'updatedBy',
+  );
+  @override
+  late final GeneratedColumn<String> updatedBy = GeneratedColumn<String>(
+    'updated_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _deletedAtMeta = const VerificationMeta(
+    'deletedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> deletedAt = GeneratedColumn<DateTime>(
+    'deleted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _sourceMeta = const VerificationMeta('source');
+  @override
+  late final GeneratedColumn<String> source = GeneratedColumn<String>(
+    'source',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _sourceRefMeta = const VerificationMeta(
+    'sourceRef',
+  );
+  @override
+  late final GeneratedColumn<String> sourceRef = GeneratedColumn<String>(
+    'source_ref',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _collectedAtMeta = const VerificationMeta(
+    'collectedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> collectedAt = GeneratedColumn<DateTime>(
+    'collected_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+    'name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _kindMeta = const VerificationMeta('kind');
+  @override
+  late final GeneratedColumn<String> kind = GeneratedColumn<String>(
+    'kind',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _statusMeta = const VerificationMeta('status');
+  @override
+  late final GeneratedColumn<String> status = GeneratedColumn<String>(
+    'status',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _sirenMeta = const VerificationMeta('siren');
+  @override
+  late final GeneratedColumn<String> siren = GeneratedColumn<String>(
+    'siren',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _siretMeta = const VerificationMeta('siret');
+  @override
+  late final GeneratedColumn<String> siret = GeneratedColumn<String>(
+    'siret',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _inseeCodeMeta = const VerificationMeta(
+    'inseeCode',
+  );
+  @override
+  late final GeneratedColumn<String> inseeCode = GeneratedColumn<String>(
+    'insee_code',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _populationMeta = const VerificationMeta(
+    'population',
+  );
+  @override
+  late final GeneratedColumn<int> population = GeneratedColumn<int>(
+    'population',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _parentIdMeta = const VerificationMeta(
+    'parentId',
+  );
+  @override
+  late final GeneratedColumn<String> parentId = GeneratedColumn<String>(
+    'parent_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _departementCodeMeta = const VerificationMeta(
+    'departementCode',
+  );
+  @override
+  late final GeneratedColumn<String> departementCode = GeneratedColumn<String>(
+    'departement_code',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _regionCodeMeta = const VerificationMeta(
+    'regionCode',
+  );
+  @override
+  late final GeneratedColumn<String> regionCode = GeneratedColumn<String>(
+    'region_code',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _addressMeta = const VerificationMeta(
+    'address',
+  );
+  @override
+  late final GeneratedColumn<String> address = GeneratedColumn<String>(
+    'address',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _postalCodeMeta = const VerificationMeta(
+    'postalCode',
+  );
+  @override
+  late final GeneratedColumn<String> postalCode = GeneratedColumn<String>(
+    'postal_code',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _cityMeta = const VerificationMeta('city');
+  @override
+  late final GeneratedColumn<String> city = GeneratedColumn<String>(
+    'city',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _latitudeMeta = const VerificationMeta(
+    'latitude',
+  );
+  @override
+  late final GeneratedColumn<double> latitude = GeneratedColumn<double>(
+    'latitude',
+    aliasedName,
+    true,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _longitudeMeta = const VerificationMeta(
+    'longitude',
+  );
+  @override
+  late final GeneratedColumn<double> longitude = GeneratedColumn<double>(
+    'longitude',
+    aliasedName,
+    true,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _phoneMeta = const VerificationMeta('phone');
+  @override
+  late final GeneratedColumn<String> phone = GeneratedColumn<String>(
+    'phone',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _emailMeta = const VerificationMeta('email');
+  @override
+  late final GeneratedColumn<String> email = GeneratedColumn<String>(
+    'email',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _websiteMeta = const VerificationMeta(
+    'website',
+  );
+  @override
+  late final GeneratedColumn<String> website = GeneratedColumn<String>(
+    'website',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _descriptionMeta = const VerificationMeta(
+    'description',
+  );
+  @override
+  late final GeneratedColumn<String> description = GeneratedColumn<String>(
+    'description',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _ownerIdMeta = const VerificationMeta(
+    'ownerId',
+  );
+  @override
+  late final GeneratedColumn<String> ownerId = GeneratedColumn<String>(
+    'owner_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _customFieldsMeta = const VerificationMeta(
+    'customFields',
+  );
+  @override
+  late final GeneratedColumn<String> customFields = GeneratedColumn<String>(
+    'custom_fields',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    version,
+    fieldMeta,
+    createdAt,
+    createdBy,
+    updatedAt,
+    updatedBy,
+    deletedAt,
+    source,
+    sourceRef,
+    collectedAt,
+    id,
+    name,
+    kind,
+    status,
+    siren,
+    siret,
+    inseeCode,
+    population,
+    parentId,
+    departementCode,
+    regionCode,
+    address,
+    postalCode,
+    city,
+    latitude,
+    longitude,
+    phone,
+    email,
+    website,
+    description,
+    ownerId,
+    customFields,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'organisations';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<OrganisationRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('version')) {
+      context.handle(
+        _versionMeta,
+        version.isAcceptableOrUnknown(data['version']!, _versionMeta),
+      );
+    }
+    if (data.containsKey('field_meta')) {
+      context.handle(
+        _fieldMetaMeta,
+        fieldMeta.isAcceptableOrUnknown(data['field_meta']!, _fieldMetaMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_createdAtMeta);
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_updatedAtMeta);
+    }
+    if (data.containsKey('updated_by')) {
+      context.handle(
+        _updatedByMeta,
+        updatedBy.isAcceptableOrUnknown(data['updated_by']!, _updatedByMeta),
+      );
+    }
+    if (data.containsKey('deleted_at')) {
+      context.handle(
+        _deletedAtMeta,
+        deletedAt.isAcceptableOrUnknown(data['deleted_at']!, _deletedAtMeta),
+      );
+    }
+    if (data.containsKey('source')) {
+      context.handle(
+        _sourceMeta,
+        source.isAcceptableOrUnknown(data['source']!, _sourceMeta),
+      );
+    }
+    if (data.containsKey('source_ref')) {
+      context.handle(
+        _sourceRefMeta,
+        sourceRef.isAcceptableOrUnknown(data['source_ref']!, _sourceRefMeta),
+      );
+    }
+    if (data.containsKey('collected_at')) {
+      context.handle(
+        _collectedAtMeta,
+        collectedAt.isAcceptableOrUnknown(
+          data['collected_at']!,
+          _collectedAtMeta,
+        ),
+      );
+    }
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    if (data.containsKey('kind')) {
+      context.handle(
+        _kindMeta,
+        kind.isAcceptableOrUnknown(data['kind']!, _kindMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_kindMeta);
+    }
+    if (data.containsKey('status')) {
+      context.handle(
+        _statusMeta,
+        status.isAcceptableOrUnknown(data['status']!, _statusMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_statusMeta);
+    }
+    if (data.containsKey('siren')) {
+      context.handle(
+        _sirenMeta,
+        siren.isAcceptableOrUnknown(data['siren']!, _sirenMeta),
+      );
+    }
+    if (data.containsKey('siret')) {
+      context.handle(
+        _siretMeta,
+        siret.isAcceptableOrUnknown(data['siret']!, _siretMeta),
+      );
+    }
+    if (data.containsKey('insee_code')) {
+      context.handle(
+        _inseeCodeMeta,
+        inseeCode.isAcceptableOrUnknown(data['insee_code']!, _inseeCodeMeta),
+      );
+    }
+    if (data.containsKey('population')) {
+      context.handle(
+        _populationMeta,
+        population.isAcceptableOrUnknown(data['population']!, _populationMeta),
+      );
+    }
+    if (data.containsKey('parent_id')) {
+      context.handle(
+        _parentIdMeta,
+        parentId.isAcceptableOrUnknown(data['parent_id']!, _parentIdMeta),
+      );
+    }
+    if (data.containsKey('departement_code')) {
+      context.handle(
+        _departementCodeMeta,
+        departementCode.isAcceptableOrUnknown(
+          data['departement_code']!,
+          _departementCodeMeta,
+        ),
+      );
+    }
+    if (data.containsKey('region_code')) {
+      context.handle(
+        _regionCodeMeta,
+        regionCode.isAcceptableOrUnknown(data['region_code']!, _regionCodeMeta),
+      );
+    }
+    if (data.containsKey('address')) {
+      context.handle(
+        _addressMeta,
+        address.isAcceptableOrUnknown(data['address']!, _addressMeta),
+      );
+    }
+    if (data.containsKey('postal_code')) {
+      context.handle(
+        _postalCodeMeta,
+        postalCode.isAcceptableOrUnknown(data['postal_code']!, _postalCodeMeta),
+      );
+    }
+    if (data.containsKey('city')) {
+      context.handle(
+        _cityMeta,
+        city.isAcceptableOrUnknown(data['city']!, _cityMeta),
+      );
+    }
+    if (data.containsKey('latitude')) {
+      context.handle(
+        _latitudeMeta,
+        latitude.isAcceptableOrUnknown(data['latitude']!, _latitudeMeta),
+      );
+    }
+    if (data.containsKey('longitude')) {
+      context.handle(
+        _longitudeMeta,
+        longitude.isAcceptableOrUnknown(data['longitude']!, _longitudeMeta),
+      );
+    }
+    if (data.containsKey('phone')) {
+      context.handle(
+        _phoneMeta,
+        phone.isAcceptableOrUnknown(data['phone']!, _phoneMeta),
+      );
+    }
+    if (data.containsKey('email')) {
+      context.handle(
+        _emailMeta,
+        email.isAcceptableOrUnknown(data['email']!, _emailMeta),
+      );
+    }
+    if (data.containsKey('website')) {
+      context.handle(
+        _websiteMeta,
+        website.isAcceptableOrUnknown(data['website']!, _websiteMeta),
+      );
+    }
+    if (data.containsKey('description')) {
+      context.handle(
+        _descriptionMeta,
+        description.isAcceptableOrUnknown(
+          data['description']!,
+          _descriptionMeta,
+        ),
+      );
+    }
+    if (data.containsKey('owner_id')) {
+      context.handle(
+        _ownerIdMeta,
+        ownerId.isAcceptableOrUnknown(data['owner_id']!, _ownerIdMeta),
+      );
+    }
+    if (data.containsKey('custom_fields')) {
+      context.handle(
+        _customFieldsMeta,
+        customFields.isAcceptableOrUnknown(
+          data['custom_fields']!,
+          _customFieldsMeta,
+        ),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  OrganisationRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return OrganisationRow(
+      version: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}version'],
+      )!,
+      fieldMeta: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}field_meta'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      updatedBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_by'],
+      ),
+      deletedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}deleted_at'],
+      ),
+      source: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}source'],
+      ),
+      sourceRef: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}source_ref'],
+      ),
+      collectedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}collected_at'],
+      ),
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      name: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name'],
+      )!,
+      kind: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}kind'],
+      )!,
+      status: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}status'],
+      )!,
+      siren: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}siren'],
+      ),
+      siret: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}siret'],
+      ),
+      inseeCode: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}insee_code'],
+      ),
+      population: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}population'],
+      ),
+      parentId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}parent_id'],
+      ),
+      departementCode: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}departement_code'],
+      ),
+      regionCode: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}region_code'],
+      ),
+      address: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}address'],
+      ),
+      postalCode: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}postal_code'],
+      ),
+      city: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}city'],
+      ),
+      latitude: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}latitude'],
+      ),
+      longitude: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}longitude'],
+      ),
+      phone: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}phone'],
+      ),
+      email: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}email'],
+      ),
+      website: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}website'],
+      ),
+      description: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}description'],
+      ),
+      ownerId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}owner_id'],
+      ),
+      customFields: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}custom_fields'],
+      ),
+    );
+  }
+
+  @override
+  $OrganisationsTable createAlias(String alias) {
+    return $OrganisationsTable(attachedDatabase, alias);
+  }
+}
+
+class OrganisationRow extends DataClass implements Insertable<OrganisationRow> {
+  final int version;
+  final String fieldMeta;
+  final DateTime createdAt;
+  final String? createdBy;
+  final DateTime updatedAt;
+  final String? updatedBy;
+  final DateTime? deletedAt;
+  final String? source;
+  final String? sourceRef;
+  final DateTime? collectedAt;
+  final String id;
+  final String name;
+  final String kind;
+  final String status;
+  final String? siren;
+  final String? siret;
+  final String? inseeCode;
+  final int? population;
+  final String? parentId;
+  final String? departementCode;
+  final String? regionCode;
+  final String? address;
+  final String? postalCode;
+  final String? city;
+  final double? latitude;
+  final double? longitude;
+  final String? phone;
+  final String? email;
+  final String? website;
+  final String? description;
+  final String? ownerId;
+  final String? customFields;
+  const OrganisationRow({
+    required this.version,
+    required this.fieldMeta,
+    required this.createdAt,
+    this.createdBy,
+    required this.updatedAt,
+    this.updatedBy,
+    this.deletedAt,
+    this.source,
+    this.sourceRef,
+    this.collectedAt,
+    required this.id,
+    required this.name,
+    required this.kind,
+    required this.status,
+    this.siren,
+    this.siret,
+    this.inseeCode,
+    this.population,
+    this.parentId,
+    this.departementCode,
+    this.regionCode,
+    this.address,
+    this.postalCode,
+    this.city,
+    this.latitude,
+    this.longitude,
+    this.phone,
+    this.email,
+    this.website,
+    this.description,
+    this.ownerId,
+    this.customFields,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['version'] = Variable<int>(version);
+    map['field_meta'] = Variable<String>(fieldMeta);
+    map['created_at'] = Variable<DateTime>(createdAt);
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    if (!nullToAbsent || updatedBy != null) {
+      map['updated_by'] = Variable<String>(updatedBy);
+    }
+    if (!nullToAbsent || deletedAt != null) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt);
+    }
+    if (!nullToAbsent || source != null) {
+      map['source'] = Variable<String>(source);
+    }
+    if (!nullToAbsent || sourceRef != null) {
+      map['source_ref'] = Variable<String>(sourceRef);
+    }
+    if (!nullToAbsent || collectedAt != null) {
+      map['collected_at'] = Variable<DateTime>(collectedAt);
+    }
+    map['id'] = Variable<String>(id);
+    map['name'] = Variable<String>(name);
+    map['kind'] = Variable<String>(kind);
+    map['status'] = Variable<String>(status);
+    if (!nullToAbsent || siren != null) {
+      map['siren'] = Variable<String>(siren);
+    }
+    if (!nullToAbsent || siret != null) {
+      map['siret'] = Variable<String>(siret);
+    }
+    if (!nullToAbsent || inseeCode != null) {
+      map['insee_code'] = Variable<String>(inseeCode);
+    }
+    if (!nullToAbsent || population != null) {
+      map['population'] = Variable<int>(population);
+    }
+    if (!nullToAbsent || parentId != null) {
+      map['parent_id'] = Variable<String>(parentId);
+    }
+    if (!nullToAbsent || departementCode != null) {
+      map['departement_code'] = Variable<String>(departementCode);
+    }
+    if (!nullToAbsent || regionCode != null) {
+      map['region_code'] = Variable<String>(regionCode);
+    }
+    if (!nullToAbsent || address != null) {
+      map['address'] = Variable<String>(address);
+    }
+    if (!nullToAbsent || postalCode != null) {
+      map['postal_code'] = Variable<String>(postalCode);
+    }
+    if (!nullToAbsent || city != null) {
+      map['city'] = Variable<String>(city);
+    }
+    if (!nullToAbsent || latitude != null) {
+      map['latitude'] = Variable<double>(latitude);
+    }
+    if (!nullToAbsent || longitude != null) {
+      map['longitude'] = Variable<double>(longitude);
+    }
+    if (!nullToAbsent || phone != null) {
+      map['phone'] = Variable<String>(phone);
+    }
+    if (!nullToAbsent || email != null) {
+      map['email'] = Variable<String>(email);
+    }
+    if (!nullToAbsent || website != null) {
+      map['website'] = Variable<String>(website);
+    }
+    if (!nullToAbsent || description != null) {
+      map['description'] = Variable<String>(description);
+    }
+    if (!nullToAbsent || ownerId != null) {
+      map['owner_id'] = Variable<String>(ownerId);
+    }
+    if (!nullToAbsent || customFields != null) {
+      map['custom_fields'] = Variable<String>(customFields);
+    }
+    return map;
+  }
+
+  OrganisationsCompanion toCompanion(bool nullToAbsent) {
+    return OrganisationsCompanion(
+      version: Value(version),
+      fieldMeta: Value(fieldMeta),
+      createdAt: Value(createdAt),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      updatedAt: Value(updatedAt),
+      updatedBy: updatedBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedBy),
+      deletedAt: deletedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deletedAt),
+      source: source == null && nullToAbsent
+          ? const Value.absent()
+          : Value(source),
+      sourceRef: sourceRef == null && nullToAbsent
+          ? const Value.absent()
+          : Value(sourceRef),
+      collectedAt: collectedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(collectedAt),
+      id: Value(id),
+      name: Value(name),
+      kind: Value(kind),
+      status: Value(status),
+      siren: siren == null && nullToAbsent
+          ? const Value.absent()
+          : Value(siren),
+      siret: siret == null && nullToAbsent
+          ? const Value.absent()
+          : Value(siret),
+      inseeCode: inseeCode == null && nullToAbsent
+          ? const Value.absent()
+          : Value(inseeCode),
+      population: population == null && nullToAbsent
+          ? const Value.absent()
+          : Value(population),
+      parentId: parentId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(parentId),
+      departementCode: departementCode == null && nullToAbsent
+          ? const Value.absent()
+          : Value(departementCode),
+      regionCode: regionCode == null && nullToAbsent
+          ? const Value.absent()
+          : Value(regionCode),
+      address: address == null && nullToAbsent
+          ? const Value.absent()
+          : Value(address),
+      postalCode: postalCode == null && nullToAbsent
+          ? const Value.absent()
+          : Value(postalCode),
+      city: city == null && nullToAbsent ? const Value.absent() : Value(city),
+      latitude: latitude == null && nullToAbsent
+          ? const Value.absent()
+          : Value(latitude),
+      longitude: longitude == null && nullToAbsent
+          ? const Value.absent()
+          : Value(longitude),
+      phone: phone == null && nullToAbsent
+          ? const Value.absent()
+          : Value(phone),
+      email: email == null && nullToAbsent
+          ? const Value.absent()
+          : Value(email),
+      website: website == null && nullToAbsent
+          ? const Value.absent()
+          : Value(website),
+      description: description == null && nullToAbsent
+          ? const Value.absent()
+          : Value(description),
+      ownerId: ownerId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(ownerId),
+      customFields: customFields == null && nullToAbsent
+          ? const Value.absent()
+          : Value(customFields),
+    );
+  }
+
+  factory OrganisationRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return OrganisationRow(
+      version: serializer.fromJson<int>(json['version']),
+      fieldMeta: serializer.fromJson<String>(json['fieldMeta']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      updatedBy: serializer.fromJson<String?>(json['updatedBy']),
+      deletedAt: serializer.fromJson<DateTime?>(json['deletedAt']),
+      source: serializer.fromJson<String?>(json['source']),
+      sourceRef: serializer.fromJson<String?>(json['sourceRef']),
+      collectedAt: serializer.fromJson<DateTime?>(json['collectedAt']),
+      id: serializer.fromJson<String>(json['id']),
+      name: serializer.fromJson<String>(json['name']),
+      kind: serializer.fromJson<String>(json['kind']),
+      status: serializer.fromJson<String>(json['status']),
+      siren: serializer.fromJson<String?>(json['siren']),
+      siret: serializer.fromJson<String?>(json['siret']),
+      inseeCode: serializer.fromJson<String?>(json['inseeCode']),
+      population: serializer.fromJson<int?>(json['population']),
+      parentId: serializer.fromJson<String?>(json['parentId']),
+      departementCode: serializer.fromJson<String?>(json['departementCode']),
+      regionCode: serializer.fromJson<String?>(json['regionCode']),
+      address: serializer.fromJson<String?>(json['address']),
+      postalCode: serializer.fromJson<String?>(json['postalCode']),
+      city: serializer.fromJson<String?>(json['city']),
+      latitude: serializer.fromJson<double?>(json['latitude']),
+      longitude: serializer.fromJson<double?>(json['longitude']),
+      phone: serializer.fromJson<String?>(json['phone']),
+      email: serializer.fromJson<String?>(json['email']),
+      website: serializer.fromJson<String?>(json['website']),
+      description: serializer.fromJson<String?>(json['description']),
+      ownerId: serializer.fromJson<String?>(json['ownerId']),
+      customFields: serializer.fromJson<String?>(json['customFields']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'version': serializer.toJson<int>(version),
+      'fieldMeta': serializer.toJson<String>(fieldMeta),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'updatedBy': serializer.toJson<String?>(updatedBy),
+      'deletedAt': serializer.toJson<DateTime?>(deletedAt),
+      'source': serializer.toJson<String?>(source),
+      'sourceRef': serializer.toJson<String?>(sourceRef),
+      'collectedAt': serializer.toJson<DateTime?>(collectedAt),
+      'id': serializer.toJson<String>(id),
+      'name': serializer.toJson<String>(name),
+      'kind': serializer.toJson<String>(kind),
+      'status': serializer.toJson<String>(status),
+      'siren': serializer.toJson<String?>(siren),
+      'siret': serializer.toJson<String?>(siret),
+      'inseeCode': serializer.toJson<String?>(inseeCode),
+      'population': serializer.toJson<int?>(population),
+      'parentId': serializer.toJson<String?>(parentId),
+      'departementCode': serializer.toJson<String?>(departementCode),
+      'regionCode': serializer.toJson<String?>(regionCode),
+      'address': serializer.toJson<String?>(address),
+      'postalCode': serializer.toJson<String?>(postalCode),
+      'city': serializer.toJson<String?>(city),
+      'latitude': serializer.toJson<double?>(latitude),
+      'longitude': serializer.toJson<double?>(longitude),
+      'phone': serializer.toJson<String?>(phone),
+      'email': serializer.toJson<String?>(email),
+      'website': serializer.toJson<String?>(website),
+      'description': serializer.toJson<String?>(description),
+      'ownerId': serializer.toJson<String?>(ownerId),
+      'customFields': serializer.toJson<String?>(customFields),
+    };
+  }
+
+  OrganisationRow copyWith({
+    int? version,
+    String? fieldMeta,
+    DateTime? createdAt,
+    Value<String?> createdBy = const Value.absent(),
+    DateTime? updatedAt,
+    Value<String?> updatedBy = const Value.absent(),
+    Value<DateTime?> deletedAt = const Value.absent(),
+    Value<String?> source = const Value.absent(),
+    Value<String?> sourceRef = const Value.absent(),
+    Value<DateTime?> collectedAt = const Value.absent(),
+    String? id,
+    String? name,
+    String? kind,
+    String? status,
+    Value<String?> siren = const Value.absent(),
+    Value<String?> siret = const Value.absent(),
+    Value<String?> inseeCode = const Value.absent(),
+    Value<int?> population = const Value.absent(),
+    Value<String?> parentId = const Value.absent(),
+    Value<String?> departementCode = const Value.absent(),
+    Value<String?> regionCode = const Value.absent(),
+    Value<String?> address = const Value.absent(),
+    Value<String?> postalCode = const Value.absent(),
+    Value<String?> city = const Value.absent(),
+    Value<double?> latitude = const Value.absent(),
+    Value<double?> longitude = const Value.absent(),
+    Value<String?> phone = const Value.absent(),
+    Value<String?> email = const Value.absent(),
+    Value<String?> website = const Value.absent(),
+    Value<String?> description = const Value.absent(),
+    Value<String?> ownerId = const Value.absent(),
+    Value<String?> customFields = const Value.absent(),
+  }) => OrganisationRow(
+    version: version ?? this.version,
+    fieldMeta: fieldMeta ?? this.fieldMeta,
+    createdAt: createdAt ?? this.createdAt,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    updatedAt: updatedAt ?? this.updatedAt,
+    updatedBy: updatedBy.present ? updatedBy.value : this.updatedBy,
+    deletedAt: deletedAt.present ? deletedAt.value : this.deletedAt,
+    source: source.present ? source.value : this.source,
+    sourceRef: sourceRef.present ? sourceRef.value : this.sourceRef,
+    collectedAt: collectedAt.present ? collectedAt.value : this.collectedAt,
+    id: id ?? this.id,
+    name: name ?? this.name,
+    kind: kind ?? this.kind,
+    status: status ?? this.status,
+    siren: siren.present ? siren.value : this.siren,
+    siret: siret.present ? siret.value : this.siret,
+    inseeCode: inseeCode.present ? inseeCode.value : this.inseeCode,
+    population: population.present ? population.value : this.population,
+    parentId: parentId.present ? parentId.value : this.parentId,
+    departementCode: departementCode.present
+        ? departementCode.value
+        : this.departementCode,
+    regionCode: regionCode.present ? regionCode.value : this.regionCode,
+    address: address.present ? address.value : this.address,
+    postalCode: postalCode.present ? postalCode.value : this.postalCode,
+    city: city.present ? city.value : this.city,
+    latitude: latitude.present ? latitude.value : this.latitude,
+    longitude: longitude.present ? longitude.value : this.longitude,
+    phone: phone.present ? phone.value : this.phone,
+    email: email.present ? email.value : this.email,
+    website: website.present ? website.value : this.website,
+    description: description.present ? description.value : this.description,
+    ownerId: ownerId.present ? ownerId.value : this.ownerId,
+    customFields: customFields.present ? customFields.value : this.customFields,
+  );
+  OrganisationRow copyWithCompanion(OrganisationsCompanion data) {
+    return OrganisationRow(
+      version: data.version.present ? data.version.value : this.version,
+      fieldMeta: data.fieldMeta.present ? data.fieldMeta.value : this.fieldMeta,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      updatedBy: data.updatedBy.present ? data.updatedBy.value : this.updatedBy,
+      deletedAt: data.deletedAt.present ? data.deletedAt.value : this.deletedAt,
+      source: data.source.present ? data.source.value : this.source,
+      sourceRef: data.sourceRef.present ? data.sourceRef.value : this.sourceRef,
+      collectedAt: data.collectedAt.present
+          ? data.collectedAt.value
+          : this.collectedAt,
+      id: data.id.present ? data.id.value : this.id,
+      name: data.name.present ? data.name.value : this.name,
+      kind: data.kind.present ? data.kind.value : this.kind,
+      status: data.status.present ? data.status.value : this.status,
+      siren: data.siren.present ? data.siren.value : this.siren,
+      siret: data.siret.present ? data.siret.value : this.siret,
+      inseeCode: data.inseeCode.present ? data.inseeCode.value : this.inseeCode,
+      population: data.population.present
+          ? data.population.value
+          : this.population,
+      parentId: data.parentId.present ? data.parentId.value : this.parentId,
+      departementCode: data.departementCode.present
+          ? data.departementCode.value
+          : this.departementCode,
+      regionCode: data.regionCode.present
+          ? data.regionCode.value
+          : this.regionCode,
+      address: data.address.present ? data.address.value : this.address,
+      postalCode: data.postalCode.present
+          ? data.postalCode.value
+          : this.postalCode,
+      city: data.city.present ? data.city.value : this.city,
+      latitude: data.latitude.present ? data.latitude.value : this.latitude,
+      longitude: data.longitude.present ? data.longitude.value : this.longitude,
+      phone: data.phone.present ? data.phone.value : this.phone,
+      email: data.email.present ? data.email.value : this.email,
+      website: data.website.present ? data.website.value : this.website,
+      description: data.description.present
+          ? data.description.value
+          : this.description,
+      ownerId: data.ownerId.present ? data.ownerId.value : this.ownerId,
+      customFields: data.customFields.present
+          ? data.customFields.value
+          : this.customFields,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('OrganisationRow(')
+          ..write('version: $version, ')
+          ..write('fieldMeta: $fieldMeta, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('updatedBy: $updatedBy, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('source: $source, ')
+          ..write('sourceRef: $sourceRef, ')
+          ..write('collectedAt: $collectedAt, ')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('kind: $kind, ')
+          ..write('status: $status, ')
+          ..write('siren: $siren, ')
+          ..write('siret: $siret, ')
+          ..write('inseeCode: $inseeCode, ')
+          ..write('population: $population, ')
+          ..write('parentId: $parentId, ')
+          ..write('departementCode: $departementCode, ')
+          ..write('regionCode: $regionCode, ')
+          ..write('address: $address, ')
+          ..write('postalCode: $postalCode, ')
+          ..write('city: $city, ')
+          ..write('latitude: $latitude, ')
+          ..write('longitude: $longitude, ')
+          ..write('phone: $phone, ')
+          ..write('email: $email, ')
+          ..write('website: $website, ')
+          ..write('description: $description, ')
+          ..write('ownerId: $ownerId, ')
+          ..write('customFields: $customFields')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hashAll([
+    version,
+    fieldMeta,
+    createdAt,
+    createdBy,
+    updatedAt,
+    updatedBy,
+    deletedAt,
+    source,
+    sourceRef,
+    collectedAt,
+    id,
+    name,
+    kind,
+    status,
+    siren,
+    siret,
+    inseeCode,
+    population,
+    parentId,
+    departementCode,
+    regionCode,
+    address,
+    postalCode,
+    city,
+    latitude,
+    longitude,
+    phone,
+    email,
+    website,
+    description,
+    ownerId,
+    customFields,
+  ]);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is OrganisationRow &&
+          other.version == this.version &&
+          other.fieldMeta == this.fieldMeta &&
+          other.createdAt == this.createdAt &&
+          other.createdBy == this.createdBy &&
+          other.updatedAt == this.updatedAt &&
+          other.updatedBy == this.updatedBy &&
+          other.deletedAt == this.deletedAt &&
+          other.source == this.source &&
+          other.sourceRef == this.sourceRef &&
+          other.collectedAt == this.collectedAt &&
+          other.id == this.id &&
+          other.name == this.name &&
+          other.kind == this.kind &&
+          other.status == this.status &&
+          other.siren == this.siren &&
+          other.siret == this.siret &&
+          other.inseeCode == this.inseeCode &&
+          other.population == this.population &&
+          other.parentId == this.parentId &&
+          other.departementCode == this.departementCode &&
+          other.regionCode == this.regionCode &&
+          other.address == this.address &&
+          other.postalCode == this.postalCode &&
+          other.city == this.city &&
+          other.latitude == this.latitude &&
+          other.longitude == this.longitude &&
+          other.phone == this.phone &&
+          other.email == this.email &&
+          other.website == this.website &&
+          other.description == this.description &&
+          other.ownerId == this.ownerId &&
+          other.customFields == this.customFields);
+}
+
+class OrganisationsCompanion extends UpdateCompanion<OrganisationRow> {
+  final Value<int> version;
+  final Value<String> fieldMeta;
+  final Value<DateTime> createdAt;
+  final Value<String?> createdBy;
+  final Value<DateTime> updatedAt;
+  final Value<String?> updatedBy;
+  final Value<DateTime?> deletedAt;
+  final Value<String?> source;
+  final Value<String?> sourceRef;
+  final Value<DateTime?> collectedAt;
+  final Value<String> id;
+  final Value<String> name;
+  final Value<String> kind;
+  final Value<String> status;
+  final Value<String?> siren;
+  final Value<String?> siret;
+  final Value<String?> inseeCode;
+  final Value<int?> population;
+  final Value<String?> parentId;
+  final Value<String?> departementCode;
+  final Value<String?> regionCode;
+  final Value<String?> address;
+  final Value<String?> postalCode;
+  final Value<String?> city;
+  final Value<double?> latitude;
+  final Value<double?> longitude;
+  final Value<String?> phone;
+  final Value<String?> email;
+  final Value<String?> website;
+  final Value<String?> description;
+  final Value<String?> ownerId;
+  final Value<String?> customFields;
+  final Value<int> rowid;
+  const OrganisationsCompanion({
+    this.version = const Value.absent(),
+    this.fieldMeta = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.updatedBy = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.source = const Value.absent(),
+    this.sourceRef = const Value.absent(),
+    this.collectedAt = const Value.absent(),
+    this.id = const Value.absent(),
+    this.name = const Value.absent(),
+    this.kind = const Value.absent(),
+    this.status = const Value.absent(),
+    this.siren = const Value.absent(),
+    this.siret = const Value.absent(),
+    this.inseeCode = const Value.absent(),
+    this.population = const Value.absent(),
+    this.parentId = const Value.absent(),
+    this.departementCode = const Value.absent(),
+    this.regionCode = const Value.absent(),
+    this.address = const Value.absent(),
+    this.postalCode = const Value.absent(),
+    this.city = const Value.absent(),
+    this.latitude = const Value.absent(),
+    this.longitude = const Value.absent(),
+    this.phone = const Value.absent(),
+    this.email = const Value.absent(),
+    this.website = const Value.absent(),
+    this.description = const Value.absent(),
+    this.ownerId = const Value.absent(),
+    this.customFields = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  OrganisationsCompanion.insert({
+    this.version = const Value.absent(),
+    this.fieldMeta = const Value.absent(),
+    required DateTime createdAt,
+    this.createdBy = const Value.absent(),
+    required DateTime updatedAt,
+    this.updatedBy = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.source = const Value.absent(),
+    this.sourceRef = const Value.absent(),
+    this.collectedAt = const Value.absent(),
+    required String id,
+    required String name,
+    required String kind,
+    required String status,
+    this.siren = const Value.absent(),
+    this.siret = const Value.absent(),
+    this.inseeCode = const Value.absent(),
+    this.population = const Value.absent(),
+    this.parentId = const Value.absent(),
+    this.departementCode = const Value.absent(),
+    this.regionCode = const Value.absent(),
+    this.address = const Value.absent(),
+    this.postalCode = const Value.absent(),
+    this.city = const Value.absent(),
+    this.latitude = const Value.absent(),
+    this.longitude = const Value.absent(),
+    this.phone = const Value.absent(),
+    this.email = const Value.absent(),
+    this.website = const Value.absent(),
+    this.description = const Value.absent(),
+    this.ownerId = const Value.absent(),
+    this.customFields = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : createdAt = Value(createdAt),
+       updatedAt = Value(updatedAt),
+       id = Value(id),
+       name = Value(name),
+       kind = Value(kind),
+       status = Value(status);
+  static Insertable<OrganisationRow> custom({
+    Expression<int>? version,
+    Expression<String>? fieldMeta,
+    Expression<DateTime>? createdAt,
+    Expression<String>? createdBy,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? updatedBy,
+    Expression<DateTime>? deletedAt,
+    Expression<String>? source,
+    Expression<String>? sourceRef,
+    Expression<DateTime>? collectedAt,
+    Expression<String>? id,
+    Expression<String>? name,
+    Expression<String>? kind,
+    Expression<String>? status,
+    Expression<String>? siren,
+    Expression<String>? siret,
+    Expression<String>? inseeCode,
+    Expression<int>? population,
+    Expression<String>? parentId,
+    Expression<String>? departementCode,
+    Expression<String>? regionCode,
+    Expression<String>? address,
+    Expression<String>? postalCode,
+    Expression<String>? city,
+    Expression<double>? latitude,
+    Expression<double>? longitude,
+    Expression<String>? phone,
+    Expression<String>? email,
+    Expression<String>? website,
+    Expression<String>? description,
+    Expression<String>? ownerId,
+    Expression<String>? customFields,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (version != null) 'version': version,
+      if (fieldMeta != null) 'field_meta': fieldMeta,
+      if (createdAt != null) 'created_at': createdAt,
+      if (createdBy != null) 'created_by': createdBy,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (updatedBy != null) 'updated_by': updatedBy,
+      if (deletedAt != null) 'deleted_at': deletedAt,
+      if (source != null) 'source': source,
+      if (sourceRef != null) 'source_ref': sourceRef,
+      if (collectedAt != null) 'collected_at': collectedAt,
+      if (id != null) 'id': id,
+      if (name != null) 'name': name,
+      if (kind != null) 'kind': kind,
+      if (status != null) 'status': status,
+      if (siren != null) 'siren': siren,
+      if (siret != null) 'siret': siret,
+      if (inseeCode != null) 'insee_code': inseeCode,
+      if (population != null) 'population': population,
+      if (parentId != null) 'parent_id': parentId,
+      if (departementCode != null) 'departement_code': departementCode,
+      if (regionCode != null) 'region_code': regionCode,
+      if (address != null) 'address': address,
+      if (postalCode != null) 'postal_code': postalCode,
+      if (city != null) 'city': city,
+      if (latitude != null) 'latitude': latitude,
+      if (longitude != null) 'longitude': longitude,
+      if (phone != null) 'phone': phone,
+      if (email != null) 'email': email,
+      if (website != null) 'website': website,
+      if (description != null) 'description': description,
+      if (ownerId != null) 'owner_id': ownerId,
+      if (customFields != null) 'custom_fields': customFields,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  OrganisationsCompanion copyWith({
+    Value<int>? version,
+    Value<String>? fieldMeta,
+    Value<DateTime>? createdAt,
+    Value<String?>? createdBy,
+    Value<DateTime>? updatedAt,
+    Value<String?>? updatedBy,
+    Value<DateTime?>? deletedAt,
+    Value<String?>? source,
+    Value<String?>? sourceRef,
+    Value<DateTime?>? collectedAt,
+    Value<String>? id,
+    Value<String>? name,
+    Value<String>? kind,
+    Value<String>? status,
+    Value<String?>? siren,
+    Value<String?>? siret,
+    Value<String?>? inseeCode,
+    Value<int?>? population,
+    Value<String?>? parentId,
+    Value<String?>? departementCode,
+    Value<String?>? regionCode,
+    Value<String?>? address,
+    Value<String?>? postalCode,
+    Value<String?>? city,
+    Value<double?>? latitude,
+    Value<double?>? longitude,
+    Value<String?>? phone,
+    Value<String?>? email,
+    Value<String?>? website,
+    Value<String?>? description,
+    Value<String?>? ownerId,
+    Value<String?>? customFields,
+    Value<int>? rowid,
+  }) {
+    return OrganisationsCompanion(
+      version: version ?? this.version,
+      fieldMeta: fieldMeta ?? this.fieldMeta,
+      createdAt: createdAt ?? this.createdAt,
+      createdBy: createdBy ?? this.createdBy,
+      updatedAt: updatedAt ?? this.updatedAt,
+      updatedBy: updatedBy ?? this.updatedBy,
+      deletedAt: deletedAt ?? this.deletedAt,
+      source: source ?? this.source,
+      sourceRef: sourceRef ?? this.sourceRef,
+      collectedAt: collectedAt ?? this.collectedAt,
+      id: id ?? this.id,
+      name: name ?? this.name,
+      kind: kind ?? this.kind,
+      status: status ?? this.status,
+      siren: siren ?? this.siren,
+      siret: siret ?? this.siret,
+      inseeCode: inseeCode ?? this.inseeCode,
+      population: population ?? this.population,
+      parentId: parentId ?? this.parentId,
+      departementCode: departementCode ?? this.departementCode,
+      regionCode: regionCode ?? this.regionCode,
+      address: address ?? this.address,
+      postalCode: postalCode ?? this.postalCode,
+      city: city ?? this.city,
+      latitude: latitude ?? this.latitude,
+      longitude: longitude ?? this.longitude,
+      phone: phone ?? this.phone,
+      email: email ?? this.email,
+      website: website ?? this.website,
+      description: description ?? this.description,
+      ownerId: ownerId ?? this.ownerId,
+      customFields: customFields ?? this.customFields,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (version.present) {
+      map['version'] = Variable<int>(version.value);
+    }
+    if (fieldMeta.present) {
+      map['field_meta'] = Variable<String>(fieldMeta.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (updatedBy.present) {
+      map['updated_by'] = Variable<String>(updatedBy.value);
+    }
+    if (deletedAt.present) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt.value);
+    }
+    if (source.present) {
+      map['source'] = Variable<String>(source.value);
+    }
+    if (sourceRef.present) {
+      map['source_ref'] = Variable<String>(sourceRef.value);
+    }
+    if (collectedAt.present) {
+      map['collected_at'] = Variable<DateTime>(collectedAt.value);
+    }
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (kind.present) {
+      map['kind'] = Variable<String>(kind.value);
+    }
+    if (status.present) {
+      map['status'] = Variable<String>(status.value);
+    }
+    if (siren.present) {
+      map['siren'] = Variable<String>(siren.value);
+    }
+    if (siret.present) {
+      map['siret'] = Variable<String>(siret.value);
+    }
+    if (inseeCode.present) {
+      map['insee_code'] = Variable<String>(inseeCode.value);
+    }
+    if (population.present) {
+      map['population'] = Variable<int>(population.value);
+    }
+    if (parentId.present) {
+      map['parent_id'] = Variable<String>(parentId.value);
+    }
+    if (departementCode.present) {
+      map['departement_code'] = Variable<String>(departementCode.value);
+    }
+    if (regionCode.present) {
+      map['region_code'] = Variable<String>(regionCode.value);
+    }
+    if (address.present) {
+      map['address'] = Variable<String>(address.value);
+    }
+    if (postalCode.present) {
+      map['postal_code'] = Variable<String>(postalCode.value);
+    }
+    if (city.present) {
+      map['city'] = Variable<String>(city.value);
+    }
+    if (latitude.present) {
+      map['latitude'] = Variable<double>(latitude.value);
+    }
+    if (longitude.present) {
+      map['longitude'] = Variable<double>(longitude.value);
+    }
+    if (phone.present) {
+      map['phone'] = Variable<String>(phone.value);
+    }
+    if (email.present) {
+      map['email'] = Variable<String>(email.value);
+    }
+    if (website.present) {
+      map['website'] = Variable<String>(website.value);
+    }
+    if (description.present) {
+      map['description'] = Variable<String>(description.value);
+    }
+    if (ownerId.present) {
+      map['owner_id'] = Variable<String>(ownerId.value);
+    }
+    if (customFields.present) {
+      map['custom_fields'] = Variable<String>(customFields.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('OrganisationsCompanion(')
+          ..write('version: $version, ')
+          ..write('fieldMeta: $fieldMeta, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('updatedBy: $updatedBy, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('source: $source, ')
+          ..write('sourceRef: $sourceRef, ')
+          ..write('collectedAt: $collectedAt, ')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('kind: $kind, ')
+          ..write('status: $status, ')
+          ..write('siren: $siren, ')
+          ..write('siret: $siret, ')
+          ..write('inseeCode: $inseeCode, ')
+          ..write('population: $population, ')
+          ..write('parentId: $parentId, ')
+          ..write('departementCode: $departementCode, ')
+          ..write('regionCode: $regionCode, ')
+          ..write('address: $address, ')
+          ..write('postalCode: $postalCode, ')
+          ..write('city: $city, ')
+          ..write('latitude: $latitude, ')
+          ..write('longitude: $longitude, ')
+          ..write('phone: $phone, ')
+          ..write('email: $email, ')
+          ..write('website: $website, ')
+          ..write('description: $description, ')
+          ..write('ownerId: $ownerId, ')
+          ..write('customFields: $customFields, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $ContactsTable extends Contacts
+    with TableInfo<$ContactsTable, ContactRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ContactsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _versionMeta = const VerificationMeta(
+    'version',
+  );
+  @override
+  late final GeneratedColumn<int> version = GeneratedColumn<int>(
+    'version',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _fieldMetaMeta = const VerificationMeta(
+    'fieldMeta',
+  );
+  @override
+  late final GeneratedColumn<String> fieldMeta = GeneratedColumn<String>(
+    'field_meta',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('{}'),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _updatedByMeta = const VerificationMeta(
+    'updatedBy',
+  );
+  @override
+  late final GeneratedColumn<String> updatedBy = GeneratedColumn<String>(
+    'updated_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _deletedAtMeta = const VerificationMeta(
+    'deletedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> deletedAt = GeneratedColumn<DateTime>(
+    'deleted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _sourceMeta = const VerificationMeta('source');
+  @override
+  late final GeneratedColumn<String> source = GeneratedColumn<String>(
+    'source',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _sourceRefMeta = const VerificationMeta(
+    'sourceRef',
+  );
+  @override
+  late final GeneratedColumn<String> sourceRef = GeneratedColumn<String>(
+    'source_ref',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _collectedAtMeta = const VerificationMeta(
+    'collectedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> collectedAt = GeneratedColumn<DateTime>(
+    'collected_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _civilityMeta = const VerificationMeta(
+    'civility',
+  );
+  @override
+  late final GeneratedColumn<String> civility = GeneratedColumn<String>(
+    'civility',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _firstNameMeta = const VerificationMeta(
+    'firstName',
+  );
+  @override
+  late final GeneratedColumn<String> firstName = GeneratedColumn<String>(
+    'first_name',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _lastNameMeta = const VerificationMeta(
+    'lastName',
+  );
+  @override
+  late final GeneratedColumn<String> lastName = GeneratedColumn<String>(
+    'last_name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _emailMeta = const VerificationMeta('email');
+  @override
+  late final GeneratedColumn<String> email = GeneratedColumn<String>(
+    'email',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _phoneMeta = const VerificationMeta('phone');
+  @override
+  late final GeneratedColumn<String> phone = GeneratedColumn<String>(
+    'phone',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _mobileMeta = const VerificationMeta('mobile');
+  @override
+  late final GeneratedColumn<String> mobile = GeneratedColumn<String>(
+    'mobile',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _organisationIdMeta = const VerificationMeta(
+    'organisationId',
+  );
+  @override
+  late final GeneratedColumn<String> organisationId = GeneratedColumn<String>(
+    'organisation_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _jobTitleMeta = const VerificationMeta(
+    'jobTitle',
+  );
+  @override
+  late final GeneratedColumn<String> jobTitle = GeneratedColumn<String>(
+    'job_title',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _serviceMeta = const VerificationMeta(
+    'service',
+  );
+  @override
+  late final GeneratedColumn<String> service = GeneratedColumn<String>(
+    'service',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _notesMeta = const VerificationMeta('notes');
+  @override
+  late final GeneratedColumn<String> notes = GeneratedColumn<String>(
+    'notes',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _doNotContactMeta = const VerificationMeta(
+    'doNotContact',
+  );
+  @override
+  late final GeneratedColumn<bool> doNotContact = GeneratedColumn<bool>(
+    'do_not_contact',
+    aliasedName,
+    true,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("do_not_contact" IN (0, 1))',
+    ),
+  );
+  static const VerificationMeta _ownerIdMeta = const VerificationMeta(
+    'ownerId',
+  );
+  @override
+  late final GeneratedColumn<String> ownerId = GeneratedColumn<String>(
+    'owner_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _customFieldsMeta = const VerificationMeta(
+    'customFields',
+  );
+  @override
+  late final GeneratedColumn<String> customFields = GeneratedColumn<String>(
+    'custom_fields',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    version,
+    fieldMeta,
+    createdAt,
+    createdBy,
+    updatedAt,
+    updatedBy,
+    deletedAt,
+    source,
+    sourceRef,
+    collectedAt,
+    id,
+    civility,
+    firstName,
+    lastName,
+    email,
+    phone,
+    mobile,
+    organisationId,
+    jobTitle,
+    service,
+    notes,
+    doNotContact,
+    ownerId,
+    customFields,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'contacts';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<ContactRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('version')) {
+      context.handle(
+        _versionMeta,
+        version.isAcceptableOrUnknown(data['version']!, _versionMeta),
+      );
+    }
+    if (data.containsKey('field_meta')) {
+      context.handle(
+        _fieldMetaMeta,
+        fieldMeta.isAcceptableOrUnknown(data['field_meta']!, _fieldMetaMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_createdAtMeta);
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_updatedAtMeta);
+    }
+    if (data.containsKey('updated_by')) {
+      context.handle(
+        _updatedByMeta,
+        updatedBy.isAcceptableOrUnknown(data['updated_by']!, _updatedByMeta),
+      );
+    }
+    if (data.containsKey('deleted_at')) {
+      context.handle(
+        _deletedAtMeta,
+        deletedAt.isAcceptableOrUnknown(data['deleted_at']!, _deletedAtMeta),
+      );
+    }
+    if (data.containsKey('source')) {
+      context.handle(
+        _sourceMeta,
+        source.isAcceptableOrUnknown(data['source']!, _sourceMeta),
+      );
+    }
+    if (data.containsKey('source_ref')) {
+      context.handle(
+        _sourceRefMeta,
+        sourceRef.isAcceptableOrUnknown(data['source_ref']!, _sourceRefMeta),
+      );
+    }
+    if (data.containsKey('collected_at')) {
+      context.handle(
+        _collectedAtMeta,
+        collectedAt.isAcceptableOrUnknown(
+          data['collected_at']!,
+          _collectedAtMeta,
+        ),
+      );
+    }
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('civility')) {
+      context.handle(
+        _civilityMeta,
+        civility.isAcceptableOrUnknown(data['civility']!, _civilityMeta),
+      );
+    }
+    if (data.containsKey('first_name')) {
+      context.handle(
+        _firstNameMeta,
+        firstName.isAcceptableOrUnknown(data['first_name']!, _firstNameMeta),
+      );
+    }
+    if (data.containsKey('last_name')) {
+      context.handle(
+        _lastNameMeta,
+        lastName.isAcceptableOrUnknown(data['last_name']!, _lastNameMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_lastNameMeta);
+    }
+    if (data.containsKey('email')) {
+      context.handle(
+        _emailMeta,
+        email.isAcceptableOrUnknown(data['email']!, _emailMeta),
+      );
+    }
+    if (data.containsKey('phone')) {
+      context.handle(
+        _phoneMeta,
+        phone.isAcceptableOrUnknown(data['phone']!, _phoneMeta),
+      );
+    }
+    if (data.containsKey('mobile')) {
+      context.handle(
+        _mobileMeta,
+        mobile.isAcceptableOrUnknown(data['mobile']!, _mobileMeta),
+      );
+    }
+    if (data.containsKey('organisation_id')) {
+      context.handle(
+        _organisationIdMeta,
+        organisationId.isAcceptableOrUnknown(
+          data['organisation_id']!,
+          _organisationIdMeta,
+        ),
+      );
+    }
+    if (data.containsKey('job_title')) {
+      context.handle(
+        _jobTitleMeta,
+        jobTitle.isAcceptableOrUnknown(data['job_title']!, _jobTitleMeta),
+      );
+    }
+    if (data.containsKey('service')) {
+      context.handle(
+        _serviceMeta,
+        service.isAcceptableOrUnknown(data['service']!, _serviceMeta),
+      );
+    }
+    if (data.containsKey('notes')) {
+      context.handle(
+        _notesMeta,
+        notes.isAcceptableOrUnknown(data['notes']!, _notesMeta),
+      );
+    }
+    if (data.containsKey('do_not_contact')) {
+      context.handle(
+        _doNotContactMeta,
+        doNotContact.isAcceptableOrUnknown(
+          data['do_not_contact']!,
+          _doNotContactMeta,
+        ),
+      );
+    }
+    if (data.containsKey('owner_id')) {
+      context.handle(
+        _ownerIdMeta,
+        ownerId.isAcceptableOrUnknown(data['owner_id']!, _ownerIdMeta),
+      );
+    }
+    if (data.containsKey('custom_fields')) {
+      context.handle(
+        _customFieldsMeta,
+        customFields.isAcceptableOrUnknown(
+          data['custom_fields']!,
+          _customFieldsMeta,
+        ),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  ContactRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ContactRow(
+      version: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}version'],
+      )!,
+      fieldMeta: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}field_meta'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      updatedBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_by'],
+      ),
+      deletedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}deleted_at'],
+      ),
+      source: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}source'],
+      ),
+      sourceRef: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}source_ref'],
+      ),
+      collectedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}collected_at'],
+      ),
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      civility: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}civility'],
+      ),
+      firstName: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}first_name'],
+      ),
+      lastName: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}last_name'],
+      )!,
+      email: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}email'],
+      ),
+      phone: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}phone'],
+      ),
+      mobile: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}mobile'],
+      ),
+      organisationId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}organisation_id'],
+      ),
+      jobTitle: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}job_title'],
+      ),
+      service: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}service'],
+      ),
+      notes: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}notes'],
+      ),
+      doNotContact: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}do_not_contact'],
+      ),
+      ownerId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}owner_id'],
+      ),
+      customFields: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}custom_fields'],
+      ),
+    );
+  }
+
+  @override
+  $ContactsTable createAlias(String alias) {
+    return $ContactsTable(attachedDatabase, alias);
+  }
+}
+
+class ContactRow extends DataClass implements Insertable<ContactRow> {
+  final int version;
+  final String fieldMeta;
+  final DateTime createdAt;
+  final String? createdBy;
+  final DateTime updatedAt;
+  final String? updatedBy;
+  final DateTime? deletedAt;
+  final String? source;
+  final String? sourceRef;
+  final DateTime? collectedAt;
+  final String id;
+  final String? civility;
+  final String? firstName;
+  final String lastName;
+  final String? email;
+  final String? phone;
+  final String? mobile;
+  final String? organisationId;
+  final String? jobTitle;
+  final String? service;
+  final String? notes;
+  final bool? doNotContact;
+  final String? ownerId;
+  final String? customFields;
+  const ContactRow({
+    required this.version,
+    required this.fieldMeta,
+    required this.createdAt,
+    this.createdBy,
+    required this.updatedAt,
+    this.updatedBy,
+    this.deletedAt,
+    this.source,
+    this.sourceRef,
+    this.collectedAt,
+    required this.id,
+    this.civility,
+    this.firstName,
+    required this.lastName,
+    this.email,
+    this.phone,
+    this.mobile,
+    this.organisationId,
+    this.jobTitle,
+    this.service,
+    this.notes,
+    this.doNotContact,
+    this.ownerId,
+    this.customFields,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['version'] = Variable<int>(version);
+    map['field_meta'] = Variable<String>(fieldMeta);
+    map['created_at'] = Variable<DateTime>(createdAt);
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    if (!nullToAbsent || updatedBy != null) {
+      map['updated_by'] = Variable<String>(updatedBy);
+    }
+    if (!nullToAbsent || deletedAt != null) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt);
+    }
+    if (!nullToAbsent || source != null) {
+      map['source'] = Variable<String>(source);
+    }
+    if (!nullToAbsent || sourceRef != null) {
+      map['source_ref'] = Variable<String>(sourceRef);
+    }
+    if (!nullToAbsent || collectedAt != null) {
+      map['collected_at'] = Variable<DateTime>(collectedAt);
+    }
+    map['id'] = Variable<String>(id);
+    if (!nullToAbsent || civility != null) {
+      map['civility'] = Variable<String>(civility);
+    }
+    if (!nullToAbsent || firstName != null) {
+      map['first_name'] = Variable<String>(firstName);
+    }
+    map['last_name'] = Variable<String>(lastName);
+    if (!nullToAbsent || email != null) {
+      map['email'] = Variable<String>(email);
+    }
+    if (!nullToAbsent || phone != null) {
+      map['phone'] = Variable<String>(phone);
+    }
+    if (!nullToAbsent || mobile != null) {
+      map['mobile'] = Variable<String>(mobile);
+    }
+    if (!nullToAbsent || organisationId != null) {
+      map['organisation_id'] = Variable<String>(organisationId);
+    }
+    if (!nullToAbsent || jobTitle != null) {
+      map['job_title'] = Variable<String>(jobTitle);
+    }
+    if (!nullToAbsent || service != null) {
+      map['service'] = Variable<String>(service);
+    }
+    if (!nullToAbsent || notes != null) {
+      map['notes'] = Variable<String>(notes);
+    }
+    if (!nullToAbsent || doNotContact != null) {
+      map['do_not_contact'] = Variable<bool>(doNotContact);
+    }
+    if (!nullToAbsent || ownerId != null) {
+      map['owner_id'] = Variable<String>(ownerId);
+    }
+    if (!nullToAbsent || customFields != null) {
+      map['custom_fields'] = Variable<String>(customFields);
+    }
+    return map;
+  }
+
+  ContactsCompanion toCompanion(bool nullToAbsent) {
+    return ContactsCompanion(
+      version: Value(version),
+      fieldMeta: Value(fieldMeta),
+      createdAt: Value(createdAt),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      updatedAt: Value(updatedAt),
+      updatedBy: updatedBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedBy),
+      deletedAt: deletedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deletedAt),
+      source: source == null && nullToAbsent
+          ? const Value.absent()
+          : Value(source),
+      sourceRef: sourceRef == null && nullToAbsent
+          ? const Value.absent()
+          : Value(sourceRef),
+      collectedAt: collectedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(collectedAt),
+      id: Value(id),
+      civility: civility == null && nullToAbsent
+          ? const Value.absent()
+          : Value(civility),
+      firstName: firstName == null && nullToAbsent
+          ? const Value.absent()
+          : Value(firstName),
+      lastName: Value(lastName),
+      email: email == null && nullToAbsent
+          ? const Value.absent()
+          : Value(email),
+      phone: phone == null && nullToAbsent
+          ? const Value.absent()
+          : Value(phone),
+      mobile: mobile == null && nullToAbsent
+          ? const Value.absent()
+          : Value(mobile),
+      organisationId: organisationId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(organisationId),
+      jobTitle: jobTitle == null && nullToAbsent
+          ? const Value.absent()
+          : Value(jobTitle),
+      service: service == null && nullToAbsent
+          ? const Value.absent()
+          : Value(service),
+      notes: notes == null && nullToAbsent
+          ? const Value.absent()
+          : Value(notes),
+      doNotContact: doNotContact == null && nullToAbsent
+          ? const Value.absent()
+          : Value(doNotContact),
+      ownerId: ownerId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(ownerId),
+      customFields: customFields == null && nullToAbsent
+          ? const Value.absent()
+          : Value(customFields),
+    );
+  }
+
+  factory ContactRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return ContactRow(
+      version: serializer.fromJson<int>(json['version']),
+      fieldMeta: serializer.fromJson<String>(json['fieldMeta']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      updatedBy: serializer.fromJson<String?>(json['updatedBy']),
+      deletedAt: serializer.fromJson<DateTime?>(json['deletedAt']),
+      source: serializer.fromJson<String?>(json['source']),
+      sourceRef: serializer.fromJson<String?>(json['sourceRef']),
+      collectedAt: serializer.fromJson<DateTime?>(json['collectedAt']),
+      id: serializer.fromJson<String>(json['id']),
+      civility: serializer.fromJson<String?>(json['civility']),
+      firstName: serializer.fromJson<String?>(json['firstName']),
+      lastName: serializer.fromJson<String>(json['lastName']),
+      email: serializer.fromJson<String?>(json['email']),
+      phone: serializer.fromJson<String?>(json['phone']),
+      mobile: serializer.fromJson<String?>(json['mobile']),
+      organisationId: serializer.fromJson<String?>(json['organisationId']),
+      jobTitle: serializer.fromJson<String?>(json['jobTitle']),
+      service: serializer.fromJson<String?>(json['service']),
+      notes: serializer.fromJson<String?>(json['notes']),
+      doNotContact: serializer.fromJson<bool?>(json['doNotContact']),
+      ownerId: serializer.fromJson<String?>(json['ownerId']),
+      customFields: serializer.fromJson<String?>(json['customFields']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'version': serializer.toJson<int>(version),
+      'fieldMeta': serializer.toJson<String>(fieldMeta),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'updatedBy': serializer.toJson<String?>(updatedBy),
+      'deletedAt': serializer.toJson<DateTime?>(deletedAt),
+      'source': serializer.toJson<String?>(source),
+      'sourceRef': serializer.toJson<String?>(sourceRef),
+      'collectedAt': serializer.toJson<DateTime?>(collectedAt),
+      'id': serializer.toJson<String>(id),
+      'civility': serializer.toJson<String?>(civility),
+      'firstName': serializer.toJson<String?>(firstName),
+      'lastName': serializer.toJson<String>(lastName),
+      'email': serializer.toJson<String?>(email),
+      'phone': serializer.toJson<String?>(phone),
+      'mobile': serializer.toJson<String?>(mobile),
+      'organisationId': serializer.toJson<String?>(organisationId),
+      'jobTitle': serializer.toJson<String?>(jobTitle),
+      'service': serializer.toJson<String?>(service),
+      'notes': serializer.toJson<String?>(notes),
+      'doNotContact': serializer.toJson<bool?>(doNotContact),
+      'ownerId': serializer.toJson<String?>(ownerId),
+      'customFields': serializer.toJson<String?>(customFields),
+    };
+  }
+
+  ContactRow copyWith({
+    int? version,
+    String? fieldMeta,
+    DateTime? createdAt,
+    Value<String?> createdBy = const Value.absent(),
+    DateTime? updatedAt,
+    Value<String?> updatedBy = const Value.absent(),
+    Value<DateTime?> deletedAt = const Value.absent(),
+    Value<String?> source = const Value.absent(),
+    Value<String?> sourceRef = const Value.absent(),
+    Value<DateTime?> collectedAt = const Value.absent(),
+    String? id,
+    Value<String?> civility = const Value.absent(),
+    Value<String?> firstName = const Value.absent(),
+    String? lastName,
+    Value<String?> email = const Value.absent(),
+    Value<String?> phone = const Value.absent(),
+    Value<String?> mobile = const Value.absent(),
+    Value<String?> organisationId = const Value.absent(),
+    Value<String?> jobTitle = const Value.absent(),
+    Value<String?> service = const Value.absent(),
+    Value<String?> notes = const Value.absent(),
+    Value<bool?> doNotContact = const Value.absent(),
+    Value<String?> ownerId = const Value.absent(),
+    Value<String?> customFields = const Value.absent(),
+  }) => ContactRow(
+    version: version ?? this.version,
+    fieldMeta: fieldMeta ?? this.fieldMeta,
+    createdAt: createdAt ?? this.createdAt,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    updatedAt: updatedAt ?? this.updatedAt,
+    updatedBy: updatedBy.present ? updatedBy.value : this.updatedBy,
+    deletedAt: deletedAt.present ? deletedAt.value : this.deletedAt,
+    source: source.present ? source.value : this.source,
+    sourceRef: sourceRef.present ? sourceRef.value : this.sourceRef,
+    collectedAt: collectedAt.present ? collectedAt.value : this.collectedAt,
+    id: id ?? this.id,
+    civility: civility.present ? civility.value : this.civility,
+    firstName: firstName.present ? firstName.value : this.firstName,
+    lastName: lastName ?? this.lastName,
+    email: email.present ? email.value : this.email,
+    phone: phone.present ? phone.value : this.phone,
+    mobile: mobile.present ? mobile.value : this.mobile,
+    organisationId: organisationId.present
+        ? organisationId.value
+        : this.organisationId,
+    jobTitle: jobTitle.present ? jobTitle.value : this.jobTitle,
+    service: service.present ? service.value : this.service,
+    notes: notes.present ? notes.value : this.notes,
+    doNotContact: doNotContact.present ? doNotContact.value : this.doNotContact,
+    ownerId: ownerId.present ? ownerId.value : this.ownerId,
+    customFields: customFields.present ? customFields.value : this.customFields,
+  );
+  ContactRow copyWithCompanion(ContactsCompanion data) {
+    return ContactRow(
+      version: data.version.present ? data.version.value : this.version,
+      fieldMeta: data.fieldMeta.present ? data.fieldMeta.value : this.fieldMeta,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      updatedBy: data.updatedBy.present ? data.updatedBy.value : this.updatedBy,
+      deletedAt: data.deletedAt.present ? data.deletedAt.value : this.deletedAt,
+      source: data.source.present ? data.source.value : this.source,
+      sourceRef: data.sourceRef.present ? data.sourceRef.value : this.sourceRef,
+      collectedAt: data.collectedAt.present
+          ? data.collectedAt.value
+          : this.collectedAt,
+      id: data.id.present ? data.id.value : this.id,
+      civility: data.civility.present ? data.civility.value : this.civility,
+      firstName: data.firstName.present ? data.firstName.value : this.firstName,
+      lastName: data.lastName.present ? data.lastName.value : this.lastName,
+      email: data.email.present ? data.email.value : this.email,
+      phone: data.phone.present ? data.phone.value : this.phone,
+      mobile: data.mobile.present ? data.mobile.value : this.mobile,
+      organisationId: data.organisationId.present
+          ? data.organisationId.value
+          : this.organisationId,
+      jobTitle: data.jobTitle.present ? data.jobTitle.value : this.jobTitle,
+      service: data.service.present ? data.service.value : this.service,
+      notes: data.notes.present ? data.notes.value : this.notes,
+      doNotContact: data.doNotContact.present
+          ? data.doNotContact.value
+          : this.doNotContact,
+      ownerId: data.ownerId.present ? data.ownerId.value : this.ownerId,
+      customFields: data.customFields.present
+          ? data.customFields.value
+          : this.customFields,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ContactRow(')
+          ..write('version: $version, ')
+          ..write('fieldMeta: $fieldMeta, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('updatedBy: $updatedBy, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('source: $source, ')
+          ..write('sourceRef: $sourceRef, ')
+          ..write('collectedAt: $collectedAt, ')
+          ..write('id: $id, ')
+          ..write('civility: $civility, ')
+          ..write('firstName: $firstName, ')
+          ..write('lastName: $lastName, ')
+          ..write('email: $email, ')
+          ..write('phone: $phone, ')
+          ..write('mobile: $mobile, ')
+          ..write('organisationId: $organisationId, ')
+          ..write('jobTitle: $jobTitle, ')
+          ..write('service: $service, ')
+          ..write('notes: $notes, ')
+          ..write('doNotContact: $doNotContact, ')
+          ..write('ownerId: $ownerId, ')
+          ..write('customFields: $customFields')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hashAll([
+    version,
+    fieldMeta,
+    createdAt,
+    createdBy,
+    updatedAt,
+    updatedBy,
+    deletedAt,
+    source,
+    sourceRef,
+    collectedAt,
+    id,
+    civility,
+    firstName,
+    lastName,
+    email,
+    phone,
+    mobile,
+    organisationId,
+    jobTitle,
+    service,
+    notes,
+    doNotContact,
+    ownerId,
+    customFields,
+  ]);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is ContactRow &&
+          other.version == this.version &&
+          other.fieldMeta == this.fieldMeta &&
+          other.createdAt == this.createdAt &&
+          other.createdBy == this.createdBy &&
+          other.updatedAt == this.updatedAt &&
+          other.updatedBy == this.updatedBy &&
+          other.deletedAt == this.deletedAt &&
+          other.source == this.source &&
+          other.sourceRef == this.sourceRef &&
+          other.collectedAt == this.collectedAt &&
+          other.id == this.id &&
+          other.civility == this.civility &&
+          other.firstName == this.firstName &&
+          other.lastName == this.lastName &&
+          other.email == this.email &&
+          other.phone == this.phone &&
+          other.mobile == this.mobile &&
+          other.organisationId == this.organisationId &&
+          other.jobTitle == this.jobTitle &&
+          other.service == this.service &&
+          other.notes == this.notes &&
+          other.doNotContact == this.doNotContact &&
+          other.ownerId == this.ownerId &&
+          other.customFields == this.customFields);
+}
+
+class ContactsCompanion extends UpdateCompanion<ContactRow> {
+  final Value<int> version;
+  final Value<String> fieldMeta;
+  final Value<DateTime> createdAt;
+  final Value<String?> createdBy;
+  final Value<DateTime> updatedAt;
+  final Value<String?> updatedBy;
+  final Value<DateTime?> deletedAt;
+  final Value<String?> source;
+  final Value<String?> sourceRef;
+  final Value<DateTime?> collectedAt;
+  final Value<String> id;
+  final Value<String?> civility;
+  final Value<String?> firstName;
+  final Value<String> lastName;
+  final Value<String?> email;
+  final Value<String?> phone;
+  final Value<String?> mobile;
+  final Value<String?> organisationId;
+  final Value<String?> jobTitle;
+  final Value<String?> service;
+  final Value<String?> notes;
+  final Value<bool?> doNotContact;
+  final Value<String?> ownerId;
+  final Value<String?> customFields;
+  final Value<int> rowid;
+  const ContactsCompanion({
+    this.version = const Value.absent(),
+    this.fieldMeta = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.updatedBy = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.source = const Value.absent(),
+    this.sourceRef = const Value.absent(),
+    this.collectedAt = const Value.absent(),
+    this.id = const Value.absent(),
+    this.civility = const Value.absent(),
+    this.firstName = const Value.absent(),
+    this.lastName = const Value.absent(),
+    this.email = const Value.absent(),
+    this.phone = const Value.absent(),
+    this.mobile = const Value.absent(),
+    this.organisationId = const Value.absent(),
+    this.jobTitle = const Value.absent(),
+    this.service = const Value.absent(),
+    this.notes = const Value.absent(),
+    this.doNotContact = const Value.absent(),
+    this.ownerId = const Value.absent(),
+    this.customFields = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  ContactsCompanion.insert({
+    this.version = const Value.absent(),
+    this.fieldMeta = const Value.absent(),
+    required DateTime createdAt,
+    this.createdBy = const Value.absent(),
+    required DateTime updatedAt,
+    this.updatedBy = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.source = const Value.absent(),
+    this.sourceRef = const Value.absent(),
+    this.collectedAt = const Value.absent(),
+    required String id,
+    this.civility = const Value.absent(),
+    this.firstName = const Value.absent(),
+    required String lastName,
+    this.email = const Value.absent(),
+    this.phone = const Value.absent(),
+    this.mobile = const Value.absent(),
+    this.organisationId = const Value.absent(),
+    this.jobTitle = const Value.absent(),
+    this.service = const Value.absent(),
+    this.notes = const Value.absent(),
+    this.doNotContact = const Value.absent(),
+    this.ownerId = const Value.absent(),
+    this.customFields = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : createdAt = Value(createdAt),
+       updatedAt = Value(updatedAt),
+       id = Value(id),
+       lastName = Value(lastName);
+  static Insertable<ContactRow> custom({
+    Expression<int>? version,
+    Expression<String>? fieldMeta,
+    Expression<DateTime>? createdAt,
+    Expression<String>? createdBy,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? updatedBy,
+    Expression<DateTime>? deletedAt,
+    Expression<String>? source,
+    Expression<String>? sourceRef,
+    Expression<DateTime>? collectedAt,
+    Expression<String>? id,
+    Expression<String>? civility,
+    Expression<String>? firstName,
+    Expression<String>? lastName,
+    Expression<String>? email,
+    Expression<String>? phone,
+    Expression<String>? mobile,
+    Expression<String>? organisationId,
+    Expression<String>? jobTitle,
+    Expression<String>? service,
+    Expression<String>? notes,
+    Expression<bool>? doNotContact,
+    Expression<String>? ownerId,
+    Expression<String>? customFields,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (version != null) 'version': version,
+      if (fieldMeta != null) 'field_meta': fieldMeta,
+      if (createdAt != null) 'created_at': createdAt,
+      if (createdBy != null) 'created_by': createdBy,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (updatedBy != null) 'updated_by': updatedBy,
+      if (deletedAt != null) 'deleted_at': deletedAt,
+      if (source != null) 'source': source,
+      if (sourceRef != null) 'source_ref': sourceRef,
+      if (collectedAt != null) 'collected_at': collectedAt,
+      if (id != null) 'id': id,
+      if (civility != null) 'civility': civility,
+      if (firstName != null) 'first_name': firstName,
+      if (lastName != null) 'last_name': lastName,
+      if (email != null) 'email': email,
+      if (phone != null) 'phone': phone,
+      if (mobile != null) 'mobile': mobile,
+      if (organisationId != null) 'organisation_id': organisationId,
+      if (jobTitle != null) 'job_title': jobTitle,
+      if (service != null) 'service': service,
+      if (notes != null) 'notes': notes,
+      if (doNotContact != null) 'do_not_contact': doNotContact,
+      if (ownerId != null) 'owner_id': ownerId,
+      if (customFields != null) 'custom_fields': customFields,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  ContactsCompanion copyWith({
+    Value<int>? version,
+    Value<String>? fieldMeta,
+    Value<DateTime>? createdAt,
+    Value<String?>? createdBy,
+    Value<DateTime>? updatedAt,
+    Value<String?>? updatedBy,
+    Value<DateTime?>? deletedAt,
+    Value<String?>? source,
+    Value<String?>? sourceRef,
+    Value<DateTime?>? collectedAt,
+    Value<String>? id,
+    Value<String?>? civility,
+    Value<String?>? firstName,
+    Value<String>? lastName,
+    Value<String?>? email,
+    Value<String?>? phone,
+    Value<String?>? mobile,
+    Value<String?>? organisationId,
+    Value<String?>? jobTitle,
+    Value<String?>? service,
+    Value<String?>? notes,
+    Value<bool?>? doNotContact,
+    Value<String?>? ownerId,
+    Value<String?>? customFields,
+    Value<int>? rowid,
+  }) {
+    return ContactsCompanion(
+      version: version ?? this.version,
+      fieldMeta: fieldMeta ?? this.fieldMeta,
+      createdAt: createdAt ?? this.createdAt,
+      createdBy: createdBy ?? this.createdBy,
+      updatedAt: updatedAt ?? this.updatedAt,
+      updatedBy: updatedBy ?? this.updatedBy,
+      deletedAt: deletedAt ?? this.deletedAt,
+      source: source ?? this.source,
+      sourceRef: sourceRef ?? this.sourceRef,
+      collectedAt: collectedAt ?? this.collectedAt,
+      id: id ?? this.id,
+      civility: civility ?? this.civility,
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
+      email: email ?? this.email,
+      phone: phone ?? this.phone,
+      mobile: mobile ?? this.mobile,
+      organisationId: organisationId ?? this.organisationId,
+      jobTitle: jobTitle ?? this.jobTitle,
+      service: service ?? this.service,
+      notes: notes ?? this.notes,
+      doNotContact: doNotContact ?? this.doNotContact,
+      ownerId: ownerId ?? this.ownerId,
+      customFields: customFields ?? this.customFields,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (version.present) {
+      map['version'] = Variable<int>(version.value);
+    }
+    if (fieldMeta.present) {
+      map['field_meta'] = Variable<String>(fieldMeta.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (updatedBy.present) {
+      map['updated_by'] = Variable<String>(updatedBy.value);
+    }
+    if (deletedAt.present) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt.value);
+    }
+    if (source.present) {
+      map['source'] = Variable<String>(source.value);
+    }
+    if (sourceRef.present) {
+      map['source_ref'] = Variable<String>(sourceRef.value);
+    }
+    if (collectedAt.present) {
+      map['collected_at'] = Variable<DateTime>(collectedAt.value);
+    }
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (civility.present) {
+      map['civility'] = Variable<String>(civility.value);
+    }
+    if (firstName.present) {
+      map['first_name'] = Variable<String>(firstName.value);
+    }
+    if (lastName.present) {
+      map['last_name'] = Variable<String>(lastName.value);
+    }
+    if (email.present) {
+      map['email'] = Variable<String>(email.value);
+    }
+    if (phone.present) {
+      map['phone'] = Variable<String>(phone.value);
+    }
+    if (mobile.present) {
+      map['mobile'] = Variable<String>(mobile.value);
+    }
+    if (organisationId.present) {
+      map['organisation_id'] = Variable<String>(organisationId.value);
+    }
+    if (jobTitle.present) {
+      map['job_title'] = Variable<String>(jobTitle.value);
+    }
+    if (service.present) {
+      map['service'] = Variable<String>(service.value);
+    }
+    if (notes.present) {
+      map['notes'] = Variable<String>(notes.value);
+    }
+    if (doNotContact.present) {
+      map['do_not_contact'] = Variable<bool>(doNotContact.value);
+    }
+    if (ownerId.present) {
+      map['owner_id'] = Variable<String>(ownerId.value);
+    }
+    if (customFields.present) {
+      map['custom_fields'] = Variable<String>(customFields.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ContactsCompanion(')
+          ..write('version: $version, ')
+          ..write('fieldMeta: $fieldMeta, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('updatedBy: $updatedBy, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('source: $source, ')
+          ..write('sourceRef: $sourceRef, ')
+          ..write('collectedAt: $collectedAt, ')
+          ..write('id: $id, ')
+          ..write('civility: $civility, ')
+          ..write('firstName: $firstName, ')
+          ..write('lastName: $lastName, ')
+          ..write('email: $email, ')
+          ..write('phone: $phone, ')
+          ..write('mobile: $mobile, ')
+          ..write('organisationId: $organisationId, ')
+          ..write('jobTitle: $jobTitle, ')
+          ..write('service: $service, ')
+          ..write('notes: $notes, ')
+          ..write('doNotContact: $doNotContact, ')
+          ..write('ownerId: $ownerId, ')
+          ..write('customFields: $customFields, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $PositionsTable extends Positions
+    with TableInfo<$PositionsTable, PositionRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $PositionsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _versionMeta = const VerificationMeta(
+    'version',
+  );
+  @override
+  late final GeneratedColumn<int> version = GeneratedColumn<int>(
+    'version',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _fieldMetaMeta = const VerificationMeta(
+    'fieldMeta',
+  );
+  @override
+  late final GeneratedColumn<String> fieldMeta = GeneratedColumn<String>(
+    'field_meta',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('{}'),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _updatedByMeta = const VerificationMeta(
+    'updatedBy',
+  );
+  @override
+  late final GeneratedColumn<String> updatedBy = GeneratedColumn<String>(
+    'updated_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _deletedAtMeta = const VerificationMeta(
+    'deletedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> deletedAt = GeneratedColumn<DateTime>(
+    'deleted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _sourceMeta = const VerificationMeta('source');
+  @override
+  late final GeneratedColumn<String> source = GeneratedColumn<String>(
+    'source',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _sourceRefMeta = const VerificationMeta(
+    'sourceRef',
+  );
+  @override
+  late final GeneratedColumn<String> sourceRef = GeneratedColumn<String>(
+    'source_ref',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _collectedAtMeta = const VerificationMeta(
+    'collectedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> collectedAt = GeneratedColumn<DateTime>(
+    'collected_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _contactIdMeta = const VerificationMeta(
+    'contactId',
+  );
+  @override
+  late final GeneratedColumn<String> contactId = GeneratedColumn<String>(
+    'contact_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _organisationIdMeta = const VerificationMeta(
+    'organisationId',
+  );
+  @override
+  late final GeneratedColumn<String> organisationId = GeneratedColumn<String>(
+    'organisation_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _jobTitleMeta = const VerificationMeta(
+    'jobTitle',
+  );
+  @override
+  late final GeneratedColumn<String> jobTitle = GeneratedColumn<String>(
+    'job_title',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _serviceMeta = const VerificationMeta(
+    'service',
+  );
+  @override
+  late final GeneratedColumn<String> service = GeneratedColumn<String>(
+    'service',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _isElectedMeta = const VerificationMeta(
+    'isElected',
+  );
+  @override
+  late final GeneratedColumn<bool> isElected = GeneratedColumn<bool>(
+    'is_elected',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("is_elected" IN (0, 1))',
+    ),
+  );
+  static const VerificationMeta _mandateRoleMeta = const VerificationMeta(
+    'mandateRole',
+  );
+  @override
+  late final GeneratedColumn<String> mandateRole = GeneratedColumn<String>(
+    'mandate_role',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _delegationMeta = const VerificationMeta(
+    'delegation',
+  );
+  @override
+  late final GeneratedColumn<String> delegation = GeneratedColumn<String>(
+    'delegation',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _startDateMeta = const VerificationMeta(
+    'startDate',
+  );
+  @override
+  late final GeneratedColumn<String> startDate = GeneratedColumn<String>(
+    'start_date',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _endDateMeta = const VerificationMeta(
+    'endDate',
+  );
+  @override
+  late final GeneratedColumn<String> endDate = GeneratedColumn<String>(
+    'end_date',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    version,
+    fieldMeta,
+    createdAt,
+    createdBy,
+    updatedAt,
+    updatedBy,
+    deletedAt,
+    source,
+    sourceRef,
+    collectedAt,
+    id,
+    contactId,
+    organisationId,
+    jobTitle,
+    service,
+    isElected,
+    mandateRole,
+    delegation,
+    startDate,
+    endDate,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'positions';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<PositionRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('version')) {
+      context.handle(
+        _versionMeta,
+        version.isAcceptableOrUnknown(data['version']!, _versionMeta),
+      );
+    }
+    if (data.containsKey('field_meta')) {
+      context.handle(
+        _fieldMetaMeta,
+        fieldMeta.isAcceptableOrUnknown(data['field_meta']!, _fieldMetaMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_createdAtMeta);
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_updatedAtMeta);
+    }
+    if (data.containsKey('updated_by')) {
+      context.handle(
+        _updatedByMeta,
+        updatedBy.isAcceptableOrUnknown(data['updated_by']!, _updatedByMeta),
+      );
+    }
+    if (data.containsKey('deleted_at')) {
+      context.handle(
+        _deletedAtMeta,
+        deletedAt.isAcceptableOrUnknown(data['deleted_at']!, _deletedAtMeta),
+      );
+    }
+    if (data.containsKey('source')) {
+      context.handle(
+        _sourceMeta,
+        source.isAcceptableOrUnknown(data['source']!, _sourceMeta),
+      );
+    }
+    if (data.containsKey('source_ref')) {
+      context.handle(
+        _sourceRefMeta,
+        sourceRef.isAcceptableOrUnknown(data['source_ref']!, _sourceRefMeta),
+      );
+    }
+    if (data.containsKey('collected_at')) {
+      context.handle(
+        _collectedAtMeta,
+        collectedAt.isAcceptableOrUnknown(
+          data['collected_at']!,
+          _collectedAtMeta,
+        ),
+      );
+    }
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('contact_id')) {
+      context.handle(
+        _contactIdMeta,
+        contactId.isAcceptableOrUnknown(data['contact_id']!, _contactIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_contactIdMeta);
+    }
+    if (data.containsKey('organisation_id')) {
+      context.handle(
+        _organisationIdMeta,
+        organisationId.isAcceptableOrUnknown(
+          data['organisation_id']!,
+          _organisationIdMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_organisationIdMeta);
+    }
+    if (data.containsKey('job_title')) {
+      context.handle(
+        _jobTitleMeta,
+        jobTitle.isAcceptableOrUnknown(data['job_title']!, _jobTitleMeta),
+      );
+    }
+    if (data.containsKey('service')) {
+      context.handle(
+        _serviceMeta,
+        service.isAcceptableOrUnknown(data['service']!, _serviceMeta),
+      );
+    }
+    if (data.containsKey('is_elected')) {
+      context.handle(
+        _isElectedMeta,
+        isElected.isAcceptableOrUnknown(data['is_elected']!, _isElectedMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_isElectedMeta);
+    }
+    if (data.containsKey('mandate_role')) {
+      context.handle(
+        _mandateRoleMeta,
+        mandateRole.isAcceptableOrUnknown(
+          data['mandate_role']!,
+          _mandateRoleMeta,
+        ),
+      );
+    }
+    if (data.containsKey('delegation')) {
+      context.handle(
+        _delegationMeta,
+        delegation.isAcceptableOrUnknown(data['delegation']!, _delegationMeta),
+      );
+    }
+    if (data.containsKey('start_date')) {
+      context.handle(
+        _startDateMeta,
+        startDate.isAcceptableOrUnknown(data['start_date']!, _startDateMeta),
+      );
+    }
+    if (data.containsKey('end_date')) {
+      context.handle(
+        _endDateMeta,
+        endDate.isAcceptableOrUnknown(data['end_date']!, _endDateMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  PositionRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return PositionRow(
+      version: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}version'],
+      )!,
+      fieldMeta: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}field_meta'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      updatedBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_by'],
+      ),
+      deletedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}deleted_at'],
+      ),
+      source: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}source'],
+      ),
+      sourceRef: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}source_ref'],
+      ),
+      collectedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}collected_at'],
+      ),
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      contactId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}contact_id'],
+      )!,
+      organisationId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}organisation_id'],
+      )!,
+      jobTitle: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}job_title'],
+      ),
+      service: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}service'],
+      ),
+      isElected: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}is_elected'],
+      )!,
+      mandateRole: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}mandate_role'],
+      ),
+      delegation: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}delegation'],
+      ),
+      startDate: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}start_date'],
+      ),
+      endDate: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}end_date'],
+      ),
+    );
+  }
+
+  @override
+  $PositionsTable createAlias(String alias) {
+    return $PositionsTable(attachedDatabase, alias);
+  }
+}
+
+class PositionRow extends DataClass implements Insertable<PositionRow> {
+  final int version;
+  final String fieldMeta;
+  final DateTime createdAt;
+  final String? createdBy;
+  final DateTime updatedAt;
+  final String? updatedBy;
+  final DateTime? deletedAt;
+  final String? source;
+  final String? sourceRef;
+  final DateTime? collectedAt;
+  final String id;
+  final String contactId;
+  final String organisationId;
+  final String? jobTitle;
+  final String? service;
+  final bool isElected;
+  final String? mandateRole;
+  final String? delegation;
+  final String? startDate;
+  final String? endDate;
+  const PositionRow({
+    required this.version,
+    required this.fieldMeta,
+    required this.createdAt,
+    this.createdBy,
+    required this.updatedAt,
+    this.updatedBy,
+    this.deletedAt,
+    this.source,
+    this.sourceRef,
+    this.collectedAt,
+    required this.id,
+    required this.contactId,
+    required this.organisationId,
+    this.jobTitle,
+    this.service,
+    required this.isElected,
+    this.mandateRole,
+    this.delegation,
+    this.startDate,
+    this.endDate,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['version'] = Variable<int>(version);
+    map['field_meta'] = Variable<String>(fieldMeta);
+    map['created_at'] = Variable<DateTime>(createdAt);
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    if (!nullToAbsent || updatedBy != null) {
+      map['updated_by'] = Variable<String>(updatedBy);
+    }
+    if (!nullToAbsent || deletedAt != null) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt);
+    }
+    if (!nullToAbsent || source != null) {
+      map['source'] = Variable<String>(source);
+    }
+    if (!nullToAbsent || sourceRef != null) {
+      map['source_ref'] = Variable<String>(sourceRef);
+    }
+    if (!nullToAbsent || collectedAt != null) {
+      map['collected_at'] = Variable<DateTime>(collectedAt);
+    }
+    map['id'] = Variable<String>(id);
+    map['contact_id'] = Variable<String>(contactId);
+    map['organisation_id'] = Variable<String>(organisationId);
+    if (!nullToAbsent || jobTitle != null) {
+      map['job_title'] = Variable<String>(jobTitle);
+    }
+    if (!nullToAbsent || service != null) {
+      map['service'] = Variable<String>(service);
+    }
+    map['is_elected'] = Variable<bool>(isElected);
+    if (!nullToAbsent || mandateRole != null) {
+      map['mandate_role'] = Variable<String>(mandateRole);
+    }
+    if (!nullToAbsent || delegation != null) {
+      map['delegation'] = Variable<String>(delegation);
+    }
+    if (!nullToAbsent || startDate != null) {
+      map['start_date'] = Variable<String>(startDate);
+    }
+    if (!nullToAbsent || endDate != null) {
+      map['end_date'] = Variable<String>(endDate);
+    }
+    return map;
+  }
+
+  PositionsCompanion toCompanion(bool nullToAbsent) {
+    return PositionsCompanion(
+      version: Value(version),
+      fieldMeta: Value(fieldMeta),
+      createdAt: Value(createdAt),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      updatedAt: Value(updatedAt),
+      updatedBy: updatedBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedBy),
+      deletedAt: deletedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deletedAt),
+      source: source == null && nullToAbsent
+          ? const Value.absent()
+          : Value(source),
+      sourceRef: sourceRef == null && nullToAbsent
+          ? const Value.absent()
+          : Value(sourceRef),
+      collectedAt: collectedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(collectedAt),
+      id: Value(id),
+      contactId: Value(contactId),
+      organisationId: Value(organisationId),
+      jobTitle: jobTitle == null && nullToAbsent
+          ? const Value.absent()
+          : Value(jobTitle),
+      service: service == null && nullToAbsent
+          ? const Value.absent()
+          : Value(service),
+      isElected: Value(isElected),
+      mandateRole: mandateRole == null && nullToAbsent
+          ? const Value.absent()
+          : Value(mandateRole),
+      delegation: delegation == null && nullToAbsent
+          ? const Value.absent()
+          : Value(delegation),
+      startDate: startDate == null && nullToAbsent
+          ? const Value.absent()
+          : Value(startDate),
+      endDate: endDate == null && nullToAbsent
+          ? const Value.absent()
+          : Value(endDate),
+    );
+  }
+
+  factory PositionRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return PositionRow(
+      version: serializer.fromJson<int>(json['version']),
+      fieldMeta: serializer.fromJson<String>(json['fieldMeta']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      updatedBy: serializer.fromJson<String?>(json['updatedBy']),
+      deletedAt: serializer.fromJson<DateTime?>(json['deletedAt']),
+      source: serializer.fromJson<String?>(json['source']),
+      sourceRef: serializer.fromJson<String?>(json['sourceRef']),
+      collectedAt: serializer.fromJson<DateTime?>(json['collectedAt']),
+      id: serializer.fromJson<String>(json['id']),
+      contactId: serializer.fromJson<String>(json['contactId']),
+      organisationId: serializer.fromJson<String>(json['organisationId']),
+      jobTitle: serializer.fromJson<String?>(json['jobTitle']),
+      service: serializer.fromJson<String?>(json['service']),
+      isElected: serializer.fromJson<bool>(json['isElected']),
+      mandateRole: serializer.fromJson<String?>(json['mandateRole']),
+      delegation: serializer.fromJson<String?>(json['delegation']),
+      startDate: serializer.fromJson<String?>(json['startDate']),
+      endDate: serializer.fromJson<String?>(json['endDate']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'version': serializer.toJson<int>(version),
+      'fieldMeta': serializer.toJson<String>(fieldMeta),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'updatedBy': serializer.toJson<String?>(updatedBy),
+      'deletedAt': serializer.toJson<DateTime?>(deletedAt),
+      'source': serializer.toJson<String?>(source),
+      'sourceRef': serializer.toJson<String?>(sourceRef),
+      'collectedAt': serializer.toJson<DateTime?>(collectedAt),
+      'id': serializer.toJson<String>(id),
+      'contactId': serializer.toJson<String>(contactId),
+      'organisationId': serializer.toJson<String>(organisationId),
+      'jobTitle': serializer.toJson<String?>(jobTitle),
+      'service': serializer.toJson<String?>(service),
+      'isElected': serializer.toJson<bool>(isElected),
+      'mandateRole': serializer.toJson<String?>(mandateRole),
+      'delegation': serializer.toJson<String?>(delegation),
+      'startDate': serializer.toJson<String?>(startDate),
+      'endDate': serializer.toJson<String?>(endDate),
+    };
+  }
+
+  PositionRow copyWith({
+    int? version,
+    String? fieldMeta,
+    DateTime? createdAt,
+    Value<String?> createdBy = const Value.absent(),
+    DateTime? updatedAt,
+    Value<String?> updatedBy = const Value.absent(),
+    Value<DateTime?> deletedAt = const Value.absent(),
+    Value<String?> source = const Value.absent(),
+    Value<String?> sourceRef = const Value.absent(),
+    Value<DateTime?> collectedAt = const Value.absent(),
+    String? id,
+    String? contactId,
+    String? organisationId,
+    Value<String?> jobTitle = const Value.absent(),
+    Value<String?> service = const Value.absent(),
+    bool? isElected,
+    Value<String?> mandateRole = const Value.absent(),
+    Value<String?> delegation = const Value.absent(),
+    Value<String?> startDate = const Value.absent(),
+    Value<String?> endDate = const Value.absent(),
+  }) => PositionRow(
+    version: version ?? this.version,
+    fieldMeta: fieldMeta ?? this.fieldMeta,
+    createdAt: createdAt ?? this.createdAt,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    updatedAt: updatedAt ?? this.updatedAt,
+    updatedBy: updatedBy.present ? updatedBy.value : this.updatedBy,
+    deletedAt: deletedAt.present ? deletedAt.value : this.deletedAt,
+    source: source.present ? source.value : this.source,
+    sourceRef: sourceRef.present ? sourceRef.value : this.sourceRef,
+    collectedAt: collectedAt.present ? collectedAt.value : this.collectedAt,
+    id: id ?? this.id,
+    contactId: contactId ?? this.contactId,
+    organisationId: organisationId ?? this.organisationId,
+    jobTitle: jobTitle.present ? jobTitle.value : this.jobTitle,
+    service: service.present ? service.value : this.service,
+    isElected: isElected ?? this.isElected,
+    mandateRole: mandateRole.present ? mandateRole.value : this.mandateRole,
+    delegation: delegation.present ? delegation.value : this.delegation,
+    startDate: startDate.present ? startDate.value : this.startDate,
+    endDate: endDate.present ? endDate.value : this.endDate,
+  );
+  PositionRow copyWithCompanion(PositionsCompanion data) {
+    return PositionRow(
+      version: data.version.present ? data.version.value : this.version,
+      fieldMeta: data.fieldMeta.present ? data.fieldMeta.value : this.fieldMeta,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      updatedBy: data.updatedBy.present ? data.updatedBy.value : this.updatedBy,
+      deletedAt: data.deletedAt.present ? data.deletedAt.value : this.deletedAt,
+      source: data.source.present ? data.source.value : this.source,
+      sourceRef: data.sourceRef.present ? data.sourceRef.value : this.sourceRef,
+      collectedAt: data.collectedAt.present
+          ? data.collectedAt.value
+          : this.collectedAt,
+      id: data.id.present ? data.id.value : this.id,
+      contactId: data.contactId.present ? data.contactId.value : this.contactId,
+      organisationId: data.organisationId.present
+          ? data.organisationId.value
+          : this.organisationId,
+      jobTitle: data.jobTitle.present ? data.jobTitle.value : this.jobTitle,
+      service: data.service.present ? data.service.value : this.service,
+      isElected: data.isElected.present ? data.isElected.value : this.isElected,
+      mandateRole: data.mandateRole.present
+          ? data.mandateRole.value
+          : this.mandateRole,
+      delegation: data.delegation.present
+          ? data.delegation.value
+          : this.delegation,
+      startDate: data.startDate.present ? data.startDate.value : this.startDate,
+      endDate: data.endDate.present ? data.endDate.value : this.endDate,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PositionRow(')
+          ..write('version: $version, ')
+          ..write('fieldMeta: $fieldMeta, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('updatedBy: $updatedBy, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('source: $source, ')
+          ..write('sourceRef: $sourceRef, ')
+          ..write('collectedAt: $collectedAt, ')
+          ..write('id: $id, ')
+          ..write('contactId: $contactId, ')
+          ..write('organisationId: $organisationId, ')
+          ..write('jobTitle: $jobTitle, ')
+          ..write('service: $service, ')
+          ..write('isElected: $isElected, ')
+          ..write('mandateRole: $mandateRole, ')
+          ..write('delegation: $delegation, ')
+          ..write('startDate: $startDate, ')
+          ..write('endDate: $endDate')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    version,
+    fieldMeta,
+    createdAt,
+    createdBy,
+    updatedAt,
+    updatedBy,
+    deletedAt,
+    source,
+    sourceRef,
+    collectedAt,
+    id,
+    contactId,
+    organisationId,
+    jobTitle,
+    service,
+    isElected,
+    mandateRole,
+    delegation,
+    startDate,
+    endDate,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is PositionRow &&
+          other.version == this.version &&
+          other.fieldMeta == this.fieldMeta &&
+          other.createdAt == this.createdAt &&
+          other.createdBy == this.createdBy &&
+          other.updatedAt == this.updatedAt &&
+          other.updatedBy == this.updatedBy &&
+          other.deletedAt == this.deletedAt &&
+          other.source == this.source &&
+          other.sourceRef == this.sourceRef &&
+          other.collectedAt == this.collectedAt &&
+          other.id == this.id &&
+          other.contactId == this.contactId &&
+          other.organisationId == this.organisationId &&
+          other.jobTitle == this.jobTitle &&
+          other.service == this.service &&
+          other.isElected == this.isElected &&
+          other.mandateRole == this.mandateRole &&
+          other.delegation == this.delegation &&
+          other.startDate == this.startDate &&
+          other.endDate == this.endDate);
+}
+
+class PositionsCompanion extends UpdateCompanion<PositionRow> {
+  final Value<int> version;
+  final Value<String> fieldMeta;
+  final Value<DateTime> createdAt;
+  final Value<String?> createdBy;
+  final Value<DateTime> updatedAt;
+  final Value<String?> updatedBy;
+  final Value<DateTime?> deletedAt;
+  final Value<String?> source;
+  final Value<String?> sourceRef;
+  final Value<DateTime?> collectedAt;
+  final Value<String> id;
+  final Value<String> contactId;
+  final Value<String> organisationId;
+  final Value<String?> jobTitle;
+  final Value<String?> service;
+  final Value<bool> isElected;
+  final Value<String?> mandateRole;
+  final Value<String?> delegation;
+  final Value<String?> startDate;
+  final Value<String?> endDate;
+  final Value<int> rowid;
+  const PositionsCompanion({
+    this.version = const Value.absent(),
+    this.fieldMeta = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.updatedBy = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.source = const Value.absent(),
+    this.sourceRef = const Value.absent(),
+    this.collectedAt = const Value.absent(),
+    this.id = const Value.absent(),
+    this.contactId = const Value.absent(),
+    this.organisationId = const Value.absent(),
+    this.jobTitle = const Value.absent(),
+    this.service = const Value.absent(),
+    this.isElected = const Value.absent(),
+    this.mandateRole = const Value.absent(),
+    this.delegation = const Value.absent(),
+    this.startDate = const Value.absent(),
+    this.endDate = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  PositionsCompanion.insert({
+    this.version = const Value.absent(),
+    this.fieldMeta = const Value.absent(),
+    required DateTime createdAt,
+    this.createdBy = const Value.absent(),
+    required DateTime updatedAt,
+    this.updatedBy = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.source = const Value.absent(),
+    this.sourceRef = const Value.absent(),
+    this.collectedAt = const Value.absent(),
+    required String id,
+    required String contactId,
+    required String organisationId,
+    this.jobTitle = const Value.absent(),
+    this.service = const Value.absent(),
+    required bool isElected,
+    this.mandateRole = const Value.absent(),
+    this.delegation = const Value.absent(),
+    this.startDate = const Value.absent(),
+    this.endDate = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : createdAt = Value(createdAt),
+       updatedAt = Value(updatedAt),
+       id = Value(id),
+       contactId = Value(contactId),
+       organisationId = Value(organisationId),
+       isElected = Value(isElected);
+  static Insertable<PositionRow> custom({
+    Expression<int>? version,
+    Expression<String>? fieldMeta,
+    Expression<DateTime>? createdAt,
+    Expression<String>? createdBy,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? updatedBy,
+    Expression<DateTime>? deletedAt,
+    Expression<String>? source,
+    Expression<String>? sourceRef,
+    Expression<DateTime>? collectedAt,
+    Expression<String>? id,
+    Expression<String>? contactId,
+    Expression<String>? organisationId,
+    Expression<String>? jobTitle,
+    Expression<String>? service,
+    Expression<bool>? isElected,
+    Expression<String>? mandateRole,
+    Expression<String>? delegation,
+    Expression<String>? startDate,
+    Expression<String>? endDate,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (version != null) 'version': version,
+      if (fieldMeta != null) 'field_meta': fieldMeta,
+      if (createdAt != null) 'created_at': createdAt,
+      if (createdBy != null) 'created_by': createdBy,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (updatedBy != null) 'updated_by': updatedBy,
+      if (deletedAt != null) 'deleted_at': deletedAt,
+      if (source != null) 'source': source,
+      if (sourceRef != null) 'source_ref': sourceRef,
+      if (collectedAt != null) 'collected_at': collectedAt,
+      if (id != null) 'id': id,
+      if (contactId != null) 'contact_id': contactId,
+      if (organisationId != null) 'organisation_id': organisationId,
+      if (jobTitle != null) 'job_title': jobTitle,
+      if (service != null) 'service': service,
+      if (isElected != null) 'is_elected': isElected,
+      if (mandateRole != null) 'mandate_role': mandateRole,
+      if (delegation != null) 'delegation': delegation,
+      if (startDate != null) 'start_date': startDate,
+      if (endDate != null) 'end_date': endDate,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  PositionsCompanion copyWith({
+    Value<int>? version,
+    Value<String>? fieldMeta,
+    Value<DateTime>? createdAt,
+    Value<String?>? createdBy,
+    Value<DateTime>? updatedAt,
+    Value<String?>? updatedBy,
+    Value<DateTime?>? deletedAt,
+    Value<String?>? source,
+    Value<String?>? sourceRef,
+    Value<DateTime?>? collectedAt,
+    Value<String>? id,
+    Value<String>? contactId,
+    Value<String>? organisationId,
+    Value<String?>? jobTitle,
+    Value<String?>? service,
+    Value<bool>? isElected,
+    Value<String?>? mandateRole,
+    Value<String?>? delegation,
+    Value<String?>? startDate,
+    Value<String?>? endDate,
+    Value<int>? rowid,
+  }) {
+    return PositionsCompanion(
+      version: version ?? this.version,
+      fieldMeta: fieldMeta ?? this.fieldMeta,
+      createdAt: createdAt ?? this.createdAt,
+      createdBy: createdBy ?? this.createdBy,
+      updatedAt: updatedAt ?? this.updatedAt,
+      updatedBy: updatedBy ?? this.updatedBy,
+      deletedAt: deletedAt ?? this.deletedAt,
+      source: source ?? this.source,
+      sourceRef: sourceRef ?? this.sourceRef,
+      collectedAt: collectedAt ?? this.collectedAt,
+      id: id ?? this.id,
+      contactId: contactId ?? this.contactId,
+      organisationId: organisationId ?? this.organisationId,
+      jobTitle: jobTitle ?? this.jobTitle,
+      service: service ?? this.service,
+      isElected: isElected ?? this.isElected,
+      mandateRole: mandateRole ?? this.mandateRole,
+      delegation: delegation ?? this.delegation,
+      startDate: startDate ?? this.startDate,
+      endDate: endDate ?? this.endDate,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (version.present) {
+      map['version'] = Variable<int>(version.value);
+    }
+    if (fieldMeta.present) {
+      map['field_meta'] = Variable<String>(fieldMeta.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (updatedBy.present) {
+      map['updated_by'] = Variable<String>(updatedBy.value);
+    }
+    if (deletedAt.present) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt.value);
+    }
+    if (source.present) {
+      map['source'] = Variable<String>(source.value);
+    }
+    if (sourceRef.present) {
+      map['source_ref'] = Variable<String>(sourceRef.value);
+    }
+    if (collectedAt.present) {
+      map['collected_at'] = Variable<DateTime>(collectedAt.value);
+    }
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (contactId.present) {
+      map['contact_id'] = Variable<String>(contactId.value);
+    }
+    if (organisationId.present) {
+      map['organisation_id'] = Variable<String>(organisationId.value);
+    }
+    if (jobTitle.present) {
+      map['job_title'] = Variable<String>(jobTitle.value);
+    }
+    if (service.present) {
+      map['service'] = Variable<String>(service.value);
+    }
+    if (isElected.present) {
+      map['is_elected'] = Variable<bool>(isElected.value);
+    }
+    if (mandateRole.present) {
+      map['mandate_role'] = Variable<String>(mandateRole.value);
+    }
+    if (delegation.present) {
+      map['delegation'] = Variable<String>(delegation.value);
+    }
+    if (startDate.present) {
+      map['start_date'] = Variable<String>(startDate.value);
+    }
+    if (endDate.present) {
+      map['end_date'] = Variable<String>(endDate.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PositionsCompanion(')
+          ..write('version: $version, ')
+          ..write('fieldMeta: $fieldMeta, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('updatedBy: $updatedBy, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('source: $source, ')
+          ..write('sourceRef: $sourceRef, ')
+          ..write('collectedAt: $collectedAt, ')
+          ..write('id: $id, ')
+          ..write('contactId: $contactId, ')
+          ..write('organisationId: $organisationId, ')
+          ..write('jobTitle: $jobTitle, ')
+          ..write('service: $service, ')
+          ..write('isElected: $isElected, ')
+          ..write('mandateRole: $mandateRole, ')
+          ..write('delegation: $delegation, ')
+          ..write('startDate: $startDate, ')
+          ..write('endDate: $endDate, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $PipelinesTable extends Pipelines
+    with TableInfo<$PipelinesTable, PipelineRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $PipelinesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _versionMeta = const VerificationMeta(
+    'version',
+  );
+  @override
+  late final GeneratedColumn<int> version = GeneratedColumn<int>(
+    'version',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _fieldMetaMeta = const VerificationMeta(
+    'fieldMeta',
+  );
+  @override
+  late final GeneratedColumn<String> fieldMeta = GeneratedColumn<String>(
+    'field_meta',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('{}'),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _updatedByMeta = const VerificationMeta(
+    'updatedBy',
+  );
+  @override
+  late final GeneratedColumn<String> updatedBy = GeneratedColumn<String>(
+    'updated_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _deletedAtMeta = const VerificationMeta(
+    'deletedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> deletedAt = GeneratedColumn<DateTime>(
+    'deleted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+    'name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _kindMeta = const VerificationMeta('kind');
+  @override
+  late final GeneratedColumn<String> kind = GeneratedColumn<String>(
+    'kind',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _sortOrderMeta = const VerificationMeta(
+    'sortOrder',
+  );
+  @override
+  late final GeneratedColumn<double> sortOrder = GeneratedColumn<double>(
+    'sort_order',
+    aliasedName,
+    true,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _archivedMeta = const VerificationMeta(
+    'archived',
+  );
+  @override
+  late final GeneratedColumn<bool> archived = GeneratedColumn<bool>(
+    'archived',
+    aliasedName,
+    true,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("archived" IN (0, 1))',
+    ),
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    version,
+    fieldMeta,
+    createdAt,
+    createdBy,
+    updatedAt,
+    updatedBy,
+    deletedAt,
+    id,
+    name,
+    kind,
+    sortOrder,
+    archived,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'pipelines';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<PipelineRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('version')) {
+      context.handle(
+        _versionMeta,
+        version.isAcceptableOrUnknown(data['version']!, _versionMeta),
+      );
+    }
+    if (data.containsKey('field_meta')) {
+      context.handle(
+        _fieldMetaMeta,
+        fieldMeta.isAcceptableOrUnknown(data['field_meta']!, _fieldMetaMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_createdAtMeta);
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_updatedAtMeta);
+    }
+    if (data.containsKey('updated_by')) {
+      context.handle(
+        _updatedByMeta,
+        updatedBy.isAcceptableOrUnknown(data['updated_by']!, _updatedByMeta),
+      );
+    }
+    if (data.containsKey('deleted_at')) {
+      context.handle(
+        _deletedAtMeta,
+        deletedAt.isAcceptableOrUnknown(data['deleted_at']!, _deletedAtMeta),
+      );
+    }
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    if (data.containsKey('kind')) {
+      context.handle(
+        _kindMeta,
+        kind.isAcceptableOrUnknown(data['kind']!, _kindMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_kindMeta);
+    }
+    if (data.containsKey('sort_order')) {
+      context.handle(
+        _sortOrderMeta,
+        sortOrder.isAcceptableOrUnknown(data['sort_order']!, _sortOrderMeta),
+      );
+    }
+    if (data.containsKey('archived')) {
+      context.handle(
+        _archivedMeta,
+        archived.isAcceptableOrUnknown(data['archived']!, _archivedMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  PipelineRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return PipelineRow(
+      version: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}version'],
+      )!,
+      fieldMeta: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}field_meta'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      updatedBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_by'],
+      ),
+      deletedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}deleted_at'],
+      ),
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      name: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name'],
+      )!,
+      kind: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}kind'],
+      )!,
+      sortOrder: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}sort_order'],
+      ),
+      archived: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}archived'],
+      ),
+    );
+  }
+
+  @override
+  $PipelinesTable createAlias(String alias) {
+    return $PipelinesTable(attachedDatabase, alias);
+  }
+}
+
+class PipelineRow extends DataClass implements Insertable<PipelineRow> {
+  final int version;
+  final String fieldMeta;
+  final DateTime createdAt;
+  final String? createdBy;
+  final DateTime updatedAt;
+  final String? updatedBy;
+  final DateTime? deletedAt;
+  final String id;
+  final String name;
+  final String kind;
+  final double? sortOrder;
+  final bool? archived;
+  const PipelineRow({
+    required this.version,
+    required this.fieldMeta,
+    required this.createdAt,
+    this.createdBy,
+    required this.updatedAt,
+    this.updatedBy,
+    this.deletedAt,
+    required this.id,
+    required this.name,
+    required this.kind,
+    this.sortOrder,
+    this.archived,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['version'] = Variable<int>(version);
+    map['field_meta'] = Variable<String>(fieldMeta);
+    map['created_at'] = Variable<DateTime>(createdAt);
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    if (!nullToAbsent || updatedBy != null) {
+      map['updated_by'] = Variable<String>(updatedBy);
+    }
+    if (!nullToAbsent || deletedAt != null) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt);
+    }
+    map['id'] = Variable<String>(id);
+    map['name'] = Variable<String>(name);
+    map['kind'] = Variable<String>(kind);
+    if (!nullToAbsent || sortOrder != null) {
+      map['sort_order'] = Variable<double>(sortOrder);
+    }
+    if (!nullToAbsent || archived != null) {
+      map['archived'] = Variable<bool>(archived);
+    }
+    return map;
+  }
+
+  PipelinesCompanion toCompanion(bool nullToAbsent) {
+    return PipelinesCompanion(
+      version: Value(version),
+      fieldMeta: Value(fieldMeta),
+      createdAt: Value(createdAt),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      updatedAt: Value(updatedAt),
+      updatedBy: updatedBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedBy),
+      deletedAt: deletedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deletedAt),
+      id: Value(id),
+      name: Value(name),
+      kind: Value(kind),
+      sortOrder: sortOrder == null && nullToAbsent
+          ? const Value.absent()
+          : Value(sortOrder),
+      archived: archived == null && nullToAbsent
+          ? const Value.absent()
+          : Value(archived),
+    );
+  }
+
+  factory PipelineRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return PipelineRow(
+      version: serializer.fromJson<int>(json['version']),
+      fieldMeta: serializer.fromJson<String>(json['fieldMeta']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      updatedBy: serializer.fromJson<String?>(json['updatedBy']),
+      deletedAt: serializer.fromJson<DateTime?>(json['deletedAt']),
+      id: serializer.fromJson<String>(json['id']),
+      name: serializer.fromJson<String>(json['name']),
+      kind: serializer.fromJson<String>(json['kind']),
+      sortOrder: serializer.fromJson<double?>(json['sortOrder']),
+      archived: serializer.fromJson<bool?>(json['archived']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'version': serializer.toJson<int>(version),
+      'fieldMeta': serializer.toJson<String>(fieldMeta),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'updatedBy': serializer.toJson<String?>(updatedBy),
+      'deletedAt': serializer.toJson<DateTime?>(deletedAt),
+      'id': serializer.toJson<String>(id),
+      'name': serializer.toJson<String>(name),
+      'kind': serializer.toJson<String>(kind),
+      'sortOrder': serializer.toJson<double?>(sortOrder),
+      'archived': serializer.toJson<bool?>(archived),
+    };
+  }
+
+  PipelineRow copyWith({
+    int? version,
+    String? fieldMeta,
+    DateTime? createdAt,
+    Value<String?> createdBy = const Value.absent(),
+    DateTime? updatedAt,
+    Value<String?> updatedBy = const Value.absent(),
+    Value<DateTime?> deletedAt = const Value.absent(),
+    String? id,
+    String? name,
+    String? kind,
+    Value<double?> sortOrder = const Value.absent(),
+    Value<bool?> archived = const Value.absent(),
+  }) => PipelineRow(
+    version: version ?? this.version,
+    fieldMeta: fieldMeta ?? this.fieldMeta,
+    createdAt: createdAt ?? this.createdAt,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    updatedAt: updatedAt ?? this.updatedAt,
+    updatedBy: updatedBy.present ? updatedBy.value : this.updatedBy,
+    deletedAt: deletedAt.present ? deletedAt.value : this.deletedAt,
+    id: id ?? this.id,
+    name: name ?? this.name,
+    kind: kind ?? this.kind,
+    sortOrder: sortOrder.present ? sortOrder.value : this.sortOrder,
+    archived: archived.present ? archived.value : this.archived,
+  );
+  PipelineRow copyWithCompanion(PipelinesCompanion data) {
+    return PipelineRow(
+      version: data.version.present ? data.version.value : this.version,
+      fieldMeta: data.fieldMeta.present ? data.fieldMeta.value : this.fieldMeta,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      updatedBy: data.updatedBy.present ? data.updatedBy.value : this.updatedBy,
+      deletedAt: data.deletedAt.present ? data.deletedAt.value : this.deletedAt,
+      id: data.id.present ? data.id.value : this.id,
+      name: data.name.present ? data.name.value : this.name,
+      kind: data.kind.present ? data.kind.value : this.kind,
+      sortOrder: data.sortOrder.present ? data.sortOrder.value : this.sortOrder,
+      archived: data.archived.present ? data.archived.value : this.archived,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PipelineRow(')
+          ..write('version: $version, ')
+          ..write('fieldMeta: $fieldMeta, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('updatedBy: $updatedBy, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('kind: $kind, ')
+          ..write('sortOrder: $sortOrder, ')
+          ..write('archived: $archived')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    version,
+    fieldMeta,
+    createdAt,
+    createdBy,
+    updatedAt,
+    updatedBy,
+    deletedAt,
+    id,
+    name,
+    kind,
+    sortOrder,
+    archived,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is PipelineRow &&
+          other.version == this.version &&
+          other.fieldMeta == this.fieldMeta &&
+          other.createdAt == this.createdAt &&
+          other.createdBy == this.createdBy &&
+          other.updatedAt == this.updatedAt &&
+          other.updatedBy == this.updatedBy &&
+          other.deletedAt == this.deletedAt &&
+          other.id == this.id &&
+          other.name == this.name &&
+          other.kind == this.kind &&
+          other.sortOrder == this.sortOrder &&
+          other.archived == this.archived);
+}
+
+class PipelinesCompanion extends UpdateCompanion<PipelineRow> {
+  final Value<int> version;
+  final Value<String> fieldMeta;
+  final Value<DateTime> createdAt;
+  final Value<String?> createdBy;
+  final Value<DateTime> updatedAt;
+  final Value<String?> updatedBy;
+  final Value<DateTime?> deletedAt;
+  final Value<String> id;
+  final Value<String> name;
+  final Value<String> kind;
+  final Value<double?> sortOrder;
+  final Value<bool?> archived;
+  final Value<int> rowid;
+  const PipelinesCompanion({
+    this.version = const Value.absent(),
+    this.fieldMeta = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.updatedBy = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.id = const Value.absent(),
+    this.name = const Value.absent(),
+    this.kind = const Value.absent(),
+    this.sortOrder = const Value.absent(),
+    this.archived = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  PipelinesCompanion.insert({
+    this.version = const Value.absent(),
+    this.fieldMeta = const Value.absent(),
+    required DateTime createdAt,
+    this.createdBy = const Value.absent(),
+    required DateTime updatedAt,
+    this.updatedBy = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    required String id,
+    required String name,
+    required String kind,
+    this.sortOrder = const Value.absent(),
+    this.archived = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : createdAt = Value(createdAt),
+       updatedAt = Value(updatedAt),
+       id = Value(id),
+       name = Value(name),
+       kind = Value(kind);
+  static Insertable<PipelineRow> custom({
+    Expression<int>? version,
+    Expression<String>? fieldMeta,
+    Expression<DateTime>? createdAt,
+    Expression<String>? createdBy,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? updatedBy,
+    Expression<DateTime>? deletedAt,
+    Expression<String>? id,
+    Expression<String>? name,
+    Expression<String>? kind,
+    Expression<double>? sortOrder,
+    Expression<bool>? archived,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (version != null) 'version': version,
+      if (fieldMeta != null) 'field_meta': fieldMeta,
+      if (createdAt != null) 'created_at': createdAt,
+      if (createdBy != null) 'created_by': createdBy,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (updatedBy != null) 'updated_by': updatedBy,
+      if (deletedAt != null) 'deleted_at': deletedAt,
+      if (id != null) 'id': id,
+      if (name != null) 'name': name,
+      if (kind != null) 'kind': kind,
+      if (sortOrder != null) 'sort_order': sortOrder,
+      if (archived != null) 'archived': archived,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  PipelinesCompanion copyWith({
+    Value<int>? version,
+    Value<String>? fieldMeta,
+    Value<DateTime>? createdAt,
+    Value<String?>? createdBy,
+    Value<DateTime>? updatedAt,
+    Value<String?>? updatedBy,
+    Value<DateTime?>? deletedAt,
+    Value<String>? id,
+    Value<String>? name,
+    Value<String>? kind,
+    Value<double?>? sortOrder,
+    Value<bool?>? archived,
+    Value<int>? rowid,
+  }) {
+    return PipelinesCompanion(
+      version: version ?? this.version,
+      fieldMeta: fieldMeta ?? this.fieldMeta,
+      createdAt: createdAt ?? this.createdAt,
+      createdBy: createdBy ?? this.createdBy,
+      updatedAt: updatedAt ?? this.updatedAt,
+      updatedBy: updatedBy ?? this.updatedBy,
+      deletedAt: deletedAt ?? this.deletedAt,
+      id: id ?? this.id,
+      name: name ?? this.name,
+      kind: kind ?? this.kind,
+      sortOrder: sortOrder ?? this.sortOrder,
+      archived: archived ?? this.archived,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (version.present) {
+      map['version'] = Variable<int>(version.value);
+    }
+    if (fieldMeta.present) {
+      map['field_meta'] = Variable<String>(fieldMeta.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (updatedBy.present) {
+      map['updated_by'] = Variable<String>(updatedBy.value);
+    }
+    if (deletedAt.present) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt.value);
+    }
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (kind.present) {
+      map['kind'] = Variable<String>(kind.value);
+    }
+    if (sortOrder.present) {
+      map['sort_order'] = Variable<double>(sortOrder.value);
+    }
+    if (archived.present) {
+      map['archived'] = Variable<bool>(archived.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PipelinesCompanion(')
+          ..write('version: $version, ')
+          ..write('fieldMeta: $fieldMeta, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('updatedBy: $updatedBy, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('kind: $kind, ')
+          ..write('sortOrder: $sortOrder, ')
+          ..write('archived: $archived, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $PipelineStagesTable extends PipelineStages
+    with TableInfo<$PipelineStagesTable, StageRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $PipelineStagesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _versionMeta = const VerificationMeta(
+    'version',
+  );
+  @override
+  late final GeneratedColumn<int> version = GeneratedColumn<int>(
+    'version',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _fieldMetaMeta = const VerificationMeta(
+    'fieldMeta',
+  );
+  @override
+  late final GeneratedColumn<String> fieldMeta = GeneratedColumn<String>(
+    'field_meta',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('{}'),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _updatedByMeta = const VerificationMeta(
+    'updatedBy',
+  );
+  @override
+  late final GeneratedColumn<String> updatedBy = GeneratedColumn<String>(
+    'updated_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _deletedAtMeta = const VerificationMeta(
+    'deletedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> deletedAt = GeneratedColumn<DateTime>(
+    'deleted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _pipelineIdMeta = const VerificationMeta(
+    'pipelineId',
+  );
+  @override
+  late final GeneratedColumn<String> pipelineId = GeneratedColumn<String>(
+    'pipeline_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+    'name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _sortOrderMeta = const VerificationMeta(
+    'sortOrder',
+  );
+  @override
+  late final GeneratedColumn<double> sortOrder = GeneratedColumn<double>(
+    'sort_order',
+    aliasedName,
+    true,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _probabilityMeta = const VerificationMeta(
+    'probability',
+  );
+  @override
+  late final GeneratedColumn<int> probability = GeneratedColumn<int>(
+    'probability',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _colorMeta = const VerificationMeta('color');
+  @override
+  late final GeneratedColumn<String> color = GeneratedColumn<String>(
+    'color',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _outcomeMeta = const VerificationMeta(
+    'outcome',
+  );
+  @override
+  late final GeneratedColumn<String> outcome = GeneratedColumn<String>(
+    'outcome',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    version,
+    fieldMeta,
+    createdAt,
+    createdBy,
+    updatedAt,
+    updatedBy,
+    deletedAt,
+    id,
+    pipelineId,
+    name,
+    sortOrder,
+    probability,
+    color,
+    outcome,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'pipeline_stages';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<StageRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('version')) {
+      context.handle(
+        _versionMeta,
+        version.isAcceptableOrUnknown(data['version']!, _versionMeta),
+      );
+    }
+    if (data.containsKey('field_meta')) {
+      context.handle(
+        _fieldMetaMeta,
+        fieldMeta.isAcceptableOrUnknown(data['field_meta']!, _fieldMetaMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_createdAtMeta);
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_updatedAtMeta);
+    }
+    if (data.containsKey('updated_by')) {
+      context.handle(
+        _updatedByMeta,
+        updatedBy.isAcceptableOrUnknown(data['updated_by']!, _updatedByMeta),
+      );
+    }
+    if (data.containsKey('deleted_at')) {
+      context.handle(
+        _deletedAtMeta,
+        deletedAt.isAcceptableOrUnknown(data['deleted_at']!, _deletedAtMeta),
+      );
+    }
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('pipeline_id')) {
+      context.handle(
+        _pipelineIdMeta,
+        pipelineId.isAcceptableOrUnknown(data['pipeline_id']!, _pipelineIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_pipelineIdMeta);
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    if (data.containsKey('sort_order')) {
+      context.handle(
+        _sortOrderMeta,
+        sortOrder.isAcceptableOrUnknown(data['sort_order']!, _sortOrderMeta),
+      );
+    }
+    if (data.containsKey('probability')) {
+      context.handle(
+        _probabilityMeta,
+        probability.isAcceptableOrUnknown(
+          data['probability']!,
+          _probabilityMeta,
+        ),
+      );
+    }
+    if (data.containsKey('color')) {
+      context.handle(
+        _colorMeta,
+        color.isAcceptableOrUnknown(data['color']!, _colorMeta),
+      );
+    }
+    if (data.containsKey('outcome')) {
+      context.handle(
+        _outcomeMeta,
+        outcome.isAcceptableOrUnknown(data['outcome']!, _outcomeMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_outcomeMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  StageRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return StageRow(
+      version: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}version'],
+      )!,
+      fieldMeta: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}field_meta'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      updatedBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_by'],
+      ),
+      deletedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}deleted_at'],
+      ),
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      pipelineId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}pipeline_id'],
+      )!,
+      name: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name'],
+      )!,
+      sortOrder: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}sort_order'],
+      ),
+      probability: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}probability'],
+      ),
+      color: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}color'],
+      ),
+      outcome: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}outcome'],
+      )!,
+    );
+  }
+
+  @override
+  $PipelineStagesTable createAlias(String alias) {
+    return $PipelineStagesTable(attachedDatabase, alias);
+  }
+}
+
+class StageRow extends DataClass implements Insertable<StageRow> {
+  final int version;
+  final String fieldMeta;
+  final DateTime createdAt;
+  final String? createdBy;
+  final DateTime updatedAt;
+  final String? updatedBy;
+  final DateTime? deletedAt;
+  final String id;
+  final String pipelineId;
+  final String name;
+  final double? sortOrder;
+  final int? probability;
+  final String? color;
+  final String outcome;
+  const StageRow({
+    required this.version,
+    required this.fieldMeta,
+    required this.createdAt,
+    this.createdBy,
+    required this.updatedAt,
+    this.updatedBy,
+    this.deletedAt,
+    required this.id,
+    required this.pipelineId,
+    required this.name,
+    this.sortOrder,
+    this.probability,
+    this.color,
+    required this.outcome,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['version'] = Variable<int>(version);
+    map['field_meta'] = Variable<String>(fieldMeta);
+    map['created_at'] = Variable<DateTime>(createdAt);
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    if (!nullToAbsent || updatedBy != null) {
+      map['updated_by'] = Variable<String>(updatedBy);
+    }
+    if (!nullToAbsent || deletedAt != null) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt);
+    }
+    map['id'] = Variable<String>(id);
+    map['pipeline_id'] = Variable<String>(pipelineId);
+    map['name'] = Variable<String>(name);
+    if (!nullToAbsent || sortOrder != null) {
+      map['sort_order'] = Variable<double>(sortOrder);
+    }
+    if (!nullToAbsent || probability != null) {
+      map['probability'] = Variable<int>(probability);
+    }
+    if (!nullToAbsent || color != null) {
+      map['color'] = Variable<String>(color);
+    }
+    map['outcome'] = Variable<String>(outcome);
+    return map;
+  }
+
+  PipelineStagesCompanion toCompanion(bool nullToAbsent) {
+    return PipelineStagesCompanion(
+      version: Value(version),
+      fieldMeta: Value(fieldMeta),
+      createdAt: Value(createdAt),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      updatedAt: Value(updatedAt),
+      updatedBy: updatedBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedBy),
+      deletedAt: deletedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deletedAt),
+      id: Value(id),
+      pipelineId: Value(pipelineId),
+      name: Value(name),
+      sortOrder: sortOrder == null && nullToAbsent
+          ? const Value.absent()
+          : Value(sortOrder),
+      probability: probability == null && nullToAbsent
+          ? const Value.absent()
+          : Value(probability),
+      color: color == null && nullToAbsent
+          ? const Value.absent()
+          : Value(color),
+      outcome: Value(outcome),
+    );
+  }
+
+  factory StageRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return StageRow(
+      version: serializer.fromJson<int>(json['version']),
+      fieldMeta: serializer.fromJson<String>(json['fieldMeta']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      updatedBy: serializer.fromJson<String?>(json['updatedBy']),
+      deletedAt: serializer.fromJson<DateTime?>(json['deletedAt']),
+      id: serializer.fromJson<String>(json['id']),
+      pipelineId: serializer.fromJson<String>(json['pipelineId']),
+      name: serializer.fromJson<String>(json['name']),
+      sortOrder: serializer.fromJson<double?>(json['sortOrder']),
+      probability: serializer.fromJson<int?>(json['probability']),
+      color: serializer.fromJson<String?>(json['color']),
+      outcome: serializer.fromJson<String>(json['outcome']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'version': serializer.toJson<int>(version),
+      'fieldMeta': serializer.toJson<String>(fieldMeta),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'updatedBy': serializer.toJson<String?>(updatedBy),
+      'deletedAt': serializer.toJson<DateTime?>(deletedAt),
+      'id': serializer.toJson<String>(id),
+      'pipelineId': serializer.toJson<String>(pipelineId),
+      'name': serializer.toJson<String>(name),
+      'sortOrder': serializer.toJson<double?>(sortOrder),
+      'probability': serializer.toJson<int?>(probability),
+      'color': serializer.toJson<String?>(color),
+      'outcome': serializer.toJson<String>(outcome),
+    };
+  }
+
+  StageRow copyWith({
+    int? version,
+    String? fieldMeta,
+    DateTime? createdAt,
+    Value<String?> createdBy = const Value.absent(),
+    DateTime? updatedAt,
+    Value<String?> updatedBy = const Value.absent(),
+    Value<DateTime?> deletedAt = const Value.absent(),
+    String? id,
+    String? pipelineId,
+    String? name,
+    Value<double?> sortOrder = const Value.absent(),
+    Value<int?> probability = const Value.absent(),
+    Value<String?> color = const Value.absent(),
+    String? outcome,
+  }) => StageRow(
+    version: version ?? this.version,
+    fieldMeta: fieldMeta ?? this.fieldMeta,
+    createdAt: createdAt ?? this.createdAt,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    updatedAt: updatedAt ?? this.updatedAt,
+    updatedBy: updatedBy.present ? updatedBy.value : this.updatedBy,
+    deletedAt: deletedAt.present ? deletedAt.value : this.deletedAt,
+    id: id ?? this.id,
+    pipelineId: pipelineId ?? this.pipelineId,
+    name: name ?? this.name,
+    sortOrder: sortOrder.present ? sortOrder.value : this.sortOrder,
+    probability: probability.present ? probability.value : this.probability,
+    color: color.present ? color.value : this.color,
+    outcome: outcome ?? this.outcome,
+  );
+  StageRow copyWithCompanion(PipelineStagesCompanion data) {
+    return StageRow(
+      version: data.version.present ? data.version.value : this.version,
+      fieldMeta: data.fieldMeta.present ? data.fieldMeta.value : this.fieldMeta,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      updatedBy: data.updatedBy.present ? data.updatedBy.value : this.updatedBy,
+      deletedAt: data.deletedAt.present ? data.deletedAt.value : this.deletedAt,
+      id: data.id.present ? data.id.value : this.id,
+      pipelineId: data.pipelineId.present
+          ? data.pipelineId.value
+          : this.pipelineId,
+      name: data.name.present ? data.name.value : this.name,
+      sortOrder: data.sortOrder.present ? data.sortOrder.value : this.sortOrder,
+      probability: data.probability.present
+          ? data.probability.value
+          : this.probability,
+      color: data.color.present ? data.color.value : this.color,
+      outcome: data.outcome.present ? data.outcome.value : this.outcome,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('StageRow(')
+          ..write('version: $version, ')
+          ..write('fieldMeta: $fieldMeta, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('updatedBy: $updatedBy, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('id: $id, ')
+          ..write('pipelineId: $pipelineId, ')
+          ..write('name: $name, ')
+          ..write('sortOrder: $sortOrder, ')
+          ..write('probability: $probability, ')
+          ..write('color: $color, ')
+          ..write('outcome: $outcome')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    version,
+    fieldMeta,
+    createdAt,
+    createdBy,
+    updatedAt,
+    updatedBy,
+    deletedAt,
+    id,
+    pipelineId,
+    name,
+    sortOrder,
+    probability,
+    color,
+    outcome,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is StageRow &&
+          other.version == this.version &&
+          other.fieldMeta == this.fieldMeta &&
+          other.createdAt == this.createdAt &&
+          other.createdBy == this.createdBy &&
+          other.updatedAt == this.updatedAt &&
+          other.updatedBy == this.updatedBy &&
+          other.deletedAt == this.deletedAt &&
+          other.id == this.id &&
+          other.pipelineId == this.pipelineId &&
+          other.name == this.name &&
+          other.sortOrder == this.sortOrder &&
+          other.probability == this.probability &&
+          other.color == this.color &&
+          other.outcome == this.outcome);
+}
+
+class PipelineStagesCompanion extends UpdateCompanion<StageRow> {
+  final Value<int> version;
+  final Value<String> fieldMeta;
+  final Value<DateTime> createdAt;
+  final Value<String?> createdBy;
+  final Value<DateTime> updatedAt;
+  final Value<String?> updatedBy;
+  final Value<DateTime?> deletedAt;
+  final Value<String> id;
+  final Value<String> pipelineId;
+  final Value<String> name;
+  final Value<double?> sortOrder;
+  final Value<int?> probability;
+  final Value<String?> color;
+  final Value<String> outcome;
+  final Value<int> rowid;
+  const PipelineStagesCompanion({
+    this.version = const Value.absent(),
+    this.fieldMeta = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.updatedBy = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.id = const Value.absent(),
+    this.pipelineId = const Value.absent(),
+    this.name = const Value.absent(),
+    this.sortOrder = const Value.absent(),
+    this.probability = const Value.absent(),
+    this.color = const Value.absent(),
+    this.outcome = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  PipelineStagesCompanion.insert({
+    this.version = const Value.absent(),
+    this.fieldMeta = const Value.absent(),
+    required DateTime createdAt,
+    this.createdBy = const Value.absent(),
+    required DateTime updatedAt,
+    this.updatedBy = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    required String id,
+    required String pipelineId,
+    required String name,
+    this.sortOrder = const Value.absent(),
+    this.probability = const Value.absent(),
+    this.color = const Value.absent(),
+    required String outcome,
+    this.rowid = const Value.absent(),
+  }) : createdAt = Value(createdAt),
+       updatedAt = Value(updatedAt),
+       id = Value(id),
+       pipelineId = Value(pipelineId),
+       name = Value(name),
+       outcome = Value(outcome);
+  static Insertable<StageRow> custom({
+    Expression<int>? version,
+    Expression<String>? fieldMeta,
+    Expression<DateTime>? createdAt,
+    Expression<String>? createdBy,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? updatedBy,
+    Expression<DateTime>? deletedAt,
+    Expression<String>? id,
+    Expression<String>? pipelineId,
+    Expression<String>? name,
+    Expression<double>? sortOrder,
+    Expression<int>? probability,
+    Expression<String>? color,
+    Expression<String>? outcome,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (version != null) 'version': version,
+      if (fieldMeta != null) 'field_meta': fieldMeta,
+      if (createdAt != null) 'created_at': createdAt,
+      if (createdBy != null) 'created_by': createdBy,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (updatedBy != null) 'updated_by': updatedBy,
+      if (deletedAt != null) 'deleted_at': deletedAt,
+      if (id != null) 'id': id,
+      if (pipelineId != null) 'pipeline_id': pipelineId,
+      if (name != null) 'name': name,
+      if (sortOrder != null) 'sort_order': sortOrder,
+      if (probability != null) 'probability': probability,
+      if (color != null) 'color': color,
+      if (outcome != null) 'outcome': outcome,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  PipelineStagesCompanion copyWith({
+    Value<int>? version,
+    Value<String>? fieldMeta,
+    Value<DateTime>? createdAt,
+    Value<String?>? createdBy,
+    Value<DateTime>? updatedAt,
+    Value<String?>? updatedBy,
+    Value<DateTime?>? deletedAt,
+    Value<String>? id,
+    Value<String>? pipelineId,
+    Value<String>? name,
+    Value<double?>? sortOrder,
+    Value<int?>? probability,
+    Value<String?>? color,
+    Value<String>? outcome,
+    Value<int>? rowid,
+  }) {
+    return PipelineStagesCompanion(
+      version: version ?? this.version,
+      fieldMeta: fieldMeta ?? this.fieldMeta,
+      createdAt: createdAt ?? this.createdAt,
+      createdBy: createdBy ?? this.createdBy,
+      updatedAt: updatedAt ?? this.updatedAt,
+      updatedBy: updatedBy ?? this.updatedBy,
+      deletedAt: deletedAt ?? this.deletedAt,
+      id: id ?? this.id,
+      pipelineId: pipelineId ?? this.pipelineId,
+      name: name ?? this.name,
+      sortOrder: sortOrder ?? this.sortOrder,
+      probability: probability ?? this.probability,
+      color: color ?? this.color,
+      outcome: outcome ?? this.outcome,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (version.present) {
+      map['version'] = Variable<int>(version.value);
+    }
+    if (fieldMeta.present) {
+      map['field_meta'] = Variable<String>(fieldMeta.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (updatedBy.present) {
+      map['updated_by'] = Variable<String>(updatedBy.value);
+    }
+    if (deletedAt.present) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt.value);
+    }
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (pipelineId.present) {
+      map['pipeline_id'] = Variable<String>(pipelineId.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (sortOrder.present) {
+      map['sort_order'] = Variable<double>(sortOrder.value);
+    }
+    if (probability.present) {
+      map['probability'] = Variable<int>(probability.value);
+    }
+    if (color.present) {
+      map['color'] = Variable<String>(color.value);
+    }
+    if (outcome.present) {
+      map['outcome'] = Variable<String>(outcome.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PipelineStagesCompanion(')
+          ..write('version: $version, ')
+          ..write('fieldMeta: $fieldMeta, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('updatedBy: $updatedBy, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('id: $id, ')
+          ..write('pipelineId: $pipelineId, ')
+          ..write('name: $name, ')
+          ..write('sortOrder: $sortOrder, ')
+          ..write('probability: $probability, ')
+          ..write('color: $color, ')
+          ..write('outcome: $outcome, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $DealsTable extends Deals with TableInfo<$DealsTable, DealRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $DealsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _versionMeta = const VerificationMeta(
+    'version',
+  );
+  @override
+  late final GeneratedColumn<int> version = GeneratedColumn<int>(
+    'version',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _fieldMetaMeta = const VerificationMeta(
+    'fieldMeta',
+  );
+  @override
+  late final GeneratedColumn<String> fieldMeta = GeneratedColumn<String>(
+    'field_meta',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('{}'),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _updatedByMeta = const VerificationMeta(
+    'updatedBy',
+  );
+  @override
+  late final GeneratedColumn<String> updatedBy = GeneratedColumn<String>(
+    'updated_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _deletedAtMeta = const VerificationMeta(
+    'deletedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> deletedAt = GeneratedColumn<DateTime>(
+    'deleted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _titleMeta = const VerificationMeta('title');
+  @override
+  late final GeneratedColumn<String> title = GeneratedColumn<String>(
+    'title',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _pipelineIdMeta = const VerificationMeta(
+    'pipelineId',
+  );
+  @override
+  late final GeneratedColumn<String> pipelineId = GeneratedColumn<String>(
+    'pipeline_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _stageIdMeta = const VerificationMeta(
+    'stageId',
+  );
+  @override
+  late final GeneratedColumn<String> stageId = GeneratedColumn<String>(
+    'stage_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _organisationIdMeta = const VerificationMeta(
+    'organisationId',
+  );
+  @override
+  late final GeneratedColumn<String> organisationId = GeneratedColumn<String>(
+    'organisation_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _contactIdMeta = const VerificationMeta(
+    'contactId',
+  );
+  @override
+  late final GeneratedColumn<String> contactId = GeneratedColumn<String>(
+    'contact_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _amountCentsMeta = const VerificationMeta(
+    'amountCents',
+  );
+  @override
+  late final GeneratedColumn<int> amountCents = GeneratedColumn<int>(
+    'amount_cents',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _probabilityMeta = const VerificationMeta(
+    'probability',
+  );
+  @override
+  late final GeneratedColumn<int> probability = GeneratedColumn<int>(
+    'probability',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _expectedCloseDateMeta = const VerificationMeta(
+    'expectedCloseDate',
+  );
+  @override
+  late final GeneratedColumn<String> expectedCloseDate =
+      GeneratedColumn<String>(
+        'expected_close_date',
+        aliasedName,
+        true,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+      );
+  static const VerificationMeta _statusMeta = const VerificationMeta('status');
+  @override
+  late final GeneratedColumn<String> status = GeneratedColumn<String>(
+    'status',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _closedAtMeta = const VerificationMeta(
+    'closedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> closedAt = GeneratedColumn<DateTime>(
+    'closed_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _sortOrderMeta = const VerificationMeta(
+    'sortOrder',
+  );
+  @override
+  late final GeneratedColumn<double> sortOrder = GeneratedColumn<double>(
+    'sort_order',
+    aliasedName,
+    true,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _ownerIdMeta = const VerificationMeta(
+    'ownerId',
+  );
+  @override
+  late final GeneratedColumn<String> ownerId = GeneratedColumn<String>(
+    'owner_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _descriptionMeta = const VerificationMeta(
+    'description',
+  );
+  @override
+  late final GeneratedColumn<String> description = GeneratedColumn<String>(
+    'description',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _customFieldsMeta = const VerificationMeta(
+    'customFields',
+  );
+  @override
+  late final GeneratedColumn<String> customFields = GeneratedColumn<String>(
+    'custom_fields',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    version,
+    fieldMeta,
+    createdAt,
+    createdBy,
+    updatedAt,
+    updatedBy,
+    deletedAt,
+    id,
+    title,
+    pipelineId,
+    stageId,
+    organisationId,
+    contactId,
+    amountCents,
+    probability,
+    expectedCloseDate,
+    status,
+    closedAt,
+    sortOrder,
+    ownerId,
+    description,
+    customFields,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'deals';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<DealRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('version')) {
+      context.handle(
+        _versionMeta,
+        version.isAcceptableOrUnknown(data['version']!, _versionMeta),
+      );
+    }
+    if (data.containsKey('field_meta')) {
+      context.handle(
+        _fieldMetaMeta,
+        fieldMeta.isAcceptableOrUnknown(data['field_meta']!, _fieldMetaMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_createdAtMeta);
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_updatedAtMeta);
+    }
+    if (data.containsKey('updated_by')) {
+      context.handle(
+        _updatedByMeta,
+        updatedBy.isAcceptableOrUnknown(data['updated_by']!, _updatedByMeta),
+      );
+    }
+    if (data.containsKey('deleted_at')) {
+      context.handle(
+        _deletedAtMeta,
+        deletedAt.isAcceptableOrUnknown(data['deleted_at']!, _deletedAtMeta),
+      );
+    }
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('title')) {
+      context.handle(
+        _titleMeta,
+        title.isAcceptableOrUnknown(data['title']!, _titleMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_titleMeta);
+    }
+    if (data.containsKey('pipeline_id')) {
+      context.handle(
+        _pipelineIdMeta,
+        pipelineId.isAcceptableOrUnknown(data['pipeline_id']!, _pipelineIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_pipelineIdMeta);
+    }
+    if (data.containsKey('stage_id')) {
+      context.handle(
+        _stageIdMeta,
+        stageId.isAcceptableOrUnknown(data['stage_id']!, _stageIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_stageIdMeta);
+    }
+    if (data.containsKey('organisation_id')) {
+      context.handle(
+        _organisationIdMeta,
+        organisationId.isAcceptableOrUnknown(
+          data['organisation_id']!,
+          _organisationIdMeta,
+        ),
+      );
+    }
+    if (data.containsKey('contact_id')) {
+      context.handle(
+        _contactIdMeta,
+        contactId.isAcceptableOrUnknown(data['contact_id']!, _contactIdMeta),
+      );
+    }
+    if (data.containsKey('amount_cents')) {
+      context.handle(
+        _amountCentsMeta,
+        amountCents.isAcceptableOrUnknown(
+          data['amount_cents']!,
+          _amountCentsMeta,
+        ),
+      );
+    }
+    if (data.containsKey('probability')) {
+      context.handle(
+        _probabilityMeta,
+        probability.isAcceptableOrUnknown(
+          data['probability']!,
+          _probabilityMeta,
+        ),
+      );
+    }
+    if (data.containsKey('expected_close_date')) {
+      context.handle(
+        _expectedCloseDateMeta,
+        expectedCloseDate.isAcceptableOrUnknown(
+          data['expected_close_date']!,
+          _expectedCloseDateMeta,
+        ),
+      );
+    }
+    if (data.containsKey('status')) {
+      context.handle(
+        _statusMeta,
+        status.isAcceptableOrUnknown(data['status']!, _statusMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_statusMeta);
+    }
+    if (data.containsKey('closed_at')) {
+      context.handle(
+        _closedAtMeta,
+        closedAt.isAcceptableOrUnknown(data['closed_at']!, _closedAtMeta),
+      );
+    }
+    if (data.containsKey('sort_order')) {
+      context.handle(
+        _sortOrderMeta,
+        sortOrder.isAcceptableOrUnknown(data['sort_order']!, _sortOrderMeta),
+      );
+    }
+    if (data.containsKey('owner_id')) {
+      context.handle(
+        _ownerIdMeta,
+        ownerId.isAcceptableOrUnknown(data['owner_id']!, _ownerIdMeta),
+      );
+    }
+    if (data.containsKey('description')) {
+      context.handle(
+        _descriptionMeta,
+        description.isAcceptableOrUnknown(
+          data['description']!,
+          _descriptionMeta,
+        ),
+      );
+    }
+    if (data.containsKey('custom_fields')) {
+      context.handle(
+        _customFieldsMeta,
+        customFields.isAcceptableOrUnknown(
+          data['custom_fields']!,
+          _customFieldsMeta,
+        ),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  DealRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return DealRow(
+      version: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}version'],
+      )!,
+      fieldMeta: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}field_meta'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      updatedBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_by'],
+      ),
+      deletedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}deleted_at'],
+      ),
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      title: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}title'],
+      )!,
+      pipelineId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}pipeline_id'],
+      )!,
+      stageId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}stage_id'],
+      )!,
+      organisationId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}organisation_id'],
+      ),
+      contactId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}contact_id'],
+      ),
+      amountCents: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}amount_cents'],
+      ),
+      probability: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}probability'],
+      ),
+      expectedCloseDate: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}expected_close_date'],
+      ),
+      status: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}status'],
+      )!,
+      closedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}closed_at'],
+      ),
+      sortOrder: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}sort_order'],
+      ),
+      ownerId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}owner_id'],
+      ),
+      description: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}description'],
+      ),
+      customFields: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}custom_fields'],
+      ),
+    );
+  }
+
+  @override
+  $DealsTable createAlias(String alias) {
+    return $DealsTable(attachedDatabase, alias);
+  }
+}
+
+class DealRow extends DataClass implements Insertable<DealRow> {
+  final int version;
+  final String fieldMeta;
+  final DateTime createdAt;
+  final String? createdBy;
+  final DateTime updatedAt;
+  final String? updatedBy;
+  final DateTime? deletedAt;
+  final String id;
+  final String title;
+  final String pipelineId;
+  final String stageId;
+  final String? organisationId;
+  final String? contactId;
+  final int? amountCents;
+  final int? probability;
+  final String? expectedCloseDate;
+  final String status;
+  final DateTime? closedAt;
+  final double? sortOrder;
+  final String? ownerId;
+  final String? description;
+  final String? customFields;
+  const DealRow({
+    required this.version,
+    required this.fieldMeta,
+    required this.createdAt,
+    this.createdBy,
+    required this.updatedAt,
+    this.updatedBy,
+    this.deletedAt,
+    required this.id,
+    required this.title,
+    required this.pipelineId,
+    required this.stageId,
+    this.organisationId,
+    this.contactId,
+    this.amountCents,
+    this.probability,
+    this.expectedCloseDate,
+    required this.status,
+    this.closedAt,
+    this.sortOrder,
+    this.ownerId,
+    this.description,
+    this.customFields,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['version'] = Variable<int>(version);
+    map['field_meta'] = Variable<String>(fieldMeta);
+    map['created_at'] = Variable<DateTime>(createdAt);
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    if (!nullToAbsent || updatedBy != null) {
+      map['updated_by'] = Variable<String>(updatedBy);
+    }
+    if (!nullToAbsent || deletedAt != null) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt);
+    }
+    map['id'] = Variable<String>(id);
+    map['title'] = Variable<String>(title);
+    map['pipeline_id'] = Variable<String>(pipelineId);
+    map['stage_id'] = Variable<String>(stageId);
+    if (!nullToAbsent || organisationId != null) {
+      map['organisation_id'] = Variable<String>(organisationId);
+    }
+    if (!nullToAbsent || contactId != null) {
+      map['contact_id'] = Variable<String>(contactId);
+    }
+    if (!nullToAbsent || amountCents != null) {
+      map['amount_cents'] = Variable<int>(amountCents);
+    }
+    if (!nullToAbsent || probability != null) {
+      map['probability'] = Variable<int>(probability);
+    }
+    if (!nullToAbsent || expectedCloseDate != null) {
+      map['expected_close_date'] = Variable<String>(expectedCloseDate);
+    }
+    map['status'] = Variable<String>(status);
+    if (!nullToAbsent || closedAt != null) {
+      map['closed_at'] = Variable<DateTime>(closedAt);
+    }
+    if (!nullToAbsent || sortOrder != null) {
+      map['sort_order'] = Variable<double>(sortOrder);
+    }
+    if (!nullToAbsent || ownerId != null) {
+      map['owner_id'] = Variable<String>(ownerId);
+    }
+    if (!nullToAbsent || description != null) {
+      map['description'] = Variable<String>(description);
+    }
+    if (!nullToAbsent || customFields != null) {
+      map['custom_fields'] = Variable<String>(customFields);
+    }
+    return map;
+  }
+
+  DealsCompanion toCompanion(bool nullToAbsent) {
+    return DealsCompanion(
+      version: Value(version),
+      fieldMeta: Value(fieldMeta),
+      createdAt: Value(createdAt),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      updatedAt: Value(updatedAt),
+      updatedBy: updatedBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedBy),
+      deletedAt: deletedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deletedAt),
+      id: Value(id),
+      title: Value(title),
+      pipelineId: Value(pipelineId),
+      stageId: Value(stageId),
+      organisationId: organisationId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(organisationId),
+      contactId: contactId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(contactId),
+      amountCents: amountCents == null && nullToAbsent
+          ? const Value.absent()
+          : Value(amountCents),
+      probability: probability == null && nullToAbsent
+          ? const Value.absent()
+          : Value(probability),
+      expectedCloseDate: expectedCloseDate == null && nullToAbsent
+          ? const Value.absent()
+          : Value(expectedCloseDate),
+      status: Value(status),
+      closedAt: closedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(closedAt),
+      sortOrder: sortOrder == null && nullToAbsent
+          ? const Value.absent()
+          : Value(sortOrder),
+      ownerId: ownerId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(ownerId),
+      description: description == null && nullToAbsent
+          ? const Value.absent()
+          : Value(description),
+      customFields: customFields == null && nullToAbsent
+          ? const Value.absent()
+          : Value(customFields),
+    );
+  }
+
+  factory DealRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return DealRow(
+      version: serializer.fromJson<int>(json['version']),
+      fieldMeta: serializer.fromJson<String>(json['fieldMeta']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      updatedBy: serializer.fromJson<String?>(json['updatedBy']),
+      deletedAt: serializer.fromJson<DateTime?>(json['deletedAt']),
+      id: serializer.fromJson<String>(json['id']),
+      title: serializer.fromJson<String>(json['title']),
+      pipelineId: serializer.fromJson<String>(json['pipelineId']),
+      stageId: serializer.fromJson<String>(json['stageId']),
+      organisationId: serializer.fromJson<String?>(json['organisationId']),
+      contactId: serializer.fromJson<String?>(json['contactId']),
+      amountCents: serializer.fromJson<int?>(json['amountCents']),
+      probability: serializer.fromJson<int?>(json['probability']),
+      expectedCloseDate: serializer.fromJson<String?>(
+        json['expectedCloseDate'],
+      ),
+      status: serializer.fromJson<String>(json['status']),
+      closedAt: serializer.fromJson<DateTime?>(json['closedAt']),
+      sortOrder: serializer.fromJson<double?>(json['sortOrder']),
+      ownerId: serializer.fromJson<String?>(json['ownerId']),
+      description: serializer.fromJson<String?>(json['description']),
+      customFields: serializer.fromJson<String?>(json['customFields']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'version': serializer.toJson<int>(version),
+      'fieldMeta': serializer.toJson<String>(fieldMeta),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'updatedBy': serializer.toJson<String?>(updatedBy),
+      'deletedAt': serializer.toJson<DateTime?>(deletedAt),
+      'id': serializer.toJson<String>(id),
+      'title': serializer.toJson<String>(title),
+      'pipelineId': serializer.toJson<String>(pipelineId),
+      'stageId': serializer.toJson<String>(stageId),
+      'organisationId': serializer.toJson<String?>(organisationId),
+      'contactId': serializer.toJson<String?>(contactId),
+      'amountCents': serializer.toJson<int?>(amountCents),
+      'probability': serializer.toJson<int?>(probability),
+      'expectedCloseDate': serializer.toJson<String?>(expectedCloseDate),
+      'status': serializer.toJson<String>(status),
+      'closedAt': serializer.toJson<DateTime?>(closedAt),
+      'sortOrder': serializer.toJson<double?>(sortOrder),
+      'ownerId': serializer.toJson<String?>(ownerId),
+      'description': serializer.toJson<String?>(description),
+      'customFields': serializer.toJson<String?>(customFields),
+    };
+  }
+
+  DealRow copyWith({
+    int? version,
+    String? fieldMeta,
+    DateTime? createdAt,
+    Value<String?> createdBy = const Value.absent(),
+    DateTime? updatedAt,
+    Value<String?> updatedBy = const Value.absent(),
+    Value<DateTime?> deletedAt = const Value.absent(),
+    String? id,
+    String? title,
+    String? pipelineId,
+    String? stageId,
+    Value<String?> organisationId = const Value.absent(),
+    Value<String?> contactId = const Value.absent(),
+    Value<int?> amountCents = const Value.absent(),
+    Value<int?> probability = const Value.absent(),
+    Value<String?> expectedCloseDate = const Value.absent(),
+    String? status,
+    Value<DateTime?> closedAt = const Value.absent(),
+    Value<double?> sortOrder = const Value.absent(),
+    Value<String?> ownerId = const Value.absent(),
+    Value<String?> description = const Value.absent(),
+    Value<String?> customFields = const Value.absent(),
+  }) => DealRow(
+    version: version ?? this.version,
+    fieldMeta: fieldMeta ?? this.fieldMeta,
+    createdAt: createdAt ?? this.createdAt,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    updatedAt: updatedAt ?? this.updatedAt,
+    updatedBy: updatedBy.present ? updatedBy.value : this.updatedBy,
+    deletedAt: deletedAt.present ? deletedAt.value : this.deletedAt,
+    id: id ?? this.id,
+    title: title ?? this.title,
+    pipelineId: pipelineId ?? this.pipelineId,
+    stageId: stageId ?? this.stageId,
+    organisationId: organisationId.present
+        ? organisationId.value
+        : this.organisationId,
+    contactId: contactId.present ? contactId.value : this.contactId,
+    amountCents: amountCents.present ? amountCents.value : this.amountCents,
+    probability: probability.present ? probability.value : this.probability,
+    expectedCloseDate: expectedCloseDate.present
+        ? expectedCloseDate.value
+        : this.expectedCloseDate,
+    status: status ?? this.status,
+    closedAt: closedAt.present ? closedAt.value : this.closedAt,
+    sortOrder: sortOrder.present ? sortOrder.value : this.sortOrder,
+    ownerId: ownerId.present ? ownerId.value : this.ownerId,
+    description: description.present ? description.value : this.description,
+    customFields: customFields.present ? customFields.value : this.customFields,
+  );
+  DealRow copyWithCompanion(DealsCompanion data) {
+    return DealRow(
+      version: data.version.present ? data.version.value : this.version,
+      fieldMeta: data.fieldMeta.present ? data.fieldMeta.value : this.fieldMeta,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      updatedBy: data.updatedBy.present ? data.updatedBy.value : this.updatedBy,
+      deletedAt: data.deletedAt.present ? data.deletedAt.value : this.deletedAt,
+      id: data.id.present ? data.id.value : this.id,
+      title: data.title.present ? data.title.value : this.title,
+      pipelineId: data.pipelineId.present
+          ? data.pipelineId.value
+          : this.pipelineId,
+      stageId: data.stageId.present ? data.stageId.value : this.stageId,
+      organisationId: data.organisationId.present
+          ? data.organisationId.value
+          : this.organisationId,
+      contactId: data.contactId.present ? data.contactId.value : this.contactId,
+      amountCents: data.amountCents.present
+          ? data.amountCents.value
+          : this.amountCents,
+      probability: data.probability.present
+          ? data.probability.value
+          : this.probability,
+      expectedCloseDate: data.expectedCloseDate.present
+          ? data.expectedCloseDate.value
+          : this.expectedCloseDate,
+      status: data.status.present ? data.status.value : this.status,
+      closedAt: data.closedAt.present ? data.closedAt.value : this.closedAt,
+      sortOrder: data.sortOrder.present ? data.sortOrder.value : this.sortOrder,
+      ownerId: data.ownerId.present ? data.ownerId.value : this.ownerId,
+      description: data.description.present
+          ? data.description.value
+          : this.description,
+      customFields: data.customFields.present
+          ? data.customFields.value
+          : this.customFields,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('DealRow(')
+          ..write('version: $version, ')
+          ..write('fieldMeta: $fieldMeta, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('updatedBy: $updatedBy, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('id: $id, ')
+          ..write('title: $title, ')
+          ..write('pipelineId: $pipelineId, ')
+          ..write('stageId: $stageId, ')
+          ..write('organisationId: $organisationId, ')
+          ..write('contactId: $contactId, ')
+          ..write('amountCents: $amountCents, ')
+          ..write('probability: $probability, ')
+          ..write('expectedCloseDate: $expectedCloseDate, ')
+          ..write('status: $status, ')
+          ..write('closedAt: $closedAt, ')
+          ..write('sortOrder: $sortOrder, ')
+          ..write('ownerId: $ownerId, ')
+          ..write('description: $description, ')
+          ..write('customFields: $customFields')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hashAll([
+    version,
+    fieldMeta,
+    createdAt,
+    createdBy,
+    updatedAt,
+    updatedBy,
+    deletedAt,
+    id,
+    title,
+    pipelineId,
+    stageId,
+    organisationId,
+    contactId,
+    amountCents,
+    probability,
+    expectedCloseDate,
+    status,
+    closedAt,
+    sortOrder,
+    ownerId,
+    description,
+    customFields,
+  ]);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is DealRow &&
+          other.version == this.version &&
+          other.fieldMeta == this.fieldMeta &&
+          other.createdAt == this.createdAt &&
+          other.createdBy == this.createdBy &&
+          other.updatedAt == this.updatedAt &&
+          other.updatedBy == this.updatedBy &&
+          other.deletedAt == this.deletedAt &&
+          other.id == this.id &&
+          other.title == this.title &&
+          other.pipelineId == this.pipelineId &&
+          other.stageId == this.stageId &&
+          other.organisationId == this.organisationId &&
+          other.contactId == this.contactId &&
+          other.amountCents == this.amountCents &&
+          other.probability == this.probability &&
+          other.expectedCloseDate == this.expectedCloseDate &&
+          other.status == this.status &&
+          other.closedAt == this.closedAt &&
+          other.sortOrder == this.sortOrder &&
+          other.ownerId == this.ownerId &&
+          other.description == this.description &&
+          other.customFields == this.customFields);
+}
+
+class DealsCompanion extends UpdateCompanion<DealRow> {
+  final Value<int> version;
+  final Value<String> fieldMeta;
+  final Value<DateTime> createdAt;
+  final Value<String?> createdBy;
+  final Value<DateTime> updatedAt;
+  final Value<String?> updatedBy;
+  final Value<DateTime?> deletedAt;
+  final Value<String> id;
+  final Value<String> title;
+  final Value<String> pipelineId;
+  final Value<String> stageId;
+  final Value<String?> organisationId;
+  final Value<String?> contactId;
+  final Value<int?> amountCents;
+  final Value<int?> probability;
+  final Value<String?> expectedCloseDate;
+  final Value<String> status;
+  final Value<DateTime?> closedAt;
+  final Value<double?> sortOrder;
+  final Value<String?> ownerId;
+  final Value<String?> description;
+  final Value<String?> customFields;
+  final Value<int> rowid;
+  const DealsCompanion({
+    this.version = const Value.absent(),
+    this.fieldMeta = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.updatedBy = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.id = const Value.absent(),
+    this.title = const Value.absent(),
+    this.pipelineId = const Value.absent(),
+    this.stageId = const Value.absent(),
+    this.organisationId = const Value.absent(),
+    this.contactId = const Value.absent(),
+    this.amountCents = const Value.absent(),
+    this.probability = const Value.absent(),
+    this.expectedCloseDate = const Value.absent(),
+    this.status = const Value.absent(),
+    this.closedAt = const Value.absent(),
+    this.sortOrder = const Value.absent(),
+    this.ownerId = const Value.absent(),
+    this.description = const Value.absent(),
+    this.customFields = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  DealsCompanion.insert({
+    this.version = const Value.absent(),
+    this.fieldMeta = const Value.absent(),
+    required DateTime createdAt,
+    this.createdBy = const Value.absent(),
+    required DateTime updatedAt,
+    this.updatedBy = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    required String id,
+    required String title,
+    required String pipelineId,
+    required String stageId,
+    this.organisationId = const Value.absent(),
+    this.contactId = const Value.absent(),
+    this.amountCents = const Value.absent(),
+    this.probability = const Value.absent(),
+    this.expectedCloseDate = const Value.absent(),
+    required String status,
+    this.closedAt = const Value.absent(),
+    this.sortOrder = const Value.absent(),
+    this.ownerId = const Value.absent(),
+    this.description = const Value.absent(),
+    this.customFields = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : createdAt = Value(createdAt),
+       updatedAt = Value(updatedAt),
+       id = Value(id),
+       title = Value(title),
+       pipelineId = Value(pipelineId),
+       stageId = Value(stageId),
+       status = Value(status);
+  static Insertable<DealRow> custom({
+    Expression<int>? version,
+    Expression<String>? fieldMeta,
+    Expression<DateTime>? createdAt,
+    Expression<String>? createdBy,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? updatedBy,
+    Expression<DateTime>? deletedAt,
+    Expression<String>? id,
+    Expression<String>? title,
+    Expression<String>? pipelineId,
+    Expression<String>? stageId,
+    Expression<String>? organisationId,
+    Expression<String>? contactId,
+    Expression<int>? amountCents,
+    Expression<int>? probability,
+    Expression<String>? expectedCloseDate,
+    Expression<String>? status,
+    Expression<DateTime>? closedAt,
+    Expression<double>? sortOrder,
+    Expression<String>? ownerId,
+    Expression<String>? description,
+    Expression<String>? customFields,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (version != null) 'version': version,
+      if (fieldMeta != null) 'field_meta': fieldMeta,
+      if (createdAt != null) 'created_at': createdAt,
+      if (createdBy != null) 'created_by': createdBy,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (updatedBy != null) 'updated_by': updatedBy,
+      if (deletedAt != null) 'deleted_at': deletedAt,
+      if (id != null) 'id': id,
+      if (title != null) 'title': title,
+      if (pipelineId != null) 'pipeline_id': pipelineId,
+      if (stageId != null) 'stage_id': stageId,
+      if (organisationId != null) 'organisation_id': organisationId,
+      if (contactId != null) 'contact_id': contactId,
+      if (amountCents != null) 'amount_cents': amountCents,
+      if (probability != null) 'probability': probability,
+      if (expectedCloseDate != null) 'expected_close_date': expectedCloseDate,
+      if (status != null) 'status': status,
+      if (closedAt != null) 'closed_at': closedAt,
+      if (sortOrder != null) 'sort_order': sortOrder,
+      if (ownerId != null) 'owner_id': ownerId,
+      if (description != null) 'description': description,
+      if (customFields != null) 'custom_fields': customFields,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  DealsCompanion copyWith({
+    Value<int>? version,
+    Value<String>? fieldMeta,
+    Value<DateTime>? createdAt,
+    Value<String?>? createdBy,
+    Value<DateTime>? updatedAt,
+    Value<String?>? updatedBy,
+    Value<DateTime?>? deletedAt,
+    Value<String>? id,
+    Value<String>? title,
+    Value<String>? pipelineId,
+    Value<String>? stageId,
+    Value<String?>? organisationId,
+    Value<String?>? contactId,
+    Value<int?>? amountCents,
+    Value<int?>? probability,
+    Value<String?>? expectedCloseDate,
+    Value<String>? status,
+    Value<DateTime?>? closedAt,
+    Value<double?>? sortOrder,
+    Value<String?>? ownerId,
+    Value<String?>? description,
+    Value<String?>? customFields,
+    Value<int>? rowid,
+  }) {
+    return DealsCompanion(
+      version: version ?? this.version,
+      fieldMeta: fieldMeta ?? this.fieldMeta,
+      createdAt: createdAt ?? this.createdAt,
+      createdBy: createdBy ?? this.createdBy,
+      updatedAt: updatedAt ?? this.updatedAt,
+      updatedBy: updatedBy ?? this.updatedBy,
+      deletedAt: deletedAt ?? this.deletedAt,
+      id: id ?? this.id,
+      title: title ?? this.title,
+      pipelineId: pipelineId ?? this.pipelineId,
+      stageId: stageId ?? this.stageId,
+      organisationId: organisationId ?? this.organisationId,
+      contactId: contactId ?? this.contactId,
+      amountCents: amountCents ?? this.amountCents,
+      probability: probability ?? this.probability,
+      expectedCloseDate: expectedCloseDate ?? this.expectedCloseDate,
+      status: status ?? this.status,
+      closedAt: closedAt ?? this.closedAt,
+      sortOrder: sortOrder ?? this.sortOrder,
+      ownerId: ownerId ?? this.ownerId,
+      description: description ?? this.description,
+      customFields: customFields ?? this.customFields,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (version.present) {
+      map['version'] = Variable<int>(version.value);
+    }
+    if (fieldMeta.present) {
+      map['field_meta'] = Variable<String>(fieldMeta.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (updatedBy.present) {
+      map['updated_by'] = Variable<String>(updatedBy.value);
+    }
+    if (deletedAt.present) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt.value);
+    }
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (title.present) {
+      map['title'] = Variable<String>(title.value);
+    }
+    if (pipelineId.present) {
+      map['pipeline_id'] = Variable<String>(pipelineId.value);
+    }
+    if (stageId.present) {
+      map['stage_id'] = Variable<String>(stageId.value);
+    }
+    if (organisationId.present) {
+      map['organisation_id'] = Variable<String>(organisationId.value);
+    }
+    if (contactId.present) {
+      map['contact_id'] = Variable<String>(contactId.value);
+    }
+    if (amountCents.present) {
+      map['amount_cents'] = Variable<int>(amountCents.value);
+    }
+    if (probability.present) {
+      map['probability'] = Variable<int>(probability.value);
+    }
+    if (expectedCloseDate.present) {
+      map['expected_close_date'] = Variable<String>(expectedCloseDate.value);
+    }
+    if (status.present) {
+      map['status'] = Variable<String>(status.value);
+    }
+    if (closedAt.present) {
+      map['closed_at'] = Variable<DateTime>(closedAt.value);
+    }
+    if (sortOrder.present) {
+      map['sort_order'] = Variable<double>(sortOrder.value);
+    }
+    if (ownerId.present) {
+      map['owner_id'] = Variable<String>(ownerId.value);
+    }
+    if (description.present) {
+      map['description'] = Variable<String>(description.value);
+    }
+    if (customFields.present) {
+      map['custom_fields'] = Variable<String>(customFields.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('DealsCompanion(')
+          ..write('version: $version, ')
+          ..write('fieldMeta: $fieldMeta, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('updatedBy: $updatedBy, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('id: $id, ')
+          ..write('title: $title, ')
+          ..write('pipelineId: $pipelineId, ')
+          ..write('stageId: $stageId, ')
+          ..write('organisationId: $organisationId, ')
+          ..write('contactId: $contactId, ')
+          ..write('amountCents: $amountCents, ')
+          ..write('probability: $probability, ')
+          ..write('expectedCloseDate: $expectedCloseDate, ')
+          ..write('status: $status, ')
+          ..write('closedAt: $closedAt, ')
+          ..write('sortOrder: $sortOrder, ')
+          ..write('ownerId: $ownerId, ')
+          ..write('description: $description, ')
+          ..write('customFields: $customFields, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $ActivitiesTable extends Activities
+    with TableInfo<$ActivitiesTable, ActivityRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ActivitiesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _versionMeta = const VerificationMeta(
+    'version',
+  );
+  @override
+  late final GeneratedColumn<int> version = GeneratedColumn<int>(
+    'version',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _fieldMetaMeta = const VerificationMeta(
+    'fieldMeta',
+  );
+  @override
+  late final GeneratedColumn<String> fieldMeta = GeneratedColumn<String>(
+    'field_meta',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('{}'),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _updatedByMeta = const VerificationMeta(
+    'updatedBy',
+  );
+  @override
+  late final GeneratedColumn<String> updatedBy = GeneratedColumn<String>(
+    'updated_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _deletedAtMeta = const VerificationMeta(
+    'deletedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> deletedAt = GeneratedColumn<DateTime>(
+    'deleted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _kindMeta = const VerificationMeta('kind');
+  @override
+  late final GeneratedColumn<String> kind = GeneratedColumn<String>(
+    'kind',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _subjectMeta = const VerificationMeta(
+    'subject',
+  );
+  @override
+  late final GeneratedColumn<String> subject = GeneratedColumn<String>(
+    'subject',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _bodyMeta = const VerificationMeta('body');
+  @override
+  late final GeneratedColumn<String> body = GeneratedColumn<String>(
+    'body',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _organisationIdMeta = const VerificationMeta(
+    'organisationId',
+  );
+  @override
+  late final GeneratedColumn<String> organisationId = GeneratedColumn<String>(
+    'organisation_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _contactIdMeta = const VerificationMeta(
+    'contactId',
+  );
+  @override
+  late final GeneratedColumn<String> contactId = GeneratedColumn<String>(
+    'contact_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _dealIdMeta = const VerificationMeta('dealId');
+  @override
+  late final GeneratedColumn<String> dealId = GeneratedColumn<String>(
+    'deal_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _startsAtMeta = const VerificationMeta(
+    'startsAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> startsAt = GeneratedColumn<DateTime>(
+    'starts_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _endsAtMeta = const VerificationMeta('endsAt');
+  @override
+  late final GeneratedColumn<DateTime> endsAt = GeneratedColumn<DateTime>(
+    'ends_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _dueAtMeta = const VerificationMeta('dueAt');
+  @override
+  late final GeneratedColumn<DateTime> dueAt = GeneratedColumn<DateTime>(
+    'due_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _remindAtMeta = const VerificationMeta(
+    'remindAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> remindAt = GeneratedColumn<DateTime>(
+    'remind_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _doneAtMeta = const VerificationMeta('doneAt');
+  @override
+  late final GeneratedColumn<DateTime> doneAt = GeneratedColumn<DateTime>(
+    'done_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _assigneeIdMeta = const VerificationMeta(
+    'assigneeId',
+  );
+  @override
+  late final GeneratedColumn<String> assigneeId = GeneratedColumn<String>(
+    'assignee_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _ownerIdMeta = const VerificationMeta(
+    'ownerId',
+  );
+  @override
+  late final GeneratedColumn<String> ownerId = GeneratedColumn<String>(
+    'owner_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    version,
+    fieldMeta,
+    createdAt,
+    createdBy,
+    updatedAt,
+    updatedBy,
+    deletedAt,
+    id,
+    kind,
+    subject,
+    body,
+    organisationId,
+    contactId,
+    dealId,
+    startsAt,
+    endsAt,
+    dueAt,
+    remindAt,
+    doneAt,
+    assigneeId,
+    ownerId,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'activities';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<ActivityRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('version')) {
+      context.handle(
+        _versionMeta,
+        version.isAcceptableOrUnknown(data['version']!, _versionMeta),
+      );
+    }
+    if (data.containsKey('field_meta')) {
+      context.handle(
+        _fieldMetaMeta,
+        fieldMeta.isAcceptableOrUnknown(data['field_meta']!, _fieldMetaMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_createdAtMeta);
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_updatedAtMeta);
+    }
+    if (data.containsKey('updated_by')) {
+      context.handle(
+        _updatedByMeta,
+        updatedBy.isAcceptableOrUnknown(data['updated_by']!, _updatedByMeta),
+      );
+    }
+    if (data.containsKey('deleted_at')) {
+      context.handle(
+        _deletedAtMeta,
+        deletedAt.isAcceptableOrUnknown(data['deleted_at']!, _deletedAtMeta),
+      );
+    }
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('kind')) {
+      context.handle(
+        _kindMeta,
+        kind.isAcceptableOrUnknown(data['kind']!, _kindMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_kindMeta);
+    }
+    if (data.containsKey('subject')) {
+      context.handle(
+        _subjectMeta,
+        subject.isAcceptableOrUnknown(data['subject']!, _subjectMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_subjectMeta);
+    }
+    if (data.containsKey('body')) {
+      context.handle(
+        _bodyMeta,
+        body.isAcceptableOrUnknown(data['body']!, _bodyMeta),
+      );
+    }
+    if (data.containsKey('organisation_id')) {
+      context.handle(
+        _organisationIdMeta,
+        organisationId.isAcceptableOrUnknown(
+          data['organisation_id']!,
+          _organisationIdMeta,
+        ),
+      );
+    }
+    if (data.containsKey('contact_id')) {
+      context.handle(
+        _contactIdMeta,
+        contactId.isAcceptableOrUnknown(data['contact_id']!, _contactIdMeta),
+      );
+    }
+    if (data.containsKey('deal_id')) {
+      context.handle(
+        _dealIdMeta,
+        dealId.isAcceptableOrUnknown(data['deal_id']!, _dealIdMeta),
+      );
+    }
+    if (data.containsKey('starts_at')) {
+      context.handle(
+        _startsAtMeta,
+        startsAt.isAcceptableOrUnknown(data['starts_at']!, _startsAtMeta),
+      );
+    }
+    if (data.containsKey('ends_at')) {
+      context.handle(
+        _endsAtMeta,
+        endsAt.isAcceptableOrUnknown(data['ends_at']!, _endsAtMeta),
+      );
+    }
+    if (data.containsKey('due_at')) {
+      context.handle(
+        _dueAtMeta,
+        dueAt.isAcceptableOrUnknown(data['due_at']!, _dueAtMeta),
+      );
+    }
+    if (data.containsKey('remind_at')) {
+      context.handle(
+        _remindAtMeta,
+        remindAt.isAcceptableOrUnknown(data['remind_at']!, _remindAtMeta),
+      );
+    }
+    if (data.containsKey('done_at')) {
+      context.handle(
+        _doneAtMeta,
+        doneAt.isAcceptableOrUnknown(data['done_at']!, _doneAtMeta),
+      );
+    }
+    if (data.containsKey('assignee_id')) {
+      context.handle(
+        _assigneeIdMeta,
+        assigneeId.isAcceptableOrUnknown(data['assignee_id']!, _assigneeIdMeta),
+      );
+    }
+    if (data.containsKey('owner_id')) {
+      context.handle(
+        _ownerIdMeta,
+        ownerId.isAcceptableOrUnknown(data['owner_id']!, _ownerIdMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  ActivityRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ActivityRow(
+      version: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}version'],
+      )!,
+      fieldMeta: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}field_meta'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      updatedBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_by'],
+      ),
+      deletedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}deleted_at'],
+      ),
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      kind: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}kind'],
+      )!,
+      subject: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}subject'],
+      )!,
+      body: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}body'],
+      ),
+      organisationId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}organisation_id'],
+      ),
+      contactId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}contact_id'],
+      ),
+      dealId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}deal_id'],
+      ),
+      startsAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}starts_at'],
+      ),
+      endsAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}ends_at'],
+      ),
+      dueAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}due_at'],
+      ),
+      remindAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}remind_at'],
+      ),
+      doneAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}done_at'],
+      ),
+      assigneeId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}assignee_id'],
+      ),
+      ownerId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}owner_id'],
+      ),
+    );
+  }
+
+  @override
+  $ActivitiesTable createAlias(String alias) {
+    return $ActivitiesTable(attachedDatabase, alias);
+  }
+}
+
+class ActivityRow extends DataClass implements Insertable<ActivityRow> {
+  final int version;
+  final String fieldMeta;
+  final DateTime createdAt;
+  final String? createdBy;
+  final DateTime updatedAt;
+  final String? updatedBy;
+  final DateTime? deletedAt;
+  final String id;
+  final String kind;
+  final String subject;
+  final String? body;
+  final String? organisationId;
+  final String? contactId;
+  final String? dealId;
+  final DateTime? startsAt;
+  final DateTime? endsAt;
+  final DateTime? dueAt;
+  final DateTime? remindAt;
+  final DateTime? doneAt;
+  final String? assigneeId;
+  final String? ownerId;
+  const ActivityRow({
+    required this.version,
+    required this.fieldMeta,
+    required this.createdAt,
+    this.createdBy,
+    required this.updatedAt,
+    this.updatedBy,
+    this.deletedAt,
+    required this.id,
+    required this.kind,
+    required this.subject,
+    this.body,
+    this.organisationId,
+    this.contactId,
+    this.dealId,
+    this.startsAt,
+    this.endsAt,
+    this.dueAt,
+    this.remindAt,
+    this.doneAt,
+    this.assigneeId,
+    this.ownerId,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['version'] = Variable<int>(version);
+    map['field_meta'] = Variable<String>(fieldMeta);
+    map['created_at'] = Variable<DateTime>(createdAt);
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    if (!nullToAbsent || updatedBy != null) {
+      map['updated_by'] = Variable<String>(updatedBy);
+    }
+    if (!nullToAbsent || deletedAt != null) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt);
+    }
+    map['id'] = Variable<String>(id);
+    map['kind'] = Variable<String>(kind);
+    map['subject'] = Variable<String>(subject);
+    if (!nullToAbsent || body != null) {
+      map['body'] = Variable<String>(body);
+    }
+    if (!nullToAbsent || organisationId != null) {
+      map['organisation_id'] = Variable<String>(organisationId);
+    }
+    if (!nullToAbsent || contactId != null) {
+      map['contact_id'] = Variable<String>(contactId);
+    }
+    if (!nullToAbsent || dealId != null) {
+      map['deal_id'] = Variable<String>(dealId);
+    }
+    if (!nullToAbsent || startsAt != null) {
+      map['starts_at'] = Variable<DateTime>(startsAt);
+    }
+    if (!nullToAbsent || endsAt != null) {
+      map['ends_at'] = Variable<DateTime>(endsAt);
+    }
+    if (!nullToAbsent || dueAt != null) {
+      map['due_at'] = Variable<DateTime>(dueAt);
+    }
+    if (!nullToAbsent || remindAt != null) {
+      map['remind_at'] = Variable<DateTime>(remindAt);
+    }
+    if (!nullToAbsent || doneAt != null) {
+      map['done_at'] = Variable<DateTime>(doneAt);
+    }
+    if (!nullToAbsent || assigneeId != null) {
+      map['assignee_id'] = Variable<String>(assigneeId);
+    }
+    if (!nullToAbsent || ownerId != null) {
+      map['owner_id'] = Variable<String>(ownerId);
+    }
+    return map;
+  }
+
+  ActivitiesCompanion toCompanion(bool nullToAbsent) {
+    return ActivitiesCompanion(
+      version: Value(version),
+      fieldMeta: Value(fieldMeta),
+      createdAt: Value(createdAt),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      updatedAt: Value(updatedAt),
+      updatedBy: updatedBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedBy),
+      deletedAt: deletedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deletedAt),
+      id: Value(id),
+      kind: Value(kind),
+      subject: Value(subject),
+      body: body == null && nullToAbsent ? const Value.absent() : Value(body),
+      organisationId: organisationId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(organisationId),
+      contactId: contactId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(contactId),
+      dealId: dealId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(dealId),
+      startsAt: startsAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(startsAt),
+      endsAt: endsAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(endsAt),
+      dueAt: dueAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(dueAt),
+      remindAt: remindAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(remindAt),
+      doneAt: doneAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(doneAt),
+      assigneeId: assigneeId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(assigneeId),
+      ownerId: ownerId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(ownerId),
+    );
+  }
+
+  factory ActivityRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return ActivityRow(
+      version: serializer.fromJson<int>(json['version']),
+      fieldMeta: serializer.fromJson<String>(json['fieldMeta']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      updatedBy: serializer.fromJson<String?>(json['updatedBy']),
+      deletedAt: serializer.fromJson<DateTime?>(json['deletedAt']),
+      id: serializer.fromJson<String>(json['id']),
+      kind: serializer.fromJson<String>(json['kind']),
+      subject: serializer.fromJson<String>(json['subject']),
+      body: serializer.fromJson<String?>(json['body']),
+      organisationId: serializer.fromJson<String?>(json['organisationId']),
+      contactId: serializer.fromJson<String?>(json['contactId']),
+      dealId: serializer.fromJson<String?>(json['dealId']),
+      startsAt: serializer.fromJson<DateTime?>(json['startsAt']),
+      endsAt: serializer.fromJson<DateTime?>(json['endsAt']),
+      dueAt: serializer.fromJson<DateTime?>(json['dueAt']),
+      remindAt: serializer.fromJson<DateTime?>(json['remindAt']),
+      doneAt: serializer.fromJson<DateTime?>(json['doneAt']),
+      assigneeId: serializer.fromJson<String?>(json['assigneeId']),
+      ownerId: serializer.fromJson<String?>(json['ownerId']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'version': serializer.toJson<int>(version),
+      'fieldMeta': serializer.toJson<String>(fieldMeta),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'updatedBy': serializer.toJson<String?>(updatedBy),
+      'deletedAt': serializer.toJson<DateTime?>(deletedAt),
+      'id': serializer.toJson<String>(id),
+      'kind': serializer.toJson<String>(kind),
+      'subject': serializer.toJson<String>(subject),
+      'body': serializer.toJson<String?>(body),
+      'organisationId': serializer.toJson<String?>(organisationId),
+      'contactId': serializer.toJson<String?>(contactId),
+      'dealId': serializer.toJson<String?>(dealId),
+      'startsAt': serializer.toJson<DateTime?>(startsAt),
+      'endsAt': serializer.toJson<DateTime?>(endsAt),
+      'dueAt': serializer.toJson<DateTime?>(dueAt),
+      'remindAt': serializer.toJson<DateTime?>(remindAt),
+      'doneAt': serializer.toJson<DateTime?>(doneAt),
+      'assigneeId': serializer.toJson<String?>(assigneeId),
+      'ownerId': serializer.toJson<String?>(ownerId),
+    };
+  }
+
+  ActivityRow copyWith({
+    int? version,
+    String? fieldMeta,
+    DateTime? createdAt,
+    Value<String?> createdBy = const Value.absent(),
+    DateTime? updatedAt,
+    Value<String?> updatedBy = const Value.absent(),
+    Value<DateTime?> deletedAt = const Value.absent(),
+    String? id,
+    String? kind,
+    String? subject,
+    Value<String?> body = const Value.absent(),
+    Value<String?> organisationId = const Value.absent(),
+    Value<String?> contactId = const Value.absent(),
+    Value<String?> dealId = const Value.absent(),
+    Value<DateTime?> startsAt = const Value.absent(),
+    Value<DateTime?> endsAt = const Value.absent(),
+    Value<DateTime?> dueAt = const Value.absent(),
+    Value<DateTime?> remindAt = const Value.absent(),
+    Value<DateTime?> doneAt = const Value.absent(),
+    Value<String?> assigneeId = const Value.absent(),
+    Value<String?> ownerId = const Value.absent(),
+  }) => ActivityRow(
+    version: version ?? this.version,
+    fieldMeta: fieldMeta ?? this.fieldMeta,
+    createdAt: createdAt ?? this.createdAt,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    updatedAt: updatedAt ?? this.updatedAt,
+    updatedBy: updatedBy.present ? updatedBy.value : this.updatedBy,
+    deletedAt: deletedAt.present ? deletedAt.value : this.deletedAt,
+    id: id ?? this.id,
+    kind: kind ?? this.kind,
+    subject: subject ?? this.subject,
+    body: body.present ? body.value : this.body,
+    organisationId: organisationId.present
+        ? organisationId.value
+        : this.organisationId,
+    contactId: contactId.present ? contactId.value : this.contactId,
+    dealId: dealId.present ? dealId.value : this.dealId,
+    startsAt: startsAt.present ? startsAt.value : this.startsAt,
+    endsAt: endsAt.present ? endsAt.value : this.endsAt,
+    dueAt: dueAt.present ? dueAt.value : this.dueAt,
+    remindAt: remindAt.present ? remindAt.value : this.remindAt,
+    doneAt: doneAt.present ? doneAt.value : this.doneAt,
+    assigneeId: assigneeId.present ? assigneeId.value : this.assigneeId,
+    ownerId: ownerId.present ? ownerId.value : this.ownerId,
+  );
+  ActivityRow copyWithCompanion(ActivitiesCompanion data) {
+    return ActivityRow(
+      version: data.version.present ? data.version.value : this.version,
+      fieldMeta: data.fieldMeta.present ? data.fieldMeta.value : this.fieldMeta,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      updatedBy: data.updatedBy.present ? data.updatedBy.value : this.updatedBy,
+      deletedAt: data.deletedAt.present ? data.deletedAt.value : this.deletedAt,
+      id: data.id.present ? data.id.value : this.id,
+      kind: data.kind.present ? data.kind.value : this.kind,
+      subject: data.subject.present ? data.subject.value : this.subject,
+      body: data.body.present ? data.body.value : this.body,
+      organisationId: data.organisationId.present
+          ? data.organisationId.value
+          : this.organisationId,
+      contactId: data.contactId.present ? data.contactId.value : this.contactId,
+      dealId: data.dealId.present ? data.dealId.value : this.dealId,
+      startsAt: data.startsAt.present ? data.startsAt.value : this.startsAt,
+      endsAt: data.endsAt.present ? data.endsAt.value : this.endsAt,
+      dueAt: data.dueAt.present ? data.dueAt.value : this.dueAt,
+      remindAt: data.remindAt.present ? data.remindAt.value : this.remindAt,
+      doneAt: data.doneAt.present ? data.doneAt.value : this.doneAt,
+      assigneeId: data.assigneeId.present
+          ? data.assigneeId.value
+          : this.assigneeId,
+      ownerId: data.ownerId.present ? data.ownerId.value : this.ownerId,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ActivityRow(')
+          ..write('version: $version, ')
+          ..write('fieldMeta: $fieldMeta, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('updatedBy: $updatedBy, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('id: $id, ')
+          ..write('kind: $kind, ')
+          ..write('subject: $subject, ')
+          ..write('body: $body, ')
+          ..write('organisationId: $organisationId, ')
+          ..write('contactId: $contactId, ')
+          ..write('dealId: $dealId, ')
+          ..write('startsAt: $startsAt, ')
+          ..write('endsAt: $endsAt, ')
+          ..write('dueAt: $dueAt, ')
+          ..write('remindAt: $remindAt, ')
+          ..write('doneAt: $doneAt, ')
+          ..write('assigneeId: $assigneeId, ')
+          ..write('ownerId: $ownerId')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hashAll([
+    version,
+    fieldMeta,
+    createdAt,
+    createdBy,
+    updatedAt,
+    updatedBy,
+    deletedAt,
+    id,
+    kind,
+    subject,
+    body,
+    organisationId,
+    contactId,
+    dealId,
+    startsAt,
+    endsAt,
+    dueAt,
+    remindAt,
+    doneAt,
+    assigneeId,
+    ownerId,
+  ]);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is ActivityRow &&
+          other.version == this.version &&
+          other.fieldMeta == this.fieldMeta &&
+          other.createdAt == this.createdAt &&
+          other.createdBy == this.createdBy &&
+          other.updatedAt == this.updatedAt &&
+          other.updatedBy == this.updatedBy &&
+          other.deletedAt == this.deletedAt &&
+          other.id == this.id &&
+          other.kind == this.kind &&
+          other.subject == this.subject &&
+          other.body == this.body &&
+          other.organisationId == this.organisationId &&
+          other.contactId == this.contactId &&
+          other.dealId == this.dealId &&
+          other.startsAt == this.startsAt &&
+          other.endsAt == this.endsAt &&
+          other.dueAt == this.dueAt &&
+          other.remindAt == this.remindAt &&
+          other.doneAt == this.doneAt &&
+          other.assigneeId == this.assigneeId &&
+          other.ownerId == this.ownerId);
+}
+
+class ActivitiesCompanion extends UpdateCompanion<ActivityRow> {
+  final Value<int> version;
+  final Value<String> fieldMeta;
+  final Value<DateTime> createdAt;
+  final Value<String?> createdBy;
+  final Value<DateTime> updatedAt;
+  final Value<String?> updatedBy;
+  final Value<DateTime?> deletedAt;
+  final Value<String> id;
+  final Value<String> kind;
+  final Value<String> subject;
+  final Value<String?> body;
+  final Value<String?> organisationId;
+  final Value<String?> contactId;
+  final Value<String?> dealId;
+  final Value<DateTime?> startsAt;
+  final Value<DateTime?> endsAt;
+  final Value<DateTime?> dueAt;
+  final Value<DateTime?> remindAt;
+  final Value<DateTime?> doneAt;
+  final Value<String?> assigneeId;
+  final Value<String?> ownerId;
+  final Value<int> rowid;
+  const ActivitiesCompanion({
+    this.version = const Value.absent(),
+    this.fieldMeta = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.updatedBy = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.id = const Value.absent(),
+    this.kind = const Value.absent(),
+    this.subject = const Value.absent(),
+    this.body = const Value.absent(),
+    this.organisationId = const Value.absent(),
+    this.contactId = const Value.absent(),
+    this.dealId = const Value.absent(),
+    this.startsAt = const Value.absent(),
+    this.endsAt = const Value.absent(),
+    this.dueAt = const Value.absent(),
+    this.remindAt = const Value.absent(),
+    this.doneAt = const Value.absent(),
+    this.assigneeId = const Value.absent(),
+    this.ownerId = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  ActivitiesCompanion.insert({
+    this.version = const Value.absent(),
+    this.fieldMeta = const Value.absent(),
+    required DateTime createdAt,
+    this.createdBy = const Value.absent(),
+    required DateTime updatedAt,
+    this.updatedBy = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    required String id,
+    required String kind,
+    required String subject,
+    this.body = const Value.absent(),
+    this.organisationId = const Value.absent(),
+    this.contactId = const Value.absent(),
+    this.dealId = const Value.absent(),
+    this.startsAt = const Value.absent(),
+    this.endsAt = const Value.absent(),
+    this.dueAt = const Value.absent(),
+    this.remindAt = const Value.absent(),
+    this.doneAt = const Value.absent(),
+    this.assigneeId = const Value.absent(),
+    this.ownerId = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : createdAt = Value(createdAt),
+       updatedAt = Value(updatedAt),
+       id = Value(id),
+       kind = Value(kind),
+       subject = Value(subject);
+  static Insertable<ActivityRow> custom({
+    Expression<int>? version,
+    Expression<String>? fieldMeta,
+    Expression<DateTime>? createdAt,
+    Expression<String>? createdBy,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? updatedBy,
+    Expression<DateTime>? deletedAt,
+    Expression<String>? id,
+    Expression<String>? kind,
+    Expression<String>? subject,
+    Expression<String>? body,
+    Expression<String>? organisationId,
+    Expression<String>? contactId,
+    Expression<String>? dealId,
+    Expression<DateTime>? startsAt,
+    Expression<DateTime>? endsAt,
+    Expression<DateTime>? dueAt,
+    Expression<DateTime>? remindAt,
+    Expression<DateTime>? doneAt,
+    Expression<String>? assigneeId,
+    Expression<String>? ownerId,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (version != null) 'version': version,
+      if (fieldMeta != null) 'field_meta': fieldMeta,
+      if (createdAt != null) 'created_at': createdAt,
+      if (createdBy != null) 'created_by': createdBy,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (updatedBy != null) 'updated_by': updatedBy,
+      if (deletedAt != null) 'deleted_at': deletedAt,
+      if (id != null) 'id': id,
+      if (kind != null) 'kind': kind,
+      if (subject != null) 'subject': subject,
+      if (body != null) 'body': body,
+      if (organisationId != null) 'organisation_id': organisationId,
+      if (contactId != null) 'contact_id': contactId,
+      if (dealId != null) 'deal_id': dealId,
+      if (startsAt != null) 'starts_at': startsAt,
+      if (endsAt != null) 'ends_at': endsAt,
+      if (dueAt != null) 'due_at': dueAt,
+      if (remindAt != null) 'remind_at': remindAt,
+      if (doneAt != null) 'done_at': doneAt,
+      if (assigneeId != null) 'assignee_id': assigneeId,
+      if (ownerId != null) 'owner_id': ownerId,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  ActivitiesCompanion copyWith({
+    Value<int>? version,
+    Value<String>? fieldMeta,
+    Value<DateTime>? createdAt,
+    Value<String?>? createdBy,
+    Value<DateTime>? updatedAt,
+    Value<String?>? updatedBy,
+    Value<DateTime?>? deletedAt,
+    Value<String>? id,
+    Value<String>? kind,
+    Value<String>? subject,
+    Value<String?>? body,
+    Value<String?>? organisationId,
+    Value<String?>? contactId,
+    Value<String?>? dealId,
+    Value<DateTime?>? startsAt,
+    Value<DateTime?>? endsAt,
+    Value<DateTime?>? dueAt,
+    Value<DateTime?>? remindAt,
+    Value<DateTime?>? doneAt,
+    Value<String?>? assigneeId,
+    Value<String?>? ownerId,
+    Value<int>? rowid,
+  }) {
+    return ActivitiesCompanion(
+      version: version ?? this.version,
+      fieldMeta: fieldMeta ?? this.fieldMeta,
+      createdAt: createdAt ?? this.createdAt,
+      createdBy: createdBy ?? this.createdBy,
+      updatedAt: updatedAt ?? this.updatedAt,
+      updatedBy: updatedBy ?? this.updatedBy,
+      deletedAt: deletedAt ?? this.deletedAt,
+      id: id ?? this.id,
+      kind: kind ?? this.kind,
+      subject: subject ?? this.subject,
+      body: body ?? this.body,
+      organisationId: organisationId ?? this.organisationId,
+      contactId: contactId ?? this.contactId,
+      dealId: dealId ?? this.dealId,
+      startsAt: startsAt ?? this.startsAt,
+      endsAt: endsAt ?? this.endsAt,
+      dueAt: dueAt ?? this.dueAt,
+      remindAt: remindAt ?? this.remindAt,
+      doneAt: doneAt ?? this.doneAt,
+      assigneeId: assigneeId ?? this.assigneeId,
+      ownerId: ownerId ?? this.ownerId,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (version.present) {
+      map['version'] = Variable<int>(version.value);
+    }
+    if (fieldMeta.present) {
+      map['field_meta'] = Variable<String>(fieldMeta.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (updatedBy.present) {
+      map['updated_by'] = Variable<String>(updatedBy.value);
+    }
+    if (deletedAt.present) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt.value);
+    }
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (kind.present) {
+      map['kind'] = Variable<String>(kind.value);
+    }
+    if (subject.present) {
+      map['subject'] = Variable<String>(subject.value);
+    }
+    if (body.present) {
+      map['body'] = Variable<String>(body.value);
+    }
+    if (organisationId.present) {
+      map['organisation_id'] = Variable<String>(organisationId.value);
+    }
+    if (contactId.present) {
+      map['contact_id'] = Variable<String>(contactId.value);
+    }
+    if (dealId.present) {
+      map['deal_id'] = Variable<String>(dealId.value);
+    }
+    if (startsAt.present) {
+      map['starts_at'] = Variable<DateTime>(startsAt.value);
+    }
+    if (endsAt.present) {
+      map['ends_at'] = Variable<DateTime>(endsAt.value);
+    }
+    if (dueAt.present) {
+      map['due_at'] = Variable<DateTime>(dueAt.value);
+    }
+    if (remindAt.present) {
+      map['remind_at'] = Variable<DateTime>(remindAt.value);
+    }
+    if (doneAt.present) {
+      map['done_at'] = Variable<DateTime>(doneAt.value);
+    }
+    if (assigneeId.present) {
+      map['assignee_id'] = Variable<String>(assigneeId.value);
+    }
+    if (ownerId.present) {
+      map['owner_id'] = Variable<String>(ownerId.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ActivitiesCompanion(')
+          ..write('version: $version, ')
+          ..write('fieldMeta: $fieldMeta, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('updatedBy: $updatedBy, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('id: $id, ')
+          ..write('kind: $kind, ')
+          ..write('subject: $subject, ')
+          ..write('body: $body, ')
+          ..write('organisationId: $organisationId, ')
+          ..write('contactId: $contactId, ')
+          ..write('dealId: $dealId, ')
+          ..write('startsAt: $startsAt, ')
+          ..write('endsAt: $endsAt, ')
+          ..write('dueAt: $dueAt, ')
+          ..write('remindAt: $remindAt, ')
+          ..write('doneAt: $doneAt, ')
+          ..write('assigneeId: $assigneeId, ')
+          ..write('ownerId: $ownerId, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $AttachmentsTable extends Attachments
+    with TableInfo<$AttachmentsTable, AttachmentRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $AttachmentsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _versionMeta = const VerificationMeta(
+    'version',
+  );
+  @override
+  late final GeneratedColumn<int> version = GeneratedColumn<int>(
+    'version',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _fieldMetaMeta = const VerificationMeta(
+    'fieldMeta',
+  );
+  @override
+  late final GeneratedColumn<String> fieldMeta = GeneratedColumn<String>(
+    'field_meta',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('{}'),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _updatedByMeta = const VerificationMeta(
+    'updatedBy',
+  );
+  @override
+  late final GeneratedColumn<String> updatedBy = GeneratedColumn<String>(
+    'updated_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _deletedAtMeta = const VerificationMeta(
+    'deletedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> deletedAt = GeneratedColumn<DateTime>(
+    'deleted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _fileIdMeta = const VerificationMeta('fileId');
+  @override
+  late final GeneratedColumn<String> fileId = GeneratedColumn<String>(
+    'file_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _fileNameMeta = const VerificationMeta(
+    'fileName',
+  );
+  @override
+  late final GeneratedColumn<String> fileName = GeneratedColumn<String>(
+    'file_name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _sizeMeta = const VerificationMeta('size');
+  @override
+  late final GeneratedColumn<int> size = GeneratedColumn<int>(
+    'size',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _mimeTypeMeta = const VerificationMeta(
+    'mimeType',
+  );
+  @override
+  late final GeneratedColumn<String> mimeType = GeneratedColumn<String>(
+    'mime_type',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _organisationIdMeta = const VerificationMeta(
+    'organisationId',
+  );
+  @override
+  late final GeneratedColumn<String> organisationId = GeneratedColumn<String>(
+    'organisation_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _contactIdMeta = const VerificationMeta(
+    'contactId',
+  );
+  @override
+  late final GeneratedColumn<String> contactId = GeneratedColumn<String>(
+    'contact_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _dealIdMeta = const VerificationMeta('dealId');
+  @override
+  late final GeneratedColumn<String> dealId = GeneratedColumn<String>(
+    'deal_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _activityIdMeta = const VerificationMeta(
+    'activityId',
+  );
+  @override
+  late final GeneratedColumn<String> activityId = GeneratedColumn<String>(
+    'activity_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    version,
+    fieldMeta,
+    createdAt,
+    createdBy,
+    updatedAt,
+    updatedBy,
+    deletedAt,
+    id,
+    fileId,
+    fileName,
+    size,
+    mimeType,
+    organisationId,
+    contactId,
+    dealId,
+    activityId,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'attachments';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<AttachmentRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('version')) {
+      context.handle(
+        _versionMeta,
+        version.isAcceptableOrUnknown(data['version']!, _versionMeta),
+      );
+    }
+    if (data.containsKey('field_meta')) {
+      context.handle(
+        _fieldMetaMeta,
+        fieldMeta.isAcceptableOrUnknown(data['field_meta']!, _fieldMetaMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_createdAtMeta);
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_updatedAtMeta);
+    }
+    if (data.containsKey('updated_by')) {
+      context.handle(
+        _updatedByMeta,
+        updatedBy.isAcceptableOrUnknown(data['updated_by']!, _updatedByMeta),
+      );
+    }
+    if (data.containsKey('deleted_at')) {
+      context.handle(
+        _deletedAtMeta,
+        deletedAt.isAcceptableOrUnknown(data['deleted_at']!, _deletedAtMeta),
+      );
+    }
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('file_id')) {
+      context.handle(
+        _fileIdMeta,
+        fileId.isAcceptableOrUnknown(data['file_id']!, _fileIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_fileIdMeta);
+    }
+    if (data.containsKey('file_name')) {
+      context.handle(
+        _fileNameMeta,
+        fileName.isAcceptableOrUnknown(data['file_name']!, _fileNameMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_fileNameMeta);
+    }
+    if (data.containsKey('size')) {
+      context.handle(
+        _sizeMeta,
+        size.isAcceptableOrUnknown(data['size']!, _sizeMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_sizeMeta);
+    }
+    if (data.containsKey('mime_type')) {
+      context.handle(
+        _mimeTypeMeta,
+        mimeType.isAcceptableOrUnknown(data['mime_type']!, _mimeTypeMeta),
+      );
+    }
+    if (data.containsKey('organisation_id')) {
+      context.handle(
+        _organisationIdMeta,
+        organisationId.isAcceptableOrUnknown(
+          data['organisation_id']!,
+          _organisationIdMeta,
+        ),
+      );
+    }
+    if (data.containsKey('contact_id')) {
+      context.handle(
+        _contactIdMeta,
+        contactId.isAcceptableOrUnknown(data['contact_id']!, _contactIdMeta),
+      );
+    }
+    if (data.containsKey('deal_id')) {
+      context.handle(
+        _dealIdMeta,
+        dealId.isAcceptableOrUnknown(data['deal_id']!, _dealIdMeta),
+      );
+    }
+    if (data.containsKey('activity_id')) {
+      context.handle(
+        _activityIdMeta,
+        activityId.isAcceptableOrUnknown(data['activity_id']!, _activityIdMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  AttachmentRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return AttachmentRow(
+      version: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}version'],
+      )!,
+      fieldMeta: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}field_meta'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      updatedBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_by'],
+      ),
+      deletedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}deleted_at'],
+      ),
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      fileId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}file_id'],
+      )!,
+      fileName: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}file_name'],
+      )!,
+      size: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}size'],
+      )!,
+      mimeType: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}mime_type'],
+      ),
+      organisationId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}organisation_id'],
+      ),
+      contactId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}contact_id'],
+      ),
+      dealId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}deal_id'],
+      ),
+      activityId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}activity_id'],
+      ),
+    );
+  }
+
+  @override
+  $AttachmentsTable createAlias(String alias) {
+    return $AttachmentsTable(attachedDatabase, alias);
+  }
+}
+
+class AttachmentRow extends DataClass implements Insertable<AttachmentRow> {
+  final int version;
+  final String fieldMeta;
+  final DateTime createdAt;
+  final String? createdBy;
+  final DateTime updatedAt;
+  final String? updatedBy;
+  final DateTime? deletedAt;
+  final String id;
+  final String fileId;
+  final String fileName;
+  final int size;
+  final String? mimeType;
+  final String? organisationId;
+  final String? contactId;
+  final String? dealId;
+  final String? activityId;
+  const AttachmentRow({
+    required this.version,
+    required this.fieldMeta,
+    required this.createdAt,
+    this.createdBy,
+    required this.updatedAt,
+    this.updatedBy,
+    this.deletedAt,
+    required this.id,
+    required this.fileId,
+    required this.fileName,
+    required this.size,
+    this.mimeType,
+    this.organisationId,
+    this.contactId,
+    this.dealId,
+    this.activityId,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['version'] = Variable<int>(version);
+    map['field_meta'] = Variable<String>(fieldMeta);
+    map['created_at'] = Variable<DateTime>(createdAt);
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    if (!nullToAbsent || updatedBy != null) {
+      map['updated_by'] = Variable<String>(updatedBy);
+    }
+    if (!nullToAbsent || deletedAt != null) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt);
+    }
+    map['id'] = Variable<String>(id);
+    map['file_id'] = Variable<String>(fileId);
+    map['file_name'] = Variable<String>(fileName);
+    map['size'] = Variable<int>(size);
+    if (!nullToAbsent || mimeType != null) {
+      map['mime_type'] = Variable<String>(mimeType);
+    }
+    if (!nullToAbsent || organisationId != null) {
+      map['organisation_id'] = Variable<String>(organisationId);
+    }
+    if (!nullToAbsent || contactId != null) {
+      map['contact_id'] = Variable<String>(contactId);
+    }
+    if (!nullToAbsent || dealId != null) {
+      map['deal_id'] = Variable<String>(dealId);
+    }
+    if (!nullToAbsent || activityId != null) {
+      map['activity_id'] = Variable<String>(activityId);
+    }
+    return map;
+  }
+
+  AttachmentsCompanion toCompanion(bool nullToAbsent) {
+    return AttachmentsCompanion(
+      version: Value(version),
+      fieldMeta: Value(fieldMeta),
+      createdAt: Value(createdAt),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      updatedAt: Value(updatedAt),
+      updatedBy: updatedBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedBy),
+      deletedAt: deletedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deletedAt),
+      id: Value(id),
+      fileId: Value(fileId),
+      fileName: Value(fileName),
+      size: Value(size),
+      mimeType: mimeType == null && nullToAbsent
+          ? const Value.absent()
+          : Value(mimeType),
+      organisationId: organisationId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(organisationId),
+      contactId: contactId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(contactId),
+      dealId: dealId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(dealId),
+      activityId: activityId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(activityId),
+    );
+  }
+
+  factory AttachmentRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return AttachmentRow(
+      version: serializer.fromJson<int>(json['version']),
+      fieldMeta: serializer.fromJson<String>(json['fieldMeta']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      updatedBy: serializer.fromJson<String?>(json['updatedBy']),
+      deletedAt: serializer.fromJson<DateTime?>(json['deletedAt']),
+      id: serializer.fromJson<String>(json['id']),
+      fileId: serializer.fromJson<String>(json['fileId']),
+      fileName: serializer.fromJson<String>(json['fileName']),
+      size: serializer.fromJson<int>(json['size']),
+      mimeType: serializer.fromJson<String?>(json['mimeType']),
+      organisationId: serializer.fromJson<String?>(json['organisationId']),
+      contactId: serializer.fromJson<String?>(json['contactId']),
+      dealId: serializer.fromJson<String?>(json['dealId']),
+      activityId: serializer.fromJson<String?>(json['activityId']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'version': serializer.toJson<int>(version),
+      'fieldMeta': serializer.toJson<String>(fieldMeta),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'updatedBy': serializer.toJson<String?>(updatedBy),
+      'deletedAt': serializer.toJson<DateTime?>(deletedAt),
+      'id': serializer.toJson<String>(id),
+      'fileId': serializer.toJson<String>(fileId),
+      'fileName': serializer.toJson<String>(fileName),
+      'size': serializer.toJson<int>(size),
+      'mimeType': serializer.toJson<String?>(mimeType),
+      'organisationId': serializer.toJson<String?>(organisationId),
+      'contactId': serializer.toJson<String?>(contactId),
+      'dealId': serializer.toJson<String?>(dealId),
+      'activityId': serializer.toJson<String?>(activityId),
+    };
+  }
+
+  AttachmentRow copyWith({
+    int? version,
+    String? fieldMeta,
+    DateTime? createdAt,
+    Value<String?> createdBy = const Value.absent(),
+    DateTime? updatedAt,
+    Value<String?> updatedBy = const Value.absent(),
+    Value<DateTime?> deletedAt = const Value.absent(),
+    String? id,
+    String? fileId,
+    String? fileName,
+    int? size,
+    Value<String?> mimeType = const Value.absent(),
+    Value<String?> organisationId = const Value.absent(),
+    Value<String?> contactId = const Value.absent(),
+    Value<String?> dealId = const Value.absent(),
+    Value<String?> activityId = const Value.absent(),
+  }) => AttachmentRow(
+    version: version ?? this.version,
+    fieldMeta: fieldMeta ?? this.fieldMeta,
+    createdAt: createdAt ?? this.createdAt,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    updatedAt: updatedAt ?? this.updatedAt,
+    updatedBy: updatedBy.present ? updatedBy.value : this.updatedBy,
+    deletedAt: deletedAt.present ? deletedAt.value : this.deletedAt,
+    id: id ?? this.id,
+    fileId: fileId ?? this.fileId,
+    fileName: fileName ?? this.fileName,
+    size: size ?? this.size,
+    mimeType: mimeType.present ? mimeType.value : this.mimeType,
+    organisationId: organisationId.present
+        ? organisationId.value
+        : this.organisationId,
+    contactId: contactId.present ? contactId.value : this.contactId,
+    dealId: dealId.present ? dealId.value : this.dealId,
+    activityId: activityId.present ? activityId.value : this.activityId,
+  );
+  AttachmentRow copyWithCompanion(AttachmentsCompanion data) {
+    return AttachmentRow(
+      version: data.version.present ? data.version.value : this.version,
+      fieldMeta: data.fieldMeta.present ? data.fieldMeta.value : this.fieldMeta,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      updatedBy: data.updatedBy.present ? data.updatedBy.value : this.updatedBy,
+      deletedAt: data.deletedAt.present ? data.deletedAt.value : this.deletedAt,
+      id: data.id.present ? data.id.value : this.id,
+      fileId: data.fileId.present ? data.fileId.value : this.fileId,
+      fileName: data.fileName.present ? data.fileName.value : this.fileName,
+      size: data.size.present ? data.size.value : this.size,
+      mimeType: data.mimeType.present ? data.mimeType.value : this.mimeType,
+      organisationId: data.organisationId.present
+          ? data.organisationId.value
+          : this.organisationId,
+      contactId: data.contactId.present ? data.contactId.value : this.contactId,
+      dealId: data.dealId.present ? data.dealId.value : this.dealId,
+      activityId: data.activityId.present
+          ? data.activityId.value
+          : this.activityId,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('AttachmentRow(')
+          ..write('version: $version, ')
+          ..write('fieldMeta: $fieldMeta, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('updatedBy: $updatedBy, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('id: $id, ')
+          ..write('fileId: $fileId, ')
+          ..write('fileName: $fileName, ')
+          ..write('size: $size, ')
+          ..write('mimeType: $mimeType, ')
+          ..write('organisationId: $organisationId, ')
+          ..write('contactId: $contactId, ')
+          ..write('dealId: $dealId, ')
+          ..write('activityId: $activityId')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    version,
+    fieldMeta,
+    createdAt,
+    createdBy,
+    updatedAt,
+    updatedBy,
+    deletedAt,
+    id,
+    fileId,
+    fileName,
+    size,
+    mimeType,
+    organisationId,
+    contactId,
+    dealId,
+    activityId,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is AttachmentRow &&
+          other.version == this.version &&
+          other.fieldMeta == this.fieldMeta &&
+          other.createdAt == this.createdAt &&
+          other.createdBy == this.createdBy &&
+          other.updatedAt == this.updatedAt &&
+          other.updatedBy == this.updatedBy &&
+          other.deletedAt == this.deletedAt &&
+          other.id == this.id &&
+          other.fileId == this.fileId &&
+          other.fileName == this.fileName &&
+          other.size == this.size &&
+          other.mimeType == this.mimeType &&
+          other.organisationId == this.organisationId &&
+          other.contactId == this.contactId &&
+          other.dealId == this.dealId &&
+          other.activityId == this.activityId);
+}
+
+class AttachmentsCompanion extends UpdateCompanion<AttachmentRow> {
+  final Value<int> version;
+  final Value<String> fieldMeta;
+  final Value<DateTime> createdAt;
+  final Value<String?> createdBy;
+  final Value<DateTime> updatedAt;
+  final Value<String?> updatedBy;
+  final Value<DateTime?> deletedAt;
+  final Value<String> id;
+  final Value<String> fileId;
+  final Value<String> fileName;
+  final Value<int> size;
+  final Value<String?> mimeType;
+  final Value<String?> organisationId;
+  final Value<String?> contactId;
+  final Value<String?> dealId;
+  final Value<String?> activityId;
+  final Value<int> rowid;
+  const AttachmentsCompanion({
+    this.version = const Value.absent(),
+    this.fieldMeta = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.updatedBy = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.id = const Value.absent(),
+    this.fileId = const Value.absent(),
+    this.fileName = const Value.absent(),
+    this.size = const Value.absent(),
+    this.mimeType = const Value.absent(),
+    this.organisationId = const Value.absent(),
+    this.contactId = const Value.absent(),
+    this.dealId = const Value.absent(),
+    this.activityId = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  AttachmentsCompanion.insert({
+    this.version = const Value.absent(),
+    this.fieldMeta = const Value.absent(),
+    required DateTime createdAt,
+    this.createdBy = const Value.absent(),
+    required DateTime updatedAt,
+    this.updatedBy = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    required String id,
+    required String fileId,
+    required String fileName,
+    required int size,
+    this.mimeType = const Value.absent(),
+    this.organisationId = const Value.absent(),
+    this.contactId = const Value.absent(),
+    this.dealId = const Value.absent(),
+    this.activityId = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : createdAt = Value(createdAt),
+       updatedAt = Value(updatedAt),
+       id = Value(id),
+       fileId = Value(fileId),
+       fileName = Value(fileName),
+       size = Value(size);
+  static Insertable<AttachmentRow> custom({
+    Expression<int>? version,
+    Expression<String>? fieldMeta,
+    Expression<DateTime>? createdAt,
+    Expression<String>? createdBy,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? updatedBy,
+    Expression<DateTime>? deletedAt,
+    Expression<String>? id,
+    Expression<String>? fileId,
+    Expression<String>? fileName,
+    Expression<int>? size,
+    Expression<String>? mimeType,
+    Expression<String>? organisationId,
+    Expression<String>? contactId,
+    Expression<String>? dealId,
+    Expression<String>? activityId,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (version != null) 'version': version,
+      if (fieldMeta != null) 'field_meta': fieldMeta,
+      if (createdAt != null) 'created_at': createdAt,
+      if (createdBy != null) 'created_by': createdBy,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (updatedBy != null) 'updated_by': updatedBy,
+      if (deletedAt != null) 'deleted_at': deletedAt,
+      if (id != null) 'id': id,
+      if (fileId != null) 'file_id': fileId,
+      if (fileName != null) 'file_name': fileName,
+      if (size != null) 'size': size,
+      if (mimeType != null) 'mime_type': mimeType,
+      if (organisationId != null) 'organisation_id': organisationId,
+      if (contactId != null) 'contact_id': contactId,
+      if (dealId != null) 'deal_id': dealId,
+      if (activityId != null) 'activity_id': activityId,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  AttachmentsCompanion copyWith({
+    Value<int>? version,
+    Value<String>? fieldMeta,
+    Value<DateTime>? createdAt,
+    Value<String?>? createdBy,
+    Value<DateTime>? updatedAt,
+    Value<String?>? updatedBy,
+    Value<DateTime?>? deletedAt,
+    Value<String>? id,
+    Value<String>? fileId,
+    Value<String>? fileName,
+    Value<int>? size,
+    Value<String?>? mimeType,
+    Value<String?>? organisationId,
+    Value<String?>? contactId,
+    Value<String?>? dealId,
+    Value<String?>? activityId,
+    Value<int>? rowid,
+  }) {
+    return AttachmentsCompanion(
+      version: version ?? this.version,
+      fieldMeta: fieldMeta ?? this.fieldMeta,
+      createdAt: createdAt ?? this.createdAt,
+      createdBy: createdBy ?? this.createdBy,
+      updatedAt: updatedAt ?? this.updatedAt,
+      updatedBy: updatedBy ?? this.updatedBy,
+      deletedAt: deletedAt ?? this.deletedAt,
+      id: id ?? this.id,
+      fileId: fileId ?? this.fileId,
+      fileName: fileName ?? this.fileName,
+      size: size ?? this.size,
+      mimeType: mimeType ?? this.mimeType,
+      organisationId: organisationId ?? this.organisationId,
+      contactId: contactId ?? this.contactId,
+      dealId: dealId ?? this.dealId,
+      activityId: activityId ?? this.activityId,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (version.present) {
+      map['version'] = Variable<int>(version.value);
+    }
+    if (fieldMeta.present) {
+      map['field_meta'] = Variable<String>(fieldMeta.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (updatedBy.present) {
+      map['updated_by'] = Variable<String>(updatedBy.value);
+    }
+    if (deletedAt.present) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt.value);
+    }
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (fileId.present) {
+      map['file_id'] = Variable<String>(fileId.value);
+    }
+    if (fileName.present) {
+      map['file_name'] = Variable<String>(fileName.value);
+    }
+    if (size.present) {
+      map['size'] = Variable<int>(size.value);
+    }
+    if (mimeType.present) {
+      map['mime_type'] = Variable<String>(mimeType.value);
+    }
+    if (organisationId.present) {
+      map['organisation_id'] = Variable<String>(organisationId.value);
+    }
+    if (contactId.present) {
+      map['contact_id'] = Variable<String>(contactId.value);
+    }
+    if (dealId.present) {
+      map['deal_id'] = Variable<String>(dealId.value);
+    }
+    if (activityId.present) {
+      map['activity_id'] = Variable<String>(activityId.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('AttachmentsCompanion(')
+          ..write('version: $version, ')
+          ..write('fieldMeta: $fieldMeta, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('updatedBy: $updatedBy, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('id: $id, ')
+          ..write('fileId: $fileId, ')
+          ..write('fileName: $fileName, ')
+          ..write('size: $size, ')
+          ..write('mimeType: $mimeType, ')
+          ..write('organisationId: $organisationId, ')
+          ..write('contactId: $contactId, ')
+          ..write('dealId: $dealId, ')
+          ..write('activityId: $activityId, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $TaggingsTable extends Taggings
+    with TableInfo<$TaggingsTable, TaggingRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $TaggingsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _versionMeta = const VerificationMeta(
+    'version',
+  );
+  @override
+  late final GeneratedColumn<int> version = GeneratedColumn<int>(
+    'version',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _fieldMetaMeta = const VerificationMeta(
+    'fieldMeta',
+  );
+  @override
+  late final GeneratedColumn<String> fieldMeta = GeneratedColumn<String>(
+    'field_meta',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('{}'),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _updatedByMeta = const VerificationMeta(
+    'updatedBy',
+  );
+  @override
+  late final GeneratedColumn<String> updatedBy = GeneratedColumn<String>(
+    'updated_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _deletedAtMeta = const VerificationMeta(
+    'deletedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> deletedAt = GeneratedColumn<DateTime>(
+    'deleted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tagIdMeta = const VerificationMeta('tagId');
+  @override
+  late final GeneratedColumn<String> tagId = GeneratedColumn<String>(
+    'tag_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _entityMeta = const VerificationMeta('entity');
+  @override
+  late final GeneratedColumn<String> entity = GeneratedColumn<String>(
+    'entity',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _recordIdMeta = const VerificationMeta(
+    'recordId',
+  );
+  @override
+  late final GeneratedColumn<String> recordId = GeneratedColumn<String>(
+    'record_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    version,
+    fieldMeta,
+    createdAt,
+    createdBy,
+    updatedAt,
+    updatedBy,
+    deletedAt,
+    id,
+    tagId,
+    entity,
+    recordId,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'taggings';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<TaggingRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('version')) {
+      context.handle(
+        _versionMeta,
+        version.isAcceptableOrUnknown(data['version']!, _versionMeta),
+      );
+    }
+    if (data.containsKey('field_meta')) {
+      context.handle(
+        _fieldMetaMeta,
+        fieldMeta.isAcceptableOrUnknown(data['field_meta']!, _fieldMetaMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_createdAtMeta);
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_updatedAtMeta);
+    }
+    if (data.containsKey('updated_by')) {
+      context.handle(
+        _updatedByMeta,
+        updatedBy.isAcceptableOrUnknown(data['updated_by']!, _updatedByMeta),
+      );
+    }
+    if (data.containsKey('deleted_at')) {
+      context.handle(
+        _deletedAtMeta,
+        deletedAt.isAcceptableOrUnknown(data['deleted_at']!, _deletedAtMeta),
+      );
+    }
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('tag_id')) {
+      context.handle(
+        _tagIdMeta,
+        tagId.isAcceptableOrUnknown(data['tag_id']!, _tagIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tagIdMeta);
+    }
+    if (data.containsKey('entity')) {
+      context.handle(
+        _entityMeta,
+        entity.isAcceptableOrUnknown(data['entity']!, _entityMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_entityMeta);
+    }
+    if (data.containsKey('record_id')) {
+      context.handle(
+        _recordIdMeta,
+        recordId.isAcceptableOrUnknown(data['record_id']!, _recordIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_recordIdMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  TaggingRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return TaggingRow(
+      version: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}version'],
+      )!,
+      fieldMeta: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}field_meta'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      updatedBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_by'],
+      ),
+      deletedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}deleted_at'],
+      ),
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      tagId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tag_id'],
+      )!,
+      entity: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}entity'],
+      )!,
+      recordId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}record_id'],
+      )!,
+    );
+  }
+
+  @override
+  $TaggingsTable createAlias(String alias) {
+    return $TaggingsTable(attachedDatabase, alias);
+  }
+}
+
+class TaggingRow extends DataClass implements Insertable<TaggingRow> {
+  final int version;
+  final String fieldMeta;
+  final DateTime createdAt;
+  final String? createdBy;
+  final DateTime updatedAt;
+  final String? updatedBy;
+  final DateTime? deletedAt;
+  final String id;
+  final String tagId;
+  final String entity;
+  final String recordId;
+  const TaggingRow({
+    required this.version,
+    required this.fieldMeta,
+    required this.createdAt,
+    this.createdBy,
+    required this.updatedAt,
+    this.updatedBy,
+    this.deletedAt,
+    required this.id,
+    required this.tagId,
+    required this.entity,
+    required this.recordId,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['version'] = Variable<int>(version);
+    map['field_meta'] = Variable<String>(fieldMeta);
+    map['created_at'] = Variable<DateTime>(createdAt);
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    if (!nullToAbsent || updatedBy != null) {
+      map['updated_by'] = Variable<String>(updatedBy);
+    }
+    if (!nullToAbsent || deletedAt != null) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt);
+    }
+    map['id'] = Variable<String>(id);
+    map['tag_id'] = Variable<String>(tagId);
+    map['entity'] = Variable<String>(entity);
+    map['record_id'] = Variable<String>(recordId);
+    return map;
+  }
+
+  TaggingsCompanion toCompanion(bool nullToAbsent) {
+    return TaggingsCompanion(
+      version: Value(version),
+      fieldMeta: Value(fieldMeta),
+      createdAt: Value(createdAt),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      updatedAt: Value(updatedAt),
+      updatedBy: updatedBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedBy),
+      deletedAt: deletedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deletedAt),
+      id: Value(id),
+      tagId: Value(tagId),
+      entity: Value(entity),
+      recordId: Value(recordId),
+    );
+  }
+
+  factory TaggingRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return TaggingRow(
+      version: serializer.fromJson<int>(json['version']),
+      fieldMeta: serializer.fromJson<String>(json['fieldMeta']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      updatedBy: serializer.fromJson<String?>(json['updatedBy']),
+      deletedAt: serializer.fromJson<DateTime?>(json['deletedAt']),
+      id: serializer.fromJson<String>(json['id']),
+      tagId: serializer.fromJson<String>(json['tagId']),
+      entity: serializer.fromJson<String>(json['entity']),
+      recordId: serializer.fromJson<String>(json['recordId']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'version': serializer.toJson<int>(version),
+      'fieldMeta': serializer.toJson<String>(fieldMeta),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'updatedBy': serializer.toJson<String?>(updatedBy),
+      'deletedAt': serializer.toJson<DateTime?>(deletedAt),
+      'id': serializer.toJson<String>(id),
+      'tagId': serializer.toJson<String>(tagId),
+      'entity': serializer.toJson<String>(entity),
+      'recordId': serializer.toJson<String>(recordId),
+    };
+  }
+
+  TaggingRow copyWith({
+    int? version,
+    String? fieldMeta,
+    DateTime? createdAt,
+    Value<String?> createdBy = const Value.absent(),
+    DateTime? updatedAt,
+    Value<String?> updatedBy = const Value.absent(),
+    Value<DateTime?> deletedAt = const Value.absent(),
+    String? id,
+    String? tagId,
+    String? entity,
+    String? recordId,
+  }) => TaggingRow(
+    version: version ?? this.version,
+    fieldMeta: fieldMeta ?? this.fieldMeta,
+    createdAt: createdAt ?? this.createdAt,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    updatedAt: updatedAt ?? this.updatedAt,
+    updatedBy: updatedBy.present ? updatedBy.value : this.updatedBy,
+    deletedAt: deletedAt.present ? deletedAt.value : this.deletedAt,
+    id: id ?? this.id,
+    tagId: tagId ?? this.tagId,
+    entity: entity ?? this.entity,
+    recordId: recordId ?? this.recordId,
+  );
+  TaggingRow copyWithCompanion(TaggingsCompanion data) {
+    return TaggingRow(
+      version: data.version.present ? data.version.value : this.version,
+      fieldMeta: data.fieldMeta.present ? data.fieldMeta.value : this.fieldMeta,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      updatedBy: data.updatedBy.present ? data.updatedBy.value : this.updatedBy,
+      deletedAt: data.deletedAt.present ? data.deletedAt.value : this.deletedAt,
+      id: data.id.present ? data.id.value : this.id,
+      tagId: data.tagId.present ? data.tagId.value : this.tagId,
+      entity: data.entity.present ? data.entity.value : this.entity,
+      recordId: data.recordId.present ? data.recordId.value : this.recordId,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('TaggingRow(')
+          ..write('version: $version, ')
+          ..write('fieldMeta: $fieldMeta, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('updatedBy: $updatedBy, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('id: $id, ')
+          ..write('tagId: $tagId, ')
+          ..write('entity: $entity, ')
+          ..write('recordId: $recordId')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    version,
+    fieldMeta,
+    createdAt,
+    createdBy,
+    updatedAt,
+    updatedBy,
+    deletedAt,
+    id,
+    tagId,
+    entity,
+    recordId,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is TaggingRow &&
+          other.version == this.version &&
+          other.fieldMeta == this.fieldMeta &&
+          other.createdAt == this.createdAt &&
+          other.createdBy == this.createdBy &&
+          other.updatedAt == this.updatedAt &&
+          other.updatedBy == this.updatedBy &&
+          other.deletedAt == this.deletedAt &&
+          other.id == this.id &&
+          other.tagId == this.tagId &&
+          other.entity == this.entity &&
+          other.recordId == this.recordId);
+}
+
+class TaggingsCompanion extends UpdateCompanion<TaggingRow> {
+  final Value<int> version;
+  final Value<String> fieldMeta;
+  final Value<DateTime> createdAt;
+  final Value<String?> createdBy;
+  final Value<DateTime> updatedAt;
+  final Value<String?> updatedBy;
+  final Value<DateTime?> deletedAt;
+  final Value<String> id;
+  final Value<String> tagId;
+  final Value<String> entity;
+  final Value<String> recordId;
+  final Value<int> rowid;
+  const TaggingsCompanion({
+    this.version = const Value.absent(),
+    this.fieldMeta = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.updatedBy = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.id = const Value.absent(),
+    this.tagId = const Value.absent(),
+    this.entity = const Value.absent(),
+    this.recordId = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  TaggingsCompanion.insert({
+    this.version = const Value.absent(),
+    this.fieldMeta = const Value.absent(),
+    required DateTime createdAt,
+    this.createdBy = const Value.absent(),
+    required DateTime updatedAt,
+    this.updatedBy = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    required String id,
+    required String tagId,
+    required String entity,
+    required String recordId,
+    this.rowid = const Value.absent(),
+  }) : createdAt = Value(createdAt),
+       updatedAt = Value(updatedAt),
+       id = Value(id),
+       tagId = Value(tagId),
+       entity = Value(entity),
+       recordId = Value(recordId);
+  static Insertable<TaggingRow> custom({
+    Expression<int>? version,
+    Expression<String>? fieldMeta,
+    Expression<DateTime>? createdAt,
+    Expression<String>? createdBy,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? updatedBy,
+    Expression<DateTime>? deletedAt,
+    Expression<String>? id,
+    Expression<String>? tagId,
+    Expression<String>? entity,
+    Expression<String>? recordId,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (version != null) 'version': version,
+      if (fieldMeta != null) 'field_meta': fieldMeta,
+      if (createdAt != null) 'created_at': createdAt,
+      if (createdBy != null) 'created_by': createdBy,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (updatedBy != null) 'updated_by': updatedBy,
+      if (deletedAt != null) 'deleted_at': deletedAt,
+      if (id != null) 'id': id,
+      if (tagId != null) 'tag_id': tagId,
+      if (entity != null) 'entity': entity,
+      if (recordId != null) 'record_id': recordId,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  TaggingsCompanion copyWith({
+    Value<int>? version,
+    Value<String>? fieldMeta,
+    Value<DateTime>? createdAt,
+    Value<String?>? createdBy,
+    Value<DateTime>? updatedAt,
+    Value<String?>? updatedBy,
+    Value<DateTime?>? deletedAt,
+    Value<String>? id,
+    Value<String>? tagId,
+    Value<String>? entity,
+    Value<String>? recordId,
+    Value<int>? rowid,
+  }) {
+    return TaggingsCompanion(
+      version: version ?? this.version,
+      fieldMeta: fieldMeta ?? this.fieldMeta,
+      createdAt: createdAt ?? this.createdAt,
+      createdBy: createdBy ?? this.createdBy,
+      updatedAt: updatedAt ?? this.updatedAt,
+      updatedBy: updatedBy ?? this.updatedBy,
+      deletedAt: deletedAt ?? this.deletedAt,
+      id: id ?? this.id,
+      tagId: tagId ?? this.tagId,
+      entity: entity ?? this.entity,
+      recordId: recordId ?? this.recordId,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (version.present) {
+      map['version'] = Variable<int>(version.value);
+    }
+    if (fieldMeta.present) {
+      map['field_meta'] = Variable<String>(fieldMeta.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (updatedBy.present) {
+      map['updated_by'] = Variable<String>(updatedBy.value);
+    }
+    if (deletedAt.present) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt.value);
+    }
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (tagId.present) {
+      map['tag_id'] = Variable<String>(tagId.value);
+    }
+    if (entity.present) {
+      map['entity'] = Variable<String>(entity.value);
+    }
+    if (recordId.present) {
+      map['record_id'] = Variable<String>(recordId.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('TaggingsCompanion(')
+          ..write('version: $version, ')
+          ..write('fieldMeta: $fieldMeta, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('updatedBy: $updatedBy, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('id: $id, ')
+          ..write('tagId: $tagId, ')
+          ..write('entity: $entity, ')
+          ..write('recordId: $recordId, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $CustomFieldsTable extends CustomFields
+    with TableInfo<$CustomFieldsTable, CustomFieldRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $CustomFieldsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _versionMeta = const VerificationMeta(
+    'version',
+  );
+  @override
+  late final GeneratedColumn<int> version = GeneratedColumn<int>(
+    'version',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _fieldMetaMeta = const VerificationMeta(
+    'fieldMeta',
+  );
+  @override
+  late final GeneratedColumn<String> fieldMeta = GeneratedColumn<String>(
+    'field_meta',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('{}'),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _updatedByMeta = const VerificationMeta(
+    'updatedBy',
+  );
+  @override
+  late final GeneratedColumn<String> updatedBy = GeneratedColumn<String>(
+    'updated_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _deletedAtMeta = const VerificationMeta(
+    'deletedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> deletedAt = GeneratedColumn<DateTime>(
+    'deleted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _entityMeta = const VerificationMeta('entity');
+  @override
+  late final GeneratedColumn<String> entity = GeneratedColumn<String>(
+    'entity',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _keyMeta = const VerificationMeta('key');
+  @override
+  late final GeneratedColumn<String> key = GeneratedColumn<String>(
+    'key',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _labelMeta = const VerificationMeta('label');
+  @override
+  late final GeneratedColumn<String> label = GeneratedColumn<String>(
+    'label',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _typeMeta = const VerificationMeta('type');
+  @override
+  late final GeneratedColumn<String> type = GeneratedColumn<String>(
+    'type',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _optionsMeta = const VerificationMeta(
+    'options',
+  );
+  @override
+  late final GeneratedColumn<String> options = GeneratedColumn<String>(
+    'options',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _sortOrderMeta = const VerificationMeta(
+    'sortOrder',
+  );
+  @override
+  late final GeneratedColumn<double> sortOrder = GeneratedColumn<double>(
+    'sort_order',
+    aliasedName,
+    true,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    version,
+    fieldMeta,
+    createdAt,
+    createdBy,
+    updatedAt,
+    updatedBy,
+    deletedAt,
+    id,
+    entity,
+    key,
+    label,
+    type,
+    options,
+    sortOrder,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'custom_fields';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<CustomFieldRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('version')) {
+      context.handle(
+        _versionMeta,
+        version.isAcceptableOrUnknown(data['version']!, _versionMeta),
+      );
+    }
+    if (data.containsKey('field_meta')) {
+      context.handle(
+        _fieldMetaMeta,
+        fieldMeta.isAcceptableOrUnknown(data['field_meta']!, _fieldMetaMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_createdAtMeta);
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_updatedAtMeta);
+    }
+    if (data.containsKey('updated_by')) {
+      context.handle(
+        _updatedByMeta,
+        updatedBy.isAcceptableOrUnknown(data['updated_by']!, _updatedByMeta),
+      );
+    }
+    if (data.containsKey('deleted_at')) {
+      context.handle(
+        _deletedAtMeta,
+        deletedAt.isAcceptableOrUnknown(data['deleted_at']!, _deletedAtMeta),
+      );
+    }
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('entity')) {
+      context.handle(
+        _entityMeta,
+        entity.isAcceptableOrUnknown(data['entity']!, _entityMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_entityMeta);
+    }
+    if (data.containsKey('key')) {
+      context.handle(
+        _keyMeta,
+        key.isAcceptableOrUnknown(data['key']!, _keyMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_keyMeta);
+    }
+    if (data.containsKey('label')) {
+      context.handle(
+        _labelMeta,
+        label.isAcceptableOrUnknown(data['label']!, _labelMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_labelMeta);
+    }
+    if (data.containsKey('type')) {
+      context.handle(
+        _typeMeta,
+        type.isAcceptableOrUnknown(data['type']!, _typeMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_typeMeta);
+    }
+    if (data.containsKey('options')) {
+      context.handle(
+        _optionsMeta,
+        options.isAcceptableOrUnknown(data['options']!, _optionsMeta),
+      );
+    }
+    if (data.containsKey('sort_order')) {
+      context.handle(
+        _sortOrderMeta,
+        sortOrder.isAcceptableOrUnknown(data['sort_order']!, _sortOrderMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  CustomFieldRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return CustomFieldRow(
+      version: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}version'],
+      )!,
+      fieldMeta: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}field_meta'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      updatedBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_by'],
+      ),
+      deletedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}deleted_at'],
+      ),
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      entity: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}entity'],
+      )!,
+      key: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}key'],
+      )!,
+      label: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}label'],
+      )!,
+      type: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}type'],
+      )!,
+      options: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}options'],
+      ),
+      sortOrder: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}sort_order'],
+      ),
+    );
+  }
+
+  @override
+  $CustomFieldsTable createAlias(String alias) {
+    return $CustomFieldsTable(attachedDatabase, alias);
+  }
+}
+
+class CustomFieldRow extends DataClass implements Insertable<CustomFieldRow> {
+  final int version;
+  final String fieldMeta;
+  final DateTime createdAt;
+  final String? createdBy;
+  final DateTime updatedAt;
+  final String? updatedBy;
+  final DateTime? deletedAt;
+  final String id;
+  final String entity;
+  final String key;
+  final String label;
+  final String type;
+  final String? options;
+  final double? sortOrder;
+  const CustomFieldRow({
+    required this.version,
+    required this.fieldMeta,
+    required this.createdAt,
+    this.createdBy,
+    required this.updatedAt,
+    this.updatedBy,
+    this.deletedAt,
+    required this.id,
+    required this.entity,
+    required this.key,
+    required this.label,
+    required this.type,
+    this.options,
+    this.sortOrder,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['version'] = Variable<int>(version);
+    map['field_meta'] = Variable<String>(fieldMeta);
+    map['created_at'] = Variable<DateTime>(createdAt);
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    if (!nullToAbsent || updatedBy != null) {
+      map['updated_by'] = Variable<String>(updatedBy);
+    }
+    if (!nullToAbsent || deletedAt != null) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt);
+    }
+    map['id'] = Variable<String>(id);
+    map['entity'] = Variable<String>(entity);
+    map['key'] = Variable<String>(key);
+    map['label'] = Variable<String>(label);
+    map['type'] = Variable<String>(type);
+    if (!nullToAbsent || options != null) {
+      map['options'] = Variable<String>(options);
+    }
+    if (!nullToAbsent || sortOrder != null) {
+      map['sort_order'] = Variable<double>(sortOrder);
+    }
+    return map;
+  }
+
+  CustomFieldsCompanion toCompanion(bool nullToAbsent) {
+    return CustomFieldsCompanion(
+      version: Value(version),
+      fieldMeta: Value(fieldMeta),
+      createdAt: Value(createdAt),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      updatedAt: Value(updatedAt),
+      updatedBy: updatedBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedBy),
+      deletedAt: deletedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deletedAt),
+      id: Value(id),
+      entity: Value(entity),
+      key: Value(key),
+      label: Value(label),
+      type: Value(type),
+      options: options == null && nullToAbsent
+          ? const Value.absent()
+          : Value(options),
+      sortOrder: sortOrder == null && nullToAbsent
+          ? const Value.absent()
+          : Value(sortOrder),
+    );
+  }
+
+  factory CustomFieldRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return CustomFieldRow(
+      version: serializer.fromJson<int>(json['version']),
+      fieldMeta: serializer.fromJson<String>(json['fieldMeta']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      updatedBy: serializer.fromJson<String?>(json['updatedBy']),
+      deletedAt: serializer.fromJson<DateTime?>(json['deletedAt']),
+      id: serializer.fromJson<String>(json['id']),
+      entity: serializer.fromJson<String>(json['entity']),
+      key: serializer.fromJson<String>(json['key']),
+      label: serializer.fromJson<String>(json['label']),
+      type: serializer.fromJson<String>(json['type']),
+      options: serializer.fromJson<String?>(json['options']),
+      sortOrder: serializer.fromJson<double?>(json['sortOrder']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'version': serializer.toJson<int>(version),
+      'fieldMeta': serializer.toJson<String>(fieldMeta),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'updatedBy': serializer.toJson<String?>(updatedBy),
+      'deletedAt': serializer.toJson<DateTime?>(deletedAt),
+      'id': serializer.toJson<String>(id),
+      'entity': serializer.toJson<String>(entity),
+      'key': serializer.toJson<String>(key),
+      'label': serializer.toJson<String>(label),
+      'type': serializer.toJson<String>(type),
+      'options': serializer.toJson<String?>(options),
+      'sortOrder': serializer.toJson<double?>(sortOrder),
+    };
+  }
+
+  CustomFieldRow copyWith({
+    int? version,
+    String? fieldMeta,
+    DateTime? createdAt,
+    Value<String?> createdBy = const Value.absent(),
+    DateTime? updatedAt,
+    Value<String?> updatedBy = const Value.absent(),
+    Value<DateTime?> deletedAt = const Value.absent(),
+    String? id,
+    String? entity,
+    String? key,
+    String? label,
+    String? type,
+    Value<String?> options = const Value.absent(),
+    Value<double?> sortOrder = const Value.absent(),
+  }) => CustomFieldRow(
+    version: version ?? this.version,
+    fieldMeta: fieldMeta ?? this.fieldMeta,
+    createdAt: createdAt ?? this.createdAt,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    updatedAt: updatedAt ?? this.updatedAt,
+    updatedBy: updatedBy.present ? updatedBy.value : this.updatedBy,
+    deletedAt: deletedAt.present ? deletedAt.value : this.deletedAt,
+    id: id ?? this.id,
+    entity: entity ?? this.entity,
+    key: key ?? this.key,
+    label: label ?? this.label,
+    type: type ?? this.type,
+    options: options.present ? options.value : this.options,
+    sortOrder: sortOrder.present ? sortOrder.value : this.sortOrder,
+  );
+  CustomFieldRow copyWithCompanion(CustomFieldsCompanion data) {
+    return CustomFieldRow(
+      version: data.version.present ? data.version.value : this.version,
+      fieldMeta: data.fieldMeta.present ? data.fieldMeta.value : this.fieldMeta,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      updatedBy: data.updatedBy.present ? data.updatedBy.value : this.updatedBy,
+      deletedAt: data.deletedAt.present ? data.deletedAt.value : this.deletedAt,
+      id: data.id.present ? data.id.value : this.id,
+      entity: data.entity.present ? data.entity.value : this.entity,
+      key: data.key.present ? data.key.value : this.key,
+      label: data.label.present ? data.label.value : this.label,
+      type: data.type.present ? data.type.value : this.type,
+      options: data.options.present ? data.options.value : this.options,
+      sortOrder: data.sortOrder.present ? data.sortOrder.value : this.sortOrder,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('CustomFieldRow(')
+          ..write('version: $version, ')
+          ..write('fieldMeta: $fieldMeta, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('updatedBy: $updatedBy, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('id: $id, ')
+          ..write('entity: $entity, ')
+          ..write('key: $key, ')
+          ..write('label: $label, ')
+          ..write('type: $type, ')
+          ..write('options: $options, ')
+          ..write('sortOrder: $sortOrder')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    version,
+    fieldMeta,
+    createdAt,
+    createdBy,
+    updatedAt,
+    updatedBy,
+    deletedAt,
+    id,
+    entity,
+    key,
+    label,
+    type,
+    options,
+    sortOrder,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is CustomFieldRow &&
+          other.version == this.version &&
+          other.fieldMeta == this.fieldMeta &&
+          other.createdAt == this.createdAt &&
+          other.createdBy == this.createdBy &&
+          other.updatedAt == this.updatedAt &&
+          other.updatedBy == this.updatedBy &&
+          other.deletedAt == this.deletedAt &&
+          other.id == this.id &&
+          other.entity == this.entity &&
+          other.key == this.key &&
+          other.label == this.label &&
+          other.type == this.type &&
+          other.options == this.options &&
+          other.sortOrder == this.sortOrder);
+}
+
+class CustomFieldsCompanion extends UpdateCompanion<CustomFieldRow> {
+  final Value<int> version;
+  final Value<String> fieldMeta;
+  final Value<DateTime> createdAt;
+  final Value<String?> createdBy;
+  final Value<DateTime> updatedAt;
+  final Value<String?> updatedBy;
+  final Value<DateTime?> deletedAt;
+  final Value<String> id;
+  final Value<String> entity;
+  final Value<String> key;
+  final Value<String> label;
+  final Value<String> type;
+  final Value<String?> options;
+  final Value<double?> sortOrder;
+  final Value<int> rowid;
+  const CustomFieldsCompanion({
+    this.version = const Value.absent(),
+    this.fieldMeta = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.updatedBy = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.id = const Value.absent(),
+    this.entity = const Value.absent(),
+    this.key = const Value.absent(),
+    this.label = const Value.absent(),
+    this.type = const Value.absent(),
+    this.options = const Value.absent(),
+    this.sortOrder = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  CustomFieldsCompanion.insert({
+    this.version = const Value.absent(),
+    this.fieldMeta = const Value.absent(),
+    required DateTime createdAt,
+    this.createdBy = const Value.absent(),
+    required DateTime updatedAt,
+    this.updatedBy = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    required String id,
+    required String entity,
+    required String key,
+    required String label,
+    required String type,
+    this.options = const Value.absent(),
+    this.sortOrder = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : createdAt = Value(createdAt),
+       updatedAt = Value(updatedAt),
+       id = Value(id),
+       entity = Value(entity),
+       key = Value(key),
+       label = Value(label),
+       type = Value(type);
+  static Insertable<CustomFieldRow> custom({
+    Expression<int>? version,
+    Expression<String>? fieldMeta,
+    Expression<DateTime>? createdAt,
+    Expression<String>? createdBy,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? updatedBy,
+    Expression<DateTime>? deletedAt,
+    Expression<String>? id,
+    Expression<String>? entity,
+    Expression<String>? key,
+    Expression<String>? label,
+    Expression<String>? type,
+    Expression<String>? options,
+    Expression<double>? sortOrder,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (version != null) 'version': version,
+      if (fieldMeta != null) 'field_meta': fieldMeta,
+      if (createdAt != null) 'created_at': createdAt,
+      if (createdBy != null) 'created_by': createdBy,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (updatedBy != null) 'updated_by': updatedBy,
+      if (deletedAt != null) 'deleted_at': deletedAt,
+      if (id != null) 'id': id,
+      if (entity != null) 'entity': entity,
+      if (key != null) 'key': key,
+      if (label != null) 'label': label,
+      if (type != null) 'type': type,
+      if (options != null) 'options': options,
+      if (sortOrder != null) 'sort_order': sortOrder,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  CustomFieldsCompanion copyWith({
+    Value<int>? version,
+    Value<String>? fieldMeta,
+    Value<DateTime>? createdAt,
+    Value<String?>? createdBy,
+    Value<DateTime>? updatedAt,
+    Value<String?>? updatedBy,
+    Value<DateTime?>? deletedAt,
+    Value<String>? id,
+    Value<String>? entity,
+    Value<String>? key,
+    Value<String>? label,
+    Value<String>? type,
+    Value<String?>? options,
+    Value<double?>? sortOrder,
+    Value<int>? rowid,
+  }) {
+    return CustomFieldsCompanion(
+      version: version ?? this.version,
+      fieldMeta: fieldMeta ?? this.fieldMeta,
+      createdAt: createdAt ?? this.createdAt,
+      createdBy: createdBy ?? this.createdBy,
+      updatedAt: updatedAt ?? this.updatedAt,
+      updatedBy: updatedBy ?? this.updatedBy,
+      deletedAt: deletedAt ?? this.deletedAt,
+      id: id ?? this.id,
+      entity: entity ?? this.entity,
+      key: key ?? this.key,
+      label: label ?? this.label,
+      type: type ?? this.type,
+      options: options ?? this.options,
+      sortOrder: sortOrder ?? this.sortOrder,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (version.present) {
+      map['version'] = Variable<int>(version.value);
+    }
+    if (fieldMeta.present) {
+      map['field_meta'] = Variable<String>(fieldMeta.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (updatedBy.present) {
+      map['updated_by'] = Variable<String>(updatedBy.value);
+    }
+    if (deletedAt.present) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt.value);
+    }
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (entity.present) {
+      map['entity'] = Variable<String>(entity.value);
+    }
+    if (key.present) {
+      map['key'] = Variable<String>(key.value);
+    }
+    if (label.present) {
+      map['label'] = Variable<String>(label.value);
+    }
+    if (type.present) {
+      map['type'] = Variable<String>(type.value);
+    }
+    if (options.present) {
+      map['options'] = Variable<String>(options.value);
+    }
+    if (sortOrder.present) {
+      map['sort_order'] = Variable<double>(sortOrder.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('CustomFieldsCompanion(')
+          ..write('version: $version, ')
+          ..write('fieldMeta: $fieldMeta, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('updatedBy: $updatedBy, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('id: $id, ')
+          ..write('entity: $entity, ')
+          ..write('key: $key, ')
+          ..write('label: $label, ')
+          ..write('type: $type, ')
+          ..write('options: $options, ')
+          ..write('sortOrder: $sortOrder, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $SegmentsTable extends Segments
+    with TableInfo<$SegmentsTable, SegmentRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $SegmentsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _versionMeta = const VerificationMeta(
+    'version',
+  );
+  @override
+  late final GeneratedColumn<int> version = GeneratedColumn<int>(
+    'version',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _fieldMetaMeta = const VerificationMeta(
+    'fieldMeta',
+  );
+  @override
+  late final GeneratedColumn<String> fieldMeta = GeneratedColumn<String>(
+    'field_meta',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('{}'),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _updatedByMeta = const VerificationMeta(
+    'updatedBy',
+  );
+  @override
+  late final GeneratedColumn<String> updatedBy = GeneratedColumn<String>(
+    'updated_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _deletedAtMeta = const VerificationMeta(
+    'deletedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> deletedAt = GeneratedColumn<DateTime>(
+    'deleted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+    'name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _entityMeta = const VerificationMeta('entity');
+  @override
+  late final GeneratedColumn<String> entity = GeneratedColumn<String>(
+    'entity',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _descriptionMeta = const VerificationMeta(
+    'description',
+  );
+  @override
+  late final GeneratedColumn<String> description = GeneratedColumn<String>(
+    'description',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _configMeta = const VerificationMeta('config');
+  @override
+  late final GeneratedColumn<String> config = GeneratedColumn<String>(
+    'config',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    version,
+    fieldMeta,
+    createdAt,
+    createdBy,
+    updatedAt,
+    updatedBy,
+    deletedAt,
+    id,
+    name,
+    entity,
+    description,
+    config,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'segments';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<SegmentRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('version')) {
+      context.handle(
+        _versionMeta,
+        version.isAcceptableOrUnknown(data['version']!, _versionMeta),
+      );
+    }
+    if (data.containsKey('field_meta')) {
+      context.handle(
+        _fieldMetaMeta,
+        fieldMeta.isAcceptableOrUnknown(data['field_meta']!, _fieldMetaMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_createdAtMeta);
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_updatedAtMeta);
+    }
+    if (data.containsKey('updated_by')) {
+      context.handle(
+        _updatedByMeta,
+        updatedBy.isAcceptableOrUnknown(data['updated_by']!, _updatedByMeta),
+      );
+    }
+    if (data.containsKey('deleted_at')) {
+      context.handle(
+        _deletedAtMeta,
+        deletedAt.isAcceptableOrUnknown(data['deleted_at']!, _deletedAtMeta),
+      );
+    }
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    if (data.containsKey('entity')) {
+      context.handle(
+        _entityMeta,
+        entity.isAcceptableOrUnknown(data['entity']!, _entityMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_entityMeta);
+    }
+    if (data.containsKey('description')) {
+      context.handle(
+        _descriptionMeta,
+        description.isAcceptableOrUnknown(
+          data['description']!,
+          _descriptionMeta,
+        ),
+      );
+    }
+    if (data.containsKey('config')) {
+      context.handle(
+        _configMeta,
+        config.isAcceptableOrUnknown(data['config']!, _configMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_configMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  SegmentRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return SegmentRow(
+      version: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}version'],
+      )!,
+      fieldMeta: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}field_meta'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      updatedBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_by'],
+      ),
+      deletedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}deleted_at'],
+      ),
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      name: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name'],
+      )!,
+      entity: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}entity'],
+      )!,
+      description: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}description'],
+      ),
+      config: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}config'],
+      )!,
+    );
+  }
+
+  @override
+  $SegmentsTable createAlias(String alias) {
+    return $SegmentsTable(attachedDatabase, alias);
+  }
+}
+
+class SegmentRow extends DataClass implements Insertable<SegmentRow> {
+  final int version;
+  final String fieldMeta;
+  final DateTime createdAt;
+  final String? createdBy;
+  final DateTime updatedAt;
+  final String? updatedBy;
+  final DateTime? deletedAt;
+  final String id;
+  final String name;
+  final String entity;
+  final String? description;
+  final String config;
+  const SegmentRow({
+    required this.version,
+    required this.fieldMeta,
+    required this.createdAt,
+    this.createdBy,
+    required this.updatedAt,
+    this.updatedBy,
+    this.deletedAt,
+    required this.id,
+    required this.name,
+    required this.entity,
+    this.description,
+    required this.config,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['version'] = Variable<int>(version);
+    map['field_meta'] = Variable<String>(fieldMeta);
+    map['created_at'] = Variable<DateTime>(createdAt);
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    if (!nullToAbsent || updatedBy != null) {
+      map['updated_by'] = Variable<String>(updatedBy);
+    }
+    if (!nullToAbsent || deletedAt != null) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt);
+    }
+    map['id'] = Variable<String>(id);
+    map['name'] = Variable<String>(name);
+    map['entity'] = Variable<String>(entity);
+    if (!nullToAbsent || description != null) {
+      map['description'] = Variable<String>(description);
+    }
+    map['config'] = Variable<String>(config);
+    return map;
+  }
+
+  SegmentsCompanion toCompanion(bool nullToAbsent) {
+    return SegmentsCompanion(
+      version: Value(version),
+      fieldMeta: Value(fieldMeta),
+      createdAt: Value(createdAt),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      updatedAt: Value(updatedAt),
+      updatedBy: updatedBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedBy),
+      deletedAt: deletedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deletedAt),
+      id: Value(id),
+      name: Value(name),
+      entity: Value(entity),
+      description: description == null && nullToAbsent
+          ? const Value.absent()
+          : Value(description),
+      config: Value(config),
+    );
+  }
+
+  factory SegmentRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return SegmentRow(
+      version: serializer.fromJson<int>(json['version']),
+      fieldMeta: serializer.fromJson<String>(json['fieldMeta']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      updatedBy: serializer.fromJson<String?>(json['updatedBy']),
+      deletedAt: serializer.fromJson<DateTime?>(json['deletedAt']),
+      id: serializer.fromJson<String>(json['id']),
+      name: serializer.fromJson<String>(json['name']),
+      entity: serializer.fromJson<String>(json['entity']),
+      description: serializer.fromJson<String?>(json['description']),
+      config: serializer.fromJson<String>(json['config']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'version': serializer.toJson<int>(version),
+      'fieldMeta': serializer.toJson<String>(fieldMeta),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'updatedBy': serializer.toJson<String?>(updatedBy),
+      'deletedAt': serializer.toJson<DateTime?>(deletedAt),
+      'id': serializer.toJson<String>(id),
+      'name': serializer.toJson<String>(name),
+      'entity': serializer.toJson<String>(entity),
+      'description': serializer.toJson<String?>(description),
+      'config': serializer.toJson<String>(config),
+    };
+  }
+
+  SegmentRow copyWith({
+    int? version,
+    String? fieldMeta,
+    DateTime? createdAt,
+    Value<String?> createdBy = const Value.absent(),
+    DateTime? updatedAt,
+    Value<String?> updatedBy = const Value.absent(),
+    Value<DateTime?> deletedAt = const Value.absent(),
+    String? id,
+    String? name,
+    String? entity,
+    Value<String?> description = const Value.absent(),
+    String? config,
+  }) => SegmentRow(
+    version: version ?? this.version,
+    fieldMeta: fieldMeta ?? this.fieldMeta,
+    createdAt: createdAt ?? this.createdAt,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    updatedAt: updatedAt ?? this.updatedAt,
+    updatedBy: updatedBy.present ? updatedBy.value : this.updatedBy,
+    deletedAt: deletedAt.present ? deletedAt.value : this.deletedAt,
+    id: id ?? this.id,
+    name: name ?? this.name,
+    entity: entity ?? this.entity,
+    description: description.present ? description.value : this.description,
+    config: config ?? this.config,
+  );
+  SegmentRow copyWithCompanion(SegmentsCompanion data) {
+    return SegmentRow(
+      version: data.version.present ? data.version.value : this.version,
+      fieldMeta: data.fieldMeta.present ? data.fieldMeta.value : this.fieldMeta,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      updatedBy: data.updatedBy.present ? data.updatedBy.value : this.updatedBy,
+      deletedAt: data.deletedAt.present ? data.deletedAt.value : this.deletedAt,
+      id: data.id.present ? data.id.value : this.id,
+      name: data.name.present ? data.name.value : this.name,
+      entity: data.entity.present ? data.entity.value : this.entity,
+      description: data.description.present
+          ? data.description.value
+          : this.description,
+      config: data.config.present ? data.config.value : this.config,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SegmentRow(')
+          ..write('version: $version, ')
+          ..write('fieldMeta: $fieldMeta, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('updatedBy: $updatedBy, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('entity: $entity, ')
+          ..write('description: $description, ')
+          ..write('config: $config')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    version,
+    fieldMeta,
+    createdAt,
+    createdBy,
+    updatedAt,
+    updatedBy,
+    deletedAt,
+    id,
+    name,
+    entity,
+    description,
+    config,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is SegmentRow &&
+          other.version == this.version &&
+          other.fieldMeta == this.fieldMeta &&
+          other.createdAt == this.createdAt &&
+          other.createdBy == this.createdBy &&
+          other.updatedAt == this.updatedAt &&
+          other.updatedBy == this.updatedBy &&
+          other.deletedAt == this.deletedAt &&
+          other.id == this.id &&
+          other.name == this.name &&
+          other.entity == this.entity &&
+          other.description == this.description &&
+          other.config == this.config);
+}
+
+class SegmentsCompanion extends UpdateCompanion<SegmentRow> {
+  final Value<int> version;
+  final Value<String> fieldMeta;
+  final Value<DateTime> createdAt;
+  final Value<String?> createdBy;
+  final Value<DateTime> updatedAt;
+  final Value<String?> updatedBy;
+  final Value<DateTime?> deletedAt;
+  final Value<String> id;
+  final Value<String> name;
+  final Value<String> entity;
+  final Value<String?> description;
+  final Value<String> config;
+  final Value<int> rowid;
+  const SegmentsCompanion({
+    this.version = const Value.absent(),
+    this.fieldMeta = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.updatedBy = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.id = const Value.absent(),
+    this.name = const Value.absent(),
+    this.entity = const Value.absent(),
+    this.description = const Value.absent(),
+    this.config = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  SegmentsCompanion.insert({
+    this.version = const Value.absent(),
+    this.fieldMeta = const Value.absent(),
+    required DateTime createdAt,
+    this.createdBy = const Value.absent(),
+    required DateTime updatedAt,
+    this.updatedBy = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    required String id,
+    required String name,
+    required String entity,
+    this.description = const Value.absent(),
+    required String config,
+    this.rowid = const Value.absent(),
+  }) : createdAt = Value(createdAt),
+       updatedAt = Value(updatedAt),
+       id = Value(id),
+       name = Value(name),
+       entity = Value(entity),
+       config = Value(config);
+  static Insertable<SegmentRow> custom({
+    Expression<int>? version,
+    Expression<String>? fieldMeta,
+    Expression<DateTime>? createdAt,
+    Expression<String>? createdBy,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? updatedBy,
+    Expression<DateTime>? deletedAt,
+    Expression<String>? id,
+    Expression<String>? name,
+    Expression<String>? entity,
+    Expression<String>? description,
+    Expression<String>? config,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (version != null) 'version': version,
+      if (fieldMeta != null) 'field_meta': fieldMeta,
+      if (createdAt != null) 'created_at': createdAt,
+      if (createdBy != null) 'created_by': createdBy,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (updatedBy != null) 'updated_by': updatedBy,
+      if (deletedAt != null) 'deleted_at': deletedAt,
+      if (id != null) 'id': id,
+      if (name != null) 'name': name,
+      if (entity != null) 'entity': entity,
+      if (description != null) 'description': description,
+      if (config != null) 'config': config,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  SegmentsCompanion copyWith({
+    Value<int>? version,
+    Value<String>? fieldMeta,
+    Value<DateTime>? createdAt,
+    Value<String?>? createdBy,
+    Value<DateTime>? updatedAt,
+    Value<String?>? updatedBy,
+    Value<DateTime?>? deletedAt,
+    Value<String>? id,
+    Value<String>? name,
+    Value<String>? entity,
+    Value<String?>? description,
+    Value<String>? config,
+    Value<int>? rowid,
+  }) {
+    return SegmentsCompanion(
+      version: version ?? this.version,
+      fieldMeta: fieldMeta ?? this.fieldMeta,
+      createdAt: createdAt ?? this.createdAt,
+      createdBy: createdBy ?? this.createdBy,
+      updatedAt: updatedAt ?? this.updatedAt,
+      updatedBy: updatedBy ?? this.updatedBy,
+      deletedAt: deletedAt ?? this.deletedAt,
+      id: id ?? this.id,
+      name: name ?? this.name,
+      entity: entity ?? this.entity,
+      description: description ?? this.description,
+      config: config ?? this.config,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (version.present) {
+      map['version'] = Variable<int>(version.value);
+    }
+    if (fieldMeta.present) {
+      map['field_meta'] = Variable<String>(fieldMeta.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (updatedBy.present) {
+      map['updated_by'] = Variable<String>(updatedBy.value);
+    }
+    if (deletedAt.present) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt.value);
+    }
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (entity.present) {
+      map['entity'] = Variable<String>(entity.value);
+    }
+    if (description.present) {
+      map['description'] = Variable<String>(description.value);
+    }
+    if (config.present) {
+      map['config'] = Variable<String>(config.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SegmentsCompanion(')
+          ..write('version: $version, ')
+          ..write('fieldMeta: $fieldMeta, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('updatedBy: $updatedBy, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('entity: $entity, ')
+          ..write('description: $description, ')
+          ..write('config: $config, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 class $OutboxTable extends Outbox with TableInfo<$OutboxTable, OutboxRow> {
   @override
   final GeneratedDatabase attachedDatabase;
@@ -1911,18 +12953,80 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
   late final $TagsTable tags = $TagsTable(this);
+  late final $OrganisationsTable organisations = $OrganisationsTable(this);
+  late final $ContactsTable contacts = $ContactsTable(this);
+  late final $PositionsTable positions = $PositionsTable(this);
+  late final $PipelinesTable pipelines = $PipelinesTable(this);
+  late final $PipelineStagesTable pipelineStages = $PipelineStagesTable(this);
+  late final $DealsTable deals = $DealsTable(this);
+  late final $ActivitiesTable activities = $ActivitiesTable(this);
+  late final $AttachmentsTable attachments = $AttachmentsTable(this);
+  late final $TaggingsTable taggings = $TaggingsTable(this);
+  late final $CustomFieldsTable customFields = $CustomFieldsTable(this);
+  late final $SegmentsTable segments = $SegmentsTable(this);
   late final $OutboxTable outbox = $OutboxTable(this);
   late final $SyncErrorsTable syncErrors = $SyncErrorsTable(this);
   late final $KeyValuesTable keyValues = $KeyValuesTable(this);
+  late final Index organisationsParent = Index(
+    'organisations_parent',
+    'CREATE INDEX organisations_parent ON organisations (parent_id)',
+  );
+  late final Index contactsOrganisation = Index(
+    'contacts_organisation',
+    'CREATE INDEX contacts_organisation ON contacts (organisation_id)',
+  );
+  late final Index positionsContact = Index(
+    'positions_contact',
+    'CREATE INDEX positions_contact ON positions (contact_id)',
+  );
+  late final Index positionsOrganisation = Index(
+    'positions_organisation',
+    'CREATE INDEX positions_organisation ON positions (organisation_id)',
+  );
+  late final Index dealsOrganisation = Index(
+    'deals_organisation',
+    'CREATE INDEX deals_organisation ON deals (organisation_id)',
+  );
+  late final Index activitiesOrganisation = Index(
+    'activities_organisation',
+    'CREATE INDEX activities_organisation ON activities (organisation_id)',
+  );
+  late final Index activitiesContact = Index(
+    'activities_contact',
+    'CREATE INDEX activities_contact ON activities (contact_id)',
+  );
+  late final Index taggingsRecord = Index(
+    'taggings_record',
+    'CREATE INDEX taggings_record ON taggings (record_id)',
+  );
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities => [
     tags,
+    organisations,
+    contacts,
+    positions,
+    pipelines,
+    pipelineStages,
+    deals,
+    activities,
+    attachments,
+    taggings,
+    customFields,
+    segments,
     outbox,
     syncErrors,
     keyValues,
+    organisationsParent,
+    contactsOrganisation,
+    positionsContact,
+    positionsOrganisation,
+    dealsOrganisation,
+    activitiesOrganisation,
+    activitiesContact,
+    taggingsRecord,
   ];
   @override
   DriftDatabaseOptions get options =>
@@ -2235,6 +13339,4964 @@ typedef $$TagsTableProcessedTableManager =
       $$TagsTableUpdateCompanionBuilder,
       (TagRow, BaseReferences<_$AppDatabase, $TagsTable, TagRow>),
       TagRow,
+      PrefetchHooks Function()
+    >;
+typedef $$OrganisationsTableCreateCompanionBuilder =
+    OrganisationsCompanion Function({
+      Value<int> version,
+      Value<String> fieldMeta,
+      required DateTime createdAt,
+      Value<String?> createdBy,
+      required DateTime updatedAt,
+      Value<String?> updatedBy,
+      Value<DateTime?> deletedAt,
+      Value<String?> source,
+      Value<String?> sourceRef,
+      Value<DateTime?> collectedAt,
+      required String id,
+      required String name,
+      required String kind,
+      required String status,
+      Value<String?> siren,
+      Value<String?> siret,
+      Value<String?> inseeCode,
+      Value<int?> population,
+      Value<String?> parentId,
+      Value<String?> departementCode,
+      Value<String?> regionCode,
+      Value<String?> address,
+      Value<String?> postalCode,
+      Value<String?> city,
+      Value<double?> latitude,
+      Value<double?> longitude,
+      Value<String?> phone,
+      Value<String?> email,
+      Value<String?> website,
+      Value<String?> description,
+      Value<String?> ownerId,
+      Value<String?> customFields,
+      Value<int> rowid,
+    });
+typedef $$OrganisationsTableUpdateCompanionBuilder =
+    OrganisationsCompanion Function({
+      Value<int> version,
+      Value<String> fieldMeta,
+      Value<DateTime> createdAt,
+      Value<String?> createdBy,
+      Value<DateTime> updatedAt,
+      Value<String?> updatedBy,
+      Value<DateTime?> deletedAt,
+      Value<String?> source,
+      Value<String?> sourceRef,
+      Value<DateTime?> collectedAt,
+      Value<String> id,
+      Value<String> name,
+      Value<String> kind,
+      Value<String> status,
+      Value<String?> siren,
+      Value<String?> siret,
+      Value<String?> inseeCode,
+      Value<int?> population,
+      Value<String?> parentId,
+      Value<String?> departementCode,
+      Value<String?> regionCode,
+      Value<String?> address,
+      Value<String?> postalCode,
+      Value<String?> city,
+      Value<double?> latitude,
+      Value<double?> longitude,
+      Value<String?> phone,
+      Value<String?> email,
+      Value<String?> website,
+      Value<String?> description,
+      Value<String?> ownerId,
+      Value<String?> customFields,
+      Value<int> rowid,
+    });
+
+class $$OrganisationsTableFilterComposer
+    extends Composer<_$AppDatabase, $OrganisationsTable> {
+  $$OrganisationsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get version => $composableBuilder(
+    column: $table.version,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get fieldMeta => $composableBuilder(
+    column: $table.fieldMeta,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedBy => $composableBuilder(
+    column: $table.updatedBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get source => $composableBuilder(
+    column: $table.source,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get sourceRef => $composableBuilder(
+    column: $table.sourceRef,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get collectedAt => $composableBuilder(
+    column: $table.collectedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get kind => $composableBuilder(
+    column: $table.kind,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get siren => $composableBuilder(
+    column: $table.siren,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get siret => $composableBuilder(
+    column: $table.siret,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get inseeCode => $composableBuilder(
+    column: $table.inseeCode,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get population => $composableBuilder(
+    column: $table.population,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get parentId => $composableBuilder(
+    column: $table.parentId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get departementCode => $composableBuilder(
+    column: $table.departementCode,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get regionCode => $composableBuilder(
+    column: $table.regionCode,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get address => $composableBuilder(
+    column: $table.address,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get postalCode => $composableBuilder(
+    column: $table.postalCode,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get city => $composableBuilder(
+    column: $table.city,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get latitude => $composableBuilder(
+    column: $table.latitude,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get longitude => $composableBuilder(
+    column: $table.longitude,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get phone => $composableBuilder(
+    column: $table.phone,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get email => $composableBuilder(
+    column: $table.email,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get website => $composableBuilder(
+    column: $table.website,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get description => $composableBuilder(
+    column: $table.description,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get ownerId => $composableBuilder(
+    column: $table.ownerId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get customFields => $composableBuilder(
+    column: $table.customFields,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$OrganisationsTableOrderingComposer
+    extends Composer<_$AppDatabase, $OrganisationsTable> {
+  $$OrganisationsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get version => $composableBuilder(
+    column: $table.version,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get fieldMeta => $composableBuilder(
+    column: $table.fieldMeta,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedBy => $composableBuilder(
+    column: $table.updatedBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get source => $composableBuilder(
+    column: $table.source,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get sourceRef => $composableBuilder(
+    column: $table.sourceRef,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get collectedAt => $composableBuilder(
+    column: $table.collectedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get kind => $composableBuilder(
+    column: $table.kind,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get siren => $composableBuilder(
+    column: $table.siren,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get siret => $composableBuilder(
+    column: $table.siret,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get inseeCode => $composableBuilder(
+    column: $table.inseeCode,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get population => $composableBuilder(
+    column: $table.population,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get parentId => $composableBuilder(
+    column: $table.parentId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get departementCode => $composableBuilder(
+    column: $table.departementCode,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get regionCode => $composableBuilder(
+    column: $table.regionCode,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get address => $composableBuilder(
+    column: $table.address,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get postalCode => $composableBuilder(
+    column: $table.postalCode,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get city => $composableBuilder(
+    column: $table.city,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get latitude => $composableBuilder(
+    column: $table.latitude,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get longitude => $composableBuilder(
+    column: $table.longitude,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get phone => $composableBuilder(
+    column: $table.phone,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get email => $composableBuilder(
+    column: $table.email,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get website => $composableBuilder(
+    column: $table.website,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get description => $composableBuilder(
+    column: $table.description,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get ownerId => $composableBuilder(
+    column: $table.ownerId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get customFields => $composableBuilder(
+    column: $table.customFields,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$OrganisationsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $OrganisationsTable> {
+  $$OrganisationsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get version =>
+      $composableBuilder(column: $table.version, builder: (column) => column);
+
+  GeneratedColumn<String> get fieldMeta =>
+      $composableBuilder(column: $table.fieldMeta, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedBy =>
+      $composableBuilder(column: $table.updatedBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get deletedAt =>
+      $composableBuilder(column: $table.deletedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get source =>
+      $composableBuilder(column: $table.source, builder: (column) => column);
+
+  GeneratedColumn<String> get sourceRef =>
+      $composableBuilder(column: $table.sourceRef, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get collectedAt => $composableBuilder(
+    column: $table.collectedAt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+
+  GeneratedColumn<String> get kind =>
+      $composableBuilder(column: $table.kind, builder: (column) => column);
+
+  GeneratedColumn<String> get status =>
+      $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<String> get siren =>
+      $composableBuilder(column: $table.siren, builder: (column) => column);
+
+  GeneratedColumn<String> get siret =>
+      $composableBuilder(column: $table.siret, builder: (column) => column);
+
+  GeneratedColumn<String> get inseeCode =>
+      $composableBuilder(column: $table.inseeCode, builder: (column) => column);
+
+  GeneratedColumn<int> get population => $composableBuilder(
+    column: $table.population,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get parentId =>
+      $composableBuilder(column: $table.parentId, builder: (column) => column);
+
+  GeneratedColumn<String> get departementCode => $composableBuilder(
+    column: $table.departementCode,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get regionCode => $composableBuilder(
+    column: $table.regionCode,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get address =>
+      $composableBuilder(column: $table.address, builder: (column) => column);
+
+  GeneratedColumn<String> get postalCode => $composableBuilder(
+    column: $table.postalCode,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get city =>
+      $composableBuilder(column: $table.city, builder: (column) => column);
+
+  GeneratedColumn<double> get latitude =>
+      $composableBuilder(column: $table.latitude, builder: (column) => column);
+
+  GeneratedColumn<double> get longitude =>
+      $composableBuilder(column: $table.longitude, builder: (column) => column);
+
+  GeneratedColumn<String> get phone =>
+      $composableBuilder(column: $table.phone, builder: (column) => column);
+
+  GeneratedColumn<String> get email =>
+      $composableBuilder(column: $table.email, builder: (column) => column);
+
+  GeneratedColumn<String> get website =>
+      $composableBuilder(column: $table.website, builder: (column) => column);
+
+  GeneratedColumn<String> get description => $composableBuilder(
+    column: $table.description,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get ownerId =>
+      $composableBuilder(column: $table.ownerId, builder: (column) => column);
+
+  GeneratedColumn<String> get customFields => $composableBuilder(
+    column: $table.customFields,
+    builder: (column) => column,
+  );
+}
+
+class $$OrganisationsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $OrganisationsTable,
+          OrganisationRow,
+          $$OrganisationsTableFilterComposer,
+          $$OrganisationsTableOrderingComposer,
+          $$OrganisationsTableAnnotationComposer,
+          $$OrganisationsTableCreateCompanionBuilder,
+          $$OrganisationsTableUpdateCompanionBuilder,
+          (
+            OrganisationRow,
+            BaseReferences<_$AppDatabase, $OrganisationsTable, OrganisationRow>,
+          ),
+          OrganisationRow,
+          PrefetchHooks Function()
+        > {
+  $$OrganisationsTableTableManager(_$AppDatabase db, $OrganisationsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$OrganisationsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$OrganisationsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$OrganisationsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> version = const Value.absent(),
+                Value<String> fieldMeta = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String?> updatedBy = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                Value<String?> source = const Value.absent(),
+                Value<String?> sourceRef = const Value.absent(),
+                Value<DateTime?> collectedAt = const Value.absent(),
+                Value<String> id = const Value.absent(),
+                Value<String> name = const Value.absent(),
+                Value<String> kind = const Value.absent(),
+                Value<String> status = const Value.absent(),
+                Value<String?> siren = const Value.absent(),
+                Value<String?> siret = const Value.absent(),
+                Value<String?> inseeCode = const Value.absent(),
+                Value<int?> population = const Value.absent(),
+                Value<String?> parentId = const Value.absent(),
+                Value<String?> departementCode = const Value.absent(),
+                Value<String?> regionCode = const Value.absent(),
+                Value<String?> address = const Value.absent(),
+                Value<String?> postalCode = const Value.absent(),
+                Value<String?> city = const Value.absent(),
+                Value<double?> latitude = const Value.absent(),
+                Value<double?> longitude = const Value.absent(),
+                Value<String?> phone = const Value.absent(),
+                Value<String?> email = const Value.absent(),
+                Value<String?> website = const Value.absent(),
+                Value<String?> description = const Value.absent(),
+                Value<String?> ownerId = const Value.absent(),
+                Value<String?> customFields = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => OrganisationsCompanion(
+                version: version,
+                fieldMeta: fieldMeta,
+                createdAt: createdAt,
+                createdBy: createdBy,
+                updatedAt: updatedAt,
+                updatedBy: updatedBy,
+                deletedAt: deletedAt,
+                source: source,
+                sourceRef: sourceRef,
+                collectedAt: collectedAt,
+                id: id,
+                name: name,
+                kind: kind,
+                status: status,
+                siren: siren,
+                siret: siret,
+                inseeCode: inseeCode,
+                population: population,
+                parentId: parentId,
+                departementCode: departementCode,
+                regionCode: regionCode,
+                address: address,
+                postalCode: postalCode,
+                city: city,
+                latitude: latitude,
+                longitude: longitude,
+                phone: phone,
+                email: email,
+                website: website,
+                description: description,
+                ownerId: ownerId,
+                customFields: customFields,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> version = const Value.absent(),
+                Value<String> fieldMeta = const Value.absent(),
+                required DateTime createdAt,
+                Value<String?> createdBy = const Value.absent(),
+                required DateTime updatedAt,
+                Value<String?> updatedBy = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                Value<String?> source = const Value.absent(),
+                Value<String?> sourceRef = const Value.absent(),
+                Value<DateTime?> collectedAt = const Value.absent(),
+                required String id,
+                required String name,
+                required String kind,
+                required String status,
+                Value<String?> siren = const Value.absent(),
+                Value<String?> siret = const Value.absent(),
+                Value<String?> inseeCode = const Value.absent(),
+                Value<int?> population = const Value.absent(),
+                Value<String?> parentId = const Value.absent(),
+                Value<String?> departementCode = const Value.absent(),
+                Value<String?> regionCode = const Value.absent(),
+                Value<String?> address = const Value.absent(),
+                Value<String?> postalCode = const Value.absent(),
+                Value<String?> city = const Value.absent(),
+                Value<double?> latitude = const Value.absent(),
+                Value<double?> longitude = const Value.absent(),
+                Value<String?> phone = const Value.absent(),
+                Value<String?> email = const Value.absent(),
+                Value<String?> website = const Value.absent(),
+                Value<String?> description = const Value.absent(),
+                Value<String?> ownerId = const Value.absent(),
+                Value<String?> customFields = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => OrganisationsCompanion.insert(
+                version: version,
+                fieldMeta: fieldMeta,
+                createdAt: createdAt,
+                createdBy: createdBy,
+                updatedAt: updatedAt,
+                updatedBy: updatedBy,
+                deletedAt: deletedAt,
+                source: source,
+                sourceRef: sourceRef,
+                collectedAt: collectedAt,
+                id: id,
+                name: name,
+                kind: kind,
+                status: status,
+                siren: siren,
+                siret: siret,
+                inseeCode: inseeCode,
+                population: population,
+                parentId: parentId,
+                departementCode: departementCode,
+                regionCode: regionCode,
+                address: address,
+                postalCode: postalCode,
+                city: city,
+                latitude: latitude,
+                longitude: longitude,
+                phone: phone,
+                email: email,
+                website: website,
+                description: description,
+                ownerId: ownerId,
+                customFields: customFields,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$OrganisationsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $OrganisationsTable,
+      OrganisationRow,
+      $$OrganisationsTableFilterComposer,
+      $$OrganisationsTableOrderingComposer,
+      $$OrganisationsTableAnnotationComposer,
+      $$OrganisationsTableCreateCompanionBuilder,
+      $$OrganisationsTableUpdateCompanionBuilder,
+      (
+        OrganisationRow,
+        BaseReferences<_$AppDatabase, $OrganisationsTable, OrganisationRow>,
+      ),
+      OrganisationRow,
+      PrefetchHooks Function()
+    >;
+typedef $$ContactsTableCreateCompanionBuilder =
+    ContactsCompanion Function({
+      Value<int> version,
+      Value<String> fieldMeta,
+      required DateTime createdAt,
+      Value<String?> createdBy,
+      required DateTime updatedAt,
+      Value<String?> updatedBy,
+      Value<DateTime?> deletedAt,
+      Value<String?> source,
+      Value<String?> sourceRef,
+      Value<DateTime?> collectedAt,
+      required String id,
+      Value<String?> civility,
+      Value<String?> firstName,
+      required String lastName,
+      Value<String?> email,
+      Value<String?> phone,
+      Value<String?> mobile,
+      Value<String?> organisationId,
+      Value<String?> jobTitle,
+      Value<String?> service,
+      Value<String?> notes,
+      Value<bool?> doNotContact,
+      Value<String?> ownerId,
+      Value<String?> customFields,
+      Value<int> rowid,
+    });
+typedef $$ContactsTableUpdateCompanionBuilder =
+    ContactsCompanion Function({
+      Value<int> version,
+      Value<String> fieldMeta,
+      Value<DateTime> createdAt,
+      Value<String?> createdBy,
+      Value<DateTime> updatedAt,
+      Value<String?> updatedBy,
+      Value<DateTime?> deletedAt,
+      Value<String?> source,
+      Value<String?> sourceRef,
+      Value<DateTime?> collectedAt,
+      Value<String> id,
+      Value<String?> civility,
+      Value<String?> firstName,
+      Value<String> lastName,
+      Value<String?> email,
+      Value<String?> phone,
+      Value<String?> mobile,
+      Value<String?> organisationId,
+      Value<String?> jobTitle,
+      Value<String?> service,
+      Value<String?> notes,
+      Value<bool?> doNotContact,
+      Value<String?> ownerId,
+      Value<String?> customFields,
+      Value<int> rowid,
+    });
+
+class $$ContactsTableFilterComposer
+    extends Composer<_$AppDatabase, $ContactsTable> {
+  $$ContactsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get version => $composableBuilder(
+    column: $table.version,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get fieldMeta => $composableBuilder(
+    column: $table.fieldMeta,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedBy => $composableBuilder(
+    column: $table.updatedBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get source => $composableBuilder(
+    column: $table.source,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get sourceRef => $composableBuilder(
+    column: $table.sourceRef,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get collectedAt => $composableBuilder(
+    column: $table.collectedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get civility => $composableBuilder(
+    column: $table.civility,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get firstName => $composableBuilder(
+    column: $table.firstName,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get lastName => $composableBuilder(
+    column: $table.lastName,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get email => $composableBuilder(
+    column: $table.email,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get phone => $composableBuilder(
+    column: $table.phone,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get mobile => $composableBuilder(
+    column: $table.mobile,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get organisationId => $composableBuilder(
+    column: $table.organisationId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get jobTitle => $composableBuilder(
+    column: $table.jobTitle,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get service => $composableBuilder(
+    column: $table.service,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get doNotContact => $composableBuilder(
+    column: $table.doNotContact,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get ownerId => $composableBuilder(
+    column: $table.ownerId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get customFields => $composableBuilder(
+    column: $table.customFields,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$ContactsTableOrderingComposer
+    extends Composer<_$AppDatabase, $ContactsTable> {
+  $$ContactsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get version => $composableBuilder(
+    column: $table.version,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get fieldMeta => $composableBuilder(
+    column: $table.fieldMeta,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedBy => $composableBuilder(
+    column: $table.updatedBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get source => $composableBuilder(
+    column: $table.source,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get sourceRef => $composableBuilder(
+    column: $table.sourceRef,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get collectedAt => $composableBuilder(
+    column: $table.collectedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get civility => $composableBuilder(
+    column: $table.civility,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get firstName => $composableBuilder(
+    column: $table.firstName,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get lastName => $composableBuilder(
+    column: $table.lastName,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get email => $composableBuilder(
+    column: $table.email,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get phone => $composableBuilder(
+    column: $table.phone,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get mobile => $composableBuilder(
+    column: $table.mobile,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get organisationId => $composableBuilder(
+    column: $table.organisationId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get jobTitle => $composableBuilder(
+    column: $table.jobTitle,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get service => $composableBuilder(
+    column: $table.service,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get doNotContact => $composableBuilder(
+    column: $table.doNotContact,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get ownerId => $composableBuilder(
+    column: $table.ownerId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get customFields => $composableBuilder(
+    column: $table.customFields,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$ContactsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $ContactsTable> {
+  $$ContactsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get version =>
+      $composableBuilder(column: $table.version, builder: (column) => column);
+
+  GeneratedColumn<String> get fieldMeta =>
+      $composableBuilder(column: $table.fieldMeta, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedBy =>
+      $composableBuilder(column: $table.updatedBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get deletedAt =>
+      $composableBuilder(column: $table.deletedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get source =>
+      $composableBuilder(column: $table.source, builder: (column) => column);
+
+  GeneratedColumn<String> get sourceRef =>
+      $composableBuilder(column: $table.sourceRef, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get collectedAt => $composableBuilder(
+    column: $table.collectedAt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get civility =>
+      $composableBuilder(column: $table.civility, builder: (column) => column);
+
+  GeneratedColumn<String> get firstName =>
+      $composableBuilder(column: $table.firstName, builder: (column) => column);
+
+  GeneratedColumn<String> get lastName =>
+      $composableBuilder(column: $table.lastName, builder: (column) => column);
+
+  GeneratedColumn<String> get email =>
+      $composableBuilder(column: $table.email, builder: (column) => column);
+
+  GeneratedColumn<String> get phone =>
+      $composableBuilder(column: $table.phone, builder: (column) => column);
+
+  GeneratedColumn<String> get mobile =>
+      $composableBuilder(column: $table.mobile, builder: (column) => column);
+
+  GeneratedColumn<String> get organisationId => $composableBuilder(
+    column: $table.organisationId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get jobTitle =>
+      $composableBuilder(column: $table.jobTitle, builder: (column) => column);
+
+  GeneratedColumn<String> get service =>
+      $composableBuilder(column: $table.service, builder: (column) => column);
+
+  GeneratedColumn<String> get notes =>
+      $composableBuilder(column: $table.notes, builder: (column) => column);
+
+  GeneratedColumn<bool> get doNotContact => $composableBuilder(
+    column: $table.doNotContact,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get ownerId =>
+      $composableBuilder(column: $table.ownerId, builder: (column) => column);
+
+  GeneratedColumn<String> get customFields => $composableBuilder(
+    column: $table.customFields,
+    builder: (column) => column,
+  );
+}
+
+class $$ContactsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $ContactsTable,
+          ContactRow,
+          $$ContactsTableFilterComposer,
+          $$ContactsTableOrderingComposer,
+          $$ContactsTableAnnotationComposer,
+          $$ContactsTableCreateCompanionBuilder,
+          $$ContactsTableUpdateCompanionBuilder,
+          (
+            ContactRow,
+            BaseReferences<_$AppDatabase, $ContactsTable, ContactRow>,
+          ),
+          ContactRow,
+          PrefetchHooks Function()
+        > {
+  $$ContactsTableTableManager(_$AppDatabase db, $ContactsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$ContactsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ContactsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$ContactsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> version = const Value.absent(),
+                Value<String> fieldMeta = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String?> updatedBy = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                Value<String?> source = const Value.absent(),
+                Value<String?> sourceRef = const Value.absent(),
+                Value<DateTime?> collectedAt = const Value.absent(),
+                Value<String> id = const Value.absent(),
+                Value<String?> civility = const Value.absent(),
+                Value<String?> firstName = const Value.absent(),
+                Value<String> lastName = const Value.absent(),
+                Value<String?> email = const Value.absent(),
+                Value<String?> phone = const Value.absent(),
+                Value<String?> mobile = const Value.absent(),
+                Value<String?> organisationId = const Value.absent(),
+                Value<String?> jobTitle = const Value.absent(),
+                Value<String?> service = const Value.absent(),
+                Value<String?> notes = const Value.absent(),
+                Value<bool?> doNotContact = const Value.absent(),
+                Value<String?> ownerId = const Value.absent(),
+                Value<String?> customFields = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ContactsCompanion(
+                version: version,
+                fieldMeta: fieldMeta,
+                createdAt: createdAt,
+                createdBy: createdBy,
+                updatedAt: updatedAt,
+                updatedBy: updatedBy,
+                deletedAt: deletedAt,
+                source: source,
+                sourceRef: sourceRef,
+                collectedAt: collectedAt,
+                id: id,
+                civility: civility,
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                phone: phone,
+                mobile: mobile,
+                organisationId: organisationId,
+                jobTitle: jobTitle,
+                service: service,
+                notes: notes,
+                doNotContact: doNotContact,
+                ownerId: ownerId,
+                customFields: customFields,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> version = const Value.absent(),
+                Value<String> fieldMeta = const Value.absent(),
+                required DateTime createdAt,
+                Value<String?> createdBy = const Value.absent(),
+                required DateTime updatedAt,
+                Value<String?> updatedBy = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                Value<String?> source = const Value.absent(),
+                Value<String?> sourceRef = const Value.absent(),
+                Value<DateTime?> collectedAt = const Value.absent(),
+                required String id,
+                Value<String?> civility = const Value.absent(),
+                Value<String?> firstName = const Value.absent(),
+                required String lastName,
+                Value<String?> email = const Value.absent(),
+                Value<String?> phone = const Value.absent(),
+                Value<String?> mobile = const Value.absent(),
+                Value<String?> organisationId = const Value.absent(),
+                Value<String?> jobTitle = const Value.absent(),
+                Value<String?> service = const Value.absent(),
+                Value<String?> notes = const Value.absent(),
+                Value<bool?> doNotContact = const Value.absent(),
+                Value<String?> ownerId = const Value.absent(),
+                Value<String?> customFields = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ContactsCompanion.insert(
+                version: version,
+                fieldMeta: fieldMeta,
+                createdAt: createdAt,
+                createdBy: createdBy,
+                updatedAt: updatedAt,
+                updatedBy: updatedBy,
+                deletedAt: deletedAt,
+                source: source,
+                sourceRef: sourceRef,
+                collectedAt: collectedAt,
+                id: id,
+                civility: civility,
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                phone: phone,
+                mobile: mobile,
+                organisationId: organisationId,
+                jobTitle: jobTitle,
+                service: service,
+                notes: notes,
+                doNotContact: doNotContact,
+                ownerId: ownerId,
+                customFields: customFields,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$ContactsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $ContactsTable,
+      ContactRow,
+      $$ContactsTableFilterComposer,
+      $$ContactsTableOrderingComposer,
+      $$ContactsTableAnnotationComposer,
+      $$ContactsTableCreateCompanionBuilder,
+      $$ContactsTableUpdateCompanionBuilder,
+      (ContactRow, BaseReferences<_$AppDatabase, $ContactsTable, ContactRow>),
+      ContactRow,
+      PrefetchHooks Function()
+    >;
+typedef $$PositionsTableCreateCompanionBuilder =
+    PositionsCompanion Function({
+      Value<int> version,
+      Value<String> fieldMeta,
+      required DateTime createdAt,
+      Value<String?> createdBy,
+      required DateTime updatedAt,
+      Value<String?> updatedBy,
+      Value<DateTime?> deletedAt,
+      Value<String?> source,
+      Value<String?> sourceRef,
+      Value<DateTime?> collectedAt,
+      required String id,
+      required String contactId,
+      required String organisationId,
+      Value<String?> jobTitle,
+      Value<String?> service,
+      required bool isElected,
+      Value<String?> mandateRole,
+      Value<String?> delegation,
+      Value<String?> startDate,
+      Value<String?> endDate,
+      Value<int> rowid,
+    });
+typedef $$PositionsTableUpdateCompanionBuilder =
+    PositionsCompanion Function({
+      Value<int> version,
+      Value<String> fieldMeta,
+      Value<DateTime> createdAt,
+      Value<String?> createdBy,
+      Value<DateTime> updatedAt,
+      Value<String?> updatedBy,
+      Value<DateTime?> deletedAt,
+      Value<String?> source,
+      Value<String?> sourceRef,
+      Value<DateTime?> collectedAt,
+      Value<String> id,
+      Value<String> contactId,
+      Value<String> organisationId,
+      Value<String?> jobTitle,
+      Value<String?> service,
+      Value<bool> isElected,
+      Value<String?> mandateRole,
+      Value<String?> delegation,
+      Value<String?> startDate,
+      Value<String?> endDate,
+      Value<int> rowid,
+    });
+
+class $$PositionsTableFilterComposer
+    extends Composer<_$AppDatabase, $PositionsTable> {
+  $$PositionsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get version => $composableBuilder(
+    column: $table.version,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get fieldMeta => $composableBuilder(
+    column: $table.fieldMeta,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedBy => $composableBuilder(
+    column: $table.updatedBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get source => $composableBuilder(
+    column: $table.source,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get sourceRef => $composableBuilder(
+    column: $table.sourceRef,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get collectedAt => $composableBuilder(
+    column: $table.collectedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get contactId => $composableBuilder(
+    column: $table.contactId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get organisationId => $composableBuilder(
+    column: $table.organisationId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get jobTitle => $composableBuilder(
+    column: $table.jobTitle,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get service => $composableBuilder(
+    column: $table.service,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get isElected => $composableBuilder(
+    column: $table.isElected,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get mandateRole => $composableBuilder(
+    column: $table.mandateRole,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get delegation => $composableBuilder(
+    column: $table.delegation,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get startDate => $composableBuilder(
+    column: $table.startDate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get endDate => $composableBuilder(
+    column: $table.endDate,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$PositionsTableOrderingComposer
+    extends Composer<_$AppDatabase, $PositionsTable> {
+  $$PositionsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get version => $composableBuilder(
+    column: $table.version,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get fieldMeta => $composableBuilder(
+    column: $table.fieldMeta,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedBy => $composableBuilder(
+    column: $table.updatedBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get source => $composableBuilder(
+    column: $table.source,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get sourceRef => $composableBuilder(
+    column: $table.sourceRef,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get collectedAt => $composableBuilder(
+    column: $table.collectedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get contactId => $composableBuilder(
+    column: $table.contactId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get organisationId => $composableBuilder(
+    column: $table.organisationId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get jobTitle => $composableBuilder(
+    column: $table.jobTitle,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get service => $composableBuilder(
+    column: $table.service,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get isElected => $composableBuilder(
+    column: $table.isElected,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get mandateRole => $composableBuilder(
+    column: $table.mandateRole,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get delegation => $composableBuilder(
+    column: $table.delegation,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get startDate => $composableBuilder(
+    column: $table.startDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get endDate => $composableBuilder(
+    column: $table.endDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$PositionsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $PositionsTable> {
+  $$PositionsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get version =>
+      $composableBuilder(column: $table.version, builder: (column) => column);
+
+  GeneratedColumn<String> get fieldMeta =>
+      $composableBuilder(column: $table.fieldMeta, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedBy =>
+      $composableBuilder(column: $table.updatedBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get deletedAt =>
+      $composableBuilder(column: $table.deletedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get source =>
+      $composableBuilder(column: $table.source, builder: (column) => column);
+
+  GeneratedColumn<String> get sourceRef =>
+      $composableBuilder(column: $table.sourceRef, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get collectedAt => $composableBuilder(
+    column: $table.collectedAt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get contactId =>
+      $composableBuilder(column: $table.contactId, builder: (column) => column);
+
+  GeneratedColumn<String> get organisationId => $composableBuilder(
+    column: $table.organisationId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get jobTitle =>
+      $composableBuilder(column: $table.jobTitle, builder: (column) => column);
+
+  GeneratedColumn<String> get service =>
+      $composableBuilder(column: $table.service, builder: (column) => column);
+
+  GeneratedColumn<bool> get isElected =>
+      $composableBuilder(column: $table.isElected, builder: (column) => column);
+
+  GeneratedColumn<String> get mandateRole => $composableBuilder(
+    column: $table.mandateRole,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get delegation => $composableBuilder(
+    column: $table.delegation,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get startDate =>
+      $composableBuilder(column: $table.startDate, builder: (column) => column);
+
+  GeneratedColumn<String> get endDate =>
+      $composableBuilder(column: $table.endDate, builder: (column) => column);
+}
+
+class $$PositionsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $PositionsTable,
+          PositionRow,
+          $$PositionsTableFilterComposer,
+          $$PositionsTableOrderingComposer,
+          $$PositionsTableAnnotationComposer,
+          $$PositionsTableCreateCompanionBuilder,
+          $$PositionsTableUpdateCompanionBuilder,
+          (
+            PositionRow,
+            BaseReferences<_$AppDatabase, $PositionsTable, PositionRow>,
+          ),
+          PositionRow,
+          PrefetchHooks Function()
+        > {
+  $$PositionsTableTableManager(_$AppDatabase db, $PositionsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$PositionsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$PositionsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$PositionsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> version = const Value.absent(),
+                Value<String> fieldMeta = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String?> updatedBy = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                Value<String?> source = const Value.absent(),
+                Value<String?> sourceRef = const Value.absent(),
+                Value<DateTime?> collectedAt = const Value.absent(),
+                Value<String> id = const Value.absent(),
+                Value<String> contactId = const Value.absent(),
+                Value<String> organisationId = const Value.absent(),
+                Value<String?> jobTitle = const Value.absent(),
+                Value<String?> service = const Value.absent(),
+                Value<bool> isElected = const Value.absent(),
+                Value<String?> mandateRole = const Value.absent(),
+                Value<String?> delegation = const Value.absent(),
+                Value<String?> startDate = const Value.absent(),
+                Value<String?> endDate = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PositionsCompanion(
+                version: version,
+                fieldMeta: fieldMeta,
+                createdAt: createdAt,
+                createdBy: createdBy,
+                updatedAt: updatedAt,
+                updatedBy: updatedBy,
+                deletedAt: deletedAt,
+                source: source,
+                sourceRef: sourceRef,
+                collectedAt: collectedAt,
+                id: id,
+                contactId: contactId,
+                organisationId: organisationId,
+                jobTitle: jobTitle,
+                service: service,
+                isElected: isElected,
+                mandateRole: mandateRole,
+                delegation: delegation,
+                startDate: startDate,
+                endDate: endDate,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> version = const Value.absent(),
+                Value<String> fieldMeta = const Value.absent(),
+                required DateTime createdAt,
+                Value<String?> createdBy = const Value.absent(),
+                required DateTime updatedAt,
+                Value<String?> updatedBy = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                Value<String?> source = const Value.absent(),
+                Value<String?> sourceRef = const Value.absent(),
+                Value<DateTime?> collectedAt = const Value.absent(),
+                required String id,
+                required String contactId,
+                required String organisationId,
+                Value<String?> jobTitle = const Value.absent(),
+                Value<String?> service = const Value.absent(),
+                required bool isElected,
+                Value<String?> mandateRole = const Value.absent(),
+                Value<String?> delegation = const Value.absent(),
+                Value<String?> startDate = const Value.absent(),
+                Value<String?> endDate = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PositionsCompanion.insert(
+                version: version,
+                fieldMeta: fieldMeta,
+                createdAt: createdAt,
+                createdBy: createdBy,
+                updatedAt: updatedAt,
+                updatedBy: updatedBy,
+                deletedAt: deletedAt,
+                source: source,
+                sourceRef: sourceRef,
+                collectedAt: collectedAt,
+                id: id,
+                contactId: contactId,
+                organisationId: organisationId,
+                jobTitle: jobTitle,
+                service: service,
+                isElected: isElected,
+                mandateRole: mandateRole,
+                delegation: delegation,
+                startDate: startDate,
+                endDate: endDate,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$PositionsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $PositionsTable,
+      PositionRow,
+      $$PositionsTableFilterComposer,
+      $$PositionsTableOrderingComposer,
+      $$PositionsTableAnnotationComposer,
+      $$PositionsTableCreateCompanionBuilder,
+      $$PositionsTableUpdateCompanionBuilder,
+      (
+        PositionRow,
+        BaseReferences<_$AppDatabase, $PositionsTable, PositionRow>,
+      ),
+      PositionRow,
+      PrefetchHooks Function()
+    >;
+typedef $$PipelinesTableCreateCompanionBuilder =
+    PipelinesCompanion Function({
+      Value<int> version,
+      Value<String> fieldMeta,
+      required DateTime createdAt,
+      Value<String?> createdBy,
+      required DateTime updatedAt,
+      Value<String?> updatedBy,
+      Value<DateTime?> deletedAt,
+      required String id,
+      required String name,
+      required String kind,
+      Value<double?> sortOrder,
+      Value<bool?> archived,
+      Value<int> rowid,
+    });
+typedef $$PipelinesTableUpdateCompanionBuilder =
+    PipelinesCompanion Function({
+      Value<int> version,
+      Value<String> fieldMeta,
+      Value<DateTime> createdAt,
+      Value<String?> createdBy,
+      Value<DateTime> updatedAt,
+      Value<String?> updatedBy,
+      Value<DateTime?> deletedAt,
+      Value<String> id,
+      Value<String> name,
+      Value<String> kind,
+      Value<double?> sortOrder,
+      Value<bool?> archived,
+      Value<int> rowid,
+    });
+
+class $$PipelinesTableFilterComposer
+    extends Composer<_$AppDatabase, $PipelinesTable> {
+  $$PipelinesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get version => $composableBuilder(
+    column: $table.version,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get fieldMeta => $composableBuilder(
+    column: $table.fieldMeta,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedBy => $composableBuilder(
+    column: $table.updatedBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get kind => $composableBuilder(
+    column: $table.kind,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get sortOrder => $composableBuilder(
+    column: $table.sortOrder,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get archived => $composableBuilder(
+    column: $table.archived,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$PipelinesTableOrderingComposer
+    extends Composer<_$AppDatabase, $PipelinesTable> {
+  $$PipelinesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get version => $composableBuilder(
+    column: $table.version,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get fieldMeta => $composableBuilder(
+    column: $table.fieldMeta,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedBy => $composableBuilder(
+    column: $table.updatedBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get kind => $composableBuilder(
+    column: $table.kind,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get sortOrder => $composableBuilder(
+    column: $table.sortOrder,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get archived => $composableBuilder(
+    column: $table.archived,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$PipelinesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $PipelinesTable> {
+  $$PipelinesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get version =>
+      $composableBuilder(column: $table.version, builder: (column) => column);
+
+  GeneratedColumn<String> get fieldMeta =>
+      $composableBuilder(column: $table.fieldMeta, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedBy =>
+      $composableBuilder(column: $table.updatedBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get deletedAt =>
+      $composableBuilder(column: $table.deletedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+
+  GeneratedColumn<String> get kind =>
+      $composableBuilder(column: $table.kind, builder: (column) => column);
+
+  GeneratedColumn<double> get sortOrder =>
+      $composableBuilder(column: $table.sortOrder, builder: (column) => column);
+
+  GeneratedColumn<bool> get archived =>
+      $composableBuilder(column: $table.archived, builder: (column) => column);
+}
+
+class $$PipelinesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $PipelinesTable,
+          PipelineRow,
+          $$PipelinesTableFilterComposer,
+          $$PipelinesTableOrderingComposer,
+          $$PipelinesTableAnnotationComposer,
+          $$PipelinesTableCreateCompanionBuilder,
+          $$PipelinesTableUpdateCompanionBuilder,
+          (
+            PipelineRow,
+            BaseReferences<_$AppDatabase, $PipelinesTable, PipelineRow>,
+          ),
+          PipelineRow,
+          PrefetchHooks Function()
+        > {
+  $$PipelinesTableTableManager(_$AppDatabase db, $PipelinesTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$PipelinesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$PipelinesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$PipelinesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> version = const Value.absent(),
+                Value<String> fieldMeta = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String?> updatedBy = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                Value<String> id = const Value.absent(),
+                Value<String> name = const Value.absent(),
+                Value<String> kind = const Value.absent(),
+                Value<double?> sortOrder = const Value.absent(),
+                Value<bool?> archived = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PipelinesCompanion(
+                version: version,
+                fieldMeta: fieldMeta,
+                createdAt: createdAt,
+                createdBy: createdBy,
+                updatedAt: updatedAt,
+                updatedBy: updatedBy,
+                deletedAt: deletedAt,
+                id: id,
+                name: name,
+                kind: kind,
+                sortOrder: sortOrder,
+                archived: archived,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> version = const Value.absent(),
+                Value<String> fieldMeta = const Value.absent(),
+                required DateTime createdAt,
+                Value<String?> createdBy = const Value.absent(),
+                required DateTime updatedAt,
+                Value<String?> updatedBy = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                required String id,
+                required String name,
+                required String kind,
+                Value<double?> sortOrder = const Value.absent(),
+                Value<bool?> archived = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PipelinesCompanion.insert(
+                version: version,
+                fieldMeta: fieldMeta,
+                createdAt: createdAt,
+                createdBy: createdBy,
+                updatedAt: updatedAt,
+                updatedBy: updatedBy,
+                deletedAt: deletedAt,
+                id: id,
+                name: name,
+                kind: kind,
+                sortOrder: sortOrder,
+                archived: archived,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$PipelinesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $PipelinesTable,
+      PipelineRow,
+      $$PipelinesTableFilterComposer,
+      $$PipelinesTableOrderingComposer,
+      $$PipelinesTableAnnotationComposer,
+      $$PipelinesTableCreateCompanionBuilder,
+      $$PipelinesTableUpdateCompanionBuilder,
+      (
+        PipelineRow,
+        BaseReferences<_$AppDatabase, $PipelinesTable, PipelineRow>,
+      ),
+      PipelineRow,
+      PrefetchHooks Function()
+    >;
+typedef $$PipelineStagesTableCreateCompanionBuilder =
+    PipelineStagesCompanion Function({
+      Value<int> version,
+      Value<String> fieldMeta,
+      required DateTime createdAt,
+      Value<String?> createdBy,
+      required DateTime updatedAt,
+      Value<String?> updatedBy,
+      Value<DateTime?> deletedAt,
+      required String id,
+      required String pipelineId,
+      required String name,
+      Value<double?> sortOrder,
+      Value<int?> probability,
+      Value<String?> color,
+      required String outcome,
+      Value<int> rowid,
+    });
+typedef $$PipelineStagesTableUpdateCompanionBuilder =
+    PipelineStagesCompanion Function({
+      Value<int> version,
+      Value<String> fieldMeta,
+      Value<DateTime> createdAt,
+      Value<String?> createdBy,
+      Value<DateTime> updatedAt,
+      Value<String?> updatedBy,
+      Value<DateTime?> deletedAt,
+      Value<String> id,
+      Value<String> pipelineId,
+      Value<String> name,
+      Value<double?> sortOrder,
+      Value<int?> probability,
+      Value<String?> color,
+      Value<String> outcome,
+      Value<int> rowid,
+    });
+
+class $$PipelineStagesTableFilterComposer
+    extends Composer<_$AppDatabase, $PipelineStagesTable> {
+  $$PipelineStagesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get version => $composableBuilder(
+    column: $table.version,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get fieldMeta => $composableBuilder(
+    column: $table.fieldMeta,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedBy => $composableBuilder(
+    column: $table.updatedBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get pipelineId => $composableBuilder(
+    column: $table.pipelineId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get sortOrder => $composableBuilder(
+    column: $table.sortOrder,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get probability => $composableBuilder(
+    column: $table.probability,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get color => $composableBuilder(
+    column: $table.color,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get outcome => $composableBuilder(
+    column: $table.outcome,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$PipelineStagesTableOrderingComposer
+    extends Composer<_$AppDatabase, $PipelineStagesTable> {
+  $$PipelineStagesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get version => $composableBuilder(
+    column: $table.version,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get fieldMeta => $composableBuilder(
+    column: $table.fieldMeta,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedBy => $composableBuilder(
+    column: $table.updatedBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get pipelineId => $composableBuilder(
+    column: $table.pipelineId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get sortOrder => $composableBuilder(
+    column: $table.sortOrder,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get probability => $composableBuilder(
+    column: $table.probability,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get color => $composableBuilder(
+    column: $table.color,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get outcome => $composableBuilder(
+    column: $table.outcome,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$PipelineStagesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $PipelineStagesTable> {
+  $$PipelineStagesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get version =>
+      $composableBuilder(column: $table.version, builder: (column) => column);
+
+  GeneratedColumn<String> get fieldMeta =>
+      $composableBuilder(column: $table.fieldMeta, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedBy =>
+      $composableBuilder(column: $table.updatedBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get deletedAt =>
+      $composableBuilder(column: $table.deletedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get pipelineId => $composableBuilder(
+    column: $table.pipelineId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+
+  GeneratedColumn<double> get sortOrder =>
+      $composableBuilder(column: $table.sortOrder, builder: (column) => column);
+
+  GeneratedColumn<int> get probability => $composableBuilder(
+    column: $table.probability,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get color =>
+      $composableBuilder(column: $table.color, builder: (column) => column);
+
+  GeneratedColumn<String> get outcome =>
+      $composableBuilder(column: $table.outcome, builder: (column) => column);
+}
+
+class $$PipelineStagesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $PipelineStagesTable,
+          StageRow,
+          $$PipelineStagesTableFilterComposer,
+          $$PipelineStagesTableOrderingComposer,
+          $$PipelineStagesTableAnnotationComposer,
+          $$PipelineStagesTableCreateCompanionBuilder,
+          $$PipelineStagesTableUpdateCompanionBuilder,
+          (
+            StageRow,
+            BaseReferences<_$AppDatabase, $PipelineStagesTable, StageRow>,
+          ),
+          StageRow,
+          PrefetchHooks Function()
+        > {
+  $$PipelineStagesTableTableManager(
+    _$AppDatabase db,
+    $PipelineStagesTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$PipelineStagesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$PipelineStagesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$PipelineStagesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> version = const Value.absent(),
+                Value<String> fieldMeta = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String?> updatedBy = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                Value<String> id = const Value.absent(),
+                Value<String> pipelineId = const Value.absent(),
+                Value<String> name = const Value.absent(),
+                Value<double?> sortOrder = const Value.absent(),
+                Value<int?> probability = const Value.absent(),
+                Value<String?> color = const Value.absent(),
+                Value<String> outcome = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PipelineStagesCompanion(
+                version: version,
+                fieldMeta: fieldMeta,
+                createdAt: createdAt,
+                createdBy: createdBy,
+                updatedAt: updatedAt,
+                updatedBy: updatedBy,
+                deletedAt: deletedAt,
+                id: id,
+                pipelineId: pipelineId,
+                name: name,
+                sortOrder: sortOrder,
+                probability: probability,
+                color: color,
+                outcome: outcome,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> version = const Value.absent(),
+                Value<String> fieldMeta = const Value.absent(),
+                required DateTime createdAt,
+                Value<String?> createdBy = const Value.absent(),
+                required DateTime updatedAt,
+                Value<String?> updatedBy = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                required String id,
+                required String pipelineId,
+                required String name,
+                Value<double?> sortOrder = const Value.absent(),
+                Value<int?> probability = const Value.absent(),
+                Value<String?> color = const Value.absent(),
+                required String outcome,
+                Value<int> rowid = const Value.absent(),
+              }) => PipelineStagesCompanion.insert(
+                version: version,
+                fieldMeta: fieldMeta,
+                createdAt: createdAt,
+                createdBy: createdBy,
+                updatedAt: updatedAt,
+                updatedBy: updatedBy,
+                deletedAt: deletedAt,
+                id: id,
+                pipelineId: pipelineId,
+                name: name,
+                sortOrder: sortOrder,
+                probability: probability,
+                color: color,
+                outcome: outcome,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$PipelineStagesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $PipelineStagesTable,
+      StageRow,
+      $$PipelineStagesTableFilterComposer,
+      $$PipelineStagesTableOrderingComposer,
+      $$PipelineStagesTableAnnotationComposer,
+      $$PipelineStagesTableCreateCompanionBuilder,
+      $$PipelineStagesTableUpdateCompanionBuilder,
+      (StageRow, BaseReferences<_$AppDatabase, $PipelineStagesTable, StageRow>),
+      StageRow,
+      PrefetchHooks Function()
+    >;
+typedef $$DealsTableCreateCompanionBuilder =
+    DealsCompanion Function({
+      Value<int> version,
+      Value<String> fieldMeta,
+      required DateTime createdAt,
+      Value<String?> createdBy,
+      required DateTime updatedAt,
+      Value<String?> updatedBy,
+      Value<DateTime?> deletedAt,
+      required String id,
+      required String title,
+      required String pipelineId,
+      required String stageId,
+      Value<String?> organisationId,
+      Value<String?> contactId,
+      Value<int?> amountCents,
+      Value<int?> probability,
+      Value<String?> expectedCloseDate,
+      required String status,
+      Value<DateTime?> closedAt,
+      Value<double?> sortOrder,
+      Value<String?> ownerId,
+      Value<String?> description,
+      Value<String?> customFields,
+      Value<int> rowid,
+    });
+typedef $$DealsTableUpdateCompanionBuilder =
+    DealsCompanion Function({
+      Value<int> version,
+      Value<String> fieldMeta,
+      Value<DateTime> createdAt,
+      Value<String?> createdBy,
+      Value<DateTime> updatedAt,
+      Value<String?> updatedBy,
+      Value<DateTime?> deletedAt,
+      Value<String> id,
+      Value<String> title,
+      Value<String> pipelineId,
+      Value<String> stageId,
+      Value<String?> organisationId,
+      Value<String?> contactId,
+      Value<int?> amountCents,
+      Value<int?> probability,
+      Value<String?> expectedCloseDate,
+      Value<String> status,
+      Value<DateTime?> closedAt,
+      Value<double?> sortOrder,
+      Value<String?> ownerId,
+      Value<String?> description,
+      Value<String?> customFields,
+      Value<int> rowid,
+    });
+
+class $$DealsTableFilterComposer extends Composer<_$AppDatabase, $DealsTable> {
+  $$DealsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get version => $composableBuilder(
+    column: $table.version,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get fieldMeta => $composableBuilder(
+    column: $table.fieldMeta,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedBy => $composableBuilder(
+    column: $table.updatedBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get title => $composableBuilder(
+    column: $table.title,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get pipelineId => $composableBuilder(
+    column: $table.pipelineId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get stageId => $composableBuilder(
+    column: $table.stageId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get organisationId => $composableBuilder(
+    column: $table.organisationId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get contactId => $composableBuilder(
+    column: $table.contactId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get amountCents => $composableBuilder(
+    column: $table.amountCents,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get probability => $composableBuilder(
+    column: $table.probability,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get expectedCloseDate => $composableBuilder(
+    column: $table.expectedCloseDate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get closedAt => $composableBuilder(
+    column: $table.closedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get sortOrder => $composableBuilder(
+    column: $table.sortOrder,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get ownerId => $composableBuilder(
+    column: $table.ownerId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get description => $composableBuilder(
+    column: $table.description,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get customFields => $composableBuilder(
+    column: $table.customFields,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$DealsTableOrderingComposer
+    extends Composer<_$AppDatabase, $DealsTable> {
+  $$DealsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get version => $composableBuilder(
+    column: $table.version,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get fieldMeta => $composableBuilder(
+    column: $table.fieldMeta,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedBy => $composableBuilder(
+    column: $table.updatedBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get title => $composableBuilder(
+    column: $table.title,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get pipelineId => $composableBuilder(
+    column: $table.pipelineId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get stageId => $composableBuilder(
+    column: $table.stageId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get organisationId => $composableBuilder(
+    column: $table.organisationId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get contactId => $composableBuilder(
+    column: $table.contactId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get amountCents => $composableBuilder(
+    column: $table.amountCents,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get probability => $composableBuilder(
+    column: $table.probability,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get expectedCloseDate => $composableBuilder(
+    column: $table.expectedCloseDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get closedAt => $composableBuilder(
+    column: $table.closedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get sortOrder => $composableBuilder(
+    column: $table.sortOrder,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get ownerId => $composableBuilder(
+    column: $table.ownerId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get description => $composableBuilder(
+    column: $table.description,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get customFields => $composableBuilder(
+    column: $table.customFields,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$DealsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $DealsTable> {
+  $$DealsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get version =>
+      $composableBuilder(column: $table.version, builder: (column) => column);
+
+  GeneratedColumn<String> get fieldMeta =>
+      $composableBuilder(column: $table.fieldMeta, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedBy =>
+      $composableBuilder(column: $table.updatedBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get deletedAt =>
+      $composableBuilder(column: $table.deletedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get title =>
+      $composableBuilder(column: $table.title, builder: (column) => column);
+
+  GeneratedColumn<String> get pipelineId => $composableBuilder(
+    column: $table.pipelineId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get stageId =>
+      $composableBuilder(column: $table.stageId, builder: (column) => column);
+
+  GeneratedColumn<String> get organisationId => $composableBuilder(
+    column: $table.organisationId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get contactId =>
+      $composableBuilder(column: $table.contactId, builder: (column) => column);
+
+  GeneratedColumn<int> get amountCents => $composableBuilder(
+    column: $table.amountCents,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get probability => $composableBuilder(
+    column: $table.probability,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get expectedCloseDate => $composableBuilder(
+    column: $table.expectedCloseDate,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get status =>
+      $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get closedAt =>
+      $composableBuilder(column: $table.closedAt, builder: (column) => column);
+
+  GeneratedColumn<double> get sortOrder =>
+      $composableBuilder(column: $table.sortOrder, builder: (column) => column);
+
+  GeneratedColumn<String> get ownerId =>
+      $composableBuilder(column: $table.ownerId, builder: (column) => column);
+
+  GeneratedColumn<String> get description => $composableBuilder(
+    column: $table.description,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get customFields => $composableBuilder(
+    column: $table.customFields,
+    builder: (column) => column,
+  );
+}
+
+class $$DealsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $DealsTable,
+          DealRow,
+          $$DealsTableFilterComposer,
+          $$DealsTableOrderingComposer,
+          $$DealsTableAnnotationComposer,
+          $$DealsTableCreateCompanionBuilder,
+          $$DealsTableUpdateCompanionBuilder,
+          (DealRow, BaseReferences<_$AppDatabase, $DealsTable, DealRow>),
+          DealRow,
+          PrefetchHooks Function()
+        > {
+  $$DealsTableTableManager(_$AppDatabase db, $DealsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$DealsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$DealsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$DealsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> version = const Value.absent(),
+                Value<String> fieldMeta = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String?> updatedBy = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                Value<String> id = const Value.absent(),
+                Value<String> title = const Value.absent(),
+                Value<String> pipelineId = const Value.absent(),
+                Value<String> stageId = const Value.absent(),
+                Value<String?> organisationId = const Value.absent(),
+                Value<String?> contactId = const Value.absent(),
+                Value<int?> amountCents = const Value.absent(),
+                Value<int?> probability = const Value.absent(),
+                Value<String?> expectedCloseDate = const Value.absent(),
+                Value<String> status = const Value.absent(),
+                Value<DateTime?> closedAt = const Value.absent(),
+                Value<double?> sortOrder = const Value.absent(),
+                Value<String?> ownerId = const Value.absent(),
+                Value<String?> description = const Value.absent(),
+                Value<String?> customFields = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => DealsCompanion(
+                version: version,
+                fieldMeta: fieldMeta,
+                createdAt: createdAt,
+                createdBy: createdBy,
+                updatedAt: updatedAt,
+                updatedBy: updatedBy,
+                deletedAt: deletedAt,
+                id: id,
+                title: title,
+                pipelineId: pipelineId,
+                stageId: stageId,
+                organisationId: organisationId,
+                contactId: contactId,
+                amountCents: amountCents,
+                probability: probability,
+                expectedCloseDate: expectedCloseDate,
+                status: status,
+                closedAt: closedAt,
+                sortOrder: sortOrder,
+                ownerId: ownerId,
+                description: description,
+                customFields: customFields,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> version = const Value.absent(),
+                Value<String> fieldMeta = const Value.absent(),
+                required DateTime createdAt,
+                Value<String?> createdBy = const Value.absent(),
+                required DateTime updatedAt,
+                Value<String?> updatedBy = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                required String id,
+                required String title,
+                required String pipelineId,
+                required String stageId,
+                Value<String?> organisationId = const Value.absent(),
+                Value<String?> contactId = const Value.absent(),
+                Value<int?> amountCents = const Value.absent(),
+                Value<int?> probability = const Value.absent(),
+                Value<String?> expectedCloseDate = const Value.absent(),
+                required String status,
+                Value<DateTime?> closedAt = const Value.absent(),
+                Value<double?> sortOrder = const Value.absent(),
+                Value<String?> ownerId = const Value.absent(),
+                Value<String?> description = const Value.absent(),
+                Value<String?> customFields = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => DealsCompanion.insert(
+                version: version,
+                fieldMeta: fieldMeta,
+                createdAt: createdAt,
+                createdBy: createdBy,
+                updatedAt: updatedAt,
+                updatedBy: updatedBy,
+                deletedAt: deletedAt,
+                id: id,
+                title: title,
+                pipelineId: pipelineId,
+                stageId: stageId,
+                organisationId: organisationId,
+                contactId: contactId,
+                amountCents: amountCents,
+                probability: probability,
+                expectedCloseDate: expectedCloseDate,
+                status: status,
+                closedAt: closedAt,
+                sortOrder: sortOrder,
+                ownerId: ownerId,
+                description: description,
+                customFields: customFields,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$DealsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $DealsTable,
+      DealRow,
+      $$DealsTableFilterComposer,
+      $$DealsTableOrderingComposer,
+      $$DealsTableAnnotationComposer,
+      $$DealsTableCreateCompanionBuilder,
+      $$DealsTableUpdateCompanionBuilder,
+      (DealRow, BaseReferences<_$AppDatabase, $DealsTable, DealRow>),
+      DealRow,
+      PrefetchHooks Function()
+    >;
+typedef $$ActivitiesTableCreateCompanionBuilder =
+    ActivitiesCompanion Function({
+      Value<int> version,
+      Value<String> fieldMeta,
+      required DateTime createdAt,
+      Value<String?> createdBy,
+      required DateTime updatedAt,
+      Value<String?> updatedBy,
+      Value<DateTime?> deletedAt,
+      required String id,
+      required String kind,
+      required String subject,
+      Value<String?> body,
+      Value<String?> organisationId,
+      Value<String?> contactId,
+      Value<String?> dealId,
+      Value<DateTime?> startsAt,
+      Value<DateTime?> endsAt,
+      Value<DateTime?> dueAt,
+      Value<DateTime?> remindAt,
+      Value<DateTime?> doneAt,
+      Value<String?> assigneeId,
+      Value<String?> ownerId,
+      Value<int> rowid,
+    });
+typedef $$ActivitiesTableUpdateCompanionBuilder =
+    ActivitiesCompanion Function({
+      Value<int> version,
+      Value<String> fieldMeta,
+      Value<DateTime> createdAt,
+      Value<String?> createdBy,
+      Value<DateTime> updatedAt,
+      Value<String?> updatedBy,
+      Value<DateTime?> deletedAt,
+      Value<String> id,
+      Value<String> kind,
+      Value<String> subject,
+      Value<String?> body,
+      Value<String?> organisationId,
+      Value<String?> contactId,
+      Value<String?> dealId,
+      Value<DateTime?> startsAt,
+      Value<DateTime?> endsAt,
+      Value<DateTime?> dueAt,
+      Value<DateTime?> remindAt,
+      Value<DateTime?> doneAt,
+      Value<String?> assigneeId,
+      Value<String?> ownerId,
+      Value<int> rowid,
+    });
+
+class $$ActivitiesTableFilterComposer
+    extends Composer<_$AppDatabase, $ActivitiesTable> {
+  $$ActivitiesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get version => $composableBuilder(
+    column: $table.version,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get fieldMeta => $composableBuilder(
+    column: $table.fieldMeta,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedBy => $composableBuilder(
+    column: $table.updatedBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get kind => $composableBuilder(
+    column: $table.kind,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get subject => $composableBuilder(
+    column: $table.subject,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get body => $composableBuilder(
+    column: $table.body,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get organisationId => $composableBuilder(
+    column: $table.organisationId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get contactId => $composableBuilder(
+    column: $table.contactId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get dealId => $composableBuilder(
+    column: $table.dealId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get startsAt => $composableBuilder(
+    column: $table.startsAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get endsAt => $composableBuilder(
+    column: $table.endsAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get dueAt => $composableBuilder(
+    column: $table.dueAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get remindAt => $composableBuilder(
+    column: $table.remindAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get doneAt => $composableBuilder(
+    column: $table.doneAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get assigneeId => $composableBuilder(
+    column: $table.assigneeId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get ownerId => $composableBuilder(
+    column: $table.ownerId,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$ActivitiesTableOrderingComposer
+    extends Composer<_$AppDatabase, $ActivitiesTable> {
+  $$ActivitiesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get version => $composableBuilder(
+    column: $table.version,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get fieldMeta => $composableBuilder(
+    column: $table.fieldMeta,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedBy => $composableBuilder(
+    column: $table.updatedBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get kind => $composableBuilder(
+    column: $table.kind,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get subject => $composableBuilder(
+    column: $table.subject,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get body => $composableBuilder(
+    column: $table.body,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get organisationId => $composableBuilder(
+    column: $table.organisationId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get contactId => $composableBuilder(
+    column: $table.contactId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get dealId => $composableBuilder(
+    column: $table.dealId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get startsAt => $composableBuilder(
+    column: $table.startsAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get endsAt => $composableBuilder(
+    column: $table.endsAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get dueAt => $composableBuilder(
+    column: $table.dueAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get remindAt => $composableBuilder(
+    column: $table.remindAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get doneAt => $composableBuilder(
+    column: $table.doneAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get assigneeId => $composableBuilder(
+    column: $table.assigneeId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get ownerId => $composableBuilder(
+    column: $table.ownerId,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$ActivitiesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $ActivitiesTable> {
+  $$ActivitiesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get version =>
+      $composableBuilder(column: $table.version, builder: (column) => column);
+
+  GeneratedColumn<String> get fieldMeta =>
+      $composableBuilder(column: $table.fieldMeta, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedBy =>
+      $composableBuilder(column: $table.updatedBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get deletedAt =>
+      $composableBuilder(column: $table.deletedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get kind =>
+      $composableBuilder(column: $table.kind, builder: (column) => column);
+
+  GeneratedColumn<String> get subject =>
+      $composableBuilder(column: $table.subject, builder: (column) => column);
+
+  GeneratedColumn<String> get body =>
+      $composableBuilder(column: $table.body, builder: (column) => column);
+
+  GeneratedColumn<String> get organisationId => $composableBuilder(
+    column: $table.organisationId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get contactId =>
+      $composableBuilder(column: $table.contactId, builder: (column) => column);
+
+  GeneratedColumn<String> get dealId =>
+      $composableBuilder(column: $table.dealId, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get startsAt =>
+      $composableBuilder(column: $table.startsAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get endsAt =>
+      $composableBuilder(column: $table.endsAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get dueAt =>
+      $composableBuilder(column: $table.dueAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get remindAt =>
+      $composableBuilder(column: $table.remindAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get doneAt =>
+      $composableBuilder(column: $table.doneAt, builder: (column) => column);
+
+  GeneratedColumn<String> get assigneeId => $composableBuilder(
+    column: $table.assigneeId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get ownerId =>
+      $composableBuilder(column: $table.ownerId, builder: (column) => column);
+}
+
+class $$ActivitiesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $ActivitiesTable,
+          ActivityRow,
+          $$ActivitiesTableFilterComposer,
+          $$ActivitiesTableOrderingComposer,
+          $$ActivitiesTableAnnotationComposer,
+          $$ActivitiesTableCreateCompanionBuilder,
+          $$ActivitiesTableUpdateCompanionBuilder,
+          (
+            ActivityRow,
+            BaseReferences<_$AppDatabase, $ActivitiesTable, ActivityRow>,
+          ),
+          ActivityRow,
+          PrefetchHooks Function()
+        > {
+  $$ActivitiesTableTableManager(_$AppDatabase db, $ActivitiesTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$ActivitiesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ActivitiesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$ActivitiesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> version = const Value.absent(),
+                Value<String> fieldMeta = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String?> updatedBy = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                Value<String> id = const Value.absent(),
+                Value<String> kind = const Value.absent(),
+                Value<String> subject = const Value.absent(),
+                Value<String?> body = const Value.absent(),
+                Value<String?> organisationId = const Value.absent(),
+                Value<String?> contactId = const Value.absent(),
+                Value<String?> dealId = const Value.absent(),
+                Value<DateTime?> startsAt = const Value.absent(),
+                Value<DateTime?> endsAt = const Value.absent(),
+                Value<DateTime?> dueAt = const Value.absent(),
+                Value<DateTime?> remindAt = const Value.absent(),
+                Value<DateTime?> doneAt = const Value.absent(),
+                Value<String?> assigneeId = const Value.absent(),
+                Value<String?> ownerId = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ActivitiesCompanion(
+                version: version,
+                fieldMeta: fieldMeta,
+                createdAt: createdAt,
+                createdBy: createdBy,
+                updatedAt: updatedAt,
+                updatedBy: updatedBy,
+                deletedAt: deletedAt,
+                id: id,
+                kind: kind,
+                subject: subject,
+                body: body,
+                organisationId: organisationId,
+                contactId: contactId,
+                dealId: dealId,
+                startsAt: startsAt,
+                endsAt: endsAt,
+                dueAt: dueAt,
+                remindAt: remindAt,
+                doneAt: doneAt,
+                assigneeId: assigneeId,
+                ownerId: ownerId,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> version = const Value.absent(),
+                Value<String> fieldMeta = const Value.absent(),
+                required DateTime createdAt,
+                Value<String?> createdBy = const Value.absent(),
+                required DateTime updatedAt,
+                Value<String?> updatedBy = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                required String id,
+                required String kind,
+                required String subject,
+                Value<String?> body = const Value.absent(),
+                Value<String?> organisationId = const Value.absent(),
+                Value<String?> contactId = const Value.absent(),
+                Value<String?> dealId = const Value.absent(),
+                Value<DateTime?> startsAt = const Value.absent(),
+                Value<DateTime?> endsAt = const Value.absent(),
+                Value<DateTime?> dueAt = const Value.absent(),
+                Value<DateTime?> remindAt = const Value.absent(),
+                Value<DateTime?> doneAt = const Value.absent(),
+                Value<String?> assigneeId = const Value.absent(),
+                Value<String?> ownerId = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ActivitiesCompanion.insert(
+                version: version,
+                fieldMeta: fieldMeta,
+                createdAt: createdAt,
+                createdBy: createdBy,
+                updatedAt: updatedAt,
+                updatedBy: updatedBy,
+                deletedAt: deletedAt,
+                id: id,
+                kind: kind,
+                subject: subject,
+                body: body,
+                organisationId: organisationId,
+                contactId: contactId,
+                dealId: dealId,
+                startsAt: startsAt,
+                endsAt: endsAt,
+                dueAt: dueAt,
+                remindAt: remindAt,
+                doneAt: doneAt,
+                assigneeId: assigneeId,
+                ownerId: ownerId,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$ActivitiesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $ActivitiesTable,
+      ActivityRow,
+      $$ActivitiesTableFilterComposer,
+      $$ActivitiesTableOrderingComposer,
+      $$ActivitiesTableAnnotationComposer,
+      $$ActivitiesTableCreateCompanionBuilder,
+      $$ActivitiesTableUpdateCompanionBuilder,
+      (
+        ActivityRow,
+        BaseReferences<_$AppDatabase, $ActivitiesTable, ActivityRow>,
+      ),
+      ActivityRow,
+      PrefetchHooks Function()
+    >;
+typedef $$AttachmentsTableCreateCompanionBuilder =
+    AttachmentsCompanion Function({
+      Value<int> version,
+      Value<String> fieldMeta,
+      required DateTime createdAt,
+      Value<String?> createdBy,
+      required DateTime updatedAt,
+      Value<String?> updatedBy,
+      Value<DateTime?> deletedAt,
+      required String id,
+      required String fileId,
+      required String fileName,
+      required int size,
+      Value<String?> mimeType,
+      Value<String?> organisationId,
+      Value<String?> contactId,
+      Value<String?> dealId,
+      Value<String?> activityId,
+      Value<int> rowid,
+    });
+typedef $$AttachmentsTableUpdateCompanionBuilder =
+    AttachmentsCompanion Function({
+      Value<int> version,
+      Value<String> fieldMeta,
+      Value<DateTime> createdAt,
+      Value<String?> createdBy,
+      Value<DateTime> updatedAt,
+      Value<String?> updatedBy,
+      Value<DateTime?> deletedAt,
+      Value<String> id,
+      Value<String> fileId,
+      Value<String> fileName,
+      Value<int> size,
+      Value<String?> mimeType,
+      Value<String?> organisationId,
+      Value<String?> contactId,
+      Value<String?> dealId,
+      Value<String?> activityId,
+      Value<int> rowid,
+    });
+
+class $$AttachmentsTableFilterComposer
+    extends Composer<_$AppDatabase, $AttachmentsTable> {
+  $$AttachmentsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get version => $composableBuilder(
+    column: $table.version,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get fieldMeta => $composableBuilder(
+    column: $table.fieldMeta,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedBy => $composableBuilder(
+    column: $table.updatedBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get fileId => $composableBuilder(
+    column: $table.fileId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get fileName => $composableBuilder(
+    column: $table.fileName,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get size => $composableBuilder(
+    column: $table.size,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get mimeType => $composableBuilder(
+    column: $table.mimeType,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get organisationId => $composableBuilder(
+    column: $table.organisationId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get contactId => $composableBuilder(
+    column: $table.contactId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get dealId => $composableBuilder(
+    column: $table.dealId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get activityId => $composableBuilder(
+    column: $table.activityId,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$AttachmentsTableOrderingComposer
+    extends Composer<_$AppDatabase, $AttachmentsTable> {
+  $$AttachmentsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get version => $composableBuilder(
+    column: $table.version,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get fieldMeta => $composableBuilder(
+    column: $table.fieldMeta,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedBy => $composableBuilder(
+    column: $table.updatedBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get fileId => $composableBuilder(
+    column: $table.fileId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get fileName => $composableBuilder(
+    column: $table.fileName,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get size => $composableBuilder(
+    column: $table.size,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get mimeType => $composableBuilder(
+    column: $table.mimeType,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get organisationId => $composableBuilder(
+    column: $table.organisationId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get contactId => $composableBuilder(
+    column: $table.contactId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get dealId => $composableBuilder(
+    column: $table.dealId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get activityId => $composableBuilder(
+    column: $table.activityId,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$AttachmentsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $AttachmentsTable> {
+  $$AttachmentsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get version =>
+      $composableBuilder(column: $table.version, builder: (column) => column);
+
+  GeneratedColumn<String> get fieldMeta =>
+      $composableBuilder(column: $table.fieldMeta, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedBy =>
+      $composableBuilder(column: $table.updatedBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get deletedAt =>
+      $composableBuilder(column: $table.deletedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get fileId =>
+      $composableBuilder(column: $table.fileId, builder: (column) => column);
+
+  GeneratedColumn<String> get fileName =>
+      $composableBuilder(column: $table.fileName, builder: (column) => column);
+
+  GeneratedColumn<int> get size =>
+      $composableBuilder(column: $table.size, builder: (column) => column);
+
+  GeneratedColumn<String> get mimeType =>
+      $composableBuilder(column: $table.mimeType, builder: (column) => column);
+
+  GeneratedColumn<String> get organisationId => $composableBuilder(
+    column: $table.organisationId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get contactId =>
+      $composableBuilder(column: $table.contactId, builder: (column) => column);
+
+  GeneratedColumn<String> get dealId =>
+      $composableBuilder(column: $table.dealId, builder: (column) => column);
+
+  GeneratedColumn<String> get activityId => $composableBuilder(
+    column: $table.activityId,
+    builder: (column) => column,
+  );
+}
+
+class $$AttachmentsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $AttachmentsTable,
+          AttachmentRow,
+          $$AttachmentsTableFilterComposer,
+          $$AttachmentsTableOrderingComposer,
+          $$AttachmentsTableAnnotationComposer,
+          $$AttachmentsTableCreateCompanionBuilder,
+          $$AttachmentsTableUpdateCompanionBuilder,
+          (
+            AttachmentRow,
+            BaseReferences<_$AppDatabase, $AttachmentsTable, AttachmentRow>,
+          ),
+          AttachmentRow,
+          PrefetchHooks Function()
+        > {
+  $$AttachmentsTableTableManager(_$AppDatabase db, $AttachmentsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$AttachmentsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$AttachmentsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$AttachmentsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> version = const Value.absent(),
+                Value<String> fieldMeta = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String?> updatedBy = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                Value<String> id = const Value.absent(),
+                Value<String> fileId = const Value.absent(),
+                Value<String> fileName = const Value.absent(),
+                Value<int> size = const Value.absent(),
+                Value<String?> mimeType = const Value.absent(),
+                Value<String?> organisationId = const Value.absent(),
+                Value<String?> contactId = const Value.absent(),
+                Value<String?> dealId = const Value.absent(),
+                Value<String?> activityId = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => AttachmentsCompanion(
+                version: version,
+                fieldMeta: fieldMeta,
+                createdAt: createdAt,
+                createdBy: createdBy,
+                updatedAt: updatedAt,
+                updatedBy: updatedBy,
+                deletedAt: deletedAt,
+                id: id,
+                fileId: fileId,
+                fileName: fileName,
+                size: size,
+                mimeType: mimeType,
+                organisationId: organisationId,
+                contactId: contactId,
+                dealId: dealId,
+                activityId: activityId,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> version = const Value.absent(),
+                Value<String> fieldMeta = const Value.absent(),
+                required DateTime createdAt,
+                Value<String?> createdBy = const Value.absent(),
+                required DateTime updatedAt,
+                Value<String?> updatedBy = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                required String id,
+                required String fileId,
+                required String fileName,
+                required int size,
+                Value<String?> mimeType = const Value.absent(),
+                Value<String?> organisationId = const Value.absent(),
+                Value<String?> contactId = const Value.absent(),
+                Value<String?> dealId = const Value.absent(),
+                Value<String?> activityId = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => AttachmentsCompanion.insert(
+                version: version,
+                fieldMeta: fieldMeta,
+                createdAt: createdAt,
+                createdBy: createdBy,
+                updatedAt: updatedAt,
+                updatedBy: updatedBy,
+                deletedAt: deletedAt,
+                id: id,
+                fileId: fileId,
+                fileName: fileName,
+                size: size,
+                mimeType: mimeType,
+                organisationId: organisationId,
+                contactId: contactId,
+                dealId: dealId,
+                activityId: activityId,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$AttachmentsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $AttachmentsTable,
+      AttachmentRow,
+      $$AttachmentsTableFilterComposer,
+      $$AttachmentsTableOrderingComposer,
+      $$AttachmentsTableAnnotationComposer,
+      $$AttachmentsTableCreateCompanionBuilder,
+      $$AttachmentsTableUpdateCompanionBuilder,
+      (
+        AttachmentRow,
+        BaseReferences<_$AppDatabase, $AttachmentsTable, AttachmentRow>,
+      ),
+      AttachmentRow,
+      PrefetchHooks Function()
+    >;
+typedef $$TaggingsTableCreateCompanionBuilder =
+    TaggingsCompanion Function({
+      Value<int> version,
+      Value<String> fieldMeta,
+      required DateTime createdAt,
+      Value<String?> createdBy,
+      required DateTime updatedAt,
+      Value<String?> updatedBy,
+      Value<DateTime?> deletedAt,
+      required String id,
+      required String tagId,
+      required String entity,
+      required String recordId,
+      Value<int> rowid,
+    });
+typedef $$TaggingsTableUpdateCompanionBuilder =
+    TaggingsCompanion Function({
+      Value<int> version,
+      Value<String> fieldMeta,
+      Value<DateTime> createdAt,
+      Value<String?> createdBy,
+      Value<DateTime> updatedAt,
+      Value<String?> updatedBy,
+      Value<DateTime?> deletedAt,
+      Value<String> id,
+      Value<String> tagId,
+      Value<String> entity,
+      Value<String> recordId,
+      Value<int> rowid,
+    });
+
+class $$TaggingsTableFilterComposer
+    extends Composer<_$AppDatabase, $TaggingsTable> {
+  $$TaggingsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get version => $composableBuilder(
+    column: $table.version,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get fieldMeta => $composableBuilder(
+    column: $table.fieldMeta,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedBy => $composableBuilder(
+    column: $table.updatedBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tagId => $composableBuilder(
+    column: $table.tagId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get entity => $composableBuilder(
+    column: $table.entity,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get recordId => $composableBuilder(
+    column: $table.recordId,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$TaggingsTableOrderingComposer
+    extends Composer<_$AppDatabase, $TaggingsTable> {
+  $$TaggingsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get version => $composableBuilder(
+    column: $table.version,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get fieldMeta => $composableBuilder(
+    column: $table.fieldMeta,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedBy => $composableBuilder(
+    column: $table.updatedBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tagId => $composableBuilder(
+    column: $table.tagId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get entity => $composableBuilder(
+    column: $table.entity,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get recordId => $composableBuilder(
+    column: $table.recordId,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$TaggingsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $TaggingsTable> {
+  $$TaggingsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get version =>
+      $composableBuilder(column: $table.version, builder: (column) => column);
+
+  GeneratedColumn<String> get fieldMeta =>
+      $composableBuilder(column: $table.fieldMeta, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedBy =>
+      $composableBuilder(column: $table.updatedBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get deletedAt =>
+      $composableBuilder(column: $table.deletedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get tagId =>
+      $composableBuilder(column: $table.tagId, builder: (column) => column);
+
+  GeneratedColumn<String> get entity =>
+      $composableBuilder(column: $table.entity, builder: (column) => column);
+
+  GeneratedColumn<String> get recordId =>
+      $composableBuilder(column: $table.recordId, builder: (column) => column);
+}
+
+class $$TaggingsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $TaggingsTable,
+          TaggingRow,
+          $$TaggingsTableFilterComposer,
+          $$TaggingsTableOrderingComposer,
+          $$TaggingsTableAnnotationComposer,
+          $$TaggingsTableCreateCompanionBuilder,
+          $$TaggingsTableUpdateCompanionBuilder,
+          (
+            TaggingRow,
+            BaseReferences<_$AppDatabase, $TaggingsTable, TaggingRow>,
+          ),
+          TaggingRow,
+          PrefetchHooks Function()
+        > {
+  $$TaggingsTableTableManager(_$AppDatabase db, $TaggingsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$TaggingsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$TaggingsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$TaggingsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> version = const Value.absent(),
+                Value<String> fieldMeta = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String?> updatedBy = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                Value<String> id = const Value.absent(),
+                Value<String> tagId = const Value.absent(),
+                Value<String> entity = const Value.absent(),
+                Value<String> recordId = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => TaggingsCompanion(
+                version: version,
+                fieldMeta: fieldMeta,
+                createdAt: createdAt,
+                createdBy: createdBy,
+                updatedAt: updatedAt,
+                updatedBy: updatedBy,
+                deletedAt: deletedAt,
+                id: id,
+                tagId: tagId,
+                entity: entity,
+                recordId: recordId,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> version = const Value.absent(),
+                Value<String> fieldMeta = const Value.absent(),
+                required DateTime createdAt,
+                Value<String?> createdBy = const Value.absent(),
+                required DateTime updatedAt,
+                Value<String?> updatedBy = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                required String id,
+                required String tagId,
+                required String entity,
+                required String recordId,
+                Value<int> rowid = const Value.absent(),
+              }) => TaggingsCompanion.insert(
+                version: version,
+                fieldMeta: fieldMeta,
+                createdAt: createdAt,
+                createdBy: createdBy,
+                updatedAt: updatedAt,
+                updatedBy: updatedBy,
+                deletedAt: deletedAt,
+                id: id,
+                tagId: tagId,
+                entity: entity,
+                recordId: recordId,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$TaggingsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $TaggingsTable,
+      TaggingRow,
+      $$TaggingsTableFilterComposer,
+      $$TaggingsTableOrderingComposer,
+      $$TaggingsTableAnnotationComposer,
+      $$TaggingsTableCreateCompanionBuilder,
+      $$TaggingsTableUpdateCompanionBuilder,
+      (TaggingRow, BaseReferences<_$AppDatabase, $TaggingsTable, TaggingRow>),
+      TaggingRow,
+      PrefetchHooks Function()
+    >;
+typedef $$CustomFieldsTableCreateCompanionBuilder =
+    CustomFieldsCompanion Function({
+      Value<int> version,
+      Value<String> fieldMeta,
+      required DateTime createdAt,
+      Value<String?> createdBy,
+      required DateTime updatedAt,
+      Value<String?> updatedBy,
+      Value<DateTime?> deletedAt,
+      required String id,
+      required String entity,
+      required String key,
+      required String label,
+      required String type,
+      Value<String?> options,
+      Value<double?> sortOrder,
+      Value<int> rowid,
+    });
+typedef $$CustomFieldsTableUpdateCompanionBuilder =
+    CustomFieldsCompanion Function({
+      Value<int> version,
+      Value<String> fieldMeta,
+      Value<DateTime> createdAt,
+      Value<String?> createdBy,
+      Value<DateTime> updatedAt,
+      Value<String?> updatedBy,
+      Value<DateTime?> deletedAt,
+      Value<String> id,
+      Value<String> entity,
+      Value<String> key,
+      Value<String> label,
+      Value<String> type,
+      Value<String?> options,
+      Value<double?> sortOrder,
+      Value<int> rowid,
+    });
+
+class $$CustomFieldsTableFilterComposer
+    extends Composer<_$AppDatabase, $CustomFieldsTable> {
+  $$CustomFieldsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get version => $composableBuilder(
+    column: $table.version,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get fieldMeta => $composableBuilder(
+    column: $table.fieldMeta,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedBy => $composableBuilder(
+    column: $table.updatedBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get entity => $composableBuilder(
+    column: $table.entity,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get key => $composableBuilder(
+    column: $table.key,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get label => $composableBuilder(
+    column: $table.label,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get type => $composableBuilder(
+    column: $table.type,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get options => $composableBuilder(
+    column: $table.options,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get sortOrder => $composableBuilder(
+    column: $table.sortOrder,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$CustomFieldsTableOrderingComposer
+    extends Composer<_$AppDatabase, $CustomFieldsTable> {
+  $$CustomFieldsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get version => $composableBuilder(
+    column: $table.version,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get fieldMeta => $composableBuilder(
+    column: $table.fieldMeta,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedBy => $composableBuilder(
+    column: $table.updatedBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get entity => $composableBuilder(
+    column: $table.entity,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get key => $composableBuilder(
+    column: $table.key,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get label => $composableBuilder(
+    column: $table.label,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get type => $composableBuilder(
+    column: $table.type,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get options => $composableBuilder(
+    column: $table.options,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get sortOrder => $composableBuilder(
+    column: $table.sortOrder,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$CustomFieldsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $CustomFieldsTable> {
+  $$CustomFieldsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get version =>
+      $composableBuilder(column: $table.version, builder: (column) => column);
+
+  GeneratedColumn<String> get fieldMeta =>
+      $composableBuilder(column: $table.fieldMeta, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedBy =>
+      $composableBuilder(column: $table.updatedBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get deletedAt =>
+      $composableBuilder(column: $table.deletedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get entity =>
+      $composableBuilder(column: $table.entity, builder: (column) => column);
+
+  GeneratedColumn<String> get key =>
+      $composableBuilder(column: $table.key, builder: (column) => column);
+
+  GeneratedColumn<String> get label =>
+      $composableBuilder(column: $table.label, builder: (column) => column);
+
+  GeneratedColumn<String> get type =>
+      $composableBuilder(column: $table.type, builder: (column) => column);
+
+  GeneratedColumn<String> get options =>
+      $composableBuilder(column: $table.options, builder: (column) => column);
+
+  GeneratedColumn<double> get sortOrder =>
+      $composableBuilder(column: $table.sortOrder, builder: (column) => column);
+}
+
+class $$CustomFieldsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $CustomFieldsTable,
+          CustomFieldRow,
+          $$CustomFieldsTableFilterComposer,
+          $$CustomFieldsTableOrderingComposer,
+          $$CustomFieldsTableAnnotationComposer,
+          $$CustomFieldsTableCreateCompanionBuilder,
+          $$CustomFieldsTableUpdateCompanionBuilder,
+          (
+            CustomFieldRow,
+            BaseReferences<_$AppDatabase, $CustomFieldsTable, CustomFieldRow>,
+          ),
+          CustomFieldRow,
+          PrefetchHooks Function()
+        > {
+  $$CustomFieldsTableTableManager(_$AppDatabase db, $CustomFieldsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$CustomFieldsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$CustomFieldsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$CustomFieldsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> version = const Value.absent(),
+                Value<String> fieldMeta = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String?> updatedBy = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                Value<String> id = const Value.absent(),
+                Value<String> entity = const Value.absent(),
+                Value<String> key = const Value.absent(),
+                Value<String> label = const Value.absent(),
+                Value<String> type = const Value.absent(),
+                Value<String?> options = const Value.absent(),
+                Value<double?> sortOrder = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => CustomFieldsCompanion(
+                version: version,
+                fieldMeta: fieldMeta,
+                createdAt: createdAt,
+                createdBy: createdBy,
+                updatedAt: updatedAt,
+                updatedBy: updatedBy,
+                deletedAt: deletedAt,
+                id: id,
+                entity: entity,
+                key: key,
+                label: label,
+                type: type,
+                options: options,
+                sortOrder: sortOrder,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> version = const Value.absent(),
+                Value<String> fieldMeta = const Value.absent(),
+                required DateTime createdAt,
+                Value<String?> createdBy = const Value.absent(),
+                required DateTime updatedAt,
+                Value<String?> updatedBy = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                required String id,
+                required String entity,
+                required String key,
+                required String label,
+                required String type,
+                Value<String?> options = const Value.absent(),
+                Value<double?> sortOrder = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => CustomFieldsCompanion.insert(
+                version: version,
+                fieldMeta: fieldMeta,
+                createdAt: createdAt,
+                createdBy: createdBy,
+                updatedAt: updatedAt,
+                updatedBy: updatedBy,
+                deletedAt: deletedAt,
+                id: id,
+                entity: entity,
+                key: key,
+                label: label,
+                type: type,
+                options: options,
+                sortOrder: sortOrder,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$CustomFieldsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $CustomFieldsTable,
+      CustomFieldRow,
+      $$CustomFieldsTableFilterComposer,
+      $$CustomFieldsTableOrderingComposer,
+      $$CustomFieldsTableAnnotationComposer,
+      $$CustomFieldsTableCreateCompanionBuilder,
+      $$CustomFieldsTableUpdateCompanionBuilder,
+      (
+        CustomFieldRow,
+        BaseReferences<_$AppDatabase, $CustomFieldsTable, CustomFieldRow>,
+      ),
+      CustomFieldRow,
+      PrefetchHooks Function()
+    >;
+typedef $$SegmentsTableCreateCompanionBuilder =
+    SegmentsCompanion Function({
+      Value<int> version,
+      Value<String> fieldMeta,
+      required DateTime createdAt,
+      Value<String?> createdBy,
+      required DateTime updatedAt,
+      Value<String?> updatedBy,
+      Value<DateTime?> deletedAt,
+      required String id,
+      required String name,
+      required String entity,
+      Value<String?> description,
+      required String config,
+      Value<int> rowid,
+    });
+typedef $$SegmentsTableUpdateCompanionBuilder =
+    SegmentsCompanion Function({
+      Value<int> version,
+      Value<String> fieldMeta,
+      Value<DateTime> createdAt,
+      Value<String?> createdBy,
+      Value<DateTime> updatedAt,
+      Value<String?> updatedBy,
+      Value<DateTime?> deletedAt,
+      Value<String> id,
+      Value<String> name,
+      Value<String> entity,
+      Value<String?> description,
+      Value<String> config,
+      Value<int> rowid,
+    });
+
+class $$SegmentsTableFilterComposer
+    extends Composer<_$AppDatabase, $SegmentsTable> {
+  $$SegmentsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get version => $composableBuilder(
+    column: $table.version,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get fieldMeta => $composableBuilder(
+    column: $table.fieldMeta,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedBy => $composableBuilder(
+    column: $table.updatedBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get entity => $composableBuilder(
+    column: $table.entity,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get description => $composableBuilder(
+    column: $table.description,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get config => $composableBuilder(
+    column: $table.config,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$SegmentsTableOrderingComposer
+    extends Composer<_$AppDatabase, $SegmentsTable> {
+  $$SegmentsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get version => $composableBuilder(
+    column: $table.version,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get fieldMeta => $composableBuilder(
+    column: $table.fieldMeta,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedBy => $composableBuilder(
+    column: $table.updatedBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get entity => $composableBuilder(
+    column: $table.entity,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get description => $composableBuilder(
+    column: $table.description,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get config => $composableBuilder(
+    column: $table.config,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$SegmentsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $SegmentsTable> {
+  $$SegmentsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get version =>
+      $composableBuilder(column: $table.version, builder: (column) => column);
+
+  GeneratedColumn<String> get fieldMeta =>
+      $composableBuilder(column: $table.fieldMeta, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedBy =>
+      $composableBuilder(column: $table.updatedBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get deletedAt =>
+      $composableBuilder(column: $table.deletedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+
+  GeneratedColumn<String> get entity =>
+      $composableBuilder(column: $table.entity, builder: (column) => column);
+
+  GeneratedColumn<String> get description => $composableBuilder(
+    column: $table.description,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get config =>
+      $composableBuilder(column: $table.config, builder: (column) => column);
+}
+
+class $$SegmentsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $SegmentsTable,
+          SegmentRow,
+          $$SegmentsTableFilterComposer,
+          $$SegmentsTableOrderingComposer,
+          $$SegmentsTableAnnotationComposer,
+          $$SegmentsTableCreateCompanionBuilder,
+          $$SegmentsTableUpdateCompanionBuilder,
+          (
+            SegmentRow,
+            BaseReferences<_$AppDatabase, $SegmentsTable, SegmentRow>,
+          ),
+          SegmentRow,
+          PrefetchHooks Function()
+        > {
+  $$SegmentsTableTableManager(_$AppDatabase db, $SegmentsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$SegmentsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$SegmentsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$SegmentsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> version = const Value.absent(),
+                Value<String> fieldMeta = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String?> updatedBy = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                Value<String> id = const Value.absent(),
+                Value<String> name = const Value.absent(),
+                Value<String> entity = const Value.absent(),
+                Value<String?> description = const Value.absent(),
+                Value<String> config = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => SegmentsCompanion(
+                version: version,
+                fieldMeta: fieldMeta,
+                createdAt: createdAt,
+                createdBy: createdBy,
+                updatedAt: updatedAt,
+                updatedBy: updatedBy,
+                deletedAt: deletedAt,
+                id: id,
+                name: name,
+                entity: entity,
+                description: description,
+                config: config,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> version = const Value.absent(),
+                Value<String> fieldMeta = const Value.absent(),
+                required DateTime createdAt,
+                Value<String?> createdBy = const Value.absent(),
+                required DateTime updatedAt,
+                Value<String?> updatedBy = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                required String id,
+                required String name,
+                required String entity,
+                Value<String?> description = const Value.absent(),
+                required String config,
+                Value<int> rowid = const Value.absent(),
+              }) => SegmentsCompanion.insert(
+                version: version,
+                fieldMeta: fieldMeta,
+                createdAt: createdAt,
+                createdBy: createdBy,
+                updatedAt: updatedAt,
+                updatedBy: updatedBy,
+                deletedAt: deletedAt,
+                id: id,
+                name: name,
+                entity: entity,
+                description: description,
+                config: config,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$SegmentsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $SegmentsTable,
+      SegmentRow,
+      $$SegmentsTableFilterComposer,
+      $$SegmentsTableOrderingComposer,
+      $$SegmentsTableAnnotationComposer,
+      $$SegmentsTableCreateCompanionBuilder,
+      $$SegmentsTableUpdateCompanionBuilder,
+      (SegmentRow, BaseReferences<_$AppDatabase, $SegmentsTable, SegmentRow>),
+      SegmentRow,
       PrefetchHooks Function()
     >;
 typedef $$OutboxTableCreateCompanionBuilder =
@@ -2898,6 +18960,28 @@ class $AppDatabaseManager {
   final _$AppDatabase _db;
   $AppDatabaseManager(this._db);
   $$TagsTableTableManager get tags => $$TagsTableTableManager(_db, _db.tags);
+  $$OrganisationsTableTableManager get organisations =>
+      $$OrganisationsTableTableManager(_db, _db.organisations);
+  $$ContactsTableTableManager get contacts =>
+      $$ContactsTableTableManager(_db, _db.contacts);
+  $$PositionsTableTableManager get positions =>
+      $$PositionsTableTableManager(_db, _db.positions);
+  $$PipelinesTableTableManager get pipelines =>
+      $$PipelinesTableTableManager(_db, _db.pipelines);
+  $$PipelineStagesTableTableManager get pipelineStages =>
+      $$PipelineStagesTableTableManager(_db, _db.pipelineStages);
+  $$DealsTableTableManager get deals =>
+      $$DealsTableTableManager(_db, _db.deals);
+  $$ActivitiesTableTableManager get activities =>
+      $$ActivitiesTableTableManager(_db, _db.activities);
+  $$AttachmentsTableTableManager get attachments =>
+      $$AttachmentsTableTableManager(_db, _db.attachments);
+  $$TaggingsTableTableManager get taggings =>
+      $$TaggingsTableTableManager(_db, _db.taggings);
+  $$CustomFieldsTableTableManager get customFields =>
+      $$CustomFieldsTableTableManager(_db, _db.customFields);
+  $$SegmentsTableTableManager get segments =>
+      $$SegmentsTableTableManager(_db, _db.segments);
   $$OutboxTableTableManager get outbox =>
       $$OutboxTableTableManager(_db, _db.outbox);
   $$SyncErrorsTableTableManager get syncErrors =>

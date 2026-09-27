@@ -28,6 +28,224 @@ class Tags extends Table {
   Set<Column<Object>> get primaryKey => {id};
 }
 
+/// Colonnes techniques des entités synchronisées (hors `id`).
+mixin SyncedColumns on Table {
+  IntColumn get version => integer().withDefault(const Constant(0))();
+  TextColumn get fieldMeta => text().withDefault(const Constant('{}'))();
+  DateTimeColumn get createdAt => dateTime()();
+  TextColumn get createdBy => text().nullable()();
+  DateTimeColumn get updatedAt => dateTime()();
+  TextColumn get updatedBy => text().nullable()();
+  DateTimeColumn get deletedAt => dateTime().nullable()();
+}
+
+/// Traçabilité des données importées (RGPD).
+mixin ProvenanceColumns on Table {
+  TextColumn get source => text().nullable()();
+  TextColumn get sourceRef => text().nullable()();
+  DateTimeColumn get collectedAt => dateTime().nullable()();
+}
+
+// Les dates calendaires (`AAAA-MM-JJ`) sont stockées en texte et les
+// champs JSON en texte JSON.
+
+@DataClassName('OrganisationRow')
+@TableIndex(name: 'organisations_parent', columns: {#parentId})
+class Organisations extends Table with SyncedColumns, ProvenanceColumns {
+  TextColumn get id => text()();
+  TextColumn get name => text()();
+  TextColumn get kind => text()();
+  TextColumn get status => text()();
+  TextColumn get siren => text().nullable()();
+  TextColumn get siret => text().nullable()();
+  TextColumn get inseeCode => text().nullable()();
+  IntColumn get population => integer().nullable()();
+  TextColumn get parentId => text().nullable()();
+  TextColumn get departementCode => text().nullable()();
+  TextColumn get regionCode => text().nullable()();
+  TextColumn get address => text().nullable()();
+  TextColumn get postalCode => text().nullable()();
+  TextColumn get city => text().nullable()();
+  RealColumn get latitude => real().nullable()();
+  RealColumn get longitude => real().nullable()();
+  TextColumn get phone => text().nullable()();
+  TextColumn get email => text().nullable()();
+  TextColumn get website => text().nullable()();
+  TextColumn get description => text().nullable()();
+  TextColumn get ownerId => text().nullable()();
+  TextColumn get customFields => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+@DataClassName('ContactRow')
+@TableIndex(name: 'contacts_organisation', columns: {#organisationId})
+class Contacts extends Table with SyncedColumns, ProvenanceColumns {
+  TextColumn get id => text()();
+  TextColumn get civility => text().nullable()();
+  TextColumn get firstName => text().nullable()();
+  TextColumn get lastName => text()();
+  TextColumn get email => text().nullable()();
+  TextColumn get phone => text().nullable()();
+  TextColumn get mobile => text().nullable()();
+  TextColumn get organisationId => text().nullable()();
+  TextColumn get jobTitle => text().nullable()();
+  TextColumn get service => text().nullable()();
+  TextColumn get notes => text().nullable()();
+  BoolColumn get doNotContact => boolean().nullable()();
+  TextColumn get ownerId => text().nullable()();
+  TextColumn get customFields => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+@DataClassName('PositionRow')
+@TableIndex(name: 'positions_contact', columns: {#contactId})
+@TableIndex(name: 'positions_organisation', columns: {#organisationId})
+class Positions extends Table with SyncedColumns, ProvenanceColumns {
+  TextColumn get id => text()();
+  TextColumn get contactId => text()();
+  TextColumn get organisationId => text()();
+  TextColumn get jobTitle => text().nullable()();
+  TextColumn get service => text().nullable()();
+  BoolColumn get isElected => boolean()();
+  TextColumn get mandateRole => text().nullable()();
+  TextColumn get delegation => text().nullable()();
+  TextColumn get startDate => text().nullable()();
+  TextColumn get endDate => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+@DataClassName('PipelineRow')
+class Pipelines extends Table with SyncedColumns {
+  TextColumn get id => text()();
+  TextColumn get name => text()();
+  TextColumn get kind => text()();
+  RealColumn get sortOrder => real().nullable()();
+  BoolColumn get archived => boolean().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+@DataClassName('StageRow')
+class PipelineStages extends Table with SyncedColumns {
+  TextColumn get id => text()();
+  TextColumn get pipelineId => text()();
+  TextColumn get name => text()();
+  RealColumn get sortOrder => real().nullable()();
+  IntColumn get probability => integer().nullable()();
+  TextColumn get color => text().nullable()();
+  TextColumn get outcome => text()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+@DataClassName('DealRow')
+@TableIndex(name: 'deals_organisation', columns: {#organisationId})
+class Deals extends Table with SyncedColumns {
+  TextColumn get id => text()();
+  TextColumn get title => text()();
+  TextColumn get pipelineId => text()();
+  TextColumn get stageId => text()();
+  TextColumn get organisationId => text().nullable()();
+  TextColumn get contactId => text().nullable()();
+  IntColumn get amountCents => integer().nullable()();
+  IntColumn get probability => integer().nullable()();
+  TextColumn get expectedCloseDate => text().nullable()();
+  TextColumn get status => text()();
+  DateTimeColumn get closedAt => dateTime().nullable()();
+  RealColumn get sortOrder => real().nullable()();
+  TextColumn get ownerId => text().nullable()();
+  TextColumn get description => text().nullable()();
+  TextColumn get customFields => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+@DataClassName('ActivityRow')
+@TableIndex(name: 'activities_organisation', columns: {#organisationId})
+@TableIndex(name: 'activities_contact', columns: {#contactId})
+class Activities extends Table with SyncedColumns {
+  TextColumn get id => text()();
+  TextColumn get kind => text()();
+  TextColumn get subject => text()();
+  TextColumn get body => text().nullable()();
+  TextColumn get organisationId => text().nullable()();
+  TextColumn get contactId => text().nullable()();
+  TextColumn get dealId => text().nullable()();
+  DateTimeColumn get startsAt => dateTime().nullable()();
+  DateTimeColumn get endsAt => dateTime().nullable()();
+  DateTimeColumn get dueAt => dateTime().nullable()();
+  DateTimeColumn get remindAt => dateTime().nullable()();
+  DateTimeColumn get doneAt => dateTime().nullable()();
+  TextColumn get assigneeId => text().nullable()();
+  TextColumn get ownerId => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+@DataClassName('AttachmentRow')
+class Attachments extends Table with SyncedColumns {
+  TextColumn get id => text()();
+  TextColumn get fileId => text()();
+  TextColumn get fileName => text()();
+  IntColumn get size => integer()();
+  TextColumn get mimeType => text().nullable()();
+  TextColumn get organisationId => text().nullable()();
+  TextColumn get contactId => text().nullable()();
+  TextColumn get dealId => text().nullable()();
+  TextColumn get activityId => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+@DataClassName('TaggingRow')
+@TableIndex(name: 'taggings_record', columns: {#recordId})
+class Taggings extends Table with SyncedColumns {
+  TextColumn get id => text()();
+  TextColumn get tagId => text()();
+  TextColumn get entity => text()();
+  TextColumn get recordId => text()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+@DataClassName('CustomFieldRow')
+class CustomFields extends Table with SyncedColumns {
+  TextColumn get id => text()();
+  TextColumn get entity => text()();
+  TextColumn get key => text()();
+  TextColumn get label => text()();
+  TextColumn get type => text()();
+  TextColumn get options => text().nullable()();
+  RealColumn get sortOrder => real().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+@DataClassName('SegmentRow')
+class Segments extends Table with SyncedColumns {
+  TextColumn get id => text()();
+  TextColumn get name => text()();
+  TextColumn get entity => text()();
+  TextColumn get description => text().nullable()();
+  TextColumn get config => text()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
 // ── Infrastructure de synchronisation ───────────────────────────────────
 
 /// Opérations locales en attente d'envoi au serveur (dans l'ordre).
@@ -69,7 +287,25 @@ class KeyValues extends Table {
   Set<Column<Object>> get primaryKey => {key};
 }
 
-@DriftDatabase(tables: [Tags, Outbox, SyncErrors, KeyValues])
+@DriftDatabase(
+  tables: [
+    Tags,
+    Organisations,
+    Contacts,
+    Positions,
+    Pipelines,
+    PipelineStages,
+    Deals,
+    Activities,
+    Attachments,
+    Taggings,
+    CustomFields,
+    Segments,
+    Outbox,
+    SyncErrors,
+    KeyValues,
+  ],
+)
 class AppDatabase extends _$AppDatabase {
   AppDatabase(super.executor);
 
@@ -95,11 +331,40 @@ class AppDatabase extends _$AppDatabase {
   }
 
   @override
-  int get schemaVersion => 1;
+  int get schemaVersion => 2;
+
+  /// Tables des entités synchronisées (même nom que l'entité).
+  List<TableInfo<Table, Object?>> get syncedTables => [
+    tags,
+    organisations,
+    contacts,
+    positions,
+    pipelines,
+    pipelineStages,
+    deals,
+    activities,
+    attachments,
+    taggings,
+    customFields,
+    segments,
+  ];
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
     onCreate: (m) => m.createAll(),
+    onUpgrade: (m, from, to) async {
+      if (from < 2) {
+        // Phase 2 : entités du CRM. Le curseur est remis à zéro pour
+        // recevoir les enregistrements déjà présents sur le serveur.
+        for (final table in syncedTables.skip(1)) {
+          await m.createTable(table);
+        }
+        for (final index in allSchemaEntities.whereType<Index>()) {
+          await m.createIndex(index);
+        }
+        await deleteSetting(SettingKeys.syncCursor);
+      }
+    },
     beforeOpen: (details) async {
       // Vérifie que la clé est correcte (lecture effective de la base).
       await customSelect('SELECT count(*) FROM sqlite_master').get();
@@ -174,7 +439,9 @@ class AppDatabase extends _$AppDatabase {
 
   /// Efface toutes les données synchronisées (changement d'utilisateur).
   Future<void> wipeSyncedData() => transaction(() async {
-    await delete(tags).go();
+    for (final table in syncedTables) {
+      await delete(table).go();
+    }
     await delete(outbox).go();
     await delete(syncErrors).go();
     await deleteSetting(SettingKeys.syncCursor);
