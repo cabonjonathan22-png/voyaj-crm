@@ -7,10 +7,11 @@ collectivités (mairies, EPCI, départements, régions, AOM), festivals et parte
   **hors ligne** et se synchronise avec le serveur.
 - **Serveur** : Dart (shelf) + PostgreSQL, sur un PC Windows (service) ou dans le cloud (Docker).
 
-> État : **Phases 1 à 3 terminées** : socle, CRM cœur (organisations, contacts, élus, pipelines
+> État : **Phases 1 à 4 terminées** : socle, CRM cœur (organisations, contacts, élus, pipelines
 > Kanban, activités et tâches, fichiers joints, tags, champs personnalisés, segments, recherche
 > globale, carte, import CSV, doublons) et **données publiques** (régions, départements, EPCI,
-> communes, AOM, festivals, mise à jour chaque nuit). Voir [docs/ROADMAP.md](docs/ROADMAP.md).
+> communes, AOM, festivals, mise à jour chaque nuit) et **emails** (IMAP/SMTP, Gmail et
+> Microsoft 365, modèles, séquences). Voir [docs/ROADMAP.md](docs/ROADMAP.md).
 
 ## Distribuer le client aux utilisateurs
 

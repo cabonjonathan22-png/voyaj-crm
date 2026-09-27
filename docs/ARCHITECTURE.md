@@ -151,6 +151,9 @@ curseur, HLC, poste, vues de tableaux, onglets de travail).
 | GET/POST/PUT/DELETE | `/api/v1/roles`, `/roles/{id}` | rôles |
 | POST / GET | `/api/v1/sync/push`, `/sync/pull?cursor=` | synchronisation |
 | POST / GET | `/api/v1/files`, `/files/{sha256}` | fichiers joints (25 Mo max, corps brut) |
+| GET / POST / DELETE | `/api/v1/email/providers`, `/email/accounts`, `/email/accounts/{id}`, `/email/accounts/{id}/sync` | comptes email de l'utilisateur |
+| GET | `/api/v1/email/oauth/{provider}/start`, `/email/oauth/callback` | connexion Gmail / Microsoft (retour navigateur, page HTML) |
+| GET / POST | `/api/v1/email/messages?account=&contact=&before=`, `/email/messages/{id}`, `/email/send` | boîte de réception, lecture, envoi |
 | GET / PUT / POST | `/api/v1/public-data`, `/public-data/{source}`, `/public-data/{source}/run`, `/public-data/runs` | données publiques : état, configuration, lancement (202, en arrière-plan), historique |
 | GET / POST | `/api/v1/sync/conflicts`, `/sync/conflicts/{id}/review` | conflits |
 | GET | `/api/v1/audit?limit=&before=` | journal d'audit |
@@ -210,3 +213,18 @@ flowchart LR
 - Mise à jour : seuls les champs modifiés dans la source et **non modifiés par un utilisateur**
   (`field_meta` : dernière écriture sans utilisateur) sont écrits ; `collected_at` est actualisé.
 - Création : statut « À prospecter ». Les fiches supprimées ne sont pas recréées.
+
+## Emails (Phase 4)
+
+| Table (migration 0004) | Contenu |
+|---|---|
+| `email_accounts` | comptes des utilisateurs : fournisseur (IMAP, Google, Microsoft), serveurs, identifiant, secret **chiffré** (mot de passe ou jeton de rafraîchissement), jeton d'accès chiffré en cache, curseur IMAP (`uid_validity`, `last_uid`), dernière erreur |
+| `email_messages` | messages relevés ou envoyés (privés) : adresses, objet, texte, contact et organisation reconnus, activité créée |
+| `oauth_states` | états OAuth en attente (15 min, usage unique) |
+| `email_templates`, `email_sequences`, `sequence_enrollments` | entités synchronisées : modèles (variables `{{contact.last_name}}`…), séquences (étapes délai + modèle), inscriptions (étape, prochain envoi, état) |
+
+- Tâche toutes les 5 minutes : relève de tous les comptes actifs, puis envoi des étapes de
+  séquence échues.
+- Un email reçu d'un contact (ou envoyé à un contact) crée une activité « Email » (écriture
+  serveur `SyncService.writeSystem`, attribuée au propriétaire du compte) et arrête ses séquences
+  en cours s'il s'agit d'une réponse.

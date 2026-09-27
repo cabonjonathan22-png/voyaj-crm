@@ -7,7 +7,7 @@
 | 1 — Socle | Monorepo, serveur + PostgreSQL, auth (rôles, 2FA, sessions), design system, shell, Ctrl+K, base locale chiffrée, synchro hors ligne (tags), service Windows, Docker, **installeur client** | ✅ Terminée |
 | 2 — CRM cœur | Organisations, contacts, élus, pipelines Kanban, activités, tâches, tags appliqués, champs personnalisés, segments, recherche globale, carte, import CSV, doublons, **fichiers joints**, **onglets de travail** | ✅ Terminée |
 | 3 — Données publiques | `packages/fr_public_data`, import des collectivités (régions, départements, EPCI, communes), festivals, AOM, mises à jour planifiées | ✅ Terminée (à valider sur les API réelles, voir ci-dessous) |
-| 4 — Emails | IMAP/SMTP, OAuth Gmail/Microsoft, boîte de réception, modèles, séquences | À venir |
+| 4 — Emails | IMAP/SMTP, OAuth Gmail/Microsoft, boîte de réception, modèles, séquences | ✅ Terminée (OAuth à configurer, voir ci-dessous) |
 | 5 — Facturation & compta | Devis/factures/avoirs, Factur-X, PA + Chorus Pro, FEC, TVA — **validation expert-comptable** | À venir |
 | 6 — Connecteurs | Supabase, Firebase, MySQL, MongoDB, REST, webhooks, éditeur de mapping | À venir |
 | 7 — Avancé | Tableaux de bord, BOAMP, agenda, signature, IA, API publique, sauvegardes, RGPD | À venir |
@@ -59,6 +59,21 @@
 - Un seul serveur exécute les imports (file en mémoire) ; plusieurs instances nécessiteraient un
   verrou en base.
 
+### Emails (Phase 4)
+- **À configurer / valider** : applications OAuth Google et Microsoft (identifiants dans la
+  configuration du serveur, `VOYAJ_PUBLIC_URL` joignable par le navigateur). Google : l'accès
+  « https://mail.google.com/ » est une portée restreinte — application « interne » (Google
+  Workspace) ou validation Google requise pour des comptes externes. Les échanges IMAP / SMTP
+  réels n'ont pas pu être testés dans l'environnement de développement (serveur de messagerie
+  simulé dans les tests).
+- Pièces jointes des emails : non relevées ni envoyées (texte seulement) ; corps HTML converti en
+  texte.
+- Dossier « Envoyés » du fournisseur : les emails envoyés depuis Voyaj n'y sont pas copiés
+  (Gmail et Microsoft le font automatiquement via SMTP authentifié ; pas les autres).
+- Relève limitée à la boîte de réception (pas les autres dossiers), 200 messages par passage,
+  30 jours d'historique au premier passage.
+- Désinscription (lien « se désabonner ») des séquences : à ajouter avant tout envoi en masse.
+
 ### Serveur
 - Limiteur de tentatives en mémoire : à déplacer en base (ou Redis) si plusieurs instances.
 - Purge planifiée des sessions expirées, rétention de `change_log` et `sync_ops`.
@@ -103,3 +118,15 @@
 | Périmètre par **départements** (communes : 35 000 fiches sinon) | Volume adapté aux postes et à la carte. |
 | Hiérarchie par `parent_id` : commune → EPCI → département → région | Réutilise le rattachement des organisations (fiche « Rattachement »). |
 | Carte : regroupement des marqueurs par grille au-delà de 300 points | Lisible et fluide avec des milliers de communes, sans dépendance supplémentaire. |
+
+## Décisions (Phase 4)
+
+| Décision | Raison |
+|---|---|
+| Comptes et relève **côté serveur** (secrets chiffrés par la clé maître) | Les postes n'ont aucun mot de passe de messagerie ; relève et séquences fonctionnent même postes éteints. |
+| Messages **privés** (propriétaire du compte), en ligne ; seuls les échanges avec un **contact du CRM** deviennent des activités synchronisées | Respect de la vie privée et du RGPD ; l'historique commercial reste partagé. |
+| Contact reconnu par l'adresse email (expéditeur ou premier destinataire) | Simple et fiable ; les autres messages ne sont pas journalisés. |
+| Modèles, séquences et inscriptions = entités synchronisées ; **envois par le serveur** (toutes les 5 min) depuis le compte de la personne qui inscrit | Préparation hors ligne, envoi fiable, un seul expéditeur visible pour le contact. |
+| Séquence arrêtée dès qu'un email du contact est reçu ; contact « ne pas contacter » ou sans email → arrêt avec motif | Évite les relances malvenues. |
+| OAuth (flux « code » avec retour sur le serveur) + XOAUTH2 en IMAP/SMTP ; jeton de rafraîchissement chiffré, jeton d'accès mis en cache | Pas de mot de passe stocké pour Gmail / Microsoft 365. |
+| `enough_mail` (Dart pur) pour IMAP, SMTP et MIME | Aucune dépendance native, fonctionne sous Windows et Linux. |
