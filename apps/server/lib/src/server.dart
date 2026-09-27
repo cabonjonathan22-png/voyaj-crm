@@ -9,6 +9,7 @@ import 'auth/users_service.dart';
 import 'config.dart';
 import 'db/database.dart';
 import 'db/migrations.dart';
+import 'files/file_store.dart';
 import 'http/api.dart';
 import 'realtime/realtime_hub.dart';
 import 'security/passwords.dart';
@@ -19,7 +20,7 @@ final _log = Logger('server');
 
 /// Services du serveur, reliés entre eux.
 final class Services {
-  Services._(this.db, this.auth, this.users, this.sync, this.hub);
+  Services._(this.db, this.auth, this.users, this.sync, this.hub, this.files);
 
   factory Services.create(ServerConfig config, Database db) {
     final hasher = PasswordHasher(
@@ -42,7 +43,14 @@ final class Services {
     );
     auth.onSessionsRevoked = hub.revokeSessions;
     users.onSessionsRevoked = hub.revokeSessions;
-    return Services._(db, auth, users, sync, hub);
+    return Services._(
+      db,
+      auth,
+      users,
+      sync,
+      hub,
+      FileStore(db: db, dataDir: config.dataDir),
+    );
   }
 
   final Database db;
@@ -50,6 +58,7 @@ final class Services {
   final UsersService users;
   final SyncService sync;
   final RealtimeHub hub;
+  final FileStore files;
 }
 
 /// Serveur HTTP en cours d'exécution.
@@ -78,6 +87,7 @@ final class VoyajServer {
       users: services.users,
       sync: services.sync,
       hub: services.hub,
+      files: services.files,
       trustProxy: config.trustProxy,
       hsts: config.tlsEnabled || config.trustProxy,
     );

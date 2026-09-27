@@ -9,13 +9,15 @@ COPY . .
 # (le SDK Dart seul ne sait pas résoudre les dépendances Flutter).
 RUN sed -i '/- apps\/client/d' pubspec.yaml \
  && dart pub get \
- && mkdir -p /out \
+ && mkdir -p /out /out/data \
  && dart compile exe apps/server/bin/voyaj_server.dart -o /out/voyaj_server
 
 FROM scratch
 # Bibliothèques système minimales et certificats racine fournis par l'image Dart.
 COPY --from=build /runtime/ /
 COPY --from=build /out/voyaj_server /app/voyaj_server
+# Dossier des fichiers joints (volume) appartenant à l'utilisateur du serveur.
+COPY --from=build --chown=10001:10001 /out/data /data
 WORKDIR /app
 USER 10001:10001
 EXPOSE 8080

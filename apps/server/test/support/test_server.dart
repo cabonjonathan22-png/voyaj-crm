@@ -40,6 +40,7 @@ final class TestServer {
       'VOYAJ_ARGON2_MEMORY_KIB': '1024',
       'VOYAJ_ARGON2_ITERATIONS': '1',
       'VOYAJ_AUTO_MIGRATE': 'true',
+      'VOYAJ_DATA_DIR': Directory.systemTemp.createTempSync('voyaj-data').path,
     });
     await _resetDatabase(config.database);
     final server = await VoyajServer.start(_withPort0(config));
@@ -59,6 +60,7 @@ final class TestServer {
     dbPoolSize: 4,
     argon2MemoryKib: c.argon2MemoryKib,
     argon2Iterations: c.argon2Iterations,
+    dataDir: c.dataDir,
   );
 
   static Future<void> _resetDatabase(DatabaseConfig db) async {
@@ -179,6 +181,29 @@ final class ApiClient {
     );
   }
 
+  /// Envoie un fichier brut (`POST /files`).
+  Future<ApiResponse> upload(List<int> bytes, {String? mimeType}) async {
+    final request = http.Request('POST', baseUri.resolve('/api/v1/files'))
+      ..bodyBytes = bytes;
+    if (tokens != null) {
+      request.headers['authorization'] = 'Bearer ${tokens!.accessToken}';
+    }
+    if (mimeType != null) request.headers['content-type'] = mimeType;
+    final response = await http.Response.fromStream(await request.send());
+    return ApiResponse(
+      response.statusCode,
+      response.body.isEmpty ? null : jsonDecode(response.body),
+    );
+  }
+
+  /// Télécharge un fichier (`GET /files/{id}`).
+  Future<http.Response> download(String id) => http.get(
+    baseUri.resolve('/api/v1/files/$id'),
+    headers: {
+      if (tokens != null) 'authorization': 'Bearer ${tokens!.accessToken}',
+    },
+  );
+
   // ── Synchronisation ──
 
   late final HybridClock _clock = HybridClock(deviceId);
@@ -188,9 +213,10 @@ final class ApiClient {
     Map<String, Object?> fields, {
     int baseVersion = 0,
     Hlc? hlc,
+    String entity = 'tags',
   }) => SyncOperation(
     opId: newId(),
-    entity: 'tags',
+    entity: entity,
     entityId: entityId,
     baseVersion: baseVersion,
     hlc: (hlc ?? _clock.now()).toString(),

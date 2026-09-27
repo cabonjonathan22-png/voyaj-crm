@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 import 'package:shelf_web_socket/shelf_web_socket.dart';
@@ -9,6 +11,7 @@ import '../auth/auth_service.dart';
 import '../auth/users_service.dart';
 import '../db/database.dart';
 import '../errors.dart';
+import '../files/file_store.dart';
 import '../realtime/realtime_hub.dart';
 import '../sync/sync_service.dart';
 import 'http_utils.dart';
@@ -23,6 +26,7 @@ Handler buildHandler({
   required UsersService users,
   required SyncService sync,
   required RealtimeHub hub,
+  required FileStore files,
   required bool trustProxy,
   required bool hsts,
 }) {
@@ -159,6 +163,32 @@ Handler buildHandler({
     ..post('/sync/conflicts/<id>/review', (Request r, String id) async {
       await sync.markConflictReviewed(await authed(r), id);
       return noContent();
+    })
+    // ── Fichiers joints ──
+    ..post('/files', (Request r) async {
+      final ctx = await authed(r);
+      final length = r.contentLength;
+      if (length != null && length > maxFileBytes) {
+        throw const ApiException(
+          413,
+          'payload_too_large',
+          'Fichier trop volumineux (25 Mo maximum).',
+        );
+      }
+      final stored = await files.upload(ctx, r.read(), mimeType: r.mimeType);
+      return jsonResponse({'id': stored.id, 'size': stored.size}, status: 201);
+    })
+    ..get('/files/<id>', (Request r, String id) async {
+      final found = await files.open(await authed(r), id);
+      return Response.ok(
+        found.file.openRead(),
+        headers: {
+          HttpHeaders.contentTypeHeader:
+              found.mimeType ?? 'application/octet-stream',
+          HttpHeaders.contentLengthHeader: '${found.file.lengthSync()}',
+          'content-disposition': 'attachment',
+        },
+      );
     })
     // ── Audit ──
     ..get('/audit', (Request r) async {

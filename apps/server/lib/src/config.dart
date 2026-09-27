@@ -41,6 +41,7 @@ final class ServerConfig {
     this.autoMigrate = true,
     this.argon2MemoryKib = 19456,
     this.argon2Iterations = 2,
+    this.dataDir = 'data',
   });
 
   /// Charge la configuration depuis l'environnement et les fichiers.
@@ -117,6 +118,7 @@ final class ServerConfig {
       autoMigrate: readBool('VOYAJ_AUTO_MIGRATE', fallback: true),
       argon2MemoryKib: readInt('VOYAJ_ARGON2_MEMORY_KIB', 19456),
       argon2Iterations: readInt('VOYAJ_ARGON2_ITERATIONS', 2),
+      dataDir: read('VOYAJ_DATA_DIR') ?? 'data',
     );
     config.validate();
     return config;
@@ -141,6 +143,10 @@ final class ServerConfig {
   final bool autoMigrate;
   final int argon2MemoryKib;
   final int argon2Iterations;
+
+  /// Dossier des données sur disque (fichiers joints), relatif au
+  /// répertoire de travail s'il n'est pas absolu.
+  final String dataDir;
 
   bool get tlsEnabled => tlsCertPath != null && tlsKeyPath != null;
 

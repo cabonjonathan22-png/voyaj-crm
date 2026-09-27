@@ -40,6 +40,9 @@ services:
       DATABASE_URL: postgres://voyaj:${POSTGRES_PASSWORD}@postgres:5432/voyaj
       VOYAJ_MASTER_KEY: ${VOYAJ_MASTER_KEY:?VOYAJ_MASTER_KEY manquant}
       VOYAJ_LOG_LEVEL: ${VOYAJ_LOG_LEVEL:-INFO}
+      VOYAJ_DATA_DIR: /data
+    volumes:
+      - files:/data
     expose:
       - "8080"
 
@@ -61,5 +64,6 @@ services:
 
 volumes:
   pgdata:
+  files:
   caddy_data:
   caddy_config:

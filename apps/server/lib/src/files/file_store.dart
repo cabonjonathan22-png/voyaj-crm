@@ -88,9 +88,8 @@ final class FileStore {
       throw const ApiException.notFound('Fichier introuvable.');
     }
     final row = await _db.run(
-      (s) => s.queryOne('SELECT mime_type FROM files WHERE id = @id', {
-        'id': id,
-      }),
+      (s) =>
+          s.queryOne('SELECT mime_type FROM files WHERE id = @id', {'id': id}),
     );
     final file = _fileFor(id);
     if (row == null || !file.existsSync()) {
