@@ -206,6 +206,20 @@ abstract class UpdateUserRequest with _$UpdateUserRequest {
       _$UpdateUserRequestFromJson(json);
 }
 
+/// Création (avec [key]) ou modification d'un rôle personnalisé.
+@freezed
+abstract class SaveRoleRequest with _$SaveRoleRequest {
+  const factory SaveRoleRequest({
+    String? key,
+    required String name,
+    String? description,
+    required List<String> permissions,
+  }) = _SaveRoleRequest;
+
+  factory SaveRoleRequest.fromJson(Map<String, dynamic> json) =>
+      _$SaveRoleRequestFromJson(json);
+}
+
 @freezed
 abstract class RoleInfo with _$RoleInfo {
   const factory RoleInfo({

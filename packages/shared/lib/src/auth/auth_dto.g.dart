@@ -238,6 +238,24 @@ Map<String, dynamic> _$UpdateUserRequestToJson(_UpdateUserRequest instance) =>
       'roles': instance.roles,
     };
 
+_SaveRoleRequest _$SaveRoleRequestFromJson(Map<String, dynamic> json) =>
+    _SaveRoleRequest(
+      key: json['key'] as String?,
+      name: json['name'] as String,
+      description: json['description'] as String?,
+      permissions: (json['permissions'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
+    );
+
+Map<String, dynamic> _$SaveRoleRequestToJson(_SaveRoleRequest instance) =>
+    <String, dynamic>{
+      'key': instance.key,
+      'name': instance.name,
+      'description': instance.description,
+      'permissions': instance.permissions,
+    };
+
 _RoleInfo _$RoleInfoFromJson(Map<String, dynamic> json) => _RoleInfo(
   id: json['id'] as String,
   key: json['key'] as String,

@@ -3,6 +3,7 @@
 library;
 
 export 'src/api/api_error.dart';
+export 'src/audit/audit_entry.dart';
 export 'src/auth/auth_dto.dart';
 export 'src/auth/permission.dart';
 export 'src/ids.dart';

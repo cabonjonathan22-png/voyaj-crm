@@ -1,0 +1,5 @@
+# Les tests d'intégration partagent la base de test : exécution séquentielle.
+concurrency: 1
+tags:
+  integration:
+    timeout: 2x

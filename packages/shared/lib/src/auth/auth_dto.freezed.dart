@@ -4220,6 +4220,284 @@ as List<String>?,
 
 
 /// @nodoc
+mixin _$SaveRoleRequest {
+
+ String? get key; String get name; String? get description; List<String> get permissions;
+/// Create a copy of SaveRoleRequest
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SaveRoleRequestCopyWith<SaveRoleRequest> get copyWith => _$SaveRoleRequestCopyWithImpl<SaveRoleRequest>(this as SaveRoleRequest, _$identity);
+
+  /// Serializes this SaveRoleRequest to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SaveRoleRequest&&(identical(other.key, key) || other.key == key)&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&const DeepCollectionEquality().equals(other.permissions, permissions));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,key,name,description,const DeepCollectionEquality().hash(permissions));
+
+@override
+String toString() {
+  return 'SaveRoleRequest(key: $key, name: $name, description: $description, permissions: $permissions)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $SaveRoleRequestCopyWith<$Res>  {
+  factory $SaveRoleRequestCopyWith(SaveRoleRequest value, $Res Function(SaveRoleRequest) _then) = _$SaveRoleRequestCopyWithImpl;
+@useResult
+$Res call({
+ String? key, String name, String? description, List<String> permissions
+});
+
+
+
+
+}
+/// @nodoc
+class _$SaveRoleRequestCopyWithImpl<$Res>
+    implements $SaveRoleRequestCopyWith<$Res> {
+  _$SaveRoleRequestCopyWithImpl(this._self, this._then);
+
+  final SaveRoleRequest _self;
+  final $Res Function(SaveRoleRequest) _then;
+
+/// Create a copy of SaveRoleRequest
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? key = freezed,Object? name = null,Object? description = freezed,Object? permissions = null,}) {
+  return _then(_self.copyWith(
+key: freezed == key ? _self.key : key // ignore: cast_nullable_to_non_nullable
+as String?,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String?,permissions: null == permissions ? _self.permissions : permissions // ignore: cast_nullable_to_non_nullable
+as List<String>,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [SaveRoleRequest].
+extension SaveRoleRequestPatterns on SaveRoleRequest {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _SaveRoleRequest value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _SaveRoleRequest() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _SaveRoleRequest value)  $default,){
+final _that = this;
+switch (_that) {
+case _SaveRoleRequest():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _SaveRoleRequest value)?  $default,){
+final _that = this;
+switch (_that) {
+case _SaveRoleRequest() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? key,  String name,  String? description,  List<String> permissions)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _SaveRoleRequest() when $default != null:
+return $default(_that.key,_that.name,_that.description,_that.permissions);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? key,  String name,  String? description,  List<String> permissions)  $default,) {final _that = this;
+switch (_that) {
+case _SaveRoleRequest():
+return $default(_that.key,_that.name,_that.description,_that.permissions);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? key,  String name,  String? description,  List<String> permissions)?  $default,) {final _that = this;
+switch (_that) {
+case _SaveRoleRequest() when $default != null:
+return $default(_that.key,_that.name,_that.description,_that.permissions);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _SaveRoleRequest implements SaveRoleRequest {
+  const _SaveRoleRequest({this.key, required this.name, this.description, required final  List<String> permissions}): _permissions = permissions;
+  factory _SaveRoleRequest.fromJson(Map<String, dynamic> json) => _$SaveRoleRequestFromJson(json);
+
+@override final  String? key;
+@override final  String name;
+@override final  String? description;
+ final  List<String> _permissions;
+@override List<String> get permissions {
+  if (_permissions is EqualUnmodifiableListView) return _permissions;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_permissions);
+}
+
+
+/// Create a copy of SaveRoleRequest
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SaveRoleRequestCopyWith<_SaveRoleRequest> get copyWith => __$SaveRoleRequestCopyWithImpl<_SaveRoleRequest>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$SaveRoleRequestToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SaveRoleRequest&&(identical(other.key, key) || other.key == key)&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&const DeepCollectionEquality().equals(other._permissions, _permissions));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,key,name,description,const DeepCollectionEquality().hash(_permissions));
+
+@override
+String toString() {
+  return 'SaveRoleRequest(key: $key, name: $name, description: $description, permissions: $permissions)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$SaveRoleRequestCopyWith<$Res> implements $SaveRoleRequestCopyWith<$Res> {
+  factory _$SaveRoleRequestCopyWith(_SaveRoleRequest value, $Res Function(_SaveRoleRequest) _then) = __$SaveRoleRequestCopyWithImpl;
+@override @useResult
+$Res call({
+ String? key, String name, String? description, List<String> permissions
+});
+
+
+
+
+}
+/// @nodoc
+class __$SaveRoleRequestCopyWithImpl<$Res>
+    implements _$SaveRoleRequestCopyWith<$Res> {
+  __$SaveRoleRequestCopyWithImpl(this._self, this._then);
+
+  final _SaveRoleRequest _self;
+  final $Res Function(_SaveRoleRequest) _then;
+
+/// Create a copy of SaveRoleRequest
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? key = freezed,Object? name = null,Object? description = freezed,Object? permissions = null,}) {
+  return _then(_SaveRoleRequest(
+key: freezed == key ? _self.key : key // ignore: cast_nullable_to_non_nullable
+as String?,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String?,permissions: null == permissions ? _self._permissions : permissions // ignore: cast_nullable_to_non_nullable
+as List<String>,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
 mixin _$RoleInfo {
 
  String get id; String get key; String get name; String? get description; bool get isSystem; List<String> get permissions;
