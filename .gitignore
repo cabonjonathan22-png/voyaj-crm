@@ -1,0 +1,30 @@
+# Dart / Flutter
+.dart_tool/
+.packages
+build/
+pubspec_overrides.yaml
+*.iml
+.idea/
+.flutter-plugins
+.flutter-plugins-dependencies
+coverage/
+
+# Secrets et configuration locale
+.env
+*.env.local
+config.local.yaml
+secrets/
+
+# Binaires compilés
+apps/server/dist/
+*.exe
+!deploy/windows/*.exe
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Données locales
+*.sqlite
+*.sqlite-journal
+*.db
