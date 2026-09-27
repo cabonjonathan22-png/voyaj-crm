@@ -8,7 +8,7 @@
 | 2 — CRM cœur | Organisations, contacts, élus, pipelines Kanban, activités, tâches, tags appliqués, champs personnalisés, segments, recherche globale, carte, import CSV, doublons, **fichiers joints**, **onglets de travail** | ✅ Terminée |
 | 3 — Données publiques | `packages/fr_public_data`, import des collectivités (régions, départements, EPCI, communes), festivals, AOM, mises à jour planifiées | ✅ Terminée (à valider sur les API réelles, voir ci-dessous) |
 | 4 — Emails | IMAP/SMTP, OAuth Gmail/Microsoft, boîte de réception, modèles, séquences | ✅ Terminée (OAuth à configurer, voir ci-dessous) |
-| 5 — Facturation & compta | Devis/factures/avoirs, Factur-X, PA + Chorus Pro, FEC, TVA — **validation expert-comptable** | À venir |
+| 5 — Facturation & compta | Devis/factures/avoirs, Factur-X, Chorus Pro, FEC, TVA — **validation expert-comptable** | ✅ Terminée (à valider par l'expert-comptable, voir ci-dessous) |
 | 6 — Connecteurs | Supabase, Firebase, MySQL, MongoDB, REST, webhooks, éditeur de mapping | À venir |
 | 7 — Avancé | Tableaux de bord, BOAMP, agenda, signature, IA, API publique, sauvegardes, RGPD | À venir |
 
@@ -74,6 +74,24 @@
   30 jours d'historique au premier passage.
 - Désinscription (lien « se désabonner ») des séquences : à ajouter avant tout envoi en masse.
 
+### Facturation (Phase 5)
+- **À valider par l'expert-comptable** avant la première facture réelle : mentions légales,
+  plan de comptes et journaux du FEC (ventes « VE », banque « BQ », TVA 44571x par taux), choix
+  TVA sur les débits / sur les encaissements, traitement des avoirs et des acomptes.
+- **Factur-X** : profil EN 16931 généré et PDF/A-3 embarquant `factur-x.xml` ; à passer au
+  validateur officiel (FNFE-MPE) et à tester sur la qualification Chorus Pro avant la production.
+- **Chorus Pro** : dépôt du PDF (API PISTE « déposer flux ») seulement ; le suivi du traitement
+  (consulter le compte rendu, statuts « mise à disposition », « rejetée »…) reste à ajouter
+  (`chorus_status` vaut `deposited` après dépôt).
+- **Plateformes agréées (PA / PDP)** : la réforme de la facturation électronique B2B (réception
+  obligatoire dès septembre 2026, émission 2026-2027 selon la taille) impose de passer par une
+  plateforme agréée ; le connecteur vers la plateforme choisie reste à écrire (le Factur-X produit
+  est le format d'échange).
+- Acomptes, factures multidevises, escompte, relances automatiques d'impayés, envoi du PDF par
+  email depuis la fiche : non traités.
+- Aperçu PDF d'un brouillon (avant émission) : non disponible ; seul le PDF émis est téléchargé.
+- Police du PDF : Liberation Sans intégrée (licence OFL).
+
 ### Serveur
 - Limiteur de tentatives en mémoire : à déplacer en base (ou Redis) si plusieurs instances.
 - Purge planifiée des sessions expirées, rétention de `change_log` et `sync_ops`.
@@ -130,3 +148,17 @@
 | Séquence arrêtée dès qu'un email du contact est reçu ; contact « ne pas contacter » ou sans email → arrêt avec motif | Évite les relances malvenues. |
 | OAuth (flux « code » avec retour sur le serveur) + XOAUTH2 en IMAP/SMTP ; jeton de rafraîchissement chiffré, jeton d'accès mis en cache | Pas de mot de passe stocké pour Gmail / Microsoft 365. |
 | `enough_mail` (Dart pur) pour IMAP, SMTP et MIME | Aucune dépendance native, fonctionne sous Windows et Linux. |
+
+## Décisions (Phase 5)
+
+| Décision | Raison |
+|---|---|
+| Brouillons = entités synchronisées (préparés hors ligne) ; **émission par le serveur** (`POST /billing/documents/{id}/issue`) | La numérotation continue et sans trou exige une seule autorité ; un poste hors ligne ne peut pas attribuer de numéro. |
+| Numéro `F2026-00001` (préfixe D / F / A, année, séquence par type et par année) attribué dans une transaction sérialisée (`document_counters` + verrou), avec PDF, totaux et instantanés vendeur / acheteur | Aucun trou ni doublon, même en cas d'émissions simultanées ; un échec annule tout. |
+| Document émis **verrouillé** : les champs du contenu sont refusés à la synchronisation (`EntitySchema.lockedFields`), seul l'état reste modifiable ; champs attribués par le serveur interdits aux postes (`serverFields`) | Inaltérabilité exigée (CGI art. 289) ; une erreur se corrige par un avoir. |
+| Montants en **centimes**, TVA en points de base (2000 = 20 %) ; arrondi par taux sur le total HT de chaque taux | Pas d'erreur de virgule flottante ; règle de calcul conforme à EN 16931. |
+| `packages/invoicing` (Dart pur, partagé client / serveur) : totaux, Factur-X CII EN 16931, PDF/A-3 (`pdf`), FEC, TVA | Même calcul pour l'aperçu du poste et le document émis. |
+| `pdf` < 3.13 | La 3.13 exige `xml` 7, incompatible avec `enough_mail` (xml 6). |
+| Secrets Chorus Pro (mot de passe du compte technique, secret PISTE) chiffrés par la clé maître, jamais renvoyés | Même règle que les comptes email. |
+| FEC et TVA calculés à la demande depuis les documents émis et les paiements | Pas de double saisie ; l'export reflète toujours l'état validé. |
+

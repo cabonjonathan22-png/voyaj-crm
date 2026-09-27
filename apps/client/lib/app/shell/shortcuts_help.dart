@@ -23,6 +23,7 @@ const _groups = <(String, List<(String, String)>)>[
       ('Ctrl 4', 'Tâches'),
       ('Ctrl 5', 'Carte'),
       ('Ctrl 6', 'Emails'),
+      ('Ctrl 7', 'Facturation'),
       ('Ctrl ,', 'Paramètres'),
       ('Ctrl W', "Fermer l'onglet de la fiche"),
     ],

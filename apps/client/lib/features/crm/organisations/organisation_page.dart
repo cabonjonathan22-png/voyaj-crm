@@ -15,6 +15,8 @@ import '../../../app/shell/work_tabs.dart';
 import '../../../core/format.dart';
 import '../../../data/local/database.dart';
 import '../../../design_system/design_system.dart';
+import '../../billing/billing_data.dart';
+import '../../billing/billing_page.dart';
 import '../contacts/contact_forms.dart';
 import '../crm_data.dart';
 import '../crm_format.dart';
@@ -120,6 +122,11 @@ class _OrganisationPageState extends ConsumerState<OrganisationPage> {
     final files =
         ref.watch(attachmentsProvider).value ?? const <AttachmentRow>[];
     bool fileFilter(AttachmentRow f) => f.organisationId == o.id;
+    final canBilling = ref.watch(permissionProvider(Permission.invoiceRead));
+    final documents =
+        (ref.watch(invoicesProvider).value ?? const <InvoiceRow>[])
+            .where((d) => d.organisationId == o.id)
+            .length;
 
     return CallbackShortcuts(
       bindings: {
@@ -220,6 +227,12 @@ class _OrganisationPageState extends ConsumerState<OrganisationPage> {
                   icon: LucideIcons.paperclip,
                   count: files.where(fileFilter).length,
                 ),
+                if (canBilling)
+                  VTab(
+                    l10n.billingInvoices,
+                    icon: LucideIcons.receipt,
+                    count: documents,
+                  ),
               ],
             ),
             Expanded(
@@ -240,7 +253,8 @@ class _OrganisationPageState extends ConsumerState<OrganisationPage> {
                   filter: activityFilter,
                   organisationId: o.id,
                 ),
-                _ => AttachmentsPanel(filter: fileFilter, organisationId: o.id),
+                4 => AttachmentsPanel(filter: fileFilter, organisationId: o.id),
+                _ => OrganisationDocuments(organisationId: o.id),
               },
             ),
           ],

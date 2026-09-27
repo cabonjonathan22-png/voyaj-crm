@@ -6,6 +6,7 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 import '../../app/app.dart';
 import '../../design_system/design_system.dart';
 import 'appearance_section.dart';
+import 'billing_section.dart';
 import 'custom_fields_section.dart';
 import 'email_accounts_section.dart';
 import 'security_section.dart';
@@ -29,6 +30,11 @@ enum SettingsSection {
     'Champs personnalisés',
     LucideIcons.textCursorInput,
     'attributs colonnes formulaire',
+  ),
+  billing(
+    'Facturation',
+    LucideIcons.receipt,
+    'factures devis mentions légales siren tva chorus pro comptabilité fec',
   );
 
   const SettingsSection(this.label, this.icon, this.keywords);
@@ -83,6 +89,7 @@ class SettingsPage extends ConsumerWidget {
                         const EmailAccountsSection(),
                       SettingsSection.customFields =>
                         const CustomFieldsSection(),
+                      SettingsSection.billing => const BillingSection(),
                     },
                   ),
                 ),

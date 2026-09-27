@@ -3152,6 +3152,810 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Aucune séquence.'**
   String get sequencesEmpty;
+
+  /// No description provided for @navBilling.
+  ///
+  /// In fr, this message translates to:
+  /// **'Facturation'**
+  String get navBilling;
+
+  /// No description provided for @billingSubtitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Devis, factures et avoirs conformes (Factur-X), catalogue et exports comptables.'**
+  String get billingSubtitle;
+
+  /// No description provided for @billingQuotes.
+  ///
+  /// In fr, this message translates to:
+  /// **'Devis'**
+  String get billingQuotes;
+
+  /// No description provided for @billingInvoices.
+  ///
+  /// In fr, this message translates to:
+  /// **'Factures'**
+  String get billingInvoices;
+
+  /// No description provided for @billingCreditNotes.
+  ///
+  /// In fr, this message translates to:
+  /// **'Avoirs'**
+  String get billingCreditNotes;
+
+  /// No description provided for @billingProducts.
+  ///
+  /// In fr, this message translates to:
+  /// **'Produits'**
+  String get billingProducts;
+
+  /// No description provided for @billingExports.
+  ///
+  /// In fr, this message translates to:
+  /// **'Comptabilité'**
+  String get billingExports;
+
+  /// No description provided for @billingNewQuote.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouveau devis'**
+  String get billingNewQuote;
+
+  /// No description provided for @billingNewInvoice.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouvelle facture'**
+  String get billingNewInvoice;
+
+  /// No description provided for @billingNewDocument.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouveau brouillon : {kind}'**
+  String billingNewDocument(String kind);
+
+  /// No description provided for @billingEditDocument.
+  ///
+  /// In fr, this message translates to:
+  /// **'Modifier le brouillon : {kind}'**
+  String billingEditDocument(String kind);
+
+  /// No description provided for @billingDraftOf.
+  ///
+  /// In fr, this message translates to:
+  /// **'{kind} (brouillon)'**
+  String billingDraftOf(String kind);
+
+  /// No description provided for @billingEmpty.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun document : {kind}.'**
+  String billingEmpty(String kind);
+
+  /// No description provided for @billingDocument.
+  ///
+  /// In fr, this message translates to:
+  /// **'Document'**
+  String get billingDocument;
+
+  /// No description provided for @billingDocumentMissing.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ce document n\'existe plus.'**
+  String get billingDocumentMissing;
+
+  /// No description provided for @billingDraft.
+  ///
+  /// In fr, this message translates to:
+  /// **'Brouillon'**
+  String get billingDraft;
+
+  /// No description provided for @billingNumber.
+  ///
+  /// In fr, this message translates to:
+  /// **'Numéro'**
+  String get billingNumber;
+
+  /// No description provided for @billingCustomer.
+  ///
+  /// In fr, this message translates to:
+  /// **'Client'**
+  String get billingCustomer;
+
+  /// No description provided for @billingContact.
+  ///
+  /// In fr, this message translates to:
+  /// **'Contact'**
+  String get billingContact;
+
+  /// No description provided for @billingSubject.
+  ///
+  /// In fr, this message translates to:
+  /// **'Objet'**
+  String get billingSubject;
+
+  /// No description provided for @billingStatus.
+  ///
+  /// In fr, this message translates to:
+  /// **'État'**
+  String get billingStatus;
+
+  /// No description provided for @billingIssueDate.
+  ///
+  /// In fr, this message translates to:
+  /// **'Date d\'émission'**
+  String get billingIssueDate;
+
+  /// No description provided for @billingServiceDate.
+  ///
+  /// In fr, this message translates to:
+  /// **'Date de la prestation'**
+  String get billingServiceDate;
+
+  /// No description provided for @billingDueDate.
+  ///
+  /// In fr, this message translates to:
+  /// **'Échéance'**
+  String get billingDueDate;
+
+  /// No description provided for @billingValidUntil.
+  ///
+  /// In fr, this message translates to:
+  /// **'Valable jusqu\'au'**
+  String get billingValidUntil;
+
+  /// No description provided for @billingOriginalInvoice.
+  ///
+  /// In fr, this message translates to:
+  /// **'Facture d\'origine'**
+  String get billingOriginalInvoice;
+
+  /// No description provided for @billingBuyerReference.
+  ///
+  /// In fr, this message translates to:
+  /// **'Engagement / bon de commande'**
+  String get billingBuyerReference;
+
+  /// No description provided for @billingBuyerReferenceHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'Numéro d\'engagement de l\'acheteur public (Chorus Pro).'**
+  String get billingBuyerReferenceHelp;
+
+  /// No description provided for @billingServiceCode.
+  ///
+  /// In fr, this message translates to:
+  /// **'Code service'**
+  String get billingServiceCode;
+
+  /// No description provided for @billingServiceCodeHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'Service destinataire dans Chorus Pro, si exigé.'**
+  String get billingServiceCodeHelp;
+
+  /// No description provided for @billingNotes.
+  ///
+  /// In fr, this message translates to:
+  /// **'Notes'**
+  String get billingNotes;
+
+  /// No description provided for @billingLines.
+  ///
+  /// In fr, this message translates to:
+  /// **'Lignes'**
+  String get billingLines;
+
+  /// No description provided for @billingAddLine.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ajouter une ligne'**
+  String get billingAddLine;
+
+  /// No description provided for @billingAddProduct.
+  ///
+  /// In fr, this message translates to:
+  /// **'Depuis le catalogue'**
+  String get billingAddProduct;
+
+  /// No description provided for @billingLineDescription.
+  ///
+  /// In fr, this message translates to:
+  /// **'Désignation'**
+  String get billingLineDescription;
+
+  /// No description provided for @billingLinePrice.
+  ///
+  /// In fr, this message translates to:
+  /// **'Chaque ligne a un prix unitaire.'**
+  String get billingLinePrice;
+
+  /// No description provided for @billingQty.
+  ///
+  /// In fr, this message translates to:
+  /// **'Quantité'**
+  String get billingQty;
+
+  /// No description provided for @billingUnitPrice.
+  ///
+  /// In fr, this message translates to:
+  /// **'Prix unit. HT'**
+  String get billingUnitPrice;
+
+  /// No description provided for @billingUnitPriceHt.
+  ///
+  /// In fr, this message translates to:
+  /// **'Prix unitaire HT'**
+  String get billingUnitPriceHt;
+
+  /// No description provided for @billingVat.
+  ///
+  /// In fr, this message translates to:
+  /// **'TVA'**
+  String get billingVat;
+
+  /// No description provided for @billingDiscount.
+  ///
+  /// In fr, this message translates to:
+  /// **'Remise'**
+  String get billingDiscount;
+
+  /// No description provided for @billingTotalHt.
+  ///
+  /// In fr, this message translates to:
+  /// **'Total HT'**
+  String get billingTotalHt;
+
+  /// No description provided for @billingTotalTtc.
+  ///
+  /// In fr, this message translates to:
+  /// **'Total TTC'**
+  String get billingTotalTtc;
+
+  /// No description provided for @billingVatAt.
+  ///
+  /// In fr, this message translates to:
+  /// **'TVA {rate}'**
+  String billingVatAt(String rate);
+
+  /// No description provided for @billingBalance.
+  ///
+  /// In fr, this message translates to:
+  /// **'Reste dû'**
+  String get billingBalance;
+
+  /// No description provided for @billingPaymentTerms.
+  ///
+  /// In fr, this message translates to:
+  /// **'Conditions de paiement'**
+  String get billingPaymentTerms;
+
+  /// No description provided for @billingPaymentTermsHint.
+  ///
+  /// In fr, this message translates to:
+  /// **'Par défaut : celles des paramètres de facturation'**
+  String get billingPaymentTermsHint;
+
+  /// No description provided for @billingIssue.
+  ///
+  /// In fr, this message translates to:
+  /// **'Émettre'**
+  String get billingIssue;
+
+  /// No description provided for @billingIssueTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Émettre ce document ({kind}) ?'**
+  String billingIssueTitle(String kind);
+
+  /// No description provided for @billingIssueMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Un numéro définitif est attribué et le PDF Factur-X est produit. Le document ne pourra plus être modifié : une erreur se corrige par un avoir.'**
+  String get billingIssueMessage;
+
+  /// No description provided for @billingIssueOffline.
+  ///
+  /// In fr, this message translates to:
+  /// **'Des modifications de ce brouillon ne sont pas encore envoyées au serveur. Vérifiez la connexion puis réessayez.'**
+  String get billingIssueOffline;
+
+  /// No description provided for @billingIssued.
+  ///
+  /// In fr, this message translates to:
+  /// **'Document émis : {number}.'**
+  String billingIssued(String number);
+
+  /// No description provided for @billingPdf.
+  ///
+  /// In fr, this message translates to:
+  /// **'PDF'**
+  String get billingPdf;
+
+  /// No description provided for @billingFileSaved.
+  ///
+  /// In fr, this message translates to:
+  /// **'{name} enregistré.'**
+  String billingFileSaved(String name);
+
+  /// No description provided for @billingQuoteRefused.
+  ///
+  /// In fr, this message translates to:
+  /// **'Refusé'**
+  String get billingQuoteRefused;
+
+  /// No description provided for @billingToInvoice.
+  ///
+  /// In fr, this message translates to:
+  /// **'Facturer'**
+  String get billingToInvoice;
+
+  /// No description provided for @billingCreditNote.
+  ///
+  /// In fr, this message translates to:
+  /// **'Faire un avoir'**
+  String get billingCreditNote;
+
+  /// No description provided for @billingOnlyDraftsDeleted.
+  ///
+  /// In fr, this message translates to:
+  /// **'Seuls les brouillons sont supprimés : un document émis se corrige par un avoir.'**
+  String get billingOnlyDraftsDeleted;
+
+  /// No description provided for @billingOrganisationEmpty.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun devis ni facture pour cette organisation.'**
+  String get billingOrganisationEmpty;
+
+  /// No description provided for @payments.
+  ///
+  /// In fr, this message translates to:
+  /// **'Paiements'**
+  String get payments;
+
+  /// No description provided for @paymentsEmpty.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun paiement enregistré.'**
+  String get paymentsEmpty;
+
+  /// No description provided for @paymentsBalance.
+  ///
+  /// In fr, this message translates to:
+  /// **'Encaissé : {paid} · Reste dû : {remaining}'**
+  String paymentsBalance(String paid, String remaining);
+
+  /// No description provided for @paymentAdd.
+  ///
+  /// In fr, this message translates to:
+  /// **'Enregistrer un paiement'**
+  String get paymentAdd;
+
+  /// No description provided for @paymentNew.
+  ///
+  /// In fr, this message translates to:
+  /// **'Paiement de {number}'**
+  String paymentNew(String number);
+
+  /// No description provided for @paymentAmount.
+  ///
+  /// In fr, this message translates to:
+  /// **'Montant (€)'**
+  String get paymentAmount;
+
+  /// No description provided for @paymentDate.
+  ///
+  /// In fr, this message translates to:
+  /// **'Date'**
+  String get paymentDate;
+
+  /// No description provided for @paymentMethod.
+  ///
+  /// In fr, this message translates to:
+  /// **'Mode de paiement'**
+  String get paymentMethod;
+
+  /// No description provided for @paymentReference.
+  ///
+  /// In fr, this message translates to:
+  /// **'Référence'**
+  String get paymentReference;
+
+  /// No description provided for @paymentRecorded.
+  ///
+  /// In fr, this message translates to:
+  /// **'Paiement enregistré.'**
+  String get paymentRecorded;
+
+  /// No description provided for @productNew.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouveau produit'**
+  String get productNew;
+
+  /// No description provided for @productEdit.
+  ///
+  /// In fr, this message translates to:
+  /// **'Modifier le produit'**
+  String get productEdit;
+
+  /// No description provided for @productName.
+  ///
+  /// In fr, this message translates to:
+  /// **'Désignation'**
+  String get productName;
+
+  /// No description provided for @productDescription.
+  ///
+  /// In fr, this message translates to:
+  /// **'Description'**
+  String get productDescription;
+
+  /// No description provided for @productUnit.
+  ///
+  /// In fr, this message translates to:
+  /// **'Unité'**
+  String get productUnit;
+
+  /// No description provided for @productUnitHint.
+  ///
+  /// In fr, this message translates to:
+  /// **'jour, trajet, forfait…'**
+  String get productUnitHint;
+
+  /// No description provided for @productAccount.
+  ///
+  /// In fr, this message translates to:
+  /// **'Compte de produit'**
+  String get productAccount;
+
+  /// No description provided for @productActive.
+  ///
+  /// In fr, this message translates to:
+  /// **'Actif'**
+  String get productActive;
+
+  /// No description provided for @productsEmpty.
+  ///
+  /// In fr, this message translates to:
+  /// **'Catalogue vide'**
+  String get productsEmpty;
+
+  /// No description provided for @productsEmptyMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ajoutez vos prestations pour composer plus vite devis et factures.'**
+  String get productsEmptyMessage;
+
+  /// No description provided for @billingAccountantNotice.
+  ///
+  /// In fr, this message translates to:
+  /// **'Les exports comptables suivent le format réglementaire (FEC, article A47 A-1 du LPF) et le plan de comptes des paramètres. Faites-les valider par votre expert-comptable avant tout dépôt.'**
+  String get billingAccountantNotice;
+
+  /// No description provided for @fecTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Fichier des écritures comptables (FEC)'**
+  String get fecTitle;
+
+  /// No description provided for @fecDescription.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ventes (factures et avoirs émis) et encaissements de l\'exercice civil.'**
+  String get fecDescription;
+
+  /// No description provided for @fecDownload.
+  ///
+  /// In fr, this message translates to:
+  /// **'Télécharger le FEC'**
+  String get fecDownload;
+
+  /// No description provided for @fecNeedsSiren.
+  ///
+  /// In fr, this message translates to:
+  /// **'Renseignez le SIREN dans les paramètres de facturation.'**
+  String get fecNeedsSiren;
+
+  /// No description provided for @vatReportTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'TVA collectée'**
+  String get vatReportTitle;
+
+  /// No description provided for @vatReportDescription.
+  ///
+  /// In fr, this message translates to:
+  /// **'Sur les débits (documents émis) et sur les encaissements (paiements reçus), par taux.'**
+  String get vatReportDescription;
+
+  /// No description provided for @vatReportCompute.
+  ///
+  /// In fr, this message translates to:
+  /// **'Calculer'**
+  String get vatReportCompute;
+
+  /// No description provided for @vatOnDebits.
+  ///
+  /// In fr, this message translates to:
+  /// **'Sur les débits'**
+  String get vatOnDebits;
+
+  /// No description provided for @vatOnReceipts.
+  ///
+  /// In fr, this message translates to:
+  /// **'Sur les encaissements'**
+  String get vatOnReceipts;
+
+  /// No description provided for @billingVatNone.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucune opération sur la période.'**
+  String get billingVatNone;
+
+  /// No description provided for @billingVatBase.
+  ///
+  /// In fr, this message translates to:
+  /// **'base {amount}'**
+  String billingVatBase(String amount);
+
+  /// No description provided for @periodFrom.
+  ///
+  /// In fr, this message translates to:
+  /// **'Du'**
+  String get periodFrom;
+
+  /// No description provided for @periodTo.
+  ///
+  /// In fr, this message translates to:
+  /// **'Au'**
+  String get periodTo;
+
+  /// No description provided for @billingSeller.
+  ///
+  /// In fr, this message translates to:
+  /// **'Votre entreprise'**
+  String get billingSeller;
+
+  /// No description provided for @billingSellerHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'Mentions légales imprimées sur chaque document (figées à l\'émission).'**
+  String get billingSellerHelp;
+
+  /// No description provided for @billingLegalName.
+  ///
+  /// In fr, this message translates to:
+  /// **'Raison sociale'**
+  String get billingLegalName;
+
+  /// No description provided for @billingLegalForm.
+  ///
+  /// In fr, this message translates to:
+  /// **'Forme juridique'**
+  String get billingLegalForm;
+
+  /// No description provided for @billingVatNumber.
+  ///
+  /// In fr, this message translates to:
+  /// **'N° de TVA intracommunautaire'**
+  String get billingVatNumber;
+
+  /// No description provided for @billingRcs.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ville du RCS'**
+  String get billingRcs;
+
+  /// No description provided for @billingCapital.
+  ///
+  /// In fr, this message translates to:
+  /// **'Capital social'**
+  String get billingCapital;
+
+  /// No description provided for @billingIban.
+  ///
+  /// In fr, this message translates to:
+  /// **'IBAN'**
+  String get billingIban;
+
+  /// No description provided for @billingBic.
+  ///
+  /// In fr, this message translates to:
+  /// **'BIC'**
+  String get billingBic;
+
+  /// No description provided for @billingConditions.
+  ///
+  /// In fr, this message translates to:
+  /// **'Conditions et mentions'**
+  String get billingConditions;
+
+  /// No description provided for @billingPaymentDays.
+  ///
+  /// In fr, this message translates to:
+  /// **'Délai de paiement (jours)'**
+  String get billingPaymentDays;
+
+  /// No description provided for @billingQuoteValidityDays.
+  ///
+  /// In fr, this message translates to:
+  /// **'Validité des devis (jours)'**
+  String get billingQuoteValidityDays;
+
+  /// No description provided for @billingLatePenalties.
+  ///
+  /// In fr, this message translates to:
+  /// **'Pénalités de retard'**
+  String get billingLatePenalties;
+
+  /// No description provided for @billingVatExemption.
+  ///
+  /// In fr, this message translates to:
+  /// **'Mention d\'exonération de TVA'**
+  String get billingVatExemption;
+
+  /// No description provided for @billingVatExemptionHint.
+  ///
+  /// In fr, this message translates to:
+  /// **'TVA non applicable, art. 293 B du CGI'**
+  String get billingVatExemptionHint;
+
+  /// No description provided for @billingFooter.
+  ///
+  /// In fr, this message translates to:
+  /// **'Pied de page'**
+  String get billingFooter;
+
+  /// No description provided for @billingAccounts.
+  ///
+  /// In fr, this message translates to:
+  /// **'Plan de comptes'**
+  String get billingAccounts;
+
+  /// No description provided for @billingAccountsHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'Comptes utilisés dans le FEC (TVA collectée : 44571x par taux).'**
+  String get billingAccountsHelp;
+
+  /// No description provided for @billingAccountCustomer.
+  ///
+  /// In fr, this message translates to:
+  /// **'Clients'**
+  String get billingAccountCustomer;
+
+  /// No description provided for @billingAccountSales.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ventes'**
+  String get billingAccountSales;
+
+  /// No description provided for @billingAccountBank.
+  ///
+  /// In fr, this message translates to:
+  /// **'Banque'**
+  String get billingAccountBank;
+
+  /// No description provided for @billingSettingsSaved.
+  ///
+  /// In fr, this message translates to:
+  /// **'Paramètres de facturation enregistrés.'**
+  String get billingSettingsSaved;
+
+  /// No description provided for @billingSettingsForbidden.
+  ///
+  /// In fr, this message translates to:
+  /// **'Réservé aux personnes autorisées à gérer la facturation.'**
+  String get billingSettingsForbidden;
+
+  /// No description provided for @billingSettingsOffline.
+  ///
+  /// In fr, this message translates to:
+  /// **'Connexion au serveur requise.'**
+  String get billingSettingsOffline;
+
+  /// No description provided for @secretUnchanged.
+  ///
+  /// In fr, this message translates to:
+  /// **'Inchangé (laisser vide)'**
+  String get secretUnchanged;
+
+  /// No description provided for @chorusTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Chorus Pro'**
+  String get chorusTitle;
+
+  /// No description provided for @chorusHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'Dépôt des factures aux collectivités via l\'API PISTE : application PISTE (identifiant et secret) et compte technique Chorus Pro.'**
+  String get chorusHelp;
+
+  /// No description provided for @chorusEnabled.
+  ///
+  /// In fr, this message translates to:
+  /// **'Activer le dépôt sur Chorus Pro'**
+  String get chorusEnabled;
+
+  /// No description provided for @chorusSandbox.
+  ///
+  /// In fr, this message translates to:
+  /// **'Environnement de qualification'**
+  String get chorusSandbox;
+
+  /// No description provided for @chorusSandboxHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'Pour les essais : les factures ne sont pas transmises.'**
+  String get chorusSandboxHelp;
+
+  /// No description provided for @chorusLogin.
+  ///
+  /// In fr, this message translates to:
+  /// **'Compte technique (login)'**
+  String get chorusLogin;
+
+  /// No description provided for @chorusPassword.
+  ///
+  /// In fr, this message translates to:
+  /// **'Mot de passe du compte technique'**
+  String get chorusPassword;
+
+  /// No description provided for @pisteClientId.
+  ///
+  /// In fr, this message translates to:
+  /// **'Client ID PISTE'**
+  String get pisteClientId;
+
+  /// No description provided for @pisteClientSecret.
+  ///
+  /// In fr, this message translates to:
+  /// **'Client secret PISTE'**
+  String get pisteClientSecret;
+
+  /// No description provided for @chorusConfigured.
+  ///
+  /// In fr, this message translates to:
+  /// **'Identifiants enregistrés'**
+  String get chorusConfigured;
+
+  /// No description provided for @chorusNotConfigured.
+  ///
+  /// In fr, this message translates to:
+  /// **'Identifiants incomplets'**
+  String get chorusNotConfigured;
+
+  /// No description provided for @chorusDeposit.
+  ///
+  /// In fr, this message translates to:
+  /// **'Déposer sur Chorus Pro'**
+  String get chorusDeposit;
+
+  /// No description provided for @chorusDepositTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Déposer {number} sur Chorus Pro ?'**
+  String chorusDepositTitle(String number);
+
+  /// No description provided for @chorusDepositMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Le PDF Factur-X émis est transmis tel quel à la collectivité.'**
+  String get chorusDepositMessage;
+
+  /// No description provided for @chorusDeposited.
+  ///
+  /// In fr, this message translates to:
+  /// **'Déposé sur Chorus Pro (flux {flux}).'**
+  String chorusDeposited(String flux);
+
+  /// No description provided for @chorusFlux.
+  ///
+  /// In fr, this message translates to:
+  /// **'Chorus Pro : flux {flux}'**
+  String chorusFlux(String flux);
 }
 
 class _AppLocalizationsDelegate

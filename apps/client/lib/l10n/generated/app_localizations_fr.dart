@@ -1805,4 +1805,453 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get sequencesEmpty => 'Aucune séquence.';
+
+  @override
+  String get navBilling => 'Facturation';
+
+  @override
+  String get billingSubtitle =>
+      'Devis, factures et avoirs conformes (Factur-X), catalogue et exports comptables.';
+
+  @override
+  String get billingQuotes => 'Devis';
+
+  @override
+  String get billingInvoices => 'Factures';
+
+  @override
+  String get billingCreditNotes => 'Avoirs';
+
+  @override
+  String get billingProducts => 'Produits';
+
+  @override
+  String get billingExports => 'Comptabilité';
+
+  @override
+  String get billingNewQuote => 'Nouveau devis';
+
+  @override
+  String get billingNewInvoice => 'Nouvelle facture';
+
+  @override
+  String billingNewDocument(String kind) {
+    return 'Nouveau brouillon : $kind';
+  }
+
+  @override
+  String billingEditDocument(String kind) {
+    return 'Modifier le brouillon : $kind';
+  }
+
+  @override
+  String billingDraftOf(String kind) {
+    return '$kind (brouillon)';
+  }
+
+  @override
+  String billingEmpty(String kind) {
+    return 'Aucun document : $kind.';
+  }
+
+  @override
+  String get billingDocument => 'Document';
+
+  @override
+  String get billingDocumentMissing => 'Ce document n\'existe plus.';
+
+  @override
+  String get billingDraft => 'Brouillon';
+
+  @override
+  String get billingNumber => 'Numéro';
+
+  @override
+  String get billingCustomer => 'Client';
+
+  @override
+  String get billingContact => 'Contact';
+
+  @override
+  String get billingSubject => 'Objet';
+
+  @override
+  String get billingStatus => 'État';
+
+  @override
+  String get billingIssueDate => 'Date d\'émission';
+
+  @override
+  String get billingServiceDate => 'Date de la prestation';
+
+  @override
+  String get billingDueDate => 'Échéance';
+
+  @override
+  String get billingValidUntil => 'Valable jusqu\'au';
+
+  @override
+  String get billingOriginalInvoice => 'Facture d\'origine';
+
+  @override
+  String get billingBuyerReference => 'Engagement / bon de commande';
+
+  @override
+  String get billingBuyerReferenceHelp =>
+      'Numéro d\'engagement de l\'acheteur public (Chorus Pro).';
+
+  @override
+  String get billingServiceCode => 'Code service';
+
+  @override
+  String get billingServiceCodeHelp =>
+      'Service destinataire dans Chorus Pro, si exigé.';
+
+  @override
+  String get billingNotes => 'Notes';
+
+  @override
+  String get billingLines => 'Lignes';
+
+  @override
+  String get billingAddLine => 'Ajouter une ligne';
+
+  @override
+  String get billingAddProduct => 'Depuis le catalogue';
+
+  @override
+  String get billingLineDescription => 'Désignation';
+
+  @override
+  String get billingLinePrice => 'Chaque ligne a un prix unitaire.';
+
+  @override
+  String get billingQty => 'Quantité';
+
+  @override
+  String get billingUnitPrice => 'Prix unit. HT';
+
+  @override
+  String get billingUnitPriceHt => 'Prix unitaire HT';
+
+  @override
+  String get billingVat => 'TVA';
+
+  @override
+  String get billingDiscount => 'Remise';
+
+  @override
+  String get billingTotalHt => 'Total HT';
+
+  @override
+  String get billingTotalTtc => 'Total TTC';
+
+  @override
+  String billingVatAt(String rate) {
+    return 'TVA $rate';
+  }
+
+  @override
+  String get billingBalance => 'Reste dû';
+
+  @override
+  String get billingPaymentTerms => 'Conditions de paiement';
+
+  @override
+  String get billingPaymentTermsHint =>
+      'Par défaut : celles des paramètres de facturation';
+
+  @override
+  String get billingIssue => 'Émettre';
+
+  @override
+  String billingIssueTitle(String kind) {
+    return 'Émettre ce document ($kind) ?';
+  }
+
+  @override
+  String get billingIssueMessage =>
+      'Un numéro définitif est attribué et le PDF Factur-X est produit. Le document ne pourra plus être modifié : une erreur se corrige par un avoir.';
+
+  @override
+  String get billingIssueOffline =>
+      'Des modifications de ce brouillon ne sont pas encore envoyées au serveur. Vérifiez la connexion puis réessayez.';
+
+  @override
+  String billingIssued(String number) {
+    return 'Document émis : $number.';
+  }
+
+  @override
+  String get billingPdf => 'PDF';
+
+  @override
+  String billingFileSaved(String name) {
+    return '$name enregistré.';
+  }
+
+  @override
+  String get billingQuoteRefused => 'Refusé';
+
+  @override
+  String get billingToInvoice => 'Facturer';
+
+  @override
+  String get billingCreditNote => 'Faire un avoir';
+
+  @override
+  String get billingOnlyDraftsDeleted =>
+      'Seuls les brouillons sont supprimés : un document émis se corrige par un avoir.';
+
+  @override
+  String get billingOrganisationEmpty =>
+      'Aucun devis ni facture pour cette organisation.';
+
+  @override
+  String get payments => 'Paiements';
+
+  @override
+  String get paymentsEmpty => 'Aucun paiement enregistré.';
+
+  @override
+  String paymentsBalance(String paid, String remaining) {
+    return 'Encaissé : $paid · Reste dû : $remaining';
+  }
+
+  @override
+  String get paymentAdd => 'Enregistrer un paiement';
+
+  @override
+  String paymentNew(String number) {
+    return 'Paiement de $number';
+  }
+
+  @override
+  String get paymentAmount => 'Montant (€)';
+
+  @override
+  String get paymentDate => 'Date';
+
+  @override
+  String get paymentMethod => 'Mode de paiement';
+
+  @override
+  String get paymentReference => 'Référence';
+
+  @override
+  String get paymentRecorded => 'Paiement enregistré.';
+
+  @override
+  String get productNew => 'Nouveau produit';
+
+  @override
+  String get productEdit => 'Modifier le produit';
+
+  @override
+  String get productName => 'Désignation';
+
+  @override
+  String get productDescription => 'Description';
+
+  @override
+  String get productUnit => 'Unité';
+
+  @override
+  String get productUnitHint => 'jour, trajet, forfait…';
+
+  @override
+  String get productAccount => 'Compte de produit';
+
+  @override
+  String get productActive => 'Actif';
+
+  @override
+  String get productsEmpty => 'Catalogue vide';
+
+  @override
+  String get productsEmptyMessage =>
+      'Ajoutez vos prestations pour composer plus vite devis et factures.';
+
+  @override
+  String get billingAccountantNotice =>
+      'Les exports comptables suivent le format réglementaire (FEC, article A47 A-1 du LPF) et le plan de comptes des paramètres. Faites-les valider par votre expert-comptable avant tout dépôt.';
+
+  @override
+  String get fecTitle => 'Fichier des écritures comptables (FEC)';
+
+  @override
+  String get fecDescription =>
+      'Ventes (factures et avoirs émis) et encaissements de l\'exercice civil.';
+
+  @override
+  String get fecDownload => 'Télécharger le FEC';
+
+  @override
+  String get fecNeedsSiren =>
+      'Renseignez le SIREN dans les paramètres de facturation.';
+
+  @override
+  String get vatReportTitle => 'TVA collectée';
+
+  @override
+  String get vatReportDescription =>
+      'Sur les débits (documents émis) et sur les encaissements (paiements reçus), par taux.';
+
+  @override
+  String get vatReportCompute => 'Calculer';
+
+  @override
+  String get vatOnDebits => 'Sur les débits';
+
+  @override
+  String get vatOnReceipts => 'Sur les encaissements';
+
+  @override
+  String get billingVatNone => 'Aucune opération sur la période.';
+
+  @override
+  String billingVatBase(String amount) {
+    return 'base $amount';
+  }
+
+  @override
+  String get periodFrom => 'Du';
+
+  @override
+  String get periodTo => 'Au';
+
+  @override
+  String get billingSeller => 'Votre entreprise';
+
+  @override
+  String get billingSellerHelp =>
+      'Mentions légales imprimées sur chaque document (figées à l\'émission).';
+
+  @override
+  String get billingLegalName => 'Raison sociale';
+
+  @override
+  String get billingLegalForm => 'Forme juridique';
+
+  @override
+  String get billingVatNumber => 'N° de TVA intracommunautaire';
+
+  @override
+  String get billingRcs => 'Ville du RCS';
+
+  @override
+  String get billingCapital => 'Capital social';
+
+  @override
+  String get billingIban => 'IBAN';
+
+  @override
+  String get billingBic => 'BIC';
+
+  @override
+  String get billingConditions => 'Conditions et mentions';
+
+  @override
+  String get billingPaymentDays => 'Délai de paiement (jours)';
+
+  @override
+  String get billingQuoteValidityDays => 'Validité des devis (jours)';
+
+  @override
+  String get billingLatePenalties => 'Pénalités de retard';
+
+  @override
+  String get billingVatExemption => 'Mention d\'exonération de TVA';
+
+  @override
+  String get billingVatExemptionHint => 'TVA non applicable, art. 293 B du CGI';
+
+  @override
+  String get billingFooter => 'Pied de page';
+
+  @override
+  String get billingAccounts => 'Plan de comptes';
+
+  @override
+  String get billingAccountsHelp =>
+      'Comptes utilisés dans le FEC (TVA collectée : 44571x par taux).';
+
+  @override
+  String get billingAccountCustomer => 'Clients';
+
+  @override
+  String get billingAccountSales => 'Ventes';
+
+  @override
+  String get billingAccountBank => 'Banque';
+
+  @override
+  String get billingSettingsSaved => 'Paramètres de facturation enregistrés.';
+
+  @override
+  String get billingSettingsForbidden =>
+      'Réservé aux personnes autorisées à gérer la facturation.';
+
+  @override
+  String get billingSettingsOffline => 'Connexion au serveur requise.';
+
+  @override
+  String get secretUnchanged => 'Inchangé (laisser vide)';
+
+  @override
+  String get chorusTitle => 'Chorus Pro';
+
+  @override
+  String get chorusHelp =>
+      'Dépôt des factures aux collectivités via l\'API PISTE : application PISTE (identifiant et secret) et compte technique Chorus Pro.';
+
+  @override
+  String get chorusEnabled => 'Activer le dépôt sur Chorus Pro';
+
+  @override
+  String get chorusSandbox => 'Environnement de qualification';
+
+  @override
+  String get chorusSandboxHelp =>
+      'Pour les essais : les factures ne sont pas transmises.';
+
+  @override
+  String get chorusLogin => 'Compte technique (login)';
+
+  @override
+  String get chorusPassword => 'Mot de passe du compte technique';
+
+  @override
+  String get pisteClientId => 'Client ID PISTE';
+
+  @override
+  String get pisteClientSecret => 'Client secret PISTE';
+
+  @override
+  String get chorusConfigured => 'Identifiants enregistrés';
+
+  @override
+  String get chorusNotConfigured => 'Identifiants incomplets';
+
+  @override
+  String get chorusDeposit => 'Déposer sur Chorus Pro';
+
+  @override
+  String chorusDepositTitle(String number) {
+    return 'Déposer $number sur Chorus Pro ?';
+  }
+
+  @override
+  String get chorusDepositMessage =>
+      'Le PDF Factur-X émis est transmis tel quel à la collectivité.';
+
+  @override
+  String chorusDeposited(String flux) {
+    return 'Déposé sur Chorus Pro (flux $flux).';
+  }
+
+  @override
+  String chorusFlux(String flux) {
+    return 'Chorus Pro : flux $flux';
+  }
 }

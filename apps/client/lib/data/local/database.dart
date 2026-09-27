@@ -285,6 +285,76 @@ class SequenceEnrollments extends Table with SyncedColumns {
   Set<Column<Object>> get primaryKey => {id};
 }
 
+@DataClassName('ProductRow')
+class Products extends Table with SyncedColumns {
+  TextColumn get id => text()();
+  TextColumn get name => text()();
+  TextColumn get description => text().nullable()();
+  IntColumn get unitPriceCents => integer().nullable()();
+  IntColumn get vatRate => integer().nullable()();
+  TextColumn get unit => text().nullable()();
+  TextColumn get accountCode => text().nullable()();
+  BoolColumn get active => boolean().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// Devis, factures et avoirs (`lines`, `vat_breakdown`, `buyer`, `seller`
+/// en JSON).
+@DataClassName('InvoiceRow')
+@TableIndex(name: 'invoices_organisation', columns: {#organisationId})
+class Invoices extends Table with SyncedColumns {
+  TextColumn get id => text()();
+  TextColumn get kind => text()();
+  TextColumn get status => text()();
+  TextColumn get number => text().nullable()();
+  TextColumn get subject => text().nullable()();
+  TextColumn get organisationId => text().nullable()();
+  TextColumn get contactId => text().nullable()();
+  TextColumn get dealId => text().nullable()();
+  TextColumn get quoteId => text().nullable()();
+  TextColumn get originalInvoiceId => text().nullable()();
+  TextColumn get issueDate => text().nullable()();
+  TextColumn get serviceDate => text().nullable()();
+  TextColumn get dueDate => text().nullable()();
+  TextColumn get validUntil => text().nullable()();
+  TextColumn get lines => text()();
+  IntColumn get totalHtCents => integer().nullable()();
+  IntColumn get totalVatCents => integer().nullable()();
+  IntColumn get totalTtcCents => integer().nullable()();
+  TextColumn get vatBreakdown => text().nullable()();
+  TextColumn get buyer => text().nullable()();
+  TextColumn get seller => text().nullable()();
+  TextColumn get notes => text().nullable()();
+  TextColumn get paymentTerms => text().nullable()();
+  TextColumn get buyerReference => text().nullable()();
+  TextColumn get serviceCode => text().nullable()();
+  TextColumn get pdfFileId => text().nullable()();
+  TextColumn get chorusFlux => text().nullable()();
+  TextColumn get chorusStatus => text().nullable()();
+  DateTimeColumn get sentAt => dateTime().nullable()();
+  TextColumn get ownerId => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+@DataClassName('PaymentRow')
+@TableIndex(name: 'payments_invoice', columns: {#invoiceId})
+class Payments extends Table with SyncedColumns {
+  TextColumn get id => text()();
+  TextColumn get invoiceId => text()();
+  IntColumn get amountCents => integer()();
+  TextColumn get paidOn => text().nullable()();
+  TextColumn get method => text().nullable()();
+  TextColumn get reference => text().nullable()();
+  TextColumn get notes => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
 // ── Infrastructure de synchronisation ───────────────────────────────────
 
 /// Opérations locales en attente d'envoi au serveur (dans l'ordre).
@@ -343,6 +413,9 @@ class KeyValues extends Table {
     EmailTemplates,
     EmailSequences,
     SequenceEnrollments,
+    Products,
+    Invoices,
+    Payments,
     Outbox,
     SyncErrors,
     KeyValues,
@@ -373,7 +446,7 @@ class AppDatabase extends _$AppDatabase {
   }
 
   @override
-  int get schemaVersion => 3;
+  int get schemaVersion => 4;
 
   /// Tables des entités synchronisées (même nom que l'entité).
   List<TableInfo<Table, Object?>> get syncedTables => [
@@ -392,6 +465,9 @@ class AppDatabase extends _$AppDatabase {
     emailTemplates,
     emailSequences,
     sequenceEnrollments,
+    products,
+    invoices,
+    payments,
   ];
 
   @override
@@ -417,7 +493,16 @@ class AppDatabase extends _$AppDatabase {
         ]) {
           await m.createTable(table);
         }
-        for (final index in allSchemaEntities.whereType<Index>()) {
+        for (final index in [
+          organisationsParent,
+          contactsOrganisation,
+          positionsContact,
+          positionsOrganisation,
+          dealsOrganisation,
+          activitiesOrganisation,
+          activitiesContact,
+          taggingsRecord,
+        ]) {
           await m.createIndex(index);
         }
       }
@@ -425,6 +510,13 @@ class AppDatabase extends _$AppDatabase {
         await m.createTable(emailTemplates);
         await m.createTable(emailSequences);
         await m.createTable(sequenceEnrollments);
+      }
+      if (from < 4) {
+        await m.createTable(products);
+        await m.createTable(invoices);
+        await m.createTable(payments);
+        await m.createIndex(invoicesOrganisation);
+        await m.createIndex(paymentsInvoice);
       }
       await deleteSetting(SettingKeys.syncCursor);
     },

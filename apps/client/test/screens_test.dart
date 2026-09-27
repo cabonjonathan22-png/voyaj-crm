@@ -33,6 +33,8 @@ void main() {
     'settings_custom_fields': '${Routes.settings}/customFields',
     'public_data': Routes.publicData,
     'emails': Routes.emails,
+    'billing': Routes.billing,
+    'settings_billing': '${Routes.settings}/billing',
     'settings_email_accounts': '${Routes.settings}/emailAccounts',
     'tags': Routes.tags,
     'tag_detail': '${Routes.tags}?id=tag-1',

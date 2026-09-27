@@ -187,6 +187,14 @@ final commandsProvider = Provider<List<AppCommand>>((ref) {
         Permission.emailUse,
       ),
       (
+        Routes.billing,
+        'Aller à la facturation',
+        LucideIcons.receipt,
+        'Ctrl 7',
+        'factures devis avoirs produits comptabilité fec tva chorus',
+        Permission.invoiceRead,
+      ),
+      (
         Routes.duplicates,
         'Aller aux doublons',
         LucideIcons.copy,

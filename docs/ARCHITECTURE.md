@@ -38,6 +38,7 @@ flowchart TB
 | `voyaj_shared` | Seule source des modèles et règles partagées : `Tag`, DTO d'auth, protocole de synchro, `EntitySchema` (liste blanche des champs), `Hlc`, `mergeFields`, `Permission`/`SystemRole`, validation. |
 | `voyaj_server` | CLI `voyaj_server` (`serve`, `migrate`, `create-admin`, `gen-key`, `audit-verify`), API REST, WebSocket, services (auth, utilisateurs, synchro, audit). |
 | `fr_public_data` | Lecture des données publiques (geo.api.gouv.fr, transport.data.gouv.fr, data.culture.gouv.fr) et conversion en organisations : régions, départements, EPCI, communes, AOM, festivals. |
+| `invoicing` | Facturation (Dart pur) : lignes et totaux (centimes, TVA par taux), numérotation, XML Factur-X (CII EN 16931), PDF/A-3 avec XML embarqué, FEC, TVA sur débits et encaissements. |
 | `voyaj_client` | Application desktop : design system, shell, base locale, moteur de synchro, écrans. |
 
 ## Synchronisation
@@ -156,6 +157,9 @@ curseur, HLC, poste, vues de tableaux, onglets de travail).
 | GET / POST | `/api/v1/email/messages?account=&contact=&before=`, `/email/messages/{id}`, `/email/send` | boîte de réception, lecture, envoi |
 | GET / PUT / POST | `/api/v1/public-data`, `/public-data/{source}`, `/public-data/{source}/run`, `/public-data/runs` | données publiques : état, configuration, lancement (202, en arrière-plan), historique |
 | GET / POST | `/api/v1/sync/conflicts`, `/sync/conflicts/{id}/review` | conflits |
+| GET / PUT | `/api/v1/billing/settings` | paramètres de facturation (secrets en écriture seule) |
+| POST | `/api/v1/billing/documents/{id}/issue`, `/billing/documents/{id}/chorus` | émission d'un brouillon (numéro, PDF), dépôt Chorus Pro |
+| GET | `/api/v1/billing/documents/{id}/pdf`, `/billing/fec?year=`, `/billing/vat?from=&to=` | PDF émis, FEC de l'exercice, TVA collectée |
 | GET | `/api/v1/audit?limit=&before=` | journal d'audit |
 | WS | `/ws` | notifications temps réel (1er message : authentification) |
 
@@ -228,3 +232,29 @@ flowchart LR
 - Un email reçu d'un contact (ou envoyé à un contact) crée une activité « Email » (écriture
   serveur `SyncService.writeSystem`, attribuée au propriétaire du compte) et arrête ses séquences
   en cours s'il s'agit d'une réponse.
+
+## Facturation (Phase 5)
+
+| Table (migration 0005) | Contenu |
+|---|---|
+| `products` | catalogue (synchronisé) : prix HT en centimes, taux de TVA, unité, compte de produit |
+| `invoices` | devis, factures, avoirs (synchronisés) : lignes (JSON), totaux, numéro, dates, instantanés `seller` / `buyer`, PDF émis, flux Chorus Pro |
+| `payments` | encaissements (synchronisés) |
+| `document_counters` | dernier numéro par type et par année |
+| `billing_settings` | paramètres (une ligne) : identité du vendeur, conditions, plan de comptes, Chorus Pro (secrets chiffrés) |
+
+```mermaid
+sequenceDiagram
+  participant P as Poste
+  participant S as Serveur
+  P->>S: push (brouillon)
+  P->>S: POST /billing/documents/{id}/issue
+  S->>S: transaction : compteur +1, totaux, instantanés, PDF Factur-X, writeSystem
+  S-->>P: numéro
+  S-->>P: notification WebSocket → pull (document émis, verrouillé)
+```
+
+- Un document émis n'accepte plus que des changements d'état (payée, acceptée…) : le serveur
+  refuse les autres champs (`lockedFields`) et tout champ attribué par lui (`serverFields`).
+- Le client calcule l'aperçu des totaux avec le même package `invoicing` que le serveur.
+

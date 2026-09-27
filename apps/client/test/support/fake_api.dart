@@ -113,6 +113,15 @@ ApiClient fakeApi(Bootstrap boot) {
         '/api/v1/email/providers' => ['imap', 'google', 'microsoft'],
         '/api/v1/email/accounts' => [for (final a in accounts) a.toJson()],
         '/api/v1/email/messages' => [for (final m in messages) m.toJson()],
+        '/api/v1/billing/settings' => const BillingSettings(
+          legalName: 'Voyaj SAS',
+          siren: '123456782',
+          city: 'Rodez',
+          chorusEnabled: true,
+          chorusLogin: 'TECH_voyaj@cpro.fr',
+          pisteClientId: 'client-piste',
+          chorusConfigured: true,
+        ).toJson(),
         final path when path.startsWith('/api/v1/email/messages/') =>
           messages.first.toJson(),
         _ => null,

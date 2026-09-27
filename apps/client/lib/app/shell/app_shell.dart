@@ -64,6 +64,8 @@ class AppShell extends ConsumerWidget {
             go(Routes.map),
         const SingleActivator(LogicalKeyboardKey.digit6, control: true): () =>
             go(Routes.emails),
+        const SingleActivator(LogicalKeyboardKey.digit7, control: true): () =>
+            go(Routes.billing),
         const SingleActivator(LogicalKeyboardKey.keyW, control: true): () {
           final next = ref
               .read(workTabsProvider.notifier)
@@ -174,6 +176,13 @@ class _Sidebar extends ConsumerWidget {
         ),
       if (can(Permission.organisationRead))
         _NavItem(LucideIcons.map, l10n.navMap, Routes.map, shortcut: 'Ctrl 5'),
+      if (can(Permission.invoiceRead))
+        _NavItem(
+          LucideIcons.receipt,
+          l10n.navBilling,
+          Routes.billing,
+          shortcut: 'Ctrl 7',
+        ),
     ];
     final data = [
       _NavItem(LucideIcons.tags, l10n.navTags, Routes.tags),

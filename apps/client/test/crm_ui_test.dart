@@ -120,6 +120,68 @@ void main() {
 
     await stop(tester, container, boot);
   });
+
+  testWidgets('facture créée depuis la fiche avec le catalogue', (
+    tester,
+  ) async {
+    final (container, boot) = await start(
+      tester,
+      '${Routes.organisations}/${sid('org-2')}',
+    );
+    await tester.tap(find.text('Factures'));
+    await settle(tester);
+    await tester.tap(find.text('Nouvelle facture'));
+    await settle(tester);
+    expect(find.byType(VModal), findsOneWidget);
+
+    await tester.enterText(
+      find.byWidgetPredicate((w) => w is TextField && w.autofocus),
+      'Transport du festival',
+    );
+    await tester.tap(find.text('Depuis le catalogue'));
+    await settle(tester);
+    await tester.tap(find.textContaining('Accompagnement guide'));
+    await settle(tester);
+    await tester.tap(find.text('Créer'));
+    await settle(tester);
+
+    final invoices = await tester.runAsync(
+      () => boot.db.select(boot.db.invoices).get(),
+    );
+    final created = invoices!.singleWhere(
+      (i) => i.subject == 'Transport du festival',
+    );
+    expect(created.kind, 'invoice');
+    expect(created.status, 'draft');
+    expect(created.organisationId, sid('org-2'));
+    expect(created.lines, contains('"unit_price_cents":25000'));
+    // Fiche du brouillon ouverte après création.
+    expect(find.text('Émettre'), findsOneWidget);
+
+    await stop(tester, container, boot);
+  });
+
+  testWidgets('devis accepté transformé en facture', (tester) async {
+    final (container, boot) = await start(tester, Routes.billing);
+    await tester.tap(find.text('Devis').first);
+    await settle(tester);
+    await tester.tap(find.text('D2026-00001'));
+    await settle(tester);
+    await tester.tap(find.text('Facturer'));
+    await settle(tester);
+
+    final invoices = await tester.runAsync(
+      () => boot.db.select(boot.db.invoices).get(),
+    );
+    final created = invoices!.singleWhere(
+      (i) => i.quoteId == sid('inv-1') && i.number == null,
+    );
+    expect(created.kind, 'invoice');
+    expect(created.number, isNull);
+    expect(created.lines, contains('Navette estivale'));
+
+    await stop(tester, container, boot);
+  });
 }
 
 /// Laisse les écritures (base réelle) et animations se terminer.

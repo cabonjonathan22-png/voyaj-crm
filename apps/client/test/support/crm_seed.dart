@@ -2,7 +2,7 @@ import 'package:voyaj_client/data/local/database.dart';
 import 'package:voyaj_client/data/sync/local_entities.dart';
 
 final _seedKey = RegExp(
-  r'^(org|ct|pos|pl|st|deal|act|file|tg|cf|seg|tpl|sq|enr)-\d+$',
+  r'^(org|ct|pos|pl|st|deal|act|file|tg|cf|seg|tpl|sq|enr|prd|inv|pay)-\d+$',
 );
 
 /// Identifiant UUID stable d'une clé de démonstration (`org-1`).
@@ -444,5 +444,79 @@ Future<void> seedCrm(AppDatabase db) async {
     'owner_id': '01a0e2e2-342f-724e-8b9a-9d12d8be87cd',
     'step': 1,
     'status': 'replied',
+  });
+
+  // Facturation.
+  const navette = {
+    'description': 'Navette estivale (journée)',
+    'quantity': 12,
+    'unit_price_cents': 45000,
+    'vat_rate': 1000,
+  };
+  const guide = {
+    'description': 'Accompagnement guide',
+    'quantity': 3,
+    'unit_price_cents': 25000,
+    'vat_rate': 2000,
+  };
+  await put('products', 'prd-1', {
+    'name': 'Navette estivale (journée)',
+    'unit_price_cents': 45000,
+    'vat_rate': 1000,
+    'unit': 'jour',
+    'active': true,
+  });
+  await put('products', 'prd-2', {
+    'name': 'Accompagnement guide',
+    'unit_price_cents': 25000,
+    'vat_rate': 2000,
+    'unit': 'jour',
+    'active': true,
+  });
+  const seller = {'name': 'Voyaj SAS', 'siren': '123456782'};
+  await put('invoices', 'inv-1', {
+    'kind': 'quote',
+    'status': 'accepted',
+    'number': 'D2026-00001',
+    'subject': 'Navettes estivales 2026',
+    'organisation_id': 'org-1',
+    'issue_date': '2026-05-04',
+    'valid_until': '2026-06-03',
+    'lines': [navette, guide],
+    'total_ht_cents': 615000,
+    'total_vat_cents': 69000,
+    'total_ttc_cents': 684000,
+    'seller': seller,
+    'buyer': {'name': 'Mairie de Rodez'},
+  });
+  await put('invoices', 'inv-2', {
+    'kind': 'invoice',
+    'status': 'issued',
+    'number': 'F2026-00001',
+    'subject': 'Navettes estivales 2026',
+    'organisation_id': 'org-1',
+    'quote_id': 'inv-1',
+    'issue_date': '2026-07-01',
+    'due_date': '2026-07-31',
+    'lines': [navette, guide],
+    'total_ht_cents': 615000,
+    'total_vat_cents': 69000,
+    'total_ttc_cents': 684000,
+    'seller': seller,
+    'buyer': {'name': 'Mairie de Rodez'},
+    'pdf_file_id': 'a' * 64,
+  });
+  await put('invoices', 'inv-3', {
+    'kind': 'invoice',
+    'status': 'draft',
+    'subject': 'Festival — transport des bénévoles',
+    'organisation_id': 'org-2',
+    'lines': [navette],
+  });
+  await put('payments', 'pay-1', {
+    'invoice_id': 'inv-2',
+    'amount_cents': 300000,
+    'paid_on': '2026-08-02',
+    'method': 'treasury',
   });
 }

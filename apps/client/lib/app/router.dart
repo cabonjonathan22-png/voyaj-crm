@@ -12,6 +12,7 @@ import '../features/auth/auth_state.dart';
 import '../features/auth/login_page.dart';
 import '../features/auth/mfa_page.dart';
 import '../features/auth/server_setup_page.dart';
+import '../features/billing/billing_page.dart';
 import '../features/crm/activities/tasks_page.dart';
 import '../features/crm/contacts/contact_page.dart';
 import '../features/crm/contacts/contacts_page.dart';
@@ -42,6 +43,7 @@ abstract final class Routes {
   static const map = '/carte';
   static const duplicates = '/doublons';
   static const emails = '/emails';
+  static const billing = '/facturation';
   static const tags = '/tags';
   static const sync = '/sync';
   static const settings = '/settings';
@@ -154,6 +156,10 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: Routes.emails,
             pageBuilder: (_, state) => _instant(state, const EmailsPage()),
+          ),
+          GoRoute(
+            path: Routes.billing,
+            pageBuilder: (_, state) => _instant(state, const BillingPage()),
           ),
           GoRoute(
             path: Routes.duplicates,
