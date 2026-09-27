@@ -11701,6 +11701,2272 @@ class SegmentsCompanion extends UpdateCompanion<SegmentRow> {
   }
 }
 
+class $EmailTemplatesTable extends EmailTemplates
+    with TableInfo<$EmailTemplatesTable, EmailTemplateRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $EmailTemplatesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _versionMeta = const VerificationMeta(
+    'version',
+  );
+  @override
+  late final GeneratedColumn<int> version = GeneratedColumn<int>(
+    'version',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _fieldMetaMeta = const VerificationMeta(
+    'fieldMeta',
+  );
+  @override
+  late final GeneratedColumn<String> fieldMeta = GeneratedColumn<String>(
+    'field_meta',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('{}'),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _updatedByMeta = const VerificationMeta(
+    'updatedBy',
+  );
+  @override
+  late final GeneratedColumn<String> updatedBy = GeneratedColumn<String>(
+    'updated_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _deletedAtMeta = const VerificationMeta(
+    'deletedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> deletedAt = GeneratedColumn<DateTime>(
+    'deleted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+    'name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _subjectMeta = const VerificationMeta(
+    'subject',
+  );
+  @override
+  late final GeneratedColumn<String> subject = GeneratedColumn<String>(
+    'subject',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _bodyMeta = const VerificationMeta('body');
+  @override
+  late final GeneratedColumn<String> body = GeneratedColumn<String>(
+    'body',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _descriptionMeta = const VerificationMeta(
+    'description',
+  );
+  @override
+  late final GeneratedColumn<String> description = GeneratedColumn<String>(
+    'description',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    version,
+    fieldMeta,
+    createdAt,
+    createdBy,
+    updatedAt,
+    updatedBy,
+    deletedAt,
+    id,
+    name,
+    subject,
+    body,
+    description,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'email_templates';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<EmailTemplateRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('version')) {
+      context.handle(
+        _versionMeta,
+        version.isAcceptableOrUnknown(data['version']!, _versionMeta),
+      );
+    }
+    if (data.containsKey('field_meta')) {
+      context.handle(
+        _fieldMetaMeta,
+        fieldMeta.isAcceptableOrUnknown(data['field_meta']!, _fieldMetaMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_createdAtMeta);
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_updatedAtMeta);
+    }
+    if (data.containsKey('updated_by')) {
+      context.handle(
+        _updatedByMeta,
+        updatedBy.isAcceptableOrUnknown(data['updated_by']!, _updatedByMeta),
+      );
+    }
+    if (data.containsKey('deleted_at')) {
+      context.handle(
+        _deletedAtMeta,
+        deletedAt.isAcceptableOrUnknown(data['deleted_at']!, _deletedAtMeta),
+      );
+    }
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    if (data.containsKey('subject')) {
+      context.handle(
+        _subjectMeta,
+        subject.isAcceptableOrUnknown(data['subject']!, _subjectMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_subjectMeta);
+    }
+    if (data.containsKey('body')) {
+      context.handle(
+        _bodyMeta,
+        body.isAcceptableOrUnknown(data['body']!, _bodyMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_bodyMeta);
+    }
+    if (data.containsKey('description')) {
+      context.handle(
+        _descriptionMeta,
+        description.isAcceptableOrUnknown(
+          data['description']!,
+          _descriptionMeta,
+        ),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  EmailTemplateRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return EmailTemplateRow(
+      version: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}version'],
+      )!,
+      fieldMeta: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}field_meta'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      updatedBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_by'],
+      ),
+      deletedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}deleted_at'],
+      ),
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      name: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name'],
+      )!,
+      subject: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}subject'],
+      )!,
+      body: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}body'],
+      )!,
+      description: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}description'],
+      ),
+    );
+  }
+
+  @override
+  $EmailTemplatesTable createAlias(String alias) {
+    return $EmailTemplatesTable(attachedDatabase, alias);
+  }
+}
+
+class EmailTemplateRow extends DataClass
+    implements Insertable<EmailTemplateRow> {
+  final int version;
+  final String fieldMeta;
+  final DateTime createdAt;
+  final String? createdBy;
+  final DateTime updatedAt;
+  final String? updatedBy;
+  final DateTime? deletedAt;
+  final String id;
+  final String name;
+  final String subject;
+  final String body;
+  final String? description;
+  const EmailTemplateRow({
+    required this.version,
+    required this.fieldMeta,
+    required this.createdAt,
+    this.createdBy,
+    required this.updatedAt,
+    this.updatedBy,
+    this.deletedAt,
+    required this.id,
+    required this.name,
+    required this.subject,
+    required this.body,
+    this.description,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['version'] = Variable<int>(version);
+    map['field_meta'] = Variable<String>(fieldMeta);
+    map['created_at'] = Variable<DateTime>(createdAt);
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    if (!nullToAbsent || updatedBy != null) {
+      map['updated_by'] = Variable<String>(updatedBy);
+    }
+    if (!nullToAbsent || deletedAt != null) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt);
+    }
+    map['id'] = Variable<String>(id);
+    map['name'] = Variable<String>(name);
+    map['subject'] = Variable<String>(subject);
+    map['body'] = Variable<String>(body);
+    if (!nullToAbsent || description != null) {
+      map['description'] = Variable<String>(description);
+    }
+    return map;
+  }
+
+  EmailTemplatesCompanion toCompanion(bool nullToAbsent) {
+    return EmailTemplatesCompanion(
+      version: Value(version),
+      fieldMeta: Value(fieldMeta),
+      createdAt: Value(createdAt),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      updatedAt: Value(updatedAt),
+      updatedBy: updatedBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedBy),
+      deletedAt: deletedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deletedAt),
+      id: Value(id),
+      name: Value(name),
+      subject: Value(subject),
+      body: Value(body),
+      description: description == null && nullToAbsent
+          ? const Value.absent()
+          : Value(description),
+    );
+  }
+
+  factory EmailTemplateRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return EmailTemplateRow(
+      version: serializer.fromJson<int>(json['version']),
+      fieldMeta: serializer.fromJson<String>(json['fieldMeta']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      updatedBy: serializer.fromJson<String?>(json['updatedBy']),
+      deletedAt: serializer.fromJson<DateTime?>(json['deletedAt']),
+      id: serializer.fromJson<String>(json['id']),
+      name: serializer.fromJson<String>(json['name']),
+      subject: serializer.fromJson<String>(json['subject']),
+      body: serializer.fromJson<String>(json['body']),
+      description: serializer.fromJson<String?>(json['description']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'version': serializer.toJson<int>(version),
+      'fieldMeta': serializer.toJson<String>(fieldMeta),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'updatedBy': serializer.toJson<String?>(updatedBy),
+      'deletedAt': serializer.toJson<DateTime?>(deletedAt),
+      'id': serializer.toJson<String>(id),
+      'name': serializer.toJson<String>(name),
+      'subject': serializer.toJson<String>(subject),
+      'body': serializer.toJson<String>(body),
+      'description': serializer.toJson<String?>(description),
+    };
+  }
+
+  EmailTemplateRow copyWith({
+    int? version,
+    String? fieldMeta,
+    DateTime? createdAt,
+    Value<String?> createdBy = const Value.absent(),
+    DateTime? updatedAt,
+    Value<String?> updatedBy = const Value.absent(),
+    Value<DateTime?> deletedAt = const Value.absent(),
+    String? id,
+    String? name,
+    String? subject,
+    String? body,
+    Value<String?> description = const Value.absent(),
+  }) => EmailTemplateRow(
+    version: version ?? this.version,
+    fieldMeta: fieldMeta ?? this.fieldMeta,
+    createdAt: createdAt ?? this.createdAt,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    updatedAt: updatedAt ?? this.updatedAt,
+    updatedBy: updatedBy.present ? updatedBy.value : this.updatedBy,
+    deletedAt: deletedAt.present ? deletedAt.value : this.deletedAt,
+    id: id ?? this.id,
+    name: name ?? this.name,
+    subject: subject ?? this.subject,
+    body: body ?? this.body,
+    description: description.present ? description.value : this.description,
+  );
+  EmailTemplateRow copyWithCompanion(EmailTemplatesCompanion data) {
+    return EmailTemplateRow(
+      version: data.version.present ? data.version.value : this.version,
+      fieldMeta: data.fieldMeta.present ? data.fieldMeta.value : this.fieldMeta,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      updatedBy: data.updatedBy.present ? data.updatedBy.value : this.updatedBy,
+      deletedAt: data.deletedAt.present ? data.deletedAt.value : this.deletedAt,
+      id: data.id.present ? data.id.value : this.id,
+      name: data.name.present ? data.name.value : this.name,
+      subject: data.subject.present ? data.subject.value : this.subject,
+      body: data.body.present ? data.body.value : this.body,
+      description: data.description.present
+          ? data.description.value
+          : this.description,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('EmailTemplateRow(')
+          ..write('version: $version, ')
+          ..write('fieldMeta: $fieldMeta, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('updatedBy: $updatedBy, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('subject: $subject, ')
+          ..write('body: $body, ')
+          ..write('description: $description')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    version,
+    fieldMeta,
+    createdAt,
+    createdBy,
+    updatedAt,
+    updatedBy,
+    deletedAt,
+    id,
+    name,
+    subject,
+    body,
+    description,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is EmailTemplateRow &&
+          other.version == this.version &&
+          other.fieldMeta == this.fieldMeta &&
+          other.createdAt == this.createdAt &&
+          other.createdBy == this.createdBy &&
+          other.updatedAt == this.updatedAt &&
+          other.updatedBy == this.updatedBy &&
+          other.deletedAt == this.deletedAt &&
+          other.id == this.id &&
+          other.name == this.name &&
+          other.subject == this.subject &&
+          other.body == this.body &&
+          other.description == this.description);
+}
+
+class EmailTemplatesCompanion extends UpdateCompanion<EmailTemplateRow> {
+  final Value<int> version;
+  final Value<String> fieldMeta;
+  final Value<DateTime> createdAt;
+  final Value<String?> createdBy;
+  final Value<DateTime> updatedAt;
+  final Value<String?> updatedBy;
+  final Value<DateTime?> deletedAt;
+  final Value<String> id;
+  final Value<String> name;
+  final Value<String> subject;
+  final Value<String> body;
+  final Value<String?> description;
+  final Value<int> rowid;
+  const EmailTemplatesCompanion({
+    this.version = const Value.absent(),
+    this.fieldMeta = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.updatedBy = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.id = const Value.absent(),
+    this.name = const Value.absent(),
+    this.subject = const Value.absent(),
+    this.body = const Value.absent(),
+    this.description = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  EmailTemplatesCompanion.insert({
+    this.version = const Value.absent(),
+    this.fieldMeta = const Value.absent(),
+    required DateTime createdAt,
+    this.createdBy = const Value.absent(),
+    required DateTime updatedAt,
+    this.updatedBy = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    required String id,
+    required String name,
+    required String subject,
+    required String body,
+    this.description = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : createdAt = Value(createdAt),
+       updatedAt = Value(updatedAt),
+       id = Value(id),
+       name = Value(name),
+       subject = Value(subject),
+       body = Value(body);
+  static Insertable<EmailTemplateRow> custom({
+    Expression<int>? version,
+    Expression<String>? fieldMeta,
+    Expression<DateTime>? createdAt,
+    Expression<String>? createdBy,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? updatedBy,
+    Expression<DateTime>? deletedAt,
+    Expression<String>? id,
+    Expression<String>? name,
+    Expression<String>? subject,
+    Expression<String>? body,
+    Expression<String>? description,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (version != null) 'version': version,
+      if (fieldMeta != null) 'field_meta': fieldMeta,
+      if (createdAt != null) 'created_at': createdAt,
+      if (createdBy != null) 'created_by': createdBy,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (updatedBy != null) 'updated_by': updatedBy,
+      if (deletedAt != null) 'deleted_at': deletedAt,
+      if (id != null) 'id': id,
+      if (name != null) 'name': name,
+      if (subject != null) 'subject': subject,
+      if (body != null) 'body': body,
+      if (description != null) 'description': description,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  EmailTemplatesCompanion copyWith({
+    Value<int>? version,
+    Value<String>? fieldMeta,
+    Value<DateTime>? createdAt,
+    Value<String?>? createdBy,
+    Value<DateTime>? updatedAt,
+    Value<String?>? updatedBy,
+    Value<DateTime?>? deletedAt,
+    Value<String>? id,
+    Value<String>? name,
+    Value<String>? subject,
+    Value<String>? body,
+    Value<String?>? description,
+    Value<int>? rowid,
+  }) {
+    return EmailTemplatesCompanion(
+      version: version ?? this.version,
+      fieldMeta: fieldMeta ?? this.fieldMeta,
+      createdAt: createdAt ?? this.createdAt,
+      createdBy: createdBy ?? this.createdBy,
+      updatedAt: updatedAt ?? this.updatedAt,
+      updatedBy: updatedBy ?? this.updatedBy,
+      deletedAt: deletedAt ?? this.deletedAt,
+      id: id ?? this.id,
+      name: name ?? this.name,
+      subject: subject ?? this.subject,
+      body: body ?? this.body,
+      description: description ?? this.description,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (version.present) {
+      map['version'] = Variable<int>(version.value);
+    }
+    if (fieldMeta.present) {
+      map['field_meta'] = Variable<String>(fieldMeta.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (updatedBy.present) {
+      map['updated_by'] = Variable<String>(updatedBy.value);
+    }
+    if (deletedAt.present) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt.value);
+    }
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (subject.present) {
+      map['subject'] = Variable<String>(subject.value);
+    }
+    if (body.present) {
+      map['body'] = Variable<String>(body.value);
+    }
+    if (description.present) {
+      map['description'] = Variable<String>(description.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('EmailTemplatesCompanion(')
+          ..write('version: $version, ')
+          ..write('fieldMeta: $fieldMeta, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('updatedBy: $updatedBy, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('subject: $subject, ')
+          ..write('body: $body, ')
+          ..write('description: $description, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $EmailSequencesTable extends EmailSequences
+    with TableInfo<$EmailSequencesTable, EmailSequenceRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $EmailSequencesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _versionMeta = const VerificationMeta(
+    'version',
+  );
+  @override
+  late final GeneratedColumn<int> version = GeneratedColumn<int>(
+    'version',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _fieldMetaMeta = const VerificationMeta(
+    'fieldMeta',
+  );
+  @override
+  late final GeneratedColumn<String> fieldMeta = GeneratedColumn<String>(
+    'field_meta',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('{}'),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _updatedByMeta = const VerificationMeta(
+    'updatedBy',
+  );
+  @override
+  late final GeneratedColumn<String> updatedBy = GeneratedColumn<String>(
+    'updated_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _deletedAtMeta = const VerificationMeta(
+    'deletedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> deletedAt = GeneratedColumn<DateTime>(
+    'deleted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+    'name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _descriptionMeta = const VerificationMeta(
+    'description',
+  );
+  @override
+  late final GeneratedColumn<String> description = GeneratedColumn<String>(
+    'description',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _stepsMeta = const VerificationMeta('steps');
+  @override
+  late final GeneratedColumn<String> steps = GeneratedColumn<String>(
+    'steps',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _activeMeta = const VerificationMeta('active');
+  @override
+  late final GeneratedColumn<bool> active = GeneratedColumn<bool>(
+    'active',
+    aliasedName,
+    true,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("active" IN (0, 1))',
+    ),
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    version,
+    fieldMeta,
+    createdAt,
+    createdBy,
+    updatedAt,
+    updatedBy,
+    deletedAt,
+    id,
+    name,
+    description,
+    steps,
+    active,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'email_sequences';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<EmailSequenceRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('version')) {
+      context.handle(
+        _versionMeta,
+        version.isAcceptableOrUnknown(data['version']!, _versionMeta),
+      );
+    }
+    if (data.containsKey('field_meta')) {
+      context.handle(
+        _fieldMetaMeta,
+        fieldMeta.isAcceptableOrUnknown(data['field_meta']!, _fieldMetaMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_createdAtMeta);
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_updatedAtMeta);
+    }
+    if (data.containsKey('updated_by')) {
+      context.handle(
+        _updatedByMeta,
+        updatedBy.isAcceptableOrUnknown(data['updated_by']!, _updatedByMeta),
+      );
+    }
+    if (data.containsKey('deleted_at')) {
+      context.handle(
+        _deletedAtMeta,
+        deletedAt.isAcceptableOrUnknown(data['deleted_at']!, _deletedAtMeta),
+      );
+    }
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    if (data.containsKey('description')) {
+      context.handle(
+        _descriptionMeta,
+        description.isAcceptableOrUnknown(
+          data['description']!,
+          _descriptionMeta,
+        ),
+      );
+    }
+    if (data.containsKey('steps')) {
+      context.handle(
+        _stepsMeta,
+        steps.isAcceptableOrUnknown(data['steps']!, _stepsMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_stepsMeta);
+    }
+    if (data.containsKey('active')) {
+      context.handle(
+        _activeMeta,
+        active.isAcceptableOrUnknown(data['active']!, _activeMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  EmailSequenceRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return EmailSequenceRow(
+      version: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}version'],
+      )!,
+      fieldMeta: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}field_meta'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      updatedBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_by'],
+      ),
+      deletedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}deleted_at'],
+      ),
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      name: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name'],
+      )!,
+      description: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}description'],
+      ),
+      steps: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}steps'],
+      )!,
+      active: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}active'],
+      ),
+    );
+  }
+
+  @override
+  $EmailSequencesTable createAlias(String alias) {
+    return $EmailSequencesTable(attachedDatabase, alias);
+  }
+}
+
+class EmailSequenceRow extends DataClass
+    implements Insertable<EmailSequenceRow> {
+  final int version;
+  final String fieldMeta;
+  final DateTime createdAt;
+  final String? createdBy;
+  final DateTime updatedAt;
+  final String? updatedBy;
+  final DateTime? deletedAt;
+  final String id;
+  final String name;
+  final String? description;
+  final String steps;
+  final bool? active;
+  const EmailSequenceRow({
+    required this.version,
+    required this.fieldMeta,
+    required this.createdAt,
+    this.createdBy,
+    required this.updatedAt,
+    this.updatedBy,
+    this.deletedAt,
+    required this.id,
+    required this.name,
+    this.description,
+    required this.steps,
+    this.active,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['version'] = Variable<int>(version);
+    map['field_meta'] = Variable<String>(fieldMeta);
+    map['created_at'] = Variable<DateTime>(createdAt);
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    if (!nullToAbsent || updatedBy != null) {
+      map['updated_by'] = Variable<String>(updatedBy);
+    }
+    if (!nullToAbsent || deletedAt != null) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt);
+    }
+    map['id'] = Variable<String>(id);
+    map['name'] = Variable<String>(name);
+    if (!nullToAbsent || description != null) {
+      map['description'] = Variable<String>(description);
+    }
+    map['steps'] = Variable<String>(steps);
+    if (!nullToAbsent || active != null) {
+      map['active'] = Variable<bool>(active);
+    }
+    return map;
+  }
+
+  EmailSequencesCompanion toCompanion(bool nullToAbsent) {
+    return EmailSequencesCompanion(
+      version: Value(version),
+      fieldMeta: Value(fieldMeta),
+      createdAt: Value(createdAt),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      updatedAt: Value(updatedAt),
+      updatedBy: updatedBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedBy),
+      deletedAt: deletedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deletedAt),
+      id: Value(id),
+      name: Value(name),
+      description: description == null && nullToAbsent
+          ? const Value.absent()
+          : Value(description),
+      steps: Value(steps),
+      active: active == null && nullToAbsent
+          ? const Value.absent()
+          : Value(active),
+    );
+  }
+
+  factory EmailSequenceRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return EmailSequenceRow(
+      version: serializer.fromJson<int>(json['version']),
+      fieldMeta: serializer.fromJson<String>(json['fieldMeta']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      updatedBy: serializer.fromJson<String?>(json['updatedBy']),
+      deletedAt: serializer.fromJson<DateTime?>(json['deletedAt']),
+      id: serializer.fromJson<String>(json['id']),
+      name: serializer.fromJson<String>(json['name']),
+      description: serializer.fromJson<String?>(json['description']),
+      steps: serializer.fromJson<String>(json['steps']),
+      active: serializer.fromJson<bool?>(json['active']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'version': serializer.toJson<int>(version),
+      'fieldMeta': serializer.toJson<String>(fieldMeta),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'updatedBy': serializer.toJson<String?>(updatedBy),
+      'deletedAt': serializer.toJson<DateTime?>(deletedAt),
+      'id': serializer.toJson<String>(id),
+      'name': serializer.toJson<String>(name),
+      'description': serializer.toJson<String?>(description),
+      'steps': serializer.toJson<String>(steps),
+      'active': serializer.toJson<bool?>(active),
+    };
+  }
+
+  EmailSequenceRow copyWith({
+    int? version,
+    String? fieldMeta,
+    DateTime? createdAt,
+    Value<String?> createdBy = const Value.absent(),
+    DateTime? updatedAt,
+    Value<String?> updatedBy = const Value.absent(),
+    Value<DateTime?> deletedAt = const Value.absent(),
+    String? id,
+    String? name,
+    Value<String?> description = const Value.absent(),
+    String? steps,
+    Value<bool?> active = const Value.absent(),
+  }) => EmailSequenceRow(
+    version: version ?? this.version,
+    fieldMeta: fieldMeta ?? this.fieldMeta,
+    createdAt: createdAt ?? this.createdAt,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    updatedAt: updatedAt ?? this.updatedAt,
+    updatedBy: updatedBy.present ? updatedBy.value : this.updatedBy,
+    deletedAt: deletedAt.present ? deletedAt.value : this.deletedAt,
+    id: id ?? this.id,
+    name: name ?? this.name,
+    description: description.present ? description.value : this.description,
+    steps: steps ?? this.steps,
+    active: active.present ? active.value : this.active,
+  );
+  EmailSequenceRow copyWithCompanion(EmailSequencesCompanion data) {
+    return EmailSequenceRow(
+      version: data.version.present ? data.version.value : this.version,
+      fieldMeta: data.fieldMeta.present ? data.fieldMeta.value : this.fieldMeta,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      updatedBy: data.updatedBy.present ? data.updatedBy.value : this.updatedBy,
+      deletedAt: data.deletedAt.present ? data.deletedAt.value : this.deletedAt,
+      id: data.id.present ? data.id.value : this.id,
+      name: data.name.present ? data.name.value : this.name,
+      description: data.description.present
+          ? data.description.value
+          : this.description,
+      steps: data.steps.present ? data.steps.value : this.steps,
+      active: data.active.present ? data.active.value : this.active,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('EmailSequenceRow(')
+          ..write('version: $version, ')
+          ..write('fieldMeta: $fieldMeta, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('updatedBy: $updatedBy, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('description: $description, ')
+          ..write('steps: $steps, ')
+          ..write('active: $active')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    version,
+    fieldMeta,
+    createdAt,
+    createdBy,
+    updatedAt,
+    updatedBy,
+    deletedAt,
+    id,
+    name,
+    description,
+    steps,
+    active,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is EmailSequenceRow &&
+          other.version == this.version &&
+          other.fieldMeta == this.fieldMeta &&
+          other.createdAt == this.createdAt &&
+          other.createdBy == this.createdBy &&
+          other.updatedAt == this.updatedAt &&
+          other.updatedBy == this.updatedBy &&
+          other.deletedAt == this.deletedAt &&
+          other.id == this.id &&
+          other.name == this.name &&
+          other.description == this.description &&
+          other.steps == this.steps &&
+          other.active == this.active);
+}
+
+class EmailSequencesCompanion extends UpdateCompanion<EmailSequenceRow> {
+  final Value<int> version;
+  final Value<String> fieldMeta;
+  final Value<DateTime> createdAt;
+  final Value<String?> createdBy;
+  final Value<DateTime> updatedAt;
+  final Value<String?> updatedBy;
+  final Value<DateTime?> deletedAt;
+  final Value<String> id;
+  final Value<String> name;
+  final Value<String?> description;
+  final Value<String> steps;
+  final Value<bool?> active;
+  final Value<int> rowid;
+  const EmailSequencesCompanion({
+    this.version = const Value.absent(),
+    this.fieldMeta = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.updatedBy = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.id = const Value.absent(),
+    this.name = const Value.absent(),
+    this.description = const Value.absent(),
+    this.steps = const Value.absent(),
+    this.active = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  EmailSequencesCompanion.insert({
+    this.version = const Value.absent(),
+    this.fieldMeta = const Value.absent(),
+    required DateTime createdAt,
+    this.createdBy = const Value.absent(),
+    required DateTime updatedAt,
+    this.updatedBy = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    required String id,
+    required String name,
+    this.description = const Value.absent(),
+    required String steps,
+    this.active = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : createdAt = Value(createdAt),
+       updatedAt = Value(updatedAt),
+       id = Value(id),
+       name = Value(name),
+       steps = Value(steps);
+  static Insertable<EmailSequenceRow> custom({
+    Expression<int>? version,
+    Expression<String>? fieldMeta,
+    Expression<DateTime>? createdAt,
+    Expression<String>? createdBy,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? updatedBy,
+    Expression<DateTime>? deletedAt,
+    Expression<String>? id,
+    Expression<String>? name,
+    Expression<String>? description,
+    Expression<String>? steps,
+    Expression<bool>? active,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (version != null) 'version': version,
+      if (fieldMeta != null) 'field_meta': fieldMeta,
+      if (createdAt != null) 'created_at': createdAt,
+      if (createdBy != null) 'created_by': createdBy,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (updatedBy != null) 'updated_by': updatedBy,
+      if (deletedAt != null) 'deleted_at': deletedAt,
+      if (id != null) 'id': id,
+      if (name != null) 'name': name,
+      if (description != null) 'description': description,
+      if (steps != null) 'steps': steps,
+      if (active != null) 'active': active,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  EmailSequencesCompanion copyWith({
+    Value<int>? version,
+    Value<String>? fieldMeta,
+    Value<DateTime>? createdAt,
+    Value<String?>? createdBy,
+    Value<DateTime>? updatedAt,
+    Value<String?>? updatedBy,
+    Value<DateTime?>? deletedAt,
+    Value<String>? id,
+    Value<String>? name,
+    Value<String?>? description,
+    Value<String>? steps,
+    Value<bool?>? active,
+    Value<int>? rowid,
+  }) {
+    return EmailSequencesCompanion(
+      version: version ?? this.version,
+      fieldMeta: fieldMeta ?? this.fieldMeta,
+      createdAt: createdAt ?? this.createdAt,
+      createdBy: createdBy ?? this.createdBy,
+      updatedAt: updatedAt ?? this.updatedAt,
+      updatedBy: updatedBy ?? this.updatedBy,
+      deletedAt: deletedAt ?? this.deletedAt,
+      id: id ?? this.id,
+      name: name ?? this.name,
+      description: description ?? this.description,
+      steps: steps ?? this.steps,
+      active: active ?? this.active,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (version.present) {
+      map['version'] = Variable<int>(version.value);
+    }
+    if (fieldMeta.present) {
+      map['field_meta'] = Variable<String>(fieldMeta.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (updatedBy.present) {
+      map['updated_by'] = Variable<String>(updatedBy.value);
+    }
+    if (deletedAt.present) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt.value);
+    }
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (description.present) {
+      map['description'] = Variable<String>(description.value);
+    }
+    if (steps.present) {
+      map['steps'] = Variable<String>(steps.value);
+    }
+    if (active.present) {
+      map['active'] = Variable<bool>(active.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('EmailSequencesCompanion(')
+          ..write('version: $version, ')
+          ..write('fieldMeta: $fieldMeta, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('updatedBy: $updatedBy, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('description: $description, ')
+          ..write('steps: $steps, ')
+          ..write('active: $active, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $SequenceEnrollmentsTable extends SequenceEnrollments
+    with TableInfo<$SequenceEnrollmentsTable, EnrollmentRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $SequenceEnrollmentsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _versionMeta = const VerificationMeta(
+    'version',
+  );
+  @override
+  late final GeneratedColumn<int> version = GeneratedColumn<int>(
+    'version',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _fieldMetaMeta = const VerificationMeta(
+    'fieldMeta',
+  );
+  @override
+  late final GeneratedColumn<String> fieldMeta = GeneratedColumn<String>(
+    'field_meta',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('{}'),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _updatedByMeta = const VerificationMeta(
+    'updatedBy',
+  );
+  @override
+  late final GeneratedColumn<String> updatedBy = GeneratedColumn<String>(
+    'updated_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _deletedAtMeta = const VerificationMeta(
+    'deletedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> deletedAt = GeneratedColumn<DateTime>(
+    'deleted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _sequenceIdMeta = const VerificationMeta(
+    'sequenceId',
+  );
+  @override
+  late final GeneratedColumn<String> sequenceId = GeneratedColumn<String>(
+    'sequence_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _contactIdMeta = const VerificationMeta(
+    'contactId',
+  );
+  @override
+  late final GeneratedColumn<String> contactId = GeneratedColumn<String>(
+    'contact_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _ownerIdMeta = const VerificationMeta(
+    'ownerId',
+  );
+  @override
+  late final GeneratedColumn<String> ownerId = GeneratedColumn<String>(
+    'owner_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _stepMeta = const VerificationMeta('step');
+  @override
+  late final GeneratedColumn<int> step = GeneratedColumn<int>(
+    'step',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _nextSendAtMeta = const VerificationMeta(
+    'nextSendAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> nextSendAt = GeneratedColumn<DateTime>(
+    'next_send_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _statusMeta = const VerificationMeta('status');
+  @override
+  late final GeneratedColumn<String> status = GeneratedColumn<String>(
+    'status',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _lastErrorMeta = const VerificationMeta(
+    'lastError',
+  );
+  @override
+  late final GeneratedColumn<String> lastError = GeneratedColumn<String>(
+    'last_error',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    version,
+    fieldMeta,
+    createdAt,
+    createdBy,
+    updatedAt,
+    updatedBy,
+    deletedAt,
+    id,
+    sequenceId,
+    contactId,
+    ownerId,
+    step,
+    nextSendAt,
+    status,
+    lastError,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'sequence_enrollments';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<EnrollmentRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('version')) {
+      context.handle(
+        _versionMeta,
+        version.isAcceptableOrUnknown(data['version']!, _versionMeta),
+      );
+    }
+    if (data.containsKey('field_meta')) {
+      context.handle(
+        _fieldMetaMeta,
+        fieldMeta.isAcceptableOrUnknown(data['field_meta']!, _fieldMetaMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_createdAtMeta);
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_updatedAtMeta);
+    }
+    if (data.containsKey('updated_by')) {
+      context.handle(
+        _updatedByMeta,
+        updatedBy.isAcceptableOrUnknown(data['updated_by']!, _updatedByMeta),
+      );
+    }
+    if (data.containsKey('deleted_at')) {
+      context.handle(
+        _deletedAtMeta,
+        deletedAt.isAcceptableOrUnknown(data['deleted_at']!, _deletedAtMeta),
+      );
+    }
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('sequence_id')) {
+      context.handle(
+        _sequenceIdMeta,
+        sequenceId.isAcceptableOrUnknown(data['sequence_id']!, _sequenceIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_sequenceIdMeta);
+    }
+    if (data.containsKey('contact_id')) {
+      context.handle(
+        _contactIdMeta,
+        contactId.isAcceptableOrUnknown(data['contact_id']!, _contactIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_contactIdMeta);
+    }
+    if (data.containsKey('owner_id')) {
+      context.handle(
+        _ownerIdMeta,
+        ownerId.isAcceptableOrUnknown(data['owner_id']!, _ownerIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_ownerIdMeta);
+    }
+    if (data.containsKey('step')) {
+      context.handle(
+        _stepMeta,
+        step.isAcceptableOrUnknown(data['step']!, _stepMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_stepMeta);
+    }
+    if (data.containsKey('next_send_at')) {
+      context.handle(
+        _nextSendAtMeta,
+        nextSendAt.isAcceptableOrUnknown(
+          data['next_send_at']!,
+          _nextSendAtMeta,
+        ),
+      );
+    }
+    if (data.containsKey('status')) {
+      context.handle(
+        _statusMeta,
+        status.isAcceptableOrUnknown(data['status']!, _statusMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_statusMeta);
+    }
+    if (data.containsKey('last_error')) {
+      context.handle(
+        _lastErrorMeta,
+        lastError.isAcceptableOrUnknown(data['last_error']!, _lastErrorMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  EnrollmentRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return EnrollmentRow(
+      version: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}version'],
+      )!,
+      fieldMeta: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}field_meta'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      updatedBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_by'],
+      ),
+      deletedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}deleted_at'],
+      ),
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      sequenceId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}sequence_id'],
+      )!,
+      contactId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}contact_id'],
+      )!,
+      ownerId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}owner_id'],
+      )!,
+      step: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}step'],
+      )!,
+      nextSendAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}next_send_at'],
+      ),
+      status: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}status'],
+      )!,
+      lastError: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}last_error'],
+      ),
+    );
+  }
+
+  @override
+  $SequenceEnrollmentsTable createAlias(String alias) {
+    return $SequenceEnrollmentsTable(attachedDatabase, alias);
+  }
+}
+
+class EnrollmentRow extends DataClass implements Insertable<EnrollmentRow> {
+  final int version;
+  final String fieldMeta;
+  final DateTime createdAt;
+  final String? createdBy;
+  final DateTime updatedAt;
+  final String? updatedBy;
+  final DateTime? deletedAt;
+  final String id;
+  final String sequenceId;
+  final String contactId;
+  final String ownerId;
+  final int step;
+  final DateTime? nextSendAt;
+  final String status;
+  final String? lastError;
+  const EnrollmentRow({
+    required this.version,
+    required this.fieldMeta,
+    required this.createdAt,
+    this.createdBy,
+    required this.updatedAt,
+    this.updatedBy,
+    this.deletedAt,
+    required this.id,
+    required this.sequenceId,
+    required this.contactId,
+    required this.ownerId,
+    required this.step,
+    this.nextSendAt,
+    required this.status,
+    this.lastError,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['version'] = Variable<int>(version);
+    map['field_meta'] = Variable<String>(fieldMeta);
+    map['created_at'] = Variable<DateTime>(createdAt);
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    if (!nullToAbsent || updatedBy != null) {
+      map['updated_by'] = Variable<String>(updatedBy);
+    }
+    if (!nullToAbsent || deletedAt != null) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt);
+    }
+    map['id'] = Variable<String>(id);
+    map['sequence_id'] = Variable<String>(sequenceId);
+    map['contact_id'] = Variable<String>(contactId);
+    map['owner_id'] = Variable<String>(ownerId);
+    map['step'] = Variable<int>(step);
+    if (!nullToAbsent || nextSendAt != null) {
+      map['next_send_at'] = Variable<DateTime>(nextSendAt);
+    }
+    map['status'] = Variable<String>(status);
+    if (!nullToAbsent || lastError != null) {
+      map['last_error'] = Variable<String>(lastError);
+    }
+    return map;
+  }
+
+  SequenceEnrollmentsCompanion toCompanion(bool nullToAbsent) {
+    return SequenceEnrollmentsCompanion(
+      version: Value(version),
+      fieldMeta: Value(fieldMeta),
+      createdAt: Value(createdAt),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      updatedAt: Value(updatedAt),
+      updatedBy: updatedBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedBy),
+      deletedAt: deletedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deletedAt),
+      id: Value(id),
+      sequenceId: Value(sequenceId),
+      contactId: Value(contactId),
+      ownerId: Value(ownerId),
+      step: Value(step),
+      nextSendAt: nextSendAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(nextSendAt),
+      status: Value(status),
+      lastError: lastError == null && nullToAbsent
+          ? const Value.absent()
+          : Value(lastError),
+    );
+  }
+
+  factory EnrollmentRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return EnrollmentRow(
+      version: serializer.fromJson<int>(json['version']),
+      fieldMeta: serializer.fromJson<String>(json['fieldMeta']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      updatedBy: serializer.fromJson<String?>(json['updatedBy']),
+      deletedAt: serializer.fromJson<DateTime?>(json['deletedAt']),
+      id: serializer.fromJson<String>(json['id']),
+      sequenceId: serializer.fromJson<String>(json['sequenceId']),
+      contactId: serializer.fromJson<String>(json['contactId']),
+      ownerId: serializer.fromJson<String>(json['ownerId']),
+      step: serializer.fromJson<int>(json['step']),
+      nextSendAt: serializer.fromJson<DateTime?>(json['nextSendAt']),
+      status: serializer.fromJson<String>(json['status']),
+      lastError: serializer.fromJson<String?>(json['lastError']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'version': serializer.toJson<int>(version),
+      'fieldMeta': serializer.toJson<String>(fieldMeta),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'updatedBy': serializer.toJson<String?>(updatedBy),
+      'deletedAt': serializer.toJson<DateTime?>(deletedAt),
+      'id': serializer.toJson<String>(id),
+      'sequenceId': serializer.toJson<String>(sequenceId),
+      'contactId': serializer.toJson<String>(contactId),
+      'ownerId': serializer.toJson<String>(ownerId),
+      'step': serializer.toJson<int>(step),
+      'nextSendAt': serializer.toJson<DateTime?>(nextSendAt),
+      'status': serializer.toJson<String>(status),
+      'lastError': serializer.toJson<String?>(lastError),
+    };
+  }
+
+  EnrollmentRow copyWith({
+    int? version,
+    String? fieldMeta,
+    DateTime? createdAt,
+    Value<String?> createdBy = const Value.absent(),
+    DateTime? updatedAt,
+    Value<String?> updatedBy = const Value.absent(),
+    Value<DateTime?> deletedAt = const Value.absent(),
+    String? id,
+    String? sequenceId,
+    String? contactId,
+    String? ownerId,
+    int? step,
+    Value<DateTime?> nextSendAt = const Value.absent(),
+    String? status,
+    Value<String?> lastError = const Value.absent(),
+  }) => EnrollmentRow(
+    version: version ?? this.version,
+    fieldMeta: fieldMeta ?? this.fieldMeta,
+    createdAt: createdAt ?? this.createdAt,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    updatedAt: updatedAt ?? this.updatedAt,
+    updatedBy: updatedBy.present ? updatedBy.value : this.updatedBy,
+    deletedAt: deletedAt.present ? deletedAt.value : this.deletedAt,
+    id: id ?? this.id,
+    sequenceId: sequenceId ?? this.sequenceId,
+    contactId: contactId ?? this.contactId,
+    ownerId: ownerId ?? this.ownerId,
+    step: step ?? this.step,
+    nextSendAt: nextSendAt.present ? nextSendAt.value : this.nextSendAt,
+    status: status ?? this.status,
+    lastError: lastError.present ? lastError.value : this.lastError,
+  );
+  EnrollmentRow copyWithCompanion(SequenceEnrollmentsCompanion data) {
+    return EnrollmentRow(
+      version: data.version.present ? data.version.value : this.version,
+      fieldMeta: data.fieldMeta.present ? data.fieldMeta.value : this.fieldMeta,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      updatedBy: data.updatedBy.present ? data.updatedBy.value : this.updatedBy,
+      deletedAt: data.deletedAt.present ? data.deletedAt.value : this.deletedAt,
+      id: data.id.present ? data.id.value : this.id,
+      sequenceId: data.sequenceId.present
+          ? data.sequenceId.value
+          : this.sequenceId,
+      contactId: data.contactId.present ? data.contactId.value : this.contactId,
+      ownerId: data.ownerId.present ? data.ownerId.value : this.ownerId,
+      step: data.step.present ? data.step.value : this.step,
+      nextSendAt: data.nextSendAt.present
+          ? data.nextSendAt.value
+          : this.nextSendAt,
+      status: data.status.present ? data.status.value : this.status,
+      lastError: data.lastError.present ? data.lastError.value : this.lastError,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('EnrollmentRow(')
+          ..write('version: $version, ')
+          ..write('fieldMeta: $fieldMeta, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('updatedBy: $updatedBy, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('id: $id, ')
+          ..write('sequenceId: $sequenceId, ')
+          ..write('contactId: $contactId, ')
+          ..write('ownerId: $ownerId, ')
+          ..write('step: $step, ')
+          ..write('nextSendAt: $nextSendAt, ')
+          ..write('status: $status, ')
+          ..write('lastError: $lastError')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    version,
+    fieldMeta,
+    createdAt,
+    createdBy,
+    updatedAt,
+    updatedBy,
+    deletedAt,
+    id,
+    sequenceId,
+    contactId,
+    ownerId,
+    step,
+    nextSendAt,
+    status,
+    lastError,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is EnrollmentRow &&
+          other.version == this.version &&
+          other.fieldMeta == this.fieldMeta &&
+          other.createdAt == this.createdAt &&
+          other.createdBy == this.createdBy &&
+          other.updatedAt == this.updatedAt &&
+          other.updatedBy == this.updatedBy &&
+          other.deletedAt == this.deletedAt &&
+          other.id == this.id &&
+          other.sequenceId == this.sequenceId &&
+          other.contactId == this.contactId &&
+          other.ownerId == this.ownerId &&
+          other.step == this.step &&
+          other.nextSendAt == this.nextSendAt &&
+          other.status == this.status &&
+          other.lastError == this.lastError);
+}
+
+class SequenceEnrollmentsCompanion extends UpdateCompanion<EnrollmentRow> {
+  final Value<int> version;
+  final Value<String> fieldMeta;
+  final Value<DateTime> createdAt;
+  final Value<String?> createdBy;
+  final Value<DateTime> updatedAt;
+  final Value<String?> updatedBy;
+  final Value<DateTime?> deletedAt;
+  final Value<String> id;
+  final Value<String> sequenceId;
+  final Value<String> contactId;
+  final Value<String> ownerId;
+  final Value<int> step;
+  final Value<DateTime?> nextSendAt;
+  final Value<String> status;
+  final Value<String?> lastError;
+  final Value<int> rowid;
+  const SequenceEnrollmentsCompanion({
+    this.version = const Value.absent(),
+    this.fieldMeta = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.updatedBy = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.id = const Value.absent(),
+    this.sequenceId = const Value.absent(),
+    this.contactId = const Value.absent(),
+    this.ownerId = const Value.absent(),
+    this.step = const Value.absent(),
+    this.nextSendAt = const Value.absent(),
+    this.status = const Value.absent(),
+    this.lastError = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  SequenceEnrollmentsCompanion.insert({
+    this.version = const Value.absent(),
+    this.fieldMeta = const Value.absent(),
+    required DateTime createdAt,
+    this.createdBy = const Value.absent(),
+    required DateTime updatedAt,
+    this.updatedBy = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    required String id,
+    required String sequenceId,
+    required String contactId,
+    required String ownerId,
+    required int step,
+    this.nextSendAt = const Value.absent(),
+    required String status,
+    this.lastError = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : createdAt = Value(createdAt),
+       updatedAt = Value(updatedAt),
+       id = Value(id),
+       sequenceId = Value(sequenceId),
+       contactId = Value(contactId),
+       ownerId = Value(ownerId),
+       step = Value(step),
+       status = Value(status);
+  static Insertable<EnrollmentRow> custom({
+    Expression<int>? version,
+    Expression<String>? fieldMeta,
+    Expression<DateTime>? createdAt,
+    Expression<String>? createdBy,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? updatedBy,
+    Expression<DateTime>? deletedAt,
+    Expression<String>? id,
+    Expression<String>? sequenceId,
+    Expression<String>? contactId,
+    Expression<String>? ownerId,
+    Expression<int>? step,
+    Expression<DateTime>? nextSendAt,
+    Expression<String>? status,
+    Expression<String>? lastError,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (version != null) 'version': version,
+      if (fieldMeta != null) 'field_meta': fieldMeta,
+      if (createdAt != null) 'created_at': createdAt,
+      if (createdBy != null) 'created_by': createdBy,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (updatedBy != null) 'updated_by': updatedBy,
+      if (deletedAt != null) 'deleted_at': deletedAt,
+      if (id != null) 'id': id,
+      if (sequenceId != null) 'sequence_id': sequenceId,
+      if (contactId != null) 'contact_id': contactId,
+      if (ownerId != null) 'owner_id': ownerId,
+      if (step != null) 'step': step,
+      if (nextSendAt != null) 'next_send_at': nextSendAt,
+      if (status != null) 'status': status,
+      if (lastError != null) 'last_error': lastError,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  SequenceEnrollmentsCompanion copyWith({
+    Value<int>? version,
+    Value<String>? fieldMeta,
+    Value<DateTime>? createdAt,
+    Value<String?>? createdBy,
+    Value<DateTime>? updatedAt,
+    Value<String?>? updatedBy,
+    Value<DateTime?>? deletedAt,
+    Value<String>? id,
+    Value<String>? sequenceId,
+    Value<String>? contactId,
+    Value<String>? ownerId,
+    Value<int>? step,
+    Value<DateTime?>? nextSendAt,
+    Value<String>? status,
+    Value<String?>? lastError,
+    Value<int>? rowid,
+  }) {
+    return SequenceEnrollmentsCompanion(
+      version: version ?? this.version,
+      fieldMeta: fieldMeta ?? this.fieldMeta,
+      createdAt: createdAt ?? this.createdAt,
+      createdBy: createdBy ?? this.createdBy,
+      updatedAt: updatedAt ?? this.updatedAt,
+      updatedBy: updatedBy ?? this.updatedBy,
+      deletedAt: deletedAt ?? this.deletedAt,
+      id: id ?? this.id,
+      sequenceId: sequenceId ?? this.sequenceId,
+      contactId: contactId ?? this.contactId,
+      ownerId: ownerId ?? this.ownerId,
+      step: step ?? this.step,
+      nextSendAt: nextSendAt ?? this.nextSendAt,
+      status: status ?? this.status,
+      lastError: lastError ?? this.lastError,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (version.present) {
+      map['version'] = Variable<int>(version.value);
+    }
+    if (fieldMeta.present) {
+      map['field_meta'] = Variable<String>(fieldMeta.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (updatedBy.present) {
+      map['updated_by'] = Variable<String>(updatedBy.value);
+    }
+    if (deletedAt.present) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt.value);
+    }
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (sequenceId.present) {
+      map['sequence_id'] = Variable<String>(sequenceId.value);
+    }
+    if (contactId.present) {
+      map['contact_id'] = Variable<String>(contactId.value);
+    }
+    if (ownerId.present) {
+      map['owner_id'] = Variable<String>(ownerId.value);
+    }
+    if (step.present) {
+      map['step'] = Variable<int>(step.value);
+    }
+    if (nextSendAt.present) {
+      map['next_send_at'] = Variable<DateTime>(nextSendAt.value);
+    }
+    if (status.present) {
+      map['status'] = Variable<String>(status.value);
+    }
+    if (lastError.present) {
+      map['last_error'] = Variable<String>(lastError.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SequenceEnrollmentsCompanion(')
+          ..write('version: $version, ')
+          ..write('fieldMeta: $fieldMeta, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('updatedBy: $updatedBy, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('id: $id, ')
+          ..write('sequenceId: $sequenceId, ')
+          ..write('contactId: $contactId, ')
+          ..write('ownerId: $ownerId, ')
+          ..write('step: $step, ')
+          ..write('nextSendAt: $nextSendAt, ')
+          ..write('status: $status, ')
+          ..write('lastError: $lastError, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 class $OutboxTable extends Outbox with TableInfo<$OutboxTable, OutboxRow> {
   @override
   final GeneratedDatabase attachedDatabase;
@@ -12964,6 +15230,10 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $TaggingsTable taggings = $TaggingsTable(this);
   late final $CustomFieldsTable customFields = $CustomFieldsTable(this);
   late final $SegmentsTable segments = $SegmentsTable(this);
+  late final $EmailTemplatesTable emailTemplates = $EmailTemplatesTable(this);
+  late final $EmailSequencesTable emailSequences = $EmailSequencesTable(this);
+  late final $SequenceEnrollmentsTable sequenceEnrollments =
+      $SequenceEnrollmentsTable(this);
   late final $OutboxTable outbox = $OutboxTable(this);
   late final $SyncErrorsTable syncErrors = $SyncErrorsTable(this);
   late final $KeyValuesTable keyValues = $KeyValuesTable(this);
@@ -13016,6 +15286,9 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     taggings,
     customFields,
     segments,
+    emailTemplates,
+    emailSequences,
+    sequenceEnrollments,
     outbox,
     syncErrors,
     keyValues,
@@ -18299,6 +20572,1094 @@ typedef $$SegmentsTableProcessedTableManager =
       SegmentRow,
       PrefetchHooks Function()
     >;
+typedef $$EmailTemplatesTableCreateCompanionBuilder =
+    EmailTemplatesCompanion Function({
+      Value<int> version,
+      Value<String> fieldMeta,
+      required DateTime createdAt,
+      Value<String?> createdBy,
+      required DateTime updatedAt,
+      Value<String?> updatedBy,
+      Value<DateTime?> deletedAt,
+      required String id,
+      required String name,
+      required String subject,
+      required String body,
+      Value<String?> description,
+      Value<int> rowid,
+    });
+typedef $$EmailTemplatesTableUpdateCompanionBuilder =
+    EmailTemplatesCompanion Function({
+      Value<int> version,
+      Value<String> fieldMeta,
+      Value<DateTime> createdAt,
+      Value<String?> createdBy,
+      Value<DateTime> updatedAt,
+      Value<String?> updatedBy,
+      Value<DateTime?> deletedAt,
+      Value<String> id,
+      Value<String> name,
+      Value<String> subject,
+      Value<String> body,
+      Value<String?> description,
+      Value<int> rowid,
+    });
+
+class $$EmailTemplatesTableFilterComposer
+    extends Composer<_$AppDatabase, $EmailTemplatesTable> {
+  $$EmailTemplatesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get version => $composableBuilder(
+    column: $table.version,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get fieldMeta => $composableBuilder(
+    column: $table.fieldMeta,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedBy => $composableBuilder(
+    column: $table.updatedBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get subject => $composableBuilder(
+    column: $table.subject,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get body => $composableBuilder(
+    column: $table.body,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get description => $composableBuilder(
+    column: $table.description,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$EmailTemplatesTableOrderingComposer
+    extends Composer<_$AppDatabase, $EmailTemplatesTable> {
+  $$EmailTemplatesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get version => $composableBuilder(
+    column: $table.version,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get fieldMeta => $composableBuilder(
+    column: $table.fieldMeta,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedBy => $composableBuilder(
+    column: $table.updatedBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get subject => $composableBuilder(
+    column: $table.subject,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get body => $composableBuilder(
+    column: $table.body,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get description => $composableBuilder(
+    column: $table.description,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$EmailTemplatesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $EmailTemplatesTable> {
+  $$EmailTemplatesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get version =>
+      $composableBuilder(column: $table.version, builder: (column) => column);
+
+  GeneratedColumn<String> get fieldMeta =>
+      $composableBuilder(column: $table.fieldMeta, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedBy =>
+      $composableBuilder(column: $table.updatedBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get deletedAt =>
+      $composableBuilder(column: $table.deletedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+
+  GeneratedColumn<String> get subject =>
+      $composableBuilder(column: $table.subject, builder: (column) => column);
+
+  GeneratedColumn<String> get body =>
+      $composableBuilder(column: $table.body, builder: (column) => column);
+
+  GeneratedColumn<String> get description => $composableBuilder(
+    column: $table.description,
+    builder: (column) => column,
+  );
+}
+
+class $$EmailTemplatesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $EmailTemplatesTable,
+          EmailTemplateRow,
+          $$EmailTemplatesTableFilterComposer,
+          $$EmailTemplatesTableOrderingComposer,
+          $$EmailTemplatesTableAnnotationComposer,
+          $$EmailTemplatesTableCreateCompanionBuilder,
+          $$EmailTemplatesTableUpdateCompanionBuilder,
+          (
+            EmailTemplateRow,
+            BaseReferences<
+              _$AppDatabase,
+              $EmailTemplatesTable,
+              EmailTemplateRow
+            >,
+          ),
+          EmailTemplateRow,
+          PrefetchHooks Function()
+        > {
+  $$EmailTemplatesTableTableManager(
+    _$AppDatabase db,
+    $EmailTemplatesTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$EmailTemplatesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$EmailTemplatesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$EmailTemplatesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> version = const Value.absent(),
+                Value<String> fieldMeta = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String?> updatedBy = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                Value<String> id = const Value.absent(),
+                Value<String> name = const Value.absent(),
+                Value<String> subject = const Value.absent(),
+                Value<String> body = const Value.absent(),
+                Value<String?> description = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => EmailTemplatesCompanion(
+                version: version,
+                fieldMeta: fieldMeta,
+                createdAt: createdAt,
+                createdBy: createdBy,
+                updatedAt: updatedAt,
+                updatedBy: updatedBy,
+                deletedAt: deletedAt,
+                id: id,
+                name: name,
+                subject: subject,
+                body: body,
+                description: description,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> version = const Value.absent(),
+                Value<String> fieldMeta = const Value.absent(),
+                required DateTime createdAt,
+                Value<String?> createdBy = const Value.absent(),
+                required DateTime updatedAt,
+                Value<String?> updatedBy = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                required String id,
+                required String name,
+                required String subject,
+                required String body,
+                Value<String?> description = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => EmailTemplatesCompanion.insert(
+                version: version,
+                fieldMeta: fieldMeta,
+                createdAt: createdAt,
+                createdBy: createdBy,
+                updatedAt: updatedAt,
+                updatedBy: updatedBy,
+                deletedAt: deletedAt,
+                id: id,
+                name: name,
+                subject: subject,
+                body: body,
+                description: description,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$EmailTemplatesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $EmailTemplatesTable,
+      EmailTemplateRow,
+      $$EmailTemplatesTableFilterComposer,
+      $$EmailTemplatesTableOrderingComposer,
+      $$EmailTemplatesTableAnnotationComposer,
+      $$EmailTemplatesTableCreateCompanionBuilder,
+      $$EmailTemplatesTableUpdateCompanionBuilder,
+      (
+        EmailTemplateRow,
+        BaseReferences<_$AppDatabase, $EmailTemplatesTable, EmailTemplateRow>,
+      ),
+      EmailTemplateRow,
+      PrefetchHooks Function()
+    >;
+typedef $$EmailSequencesTableCreateCompanionBuilder =
+    EmailSequencesCompanion Function({
+      Value<int> version,
+      Value<String> fieldMeta,
+      required DateTime createdAt,
+      Value<String?> createdBy,
+      required DateTime updatedAt,
+      Value<String?> updatedBy,
+      Value<DateTime?> deletedAt,
+      required String id,
+      required String name,
+      Value<String?> description,
+      required String steps,
+      Value<bool?> active,
+      Value<int> rowid,
+    });
+typedef $$EmailSequencesTableUpdateCompanionBuilder =
+    EmailSequencesCompanion Function({
+      Value<int> version,
+      Value<String> fieldMeta,
+      Value<DateTime> createdAt,
+      Value<String?> createdBy,
+      Value<DateTime> updatedAt,
+      Value<String?> updatedBy,
+      Value<DateTime?> deletedAt,
+      Value<String> id,
+      Value<String> name,
+      Value<String?> description,
+      Value<String> steps,
+      Value<bool?> active,
+      Value<int> rowid,
+    });
+
+class $$EmailSequencesTableFilterComposer
+    extends Composer<_$AppDatabase, $EmailSequencesTable> {
+  $$EmailSequencesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get version => $composableBuilder(
+    column: $table.version,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get fieldMeta => $composableBuilder(
+    column: $table.fieldMeta,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedBy => $composableBuilder(
+    column: $table.updatedBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get description => $composableBuilder(
+    column: $table.description,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get steps => $composableBuilder(
+    column: $table.steps,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get active => $composableBuilder(
+    column: $table.active,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$EmailSequencesTableOrderingComposer
+    extends Composer<_$AppDatabase, $EmailSequencesTable> {
+  $$EmailSequencesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get version => $composableBuilder(
+    column: $table.version,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get fieldMeta => $composableBuilder(
+    column: $table.fieldMeta,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedBy => $composableBuilder(
+    column: $table.updatedBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get description => $composableBuilder(
+    column: $table.description,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get steps => $composableBuilder(
+    column: $table.steps,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get active => $composableBuilder(
+    column: $table.active,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$EmailSequencesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $EmailSequencesTable> {
+  $$EmailSequencesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get version =>
+      $composableBuilder(column: $table.version, builder: (column) => column);
+
+  GeneratedColumn<String> get fieldMeta =>
+      $composableBuilder(column: $table.fieldMeta, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedBy =>
+      $composableBuilder(column: $table.updatedBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get deletedAt =>
+      $composableBuilder(column: $table.deletedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+
+  GeneratedColumn<String> get description => $composableBuilder(
+    column: $table.description,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get steps =>
+      $composableBuilder(column: $table.steps, builder: (column) => column);
+
+  GeneratedColumn<bool> get active =>
+      $composableBuilder(column: $table.active, builder: (column) => column);
+}
+
+class $$EmailSequencesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $EmailSequencesTable,
+          EmailSequenceRow,
+          $$EmailSequencesTableFilterComposer,
+          $$EmailSequencesTableOrderingComposer,
+          $$EmailSequencesTableAnnotationComposer,
+          $$EmailSequencesTableCreateCompanionBuilder,
+          $$EmailSequencesTableUpdateCompanionBuilder,
+          (
+            EmailSequenceRow,
+            BaseReferences<
+              _$AppDatabase,
+              $EmailSequencesTable,
+              EmailSequenceRow
+            >,
+          ),
+          EmailSequenceRow,
+          PrefetchHooks Function()
+        > {
+  $$EmailSequencesTableTableManager(
+    _$AppDatabase db,
+    $EmailSequencesTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$EmailSequencesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$EmailSequencesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$EmailSequencesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> version = const Value.absent(),
+                Value<String> fieldMeta = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String?> updatedBy = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                Value<String> id = const Value.absent(),
+                Value<String> name = const Value.absent(),
+                Value<String?> description = const Value.absent(),
+                Value<String> steps = const Value.absent(),
+                Value<bool?> active = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => EmailSequencesCompanion(
+                version: version,
+                fieldMeta: fieldMeta,
+                createdAt: createdAt,
+                createdBy: createdBy,
+                updatedAt: updatedAt,
+                updatedBy: updatedBy,
+                deletedAt: deletedAt,
+                id: id,
+                name: name,
+                description: description,
+                steps: steps,
+                active: active,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> version = const Value.absent(),
+                Value<String> fieldMeta = const Value.absent(),
+                required DateTime createdAt,
+                Value<String?> createdBy = const Value.absent(),
+                required DateTime updatedAt,
+                Value<String?> updatedBy = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                required String id,
+                required String name,
+                Value<String?> description = const Value.absent(),
+                required String steps,
+                Value<bool?> active = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => EmailSequencesCompanion.insert(
+                version: version,
+                fieldMeta: fieldMeta,
+                createdAt: createdAt,
+                createdBy: createdBy,
+                updatedAt: updatedAt,
+                updatedBy: updatedBy,
+                deletedAt: deletedAt,
+                id: id,
+                name: name,
+                description: description,
+                steps: steps,
+                active: active,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$EmailSequencesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $EmailSequencesTable,
+      EmailSequenceRow,
+      $$EmailSequencesTableFilterComposer,
+      $$EmailSequencesTableOrderingComposer,
+      $$EmailSequencesTableAnnotationComposer,
+      $$EmailSequencesTableCreateCompanionBuilder,
+      $$EmailSequencesTableUpdateCompanionBuilder,
+      (
+        EmailSequenceRow,
+        BaseReferences<_$AppDatabase, $EmailSequencesTable, EmailSequenceRow>,
+      ),
+      EmailSequenceRow,
+      PrefetchHooks Function()
+    >;
+typedef $$SequenceEnrollmentsTableCreateCompanionBuilder =
+    SequenceEnrollmentsCompanion Function({
+      Value<int> version,
+      Value<String> fieldMeta,
+      required DateTime createdAt,
+      Value<String?> createdBy,
+      required DateTime updatedAt,
+      Value<String?> updatedBy,
+      Value<DateTime?> deletedAt,
+      required String id,
+      required String sequenceId,
+      required String contactId,
+      required String ownerId,
+      required int step,
+      Value<DateTime?> nextSendAt,
+      required String status,
+      Value<String?> lastError,
+      Value<int> rowid,
+    });
+typedef $$SequenceEnrollmentsTableUpdateCompanionBuilder =
+    SequenceEnrollmentsCompanion Function({
+      Value<int> version,
+      Value<String> fieldMeta,
+      Value<DateTime> createdAt,
+      Value<String?> createdBy,
+      Value<DateTime> updatedAt,
+      Value<String?> updatedBy,
+      Value<DateTime?> deletedAt,
+      Value<String> id,
+      Value<String> sequenceId,
+      Value<String> contactId,
+      Value<String> ownerId,
+      Value<int> step,
+      Value<DateTime?> nextSendAt,
+      Value<String> status,
+      Value<String?> lastError,
+      Value<int> rowid,
+    });
+
+class $$SequenceEnrollmentsTableFilterComposer
+    extends Composer<_$AppDatabase, $SequenceEnrollmentsTable> {
+  $$SequenceEnrollmentsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get version => $composableBuilder(
+    column: $table.version,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get fieldMeta => $composableBuilder(
+    column: $table.fieldMeta,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedBy => $composableBuilder(
+    column: $table.updatedBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get sequenceId => $composableBuilder(
+    column: $table.sequenceId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get contactId => $composableBuilder(
+    column: $table.contactId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get ownerId => $composableBuilder(
+    column: $table.ownerId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get step => $composableBuilder(
+    column: $table.step,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get nextSendAt => $composableBuilder(
+    column: $table.nextSendAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get lastError => $composableBuilder(
+    column: $table.lastError,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$SequenceEnrollmentsTableOrderingComposer
+    extends Composer<_$AppDatabase, $SequenceEnrollmentsTable> {
+  $$SequenceEnrollmentsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get version => $composableBuilder(
+    column: $table.version,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get fieldMeta => $composableBuilder(
+    column: $table.fieldMeta,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedBy => $composableBuilder(
+    column: $table.updatedBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get sequenceId => $composableBuilder(
+    column: $table.sequenceId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get contactId => $composableBuilder(
+    column: $table.contactId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get ownerId => $composableBuilder(
+    column: $table.ownerId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get step => $composableBuilder(
+    column: $table.step,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get nextSendAt => $composableBuilder(
+    column: $table.nextSendAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get lastError => $composableBuilder(
+    column: $table.lastError,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$SequenceEnrollmentsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $SequenceEnrollmentsTable> {
+  $$SequenceEnrollmentsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get version =>
+      $composableBuilder(column: $table.version, builder: (column) => column);
+
+  GeneratedColumn<String> get fieldMeta =>
+      $composableBuilder(column: $table.fieldMeta, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedBy =>
+      $composableBuilder(column: $table.updatedBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get deletedAt =>
+      $composableBuilder(column: $table.deletedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get sequenceId => $composableBuilder(
+    column: $table.sequenceId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get contactId =>
+      $composableBuilder(column: $table.contactId, builder: (column) => column);
+
+  GeneratedColumn<String> get ownerId =>
+      $composableBuilder(column: $table.ownerId, builder: (column) => column);
+
+  GeneratedColumn<int> get step =>
+      $composableBuilder(column: $table.step, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get nextSendAt => $composableBuilder(
+    column: $table.nextSendAt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get status =>
+      $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<String> get lastError =>
+      $composableBuilder(column: $table.lastError, builder: (column) => column);
+}
+
+class $$SequenceEnrollmentsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $SequenceEnrollmentsTable,
+          EnrollmentRow,
+          $$SequenceEnrollmentsTableFilterComposer,
+          $$SequenceEnrollmentsTableOrderingComposer,
+          $$SequenceEnrollmentsTableAnnotationComposer,
+          $$SequenceEnrollmentsTableCreateCompanionBuilder,
+          $$SequenceEnrollmentsTableUpdateCompanionBuilder,
+          (
+            EnrollmentRow,
+            BaseReferences<
+              _$AppDatabase,
+              $SequenceEnrollmentsTable,
+              EnrollmentRow
+            >,
+          ),
+          EnrollmentRow,
+          PrefetchHooks Function()
+        > {
+  $$SequenceEnrollmentsTableTableManager(
+    _$AppDatabase db,
+    $SequenceEnrollmentsTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$SequenceEnrollmentsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$SequenceEnrollmentsTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer: () =>
+              $$SequenceEnrollmentsTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<int> version = const Value.absent(),
+                Value<String> fieldMeta = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String?> updatedBy = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                Value<String> id = const Value.absent(),
+                Value<String> sequenceId = const Value.absent(),
+                Value<String> contactId = const Value.absent(),
+                Value<String> ownerId = const Value.absent(),
+                Value<int> step = const Value.absent(),
+                Value<DateTime?> nextSendAt = const Value.absent(),
+                Value<String> status = const Value.absent(),
+                Value<String?> lastError = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => SequenceEnrollmentsCompanion(
+                version: version,
+                fieldMeta: fieldMeta,
+                createdAt: createdAt,
+                createdBy: createdBy,
+                updatedAt: updatedAt,
+                updatedBy: updatedBy,
+                deletedAt: deletedAt,
+                id: id,
+                sequenceId: sequenceId,
+                contactId: contactId,
+                ownerId: ownerId,
+                step: step,
+                nextSendAt: nextSendAt,
+                status: status,
+                lastError: lastError,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> version = const Value.absent(),
+                Value<String> fieldMeta = const Value.absent(),
+                required DateTime createdAt,
+                Value<String?> createdBy = const Value.absent(),
+                required DateTime updatedAt,
+                Value<String?> updatedBy = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                required String id,
+                required String sequenceId,
+                required String contactId,
+                required String ownerId,
+                required int step,
+                Value<DateTime?> nextSendAt = const Value.absent(),
+                required String status,
+                Value<String?> lastError = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => SequenceEnrollmentsCompanion.insert(
+                version: version,
+                fieldMeta: fieldMeta,
+                createdAt: createdAt,
+                createdBy: createdBy,
+                updatedAt: updatedAt,
+                updatedBy: updatedBy,
+                deletedAt: deletedAt,
+                id: id,
+                sequenceId: sequenceId,
+                contactId: contactId,
+                ownerId: ownerId,
+                step: step,
+                nextSendAt: nextSendAt,
+                status: status,
+                lastError: lastError,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$SequenceEnrollmentsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $SequenceEnrollmentsTable,
+      EnrollmentRow,
+      $$SequenceEnrollmentsTableFilterComposer,
+      $$SequenceEnrollmentsTableOrderingComposer,
+      $$SequenceEnrollmentsTableAnnotationComposer,
+      $$SequenceEnrollmentsTableCreateCompanionBuilder,
+      $$SequenceEnrollmentsTableUpdateCompanionBuilder,
+      (
+        EnrollmentRow,
+        BaseReferences<_$AppDatabase, $SequenceEnrollmentsTable, EnrollmentRow>,
+      ),
+      EnrollmentRow,
+      PrefetchHooks Function()
+    >;
 typedef $$OutboxTableCreateCompanionBuilder =
     OutboxCompanion Function({
       Value<int> seq,
@@ -18982,6 +22343,12 @@ class $AppDatabaseManager {
       $$CustomFieldsTableTableManager(_db, _db.customFields);
   $$SegmentsTableTableManager get segments =>
       $$SegmentsTableTableManager(_db, _db.segments);
+  $$EmailTemplatesTableTableManager get emailTemplates =>
+      $$EmailTemplatesTableTableManager(_db, _db.emailTemplates);
+  $$EmailSequencesTableTableManager get emailSequences =>
+      $$EmailSequencesTableTableManager(_db, _db.emailSequences);
+  $$SequenceEnrollmentsTableTableManager get sequenceEnrollments =>
+      $$SequenceEnrollmentsTableTableManager(_db, _db.sequenceEnrollments);
   $$OutboxTableTableManager get outbox =>
       $$OutboxTableTableManager(_db, _db.outbox);
   $$SyncErrorsTableTableManager get syncErrors =>

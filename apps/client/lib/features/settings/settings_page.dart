@@ -7,6 +7,7 @@ import '../../app/app.dart';
 import '../../design_system/design_system.dart';
 import 'appearance_section.dart';
 import 'custom_fields_section.dart';
+import 'email_accounts_section.dart';
 import 'security_section.dart';
 import 'server_section.dart';
 
@@ -19,6 +20,11 @@ enum SettingsSection {
     'mot de passe 2fa double authentification sessions',
   ),
   server('Serveur et données', LucideIcons.server, 'connexion poste cache'),
+  emailAccounts(
+    'Comptes email',
+    LucideIcons.mail,
+    'gmail outlook imap smtp messagerie',
+  ),
   customFields(
     'Champs personnalisés',
     LucideIcons.textCursorInput,
@@ -73,6 +79,8 @@ class SettingsPage extends ConsumerWidget {
                       SettingsSection.appearance => const AppearanceSection(),
                       SettingsSection.security => const SecuritySection(),
                       SettingsSection.server => const ServerSection(),
+                      SettingsSection.emailAccounts =>
+                        const EmailAccountsSection(),
                       SettingsSection.customFields =>
                         const CustomFieldsSection(),
                     },

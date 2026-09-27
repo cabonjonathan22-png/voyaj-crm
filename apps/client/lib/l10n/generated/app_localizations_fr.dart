@@ -1564,4 +1564,245 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get publicDataTriggerManual => 'Manuel';
+
+  @override
+  String get navEmails => 'Emails';
+
+  @override
+  String get emailsSubtitle => 'Boîte de réception, modèles et séquences.';
+
+  @override
+  String get emailInbox => 'Boîte de réception';
+
+  @override
+  String get emailTemplates => 'Modèles';
+
+  @override
+  String get emailSequences => 'Séquences';
+
+  @override
+  String get emailNew => 'Nouveau message';
+
+  @override
+  String get emailReply => 'Répondre';
+
+  @override
+  String get emailSend => 'Envoyer';
+
+  @override
+  String get emailSent => 'Email envoyé.';
+
+  @override
+  String get emailFrom => 'De';
+
+  @override
+  String get emailTo => 'À';
+
+  @override
+  String get emailCc => 'Cc';
+
+  @override
+  String get emailSubject => 'Objet';
+
+  @override
+  String get emailBody => 'Message';
+
+  @override
+  String get emailDate => 'Date';
+
+  @override
+  String emailToPrefix(String names) {
+    return 'À : $names';
+  }
+
+  @override
+  String emailQuoteHeader(String date, String from) {
+    return 'Le $date, $from a écrit :';
+  }
+
+  @override
+  String get emailUseTemplate => 'Utiliser un modèle';
+
+  @override
+  String get emailOffline =>
+      'Messagerie indisponible : connexion au serveur requise.';
+
+  @override
+  String get emailNoAccountTitle => 'Aucun compte email';
+
+  @override
+  String get emailNoAccount =>
+      'Connectez votre compte email (Gmail, Microsoft 365, OVH…) dans Paramètres → Comptes email.';
+
+  @override
+  String get emailConnectAccount => 'Connecter un compte';
+
+  @override
+  String get emailAllAccounts => 'Tous mes comptes';
+
+  @override
+  String get emailSyncNow => 'Relever';
+
+  @override
+  String get emailEmpty => 'Aucun message.';
+
+  @override
+  String get emailExchanges => 'Échanges';
+
+  @override
+  String get emailContactWithoutAddress =>
+      'Ce contact n\'a pas d\'adresse email.';
+
+  @override
+  String get emailAccountsTitle => 'Mes comptes email';
+
+  @override
+  String get emailAccountsDescription =>
+      'Les emails reçus sont relevés toutes les 5 minutes ; ceux échangés avec un contact du CRM sont ajoutés à son historique (visible par l\'équipe). Les autres restent privés.';
+
+  @override
+  String get emailConnectDescription =>
+      'Gmail et Microsoft 365 : connexion sécurisée via le navigateur (sans mot de passe). Autres messageries : serveur IMAP / SMTP.';
+
+  @override
+  String get emailConnectGoogle => 'Connecter Gmail';
+
+  @override
+  String get emailConnectMicrosoft => 'Connecter Microsoft 365 / Outlook';
+
+  @override
+  String get emailAddImap => 'Ajouter un compte IMAP / SMTP';
+
+  @override
+  String get emailOAuthContinue =>
+      'Terminez la connexion dans le navigateur, puis actualisez la liste.';
+
+  @override
+  String get emailDisconnect => 'Déconnecter';
+
+  @override
+  String emailDisconnectMessage(String address) {
+    return 'Le compte $address ne sera plus relevé. Les messages déjà journalisés dans le CRM sont conservés.';
+  }
+
+  @override
+  String get emailImapHelp =>
+      'La connexion est testée avant l\'enregistrement. Le mot de passe est chiffré sur le serveur. Pour Gmail, utilisez un mot de passe d\'application.';
+
+  @override
+  String get emailDisplayName => 'Nom affiché';
+
+  @override
+  String get emailUsername => 'Identifiant';
+
+  @override
+  String get emailUsernameHint => 'Par défaut : l\'adresse email';
+
+  @override
+  String get emailImapServer => 'Serveur IMAP (réception)';
+
+  @override
+  String get emailSmtpServer => 'Serveur SMTP (envoi)';
+
+  @override
+  String get emailPort => 'Port';
+
+  @override
+  String get emailSecurityNone => 'Aucune';
+
+  @override
+  String get emailTestAndSave => 'Tester et enregistrer';
+
+  @override
+  String get emailAccountAdded => 'Compte email connecté.';
+
+  @override
+  String get templateNew => 'Nouveau modèle';
+
+  @override
+  String get templateEdit => 'Modifier le modèle';
+
+  @override
+  String get templateName => 'Nom du modèle';
+
+  @override
+  String get templateBodyHint =>
+      'Bonjour… (variables : voir la liste des modèles)';
+
+  @override
+  String templateVariablesHelp(String variables) {
+    return 'Variables disponibles dans l\'objet et le message : $variables';
+  }
+
+  @override
+  String get templatesEmpty => 'Aucun modèle d\'email.';
+
+  @override
+  String get sequenceNew => 'Nouvelle séquence';
+
+  @override
+  String get sequenceEdit => 'Modifier la séquence';
+
+  @override
+  String get sequenceName => 'Nom de la séquence';
+
+  @override
+  String get sequenceActive => 'Active (les envois programmés partent)';
+
+  @override
+  String get sequenceInactive => 'Inactive';
+
+  @override
+  String get sequenceSteps => 'Étapes';
+
+  @override
+  String get sequenceStepsHelp =>
+      'Délai en jours après l\'étape précédente (après l\'inscription pour la première).';
+
+  @override
+  String get sequenceDays => 'jours';
+
+  @override
+  String get sequenceChooseTemplate => 'Choisir un modèle…';
+
+  @override
+  String get sequenceAddStep => 'Ajouter une étape';
+
+  @override
+  String get sequenceNeedsTemplate =>
+      'Créez d\'abord au moins un modèle d\'email.';
+
+  @override
+  String get sequenceEnroll => 'Inscrire à une séquence';
+
+  @override
+  String sequenceEnrolled(String name) {
+    return 'Contact inscrit à « $name ».';
+  }
+
+  @override
+  String get sequenceAlreadyEnrolled => 'Ce contact suit déjà cette séquence.';
+
+  @override
+  String get sequenceNoEnrollment => 'Aucune inscription.';
+
+  @override
+  String sequenceStepOf(int step) {
+    return 'étape $step';
+  }
+
+  @override
+  String sequenceStepLine(int index, int days, String template) {
+    return '$index. J+$days — $template';
+  }
+
+  @override
+  String get sequenceStop => 'Arrêter';
+
+  @override
+  String get sequencesHelp =>
+      'Les emails d\'une séquence partent automatiquement du compte de la personne qui inscrit le contact. La séquence s\'arrête dès que le contact répond.';
+
+  @override
+  String get sequencesEmpty => 'Aucune séquence.';
 }

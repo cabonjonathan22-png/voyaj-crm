@@ -32,6 +32,8 @@ void main() {
     'duplicates': Routes.duplicates,
     'settings_custom_fields': '${Routes.settings}/customFields',
     'public_data': Routes.publicData,
+    'emails': Routes.emails,
+    'settings_email_accounts': '${Routes.settings}/emailAccounts',
     'tags': Routes.tags,
     'tag_detail': '${Routes.tags}?id=tag-1',
     'tag_new': '${Routes.tags}?new=1',

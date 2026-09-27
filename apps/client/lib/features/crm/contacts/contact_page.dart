@@ -15,6 +15,7 @@ import '../../../app/shell/work_tabs.dart';
 import '../../../core/format.dart';
 import '../../../data/local/database.dart';
 import '../../../design_system/design_system.dart';
+import '../../email/contact_emails.dart';
 import '../crm_data.dart';
 import '../crm_format.dart';
 import '../deals/deal_form.dart';
@@ -90,6 +91,7 @@ class _ContactPageState extends ConsumerState<ContactPage> {
     });
 
     final canWrite = ref.watch(permissionProvider(Permission.contactWrite));
+    final canEmail = ref.watch(permissionProvider(Permission.emailUse));
     final organisation = ref.watch(
       organisationByIdProvider,
     )[contact.organisationId];
@@ -198,6 +200,7 @@ class _ContactPageState extends ConsumerState<ContactPage> {
                   icon: LucideIcons.paperclip,
                   count: fileCount,
                 ),
+                if (canEmail) VTab(l10n.navEmails, icon: LucideIcons.mail),
               ],
             ),
             Expanded(
@@ -220,10 +223,11 @@ class _ContactPageState extends ConsumerState<ContactPage> {
                   contactId: contact.id,
                   organisationId: contact.organisationId,
                 ),
-                _ => AttachmentsPanel(
+                4 => AttachmentsPanel(
                   filter: fileFilter,
                   contactId: contact.id,
                 ),
+                _ => ContactEmailsTab(contact: contact),
               },
             ),
           ],

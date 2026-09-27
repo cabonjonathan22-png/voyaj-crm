@@ -1,7 +1,9 @@
 import 'package:voyaj_client/data/local/database.dart';
 import 'package:voyaj_client/data/sync/local_entities.dart';
 
-final _seedKey = RegExp(r'^(org|ct|pos|pl|st|deal|act|file|tg|cf|seg)-\d+$');
+final _seedKey = RegExp(
+  r'^(org|ct|pos|pl|st|deal|act|file|tg|cf|seg|tpl|sq|enr)-\d+$',
+);
 
 /// Identifiant UUID stable d'une clé de démonstration (`org-1`).
 String sid(String key) {
@@ -405,5 +407,42 @@ Future<void> seedCrm(AppDatabase db) async {
       'sort': 'name',
       'asc': true,
     },
+  });
+
+  await put('email_templates', 'tpl-1', {
+    'name': 'Premier contact collectivité',
+    'subject': 'Covoiturage à {{organisation.name}}',
+    'body':
+        'Bonjour {{contact.civility}} {{contact.last_name}},\n\n'
+        'Voyaj accompagne les collectivités…\n\n{{user.name}}',
+  });
+  await put('email_templates', 'tpl-2', {
+    'name': 'Relance',
+    'subject': 'Relance : covoiturage',
+    'body': 'Je me permets de revenir vers vous…',
+  });
+  await put('email_sequences', 'sq-1', {
+    'name': 'Prospection mairies',
+    'description': 'Premier contact puis relance à J+7',
+    'active': true,
+    'steps': [
+      {'delay_days': 0, 'template_id': sid('tpl-1')},
+      {'delay_days': 7, 'template_id': sid('tpl-2')},
+    ],
+  });
+  await put('sequence_enrollments', 'enr-1', {
+    'sequence_id': 'sq-1',
+    'contact_id': 'ct-1',
+    'owner_id': '01a0e2e2-342f-724e-8b9a-9d12d8be87cd',
+    'step': 1,
+    'status': 'active',
+    'next_send_at': now.add(const Duration(days: 6)).toIso8601String(),
+  });
+  await put('sequence_enrollments', 'enr-2', {
+    'sequence_id': 'sq-1',
+    'contact_id': 'ct-3',
+    'owner_id': '01a0e2e2-342f-724e-8b9a-9d12d8be87cd',
+    'step': 1,
+    'status': 'replied',
   });
 }

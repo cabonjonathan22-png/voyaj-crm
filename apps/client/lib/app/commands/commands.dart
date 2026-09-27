@@ -179,6 +179,14 @@ final commandsProvider = Provider<List<AppCommand>>((ref) {
         Permission.organisationRead,
       ),
       (
+        Routes.emails,
+        'Aller aux emails',
+        LucideIcons.mail,
+        'Ctrl 6',
+        'messagerie boîte réception modèles séquences',
+        Permission.emailUse,
+      ),
+      (
         Routes.duplicates,
         'Aller aux doublons',
         LucideIcons.copy,

@@ -2720,6 +2720,438 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Manuel'**
   String get publicDataTriggerManual;
+
+  /// No description provided for @navEmails.
+  ///
+  /// In fr, this message translates to:
+  /// **'Emails'**
+  String get navEmails;
+
+  /// No description provided for @emailsSubtitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Boîte de réception, modèles et séquences.'**
+  String get emailsSubtitle;
+
+  /// No description provided for @emailInbox.
+  ///
+  /// In fr, this message translates to:
+  /// **'Boîte de réception'**
+  String get emailInbox;
+
+  /// No description provided for @emailTemplates.
+  ///
+  /// In fr, this message translates to:
+  /// **'Modèles'**
+  String get emailTemplates;
+
+  /// No description provided for @emailSequences.
+  ///
+  /// In fr, this message translates to:
+  /// **'Séquences'**
+  String get emailSequences;
+
+  /// No description provided for @emailNew.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouveau message'**
+  String get emailNew;
+
+  /// No description provided for @emailReply.
+  ///
+  /// In fr, this message translates to:
+  /// **'Répondre'**
+  String get emailReply;
+
+  /// No description provided for @emailSend.
+  ///
+  /// In fr, this message translates to:
+  /// **'Envoyer'**
+  String get emailSend;
+
+  /// No description provided for @emailSent.
+  ///
+  /// In fr, this message translates to:
+  /// **'Email envoyé.'**
+  String get emailSent;
+
+  /// No description provided for @emailFrom.
+  ///
+  /// In fr, this message translates to:
+  /// **'De'**
+  String get emailFrom;
+
+  /// No description provided for @emailTo.
+  ///
+  /// In fr, this message translates to:
+  /// **'À'**
+  String get emailTo;
+
+  /// No description provided for @emailCc.
+  ///
+  /// In fr, this message translates to:
+  /// **'Cc'**
+  String get emailCc;
+
+  /// No description provided for @emailSubject.
+  ///
+  /// In fr, this message translates to:
+  /// **'Objet'**
+  String get emailSubject;
+
+  /// No description provided for @emailBody.
+  ///
+  /// In fr, this message translates to:
+  /// **'Message'**
+  String get emailBody;
+
+  /// No description provided for @emailDate.
+  ///
+  /// In fr, this message translates to:
+  /// **'Date'**
+  String get emailDate;
+
+  /// No description provided for @emailToPrefix.
+  ///
+  /// In fr, this message translates to:
+  /// **'À : {names}'**
+  String emailToPrefix(String names);
+
+  /// No description provided for @emailQuoteHeader.
+  ///
+  /// In fr, this message translates to:
+  /// **'Le {date}, {from} a écrit :'**
+  String emailQuoteHeader(String date, String from);
+
+  /// No description provided for @emailUseTemplate.
+  ///
+  /// In fr, this message translates to:
+  /// **'Utiliser un modèle'**
+  String get emailUseTemplate;
+
+  /// No description provided for @emailOffline.
+  ///
+  /// In fr, this message translates to:
+  /// **'Messagerie indisponible : connexion au serveur requise.'**
+  String get emailOffline;
+
+  /// No description provided for @emailNoAccountTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun compte email'**
+  String get emailNoAccountTitle;
+
+  /// No description provided for @emailNoAccount.
+  ///
+  /// In fr, this message translates to:
+  /// **'Connectez votre compte email (Gmail, Microsoft 365, OVH…) dans Paramètres → Comptes email.'**
+  String get emailNoAccount;
+
+  /// No description provided for @emailConnectAccount.
+  ///
+  /// In fr, this message translates to:
+  /// **'Connecter un compte'**
+  String get emailConnectAccount;
+
+  /// No description provided for @emailAllAccounts.
+  ///
+  /// In fr, this message translates to:
+  /// **'Tous mes comptes'**
+  String get emailAllAccounts;
+
+  /// No description provided for @emailSyncNow.
+  ///
+  /// In fr, this message translates to:
+  /// **'Relever'**
+  String get emailSyncNow;
+
+  /// No description provided for @emailEmpty.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun message.'**
+  String get emailEmpty;
+
+  /// No description provided for @emailExchanges.
+  ///
+  /// In fr, this message translates to:
+  /// **'Échanges'**
+  String get emailExchanges;
+
+  /// No description provided for @emailContactWithoutAddress.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ce contact n\'a pas d\'adresse email.'**
+  String get emailContactWithoutAddress;
+
+  /// No description provided for @emailAccountsTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Mes comptes email'**
+  String get emailAccountsTitle;
+
+  /// No description provided for @emailAccountsDescription.
+  ///
+  /// In fr, this message translates to:
+  /// **'Les emails reçus sont relevés toutes les 5 minutes ; ceux échangés avec un contact du CRM sont ajoutés à son historique (visible par l\'équipe). Les autres restent privés.'**
+  String get emailAccountsDescription;
+
+  /// No description provided for @emailConnectDescription.
+  ///
+  /// In fr, this message translates to:
+  /// **'Gmail et Microsoft 365 : connexion sécurisée via le navigateur (sans mot de passe). Autres messageries : serveur IMAP / SMTP.'**
+  String get emailConnectDescription;
+
+  /// No description provided for @emailConnectGoogle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Connecter Gmail'**
+  String get emailConnectGoogle;
+
+  /// No description provided for @emailConnectMicrosoft.
+  ///
+  /// In fr, this message translates to:
+  /// **'Connecter Microsoft 365 / Outlook'**
+  String get emailConnectMicrosoft;
+
+  /// No description provided for @emailAddImap.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ajouter un compte IMAP / SMTP'**
+  String get emailAddImap;
+
+  /// No description provided for @emailOAuthContinue.
+  ///
+  /// In fr, this message translates to:
+  /// **'Terminez la connexion dans le navigateur, puis actualisez la liste.'**
+  String get emailOAuthContinue;
+
+  /// No description provided for @emailDisconnect.
+  ///
+  /// In fr, this message translates to:
+  /// **'Déconnecter'**
+  String get emailDisconnect;
+
+  /// No description provided for @emailDisconnectMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Le compte {address} ne sera plus relevé. Les messages déjà journalisés dans le CRM sont conservés.'**
+  String emailDisconnectMessage(String address);
+
+  /// No description provided for @emailImapHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'La connexion est testée avant l\'enregistrement. Le mot de passe est chiffré sur le serveur. Pour Gmail, utilisez un mot de passe d\'application.'**
+  String get emailImapHelp;
+
+  /// No description provided for @emailDisplayName.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nom affiché'**
+  String get emailDisplayName;
+
+  /// No description provided for @emailUsername.
+  ///
+  /// In fr, this message translates to:
+  /// **'Identifiant'**
+  String get emailUsername;
+
+  /// No description provided for @emailUsernameHint.
+  ///
+  /// In fr, this message translates to:
+  /// **'Par défaut : l\'adresse email'**
+  String get emailUsernameHint;
+
+  /// No description provided for @emailImapServer.
+  ///
+  /// In fr, this message translates to:
+  /// **'Serveur IMAP (réception)'**
+  String get emailImapServer;
+
+  /// No description provided for @emailSmtpServer.
+  ///
+  /// In fr, this message translates to:
+  /// **'Serveur SMTP (envoi)'**
+  String get emailSmtpServer;
+
+  /// No description provided for @emailPort.
+  ///
+  /// In fr, this message translates to:
+  /// **'Port'**
+  String get emailPort;
+
+  /// No description provided for @emailSecurityNone.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucune'**
+  String get emailSecurityNone;
+
+  /// No description provided for @emailTestAndSave.
+  ///
+  /// In fr, this message translates to:
+  /// **'Tester et enregistrer'**
+  String get emailTestAndSave;
+
+  /// No description provided for @emailAccountAdded.
+  ///
+  /// In fr, this message translates to:
+  /// **'Compte email connecté.'**
+  String get emailAccountAdded;
+
+  /// No description provided for @templateNew.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouveau modèle'**
+  String get templateNew;
+
+  /// No description provided for @templateEdit.
+  ///
+  /// In fr, this message translates to:
+  /// **'Modifier le modèle'**
+  String get templateEdit;
+
+  /// No description provided for @templateName.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nom du modèle'**
+  String get templateName;
+
+  /// No description provided for @templateBodyHint.
+  ///
+  /// In fr, this message translates to:
+  /// **'Bonjour… (variables : voir la liste des modèles)'**
+  String get templateBodyHint;
+
+  /// No description provided for @templateVariablesHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'Variables disponibles dans l\'objet et le message : {variables}'**
+  String templateVariablesHelp(String variables);
+
+  /// No description provided for @templatesEmpty.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun modèle d\'email.'**
+  String get templatesEmpty;
+
+  /// No description provided for @sequenceNew.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouvelle séquence'**
+  String get sequenceNew;
+
+  /// No description provided for @sequenceEdit.
+  ///
+  /// In fr, this message translates to:
+  /// **'Modifier la séquence'**
+  String get sequenceEdit;
+
+  /// No description provided for @sequenceName.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nom de la séquence'**
+  String get sequenceName;
+
+  /// No description provided for @sequenceActive.
+  ///
+  /// In fr, this message translates to:
+  /// **'Active (les envois programmés partent)'**
+  String get sequenceActive;
+
+  /// No description provided for @sequenceInactive.
+  ///
+  /// In fr, this message translates to:
+  /// **'Inactive'**
+  String get sequenceInactive;
+
+  /// No description provided for @sequenceSteps.
+  ///
+  /// In fr, this message translates to:
+  /// **'Étapes'**
+  String get sequenceSteps;
+
+  /// No description provided for @sequenceStepsHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'Délai en jours après l\'étape précédente (après l\'inscription pour la première).'**
+  String get sequenceStepsHelp;
+
+  /// No description provided for @sequenceDays.
+  ///
+  /// In fr, this message translates to:
+  /// **'jours'**
+  String get sequenceDays;
+
+  /// No description provided for @sequenceChooseTemplate.
+  ///
+  /// In fr, this message translates to:
+  /// **'Choisir un modèle…'**
+  String get sequenceChooseTemplate;
+
+  /// No description provided for @sequenceAddStep.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ajouter une étape'**
+  String get sequenceAddStep;
+
+  /// No description provided for @sequenceNeedsTemplate.
+  ///
+  /// In fr, this message translates to:
+  /// **'Créez d\'abord au moins un modèle d\'email.'**
+  String get sequenceNeedsTemplate;
+
+  /// No description provided for @sequenceEnroll.
+  ///
+  /// In fr, this message translates to:
+  /// **'Inscrire à une séquence'**
+  String get sequenceEnroll;
+
+  /// No description provided for @sequenceEnrolled.
+  ///
+  /// In fr, this message translates to:
+  /// **'Contact inscrit à « {name} ».'**
+  String sequenceEnrolled(String name);
+
+  /// No description provided for @sequenceAlreadyEnrolled.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ce contact suit déjà cette séquence.'**
+  String get sequenceAlreadyEnrolled;
+
+  /// No description provided for @sequenceNoEnrollment.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucune inscription.'**
+  String get sequenceNoEnrollment;
+
+  /// No description provided for @sequenceStepOf.
+  ///
+  /// In fr, this message translates to:
+  /// **'étape {step}'**
+  String sequenceStepOf(int step);
+
+  /// No description provided for @sequenceStepLine.
+  ///
+  /// In fr, this message translates to:
+  /// **'{index}. J+{days} — {template}'**
+  String sequenceStepLine(int index, int days, String template);
+
+  /// No description provided for @sequenceStop.
+  ///
+  /// In fr, this message translates to:
+  /// **'Arrêter'**
+  String get sequenceStop;
+
+  /// No description provided for @sequencesHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'Les emails d\'une séquence partent automatiquement du compte de la personne qui inscrit le contact. La séquence s\'arrête dès que le contact répond.'**
+  String get sequencesHelp;
+
+  /// No description provided for @sequencesEmpty.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucune séquence.'**
+  String get sequencesEmpty;
 }
 
 class _AppLocalizationsDelegate

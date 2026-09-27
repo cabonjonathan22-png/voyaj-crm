@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:drift/drift.dart' show driftRuntimeOptions;
+import 'package:drift/drift.dart' show Table, TableInfo, driftRuntimeOptions;
 import 'package:drift/native.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:voyaj_client/data/local/database.dart';
@@ -143,7 +143,7 @@ void main() {
     expect(row.updatedAt, DateTime.utc(2026, 9, 2, 10));
   });
 
-  test('migration v1 → v2 : tables du CRM créées, tags conservés', () async {
+  test('migration v1 → v3 : tables créées, tags conservés', () async {
     driftRuntimeOptions.dontWarnAboutMultipleDatabases = true;
     final dir = Directory.systemTemp.createTempSync('voyaj-migration');
     addTearDown(() => dir.deleteSync(recursive: true));
@@ -167,6 +167,7 @@ void main() {
     addTearDown(v2.close);
     expect(await v2.select(v2.tags).get(), hasLength(1));
     expect(await v2.select(v2.organisations).get(), isEmpty);
+    expect(await v2.select(v2.emailTemplates).get(), isEmpty);
     expect(await v2.readSetting<int>(SettingKeys.syncCursor), isNull);
     final indexes = await v2
         .customSelect(
@@ -176,4 +177,44 @@ void main() {
         .get();
     expect(indexes, hasLength(1));
   });
+
+  test(
+    'migration v2 → v3 : tables des emails, données CRM conservées',
+    () async {
+      driftRuntimeOptions.dontWarnAboutMultipleDatabases = true;
+      final dir = Directory.systemTemp.createTempSync('voyaj-migration');
+      addTearDown(() => dir.deleteSync(recursive: true));
+      final file = File('${dir.path}/voyaj.db');
+
+      final v2 = AppDatabase(NativeDatabase(file));
+      final org =
+          await RecordStore(
+            db: v2,
+            clock: await LocalClock.load(v2),
+            currentUserId: null,
+            onChanged: () {},
+          ).create(SyncEntities.organisations, {
+            'name': 'Mairie de Rodez',
+            'kind': 'commune',
+            'status': 'client',
+          });
+      await v2.writeSetting(SettingKeys.syncCursor, 7);
+      for (final table in <TableInfo<Table, Object?>>[
+        v2.emailTemplates,
+        v2.emailSequences,
+        v2.sequenceEnrollments,
+      ]) {
+        await v2.customStatement('DROP TABLE "${table.actualTableName}"');
+      }
+      await v2.customStatement('PRAGMA user_version = 2');
+      await v2.close();
+
+      final v3 = AppDatabase(NativeDatabase(file));
+      addTearDown(v3.close);
+      expect((await v3.select(v3.organisations).getSingle()).id, org);
+      expect(await v3.select(v3.sequenceEnrollments).get(), isEmpty);
+      expect(await v3.readSetting<int>(SettingKeys.syncCursor), isNull);
+      expect(await v3.pendingOperations(), hasLength(1));
+    },
+  );
 }

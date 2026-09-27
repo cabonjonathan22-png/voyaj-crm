@@ -246,6 +246,45 @@ class Segments extends Table with SyncedColumns {
   Set<Column<Object>> get primaryKey => {id};
 }
 
+@DataClassName('EmailTemplateRow')
+class EmailTemplates extends Table with SyncedColumns {
+  TextColumn get id => text()();
+  TextColumn get name => text()();
+  TextColumn get subject => text()();
+  TextColumn get body => text()();
+  TextColumn get description => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+@DataClassName('EmailSequenceRow')
+class EmailSequences extends Table with SyncedColumns {
+  TextColumn get id => text()();
+  TextColumn get name => text()();
+  TextColumn get description => text().nullable()();
+  TextColumn get steps => text()();
+  BoolColumn get active => boolean().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+@DataClassName('EnrollmentRow')
+class SequenceEnrollments extends Table with SyncedColumns {
+  TextColumn get id => text()();
+  TextColumn get sequenceId => text()();
+  TextColumn get contactId => text()();
+  TextColumn get ownerId => text()();
+  IntColumn get step => integer()();
+  DateTimeColumn get nextSendAt => dateTime().nullable()();
+  TextColumn get status => text()();
+  TextColumn get lastError => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
 // ── Infrastructure de synchronisation ───────────────────────────────────
 
 /// Opérations locales en attente d'envoi au serveur (dans l'ordre).
@@ -301,6 +340,9 @@ class KeyValues extends Table {
     Taggings,
     CustomFields,
     Segments,
+    EmailTemplates,
+    EmailSequences,
+    SequenceEnrollments,
     Outbox,
     SyncErrors,
     KeyValues,
@@ -331,7 +373,7 @@ class AppDatabase extends _$AppDatabase {
   }
 
   @override
-  int get schemaVersion => 2;
+  int get schemaVersion => 3;
 
   /// Tables des entités synchronisées (même nom que l'entité).
   List<TableInfo<Table, Object?>> get syncedTables => [
@@ -347,23 +389,44 @@ class AppDatabase extends _$AppDatabase {
     taggings,
     customFields,
     segments,
+    emailTemplates,
+    emailSequences,
+    sequenceEnrollments,
   ];
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
     onCreate: (m) => m.createAll(),
     onUpgrade: (m, from, to) async {
+      // Chaque version ajoute des entités synchronisées : le curseur est
+      // remis à zéro pour recevoir celles déjà présentes sur le serveur
+      // (ignorées par l'ancienne version).
       if (from < 2) {
-        // Phase 2 : entités du CRM. Le curseur est remis à zéro pour
-        // recevoir les enregistrements déjà présents sur le serveur.
-        for (final table in syncedTables.skip(1)) {
+        for (final table in <TableInfo<Table, Object?>>[
+          organisations,
+          contacts,
+          positions,
+          pipelines,
+          pipelineStages,
+          deals,
+          activities,
+          attachments,
+          taggings,
+          customFields,
+          segments,
+        ]) {
           await m.createTable(table);
         }
         for (final index in allSchemaEntities.whereType<Index>()) {
           await m.createIndex(index);
         }
-        await deleteSetting(SettingKeys.syncCursor);
       }
+      if (from < 3) {
+        await m.createTable(emailTemplates);
+        await m.createTable(emailSequences);
+        await m.createTable(sequenceEnrollments);
+      }
+      await deleteSetting(SettingKeys.syncCursor);
     },
     beforeOpen: (details) async {
       // Vérifie que la clé est correcte (lecture effective de la base).
