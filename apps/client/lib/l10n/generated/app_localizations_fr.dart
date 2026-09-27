@@ -2794,4 +2794,101 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get apiDocHelp =>
       'En-tête « Authorization: Bearer <jeton> ». Points d\'accès : GET /api/v1/records/<entité>?cursor=&limit= (changements depuis un curseur), GET /api/v1/records/<entité>/<id>, POST /api/v1/records/<entité>, PATCH et DELETE /api/v1/records/<entité>/<id>. Entités : organisations, contacts, deals, activities… (voir docs/API.md).';
+
+  @override
+  String get navGdpr => 'RGPD et sauvegardes';
+
+  @override
+  String get gdprSubtitle =>
+      'Durées de conservation, droits des personnes et sauvegardes du serveur.';
+
+  @override
+  String get gdprPersonalData => 'Données personnelles (RGPD)';
+
+  @override
+  String get gdprExport => 'Exporter ses données';
+
+  @override
+  String get gdprErase => 'Anonymiser';
+
+  @override
+  String gdprEraseTitle(String name) {
+    return 'Anonymiser « $name » ?';
+  }
+
+  @override
+  String get gdprEraseMessage =>
+      'Nom, coordonnées, notes et champs personnalisés sont effacés, ainsi que le contenu de ses activités, ses emails et l\'historique des modifications. La fiche anonyme reste (statistiques). Action définitive : exportez d\'abord ses données si la personne les a demandées.';
+
+  @override
+  String get gdprErased => 'Contact anonymisé.';
+
+  @override
+  String get gdprRetention => 'Durées de conservation';
+
+  @override
+  String get gdprRetentionHelp =>
+      'La CNIL recommande de ne pas conserver plus de 3 ans après le dernier contact les données d\'un prospect. Réexaminez ces fiches : relancez la personne, anonymisez-la ou supprimez-la. Le registre des traitements et les mentions d\'information sont décrits dans docs/RGPD.md.';
+
+  @override
+  String get gdprInactiveFor => 'Sans contact depuis';
+
+  @override
+  String gdprMonths(int months) {
+    return '$months mois';
+  }
+
+  @override
+  String gdprInactiveCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count fiches',
+      one: '1 fiche',
+      zero: 'Aucune fiche',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get gdprNoInactive => 'Aucune fiche à réexaminer.';
+
+  @override
+  String gdprLastTouch(String date) {
+    return 'dernier contact le $date';
+  }
+
+  @override
+  String get backupsTab => 'Sauvegardes';
+
+  @override
+  String get backupsTitle => 'Sauvegardes du serveur';
+
+  @override
+  String backupsSchedule(int hour, int days, String dir) {
+    return 'Chaque jour à $hour h, conservées $days jours, dans $dir.';
+  }
+
+  @override
+  String backupsManualOnly(String dir) {
+    return 'Sauvegarde quotidienne désactivée. Dossier : $dir.';
+  }
+
+  @override
+  String get backupNow => 'Sauvegarder maintenant';
+
+  @override
+  String get backupDone => 'Sauvegarde terminée.';
+
+  @override
+  String get backupsNone => 'Aucune sauvegarde.';
+
+  @override
+  String backupLine(String date, String size, int files) {
+    return '$date · base $size Mo · $files fichiers';
+  }
+
+  @override
+  String get backupsRestoreHelp =>
+      'Recopiez régulièrement ce dossier hors du serveur (autre site, stockage chiffré). Restauration : voir docs/SAUVEGARDES.md (pg_restore puis recopie des fichiers joints).';
 }

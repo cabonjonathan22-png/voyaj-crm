@@ -4,9 +4,12 @@ import 'dart:io';
 import 'package:fr_public_data/fr_public_data.dart';
 import 'package:http/http.dart' as http;
 import 'package:logging/logging.dart';
+import 'package:path/path.dart' as p;
 import 'package:shelf/shelf_io.dart' as shelf_io;
 import 'package:voyaj_shared/voyaj_shared.dart';
 
+import 'admin/backup_service.dart';
+import 'admin/gdpr_service.dart';
 import 'auth/auth_service.dart';
 import 'auth/users_service.dart';
 import 'billing/billing_service.dart';
@@ -45,6 +48,8 @@ final class Services {
     this.connectors,
     this.webhooks,
     this.calendar,
+    this.gdpr,
+    this.backups,
   );
 
   factory Services.create(
@@ -136,6 +141,15 @@ final class Services {
         httpClient: webhookClient,
       ),
       CalendarService(db: db, publicUrl: config.publicUrl),
+      GdprService(db: db, sync: sync),
+      BackupService(
+        directory: config.backupDir ?? p.join(config.dataDir, 'backups'),
+        database: config.database,
+        dataDir: config.dataDir,
+        hour: config.backupHour,
+        keepDays: config.backupKeepDays,
+        pgDump: config.pgDumpPath,
+      ),
     );
   }
 
@@ -151,6 +165,8 @@ final class Services {
   final ConnectorService connectors;
   final WebhookService webhooks;
   final CalendarService calendar;
+  final GdprService gdpr;
+  final BackupService backups;
 }
 
 /// Serveur HTTP en cours d'exécution.
@@ -206,6 +222,8 @@ final class VoyajServer {
       connectors: services.connectors,
       webhooks: services.webhooks,
       calendar: services.calendar,
+      gdpr: services.gdpr,
+      backups: services.backups,
       trustProxy: config.trustProxy,
       hsts: config.tlsEnabled || config.trustProxy,
     );
@@ -234,6 +252,11 @@ final class VoyajServer {
         services.publicData.runScheduledIfDue().catchError(
           (Object e) =>
               _log.warning('Import planifié des données publiques', e),
+        ),
+      );
+      unawaited(
+        services.backups.runScheduledIfDue().catchError(
+          (Object e) => _log.warning('Sauvegarde planifiée', e),
         ),
       );
       unawaited(

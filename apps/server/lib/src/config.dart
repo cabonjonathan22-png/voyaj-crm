@@ -49,6 +49,10 @@ final class ServerConfig {
     this.microsoftClientId,
     this.microsoftClientSecret,
     this.microsoftTenant = 'common',
+    this.backupDir,
+    this.backupHour = 2,
+    this.backupKeepDays = 14,
+    this.pgDumpPath = 'pg_dump',
   });
 
   /// Charge la configuration depuis l'environnement et les fichiers.
@@ -137,6 +141,19 @@ final class ServerConfig {
       microsoftClientId: read('VOYAJ_MICROSOFT_CLIENT_ID'),
       microsoftClientSecret: read('VOYAJ_MICROSOFT_CLIENT_SECRET'),
       microsoftTenant: read('VOYAJ_MICROSOFT_TENANT') ?? 'common',
+      backupDir: read('VOYAJ_BACKUP_DIR'),
+      backupHour: switch (read('VOYAJ_BACKUP_HOUR')?.toLowerCase()) {
+        null => 2,
+        'off' || 'non' || 'false' => null,
+        final text => switch (int.tryParse(text)) {
+          final h? when h >= 0 && h < 24 => h,
+          _ => throw const ConfigException(
+            'VOYAJ_BACKUP_HOUR doit être une heure (0-23) ou off',
+          ),
+        },
+      },
+      backupKeepDays: readInt('VOYAJ_BACKUP_KEEP_DAYS', 14),
+      pgDumpPath: read('VOYAJ_PG_DUMP') ?? 'pg_dump',
       publicDataHour: switch (read('VOYAJ_PUBLIC_DATA_HOUR')?.toLowerCase()) {
         null => 3,
         'off' || 'non' || 'false' => null,
@@ -189,6 +206,17 @@ final class ServerConfig {
   final String? microsoftClientId;
   final String? microsoftClientSecret;
   final String microsoftTenant;
+
+  /// Dossier des sauvegardes (`null` : `<dataDir>/backups`) ; à placer
+  /// de préférence sur un autre disque, recopié hors site.
+  final String? backupDir;
+
+  /// Heure locale de la sauvegarde quotidienne (`null` : désactivée).
+  final int? backupHour;
+  final int backupKeepDays;
+
+  /// Exécutable `pg_dump` (même version majeure que le serveur PostgreSQL).
+  final String pgDumpPath;
 
   bool get tlsEnabled => tlsCertPath != null && tlsKeyPath != null;
 

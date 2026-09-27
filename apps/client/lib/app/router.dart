@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import '../design_system/design_system.dart';
 import '../features/admin/audit_page.dart';
 import '../features/admin/connectors_page.dart';
+import '../features/admin/gdpr_page.dart';
 import '../features/admin/public_data_page.dart';
 import '../features/admin/roles_page.dart';
 import '../features/admin/users_page.dart';
@@ -57,6 +58,7 @@ abstract final class Routes {
   static const audit = '/admin/audit';
   static const publicData = '/admin/donnees-publiques';
   static const connectors = '/admin/connecteurs';
+  static const gdpr = '/admin/rgpd';
   static const designSystem = '/dev/design-system';
 
   static const _public = {setup, login, mfa};
@@ -232,6 +234,10 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: Routes.connectors,
             pageBuilder: (_, state) => _instant(state, const ConnectorsPage()),
+          ),
+          GoRoute(
+            path: Routes.gdpr,
+            pageBuilder: (_, state) => _instant(state, const GdprPage()),
           ),
           GoRoute(
             path: Routes.audit,

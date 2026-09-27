@@ -35,6 +35,7 @@ void main() {
     'settings_custom_fields': '${Routes.settings}/customFields',
     'public_data': Routes.publicData,
     'connectors': Routes.connectors,
+    'gdpr': Routes.gdpr,
     'emails': Routes.emails,
     'billing': Routes.billing,
     'settings_billing': '${Routes.settings}/billing',

@@ -4,6 +4,7 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:args/command_runner.dart';
+import 'package:path/path.dart' as p;
 import 'package:voyaj_server/voyaj_server.dart';
 
 Future<void> main(List<String> args) async {
@@ -24,7 +25,8 @@ Future<void> main(List<String> args) async {
         ..addCommand(_MigrateCommand())
         ..addCommand(_CreateAdminCommand())
         ..addCommand(_GenKeyCommand())
-        ..addCommand(_AuditVerifyCommand());
+        ..addCommand(_AuditVerifyCommand())
+        ..addCommand(_BackupCommand());
   try {
     exitCode = await runner.run(args) ?? 0;
   } on UsageException catch (e) {
@@ -202,6 +204,39 @@ final class _AuditVerifyCommand extends Command<int> {
       return 2;
     } finally {
       await db.close();
+    }
+  }
+}
+
+final class _BackupCommand extends Command<int> {
+  @override
+  String get name => 'backup';
+
+  @override
+  String get description =>
+      'Sauvegarde immédiate (base PostgreSQL et fichiers joints).';
+
+  @override
+  Future<int> run() async {
+    final config = _loadConfig(this);
+    final service = BackupService(
+      directory: config.backupDir ?? p.join(config.dataDir, 'backups'),
+      database: config.database,
+      dataDir: config.dataDir,
+      hour: null,
+      keepDays: config.backupKeepDays,
+      pgDump: config.pgDumpPath,
+    );
+    try {
+      final info = await service.run('cli');
+      stdout.writeln(
+        'Sauvegarde ${info.name} : ${info.databaseBytes} octets, '
+        '${info.newFiles} nouveaux fichiers (${service.directory}).',
+      );
+      return 0;
+    } on ApiException catch (e) {
+      stderr.writeln(e.message);
+      return 1;
     }
   }
 }

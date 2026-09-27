@@ -165,6 +165,22 @@ ApiClient fakeApi(Bootstrap boot) {
         '/api/v1/email/messages' => [for (final m in messages) m.toJson()],
         '/api/v1/connectors' => [for (final c in connectors) c.toJson()],
         '/api/v1/webhooks' => [for (final w in webhooks) w.toJson()],
+        '/api/v1/admin/backups' => BackupStatus(
+          directory: '/var/lib/voyaj/backups',
+          hour: 2,
+          keepDays: 14,
+          backups: [
+            BackupInfo(
+              name: 'voyaj-20260927-020000',
+              createdAt: now.subtract(const Duration(hours: 8)),
+              trigger: 'schedule',
+              databaseBytes: 18400000,
+              newFiles: 3,
+              totalFiles: 412,
+              schemaVersion: 8,
+            ),
+          ],
+        ).toJson(),
         '/api/v1/auth/api-tokens' => [
           ApiTokenInfo(
             id: newId(),

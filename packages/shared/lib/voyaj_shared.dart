@@ -2,6 +2,7 @@
 /// partagés entre le client et le serveur Voyaj.
 library;
 
+export 'src/admin/backup_dto.dart';
 export 'src/api/api_error.dart';
 export 'src/audit/audit_entry.dart';
 export 'src/auth/api_token_dto.dart';

@@ -281,6 +281,15 @@ final commandsProvider = Provider<List<AppCommand>>((ref) {
         keywords: 'communes epci aom festivals import insee geo',
         run: (context, _) => context.go(Routes.publicData),
       ),
+    if (can(Permission.gdprManage) || can(Permission.backupManage))
+      AppCommand(
+        id: 'nav.gdpr',
+        label: 'Aller à RGPD et sauvegardes',
+        group: CommandGroup.navigation,
+        icon: LucideIcons.shieldCheck,
+        keywords: 'données personnelles conservation anonymiser sauvegarde',
+        run: (context, _) => context.go(Routes.gdpr),
+      ),
     if (can(Permission.connectorManage))
       AppCommand(
         id: 'nav.connectors',

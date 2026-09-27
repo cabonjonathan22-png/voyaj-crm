@@ -1,6 +1,8 @@
 /// Serveur Voyaj CRM.
 library;
 
+export 'src/admin/backup_service.dart' show BackupService;
+export 'src/admin/gdpr_service.dart' show GdprService;
 export 'src/audit/audit_log.dart' show AuditLog;
 export 'src/auth/auth_service.dart' show AuthService;
 export 'src/auth/users_service.dart' show UsersService;

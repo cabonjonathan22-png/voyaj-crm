@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:shelf/shelf.dart';
@@ -5,6 +6,8 @@ import 'package:shelf_router/shelf_router.dart';
 import 'package:shelf_web_socket/shelf_web_socket.dart';
 import 'package:voyaj_shared/voyaj_shared.dart';
 
+import '../admin/backup_service.dart';
+import '../admin/gdpr_service.dart';
 import '../audit/audit_log.dart';
 import '../auth/auth_context.dart';
 import '../auth/auth_service.dart';
@@ -40,6 +43,8 @@ Handler buildHandler({
   required ConnectorService connectors,
   required WebhookService webhooks,
   required CalendarService calendar,
+  required GdprService gdpr,
+  required BackupService backups,
   required bool trustProxy,
   required bool hsts,
 }) {
@@ -567,6 +572,29 @@ Handler buildHandler({
         }),
       );
       return noContent();
+    })
+    // ── RGPD ──
+    ..get('/gdpr/contacts/<id>/export', (Request r, String id) async {
+      final data = await gdpr.exportContact(await authed(r), id);
+      return Response.ok(
+        const JsonEncoder.withIndent('  ').convert(data),
+        headers: {
+          HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8',
+          'content-disposition': 'attachment; filename="rgpd-contact-$id.json"',
+        },
+      );
+    })
+    ..post('/gdpr/contacts/<id>/erase', (Request r, String id) async {
+      await gdpr.eraseContact(await authed(r), id);
+      return noContent();
+    })
+    // ── Sauvegardes ──
+    ..get('/admin/backups', (Request r) async {
+      return jsonResponse((await backups.status(await authed(r))).toJson());
+    })
+    ..post('/admin/backups', (Request r) async {
+      final info = await backups.start(await authed(r));
+      return jsonResponse(info.toJson(), status: 201);
     })
     // ── Audit ──
     ..get('/audit', (Request r) async {

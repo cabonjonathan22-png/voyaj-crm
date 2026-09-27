@@ -4850,6 +4850,150 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'En-tête « Authorization: Bearer <jeton> ». Points d\'accès : GET /api/v1/records/<entité>?cursor=&limit= (changements depuis un curseur), GET /api/v1/records/<entité>/<id>, POST /api/v1/records/<entité>, PATCH et DELETE /api/v1/records/<entité>/<id>. Entités : organisations, contacts, deals, activities… (voir docs/API.md).'**
   String get apiDocHelp;
+
+  /// No description provided for @navGdpr.
+  ///
+  /// In fr, this message translates to:
+  /// **'RGPD et sauvegardes'**
+  String get navGdpr;
+
+  /// No description provided for @gdprSubtitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Durées de conservation, droits des personnes et sauvegardes du serveur.'**
+  String get gdprSubtitle;
+
+  /// No description provided for @gdprPersonalData.
+  ///
+  /// In fr, this message translates to:
+  /// **'Données personnelles (RGPD)'**
+  String get gdprPersonalData;
+
+  /// No description provided for @gdprExport.
+  ///
+  /// In fr, this message translates to:
+  /// **'Exporter ses données'**
+  String get gdprExport;
+
+  /// No description provided for @gdprErase.
+  ///
+  /// In fr, this message translates to:
+  /// **'Anonymiser'**
+  String get gdprErase;
+
+  /// No description provided for @gdprEraseTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Anonymiser « {name} » ?'**
+  String gdprEraseTitle(String name);
+
+  /// No description provided for @gdprEraseMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nom, coordonnées, notes et champs personnalisés sont effacés, ainsi que le contenu de ses activités, ses emails et l\'historique des modifications. La fiche anonyme reste (statistiques). Action définitive : exportez d\'abord ses données si la personne les a demandées.'**
+  String get gdprEraseMessage;
+
+  /// No description provided for @gdprErased.
+  ///
+  /// In fr, this message translates to:
+  /// **'Contact anonymisé.'**
+  String get gdprErased;
+
+  /// No description provided for @gdprRetention.
+  ///
+  /// In fr, this message translates to:
+  /// **'Durées de conservation'**
+  String get gdprRetention;
+
+  /// No description provided for @gdprRetentionHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'La CNIL recommande de ne pas conserver plus de 3 ans après le dernier contact les données d\'un prospect. Réexaminez ces fiches : relancez la personne, anonymisez-la ou supprimez-la. Le registre des traitements et les mentions d\'information sont décrits dans docs/RGPD.md.'**
+  String get gdprRetentionHelp;
+
+  /// No description provided for @gdprInactiveFor.
+  ///
+  /// In fr, this message translates to:
+  /// **'Sans contact depuis'**
+  String get gdprInactiveFor;
+
+  /// No description provided for @gdprMonths.
+  ///
+  /// In fr, this message translates to:
+  /// **'{months} mois'**
+  String gdprMonths(int months);
+
+  /// No description provided for @gdprInactiveCount.
+  ///
+  /// In fr, this message translates to:
+  /// **'{count, plural, =0{Aucune fiche} =1{1 fiche} other{{count} fiches}}'**
+  String gdprInactiveCount(int count);
+
+  /// No description provided for @gdprNoInactive.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucune fiche à réexaminer.'**
+  String get gdprNoInactive;
+
+  /// No description provided for @gdprLastTouch.
+  ///
+  /// In fr, this message translates to:
+  /// **'dernier contact le {date}'**
+  String gdprLastTouch(String date);
+
+  /// No description provided for @backupsTab.
+  ///
+  /// In fr, this message translates to:
+  /// **'Sauvegardes'**
+  String get backupsTab;
+
+  /// No description provided for @backupsTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Sauvegardes du serveur'**
+  String get backupsTitle;
+
+  /// No description provided for @backupsSchedule.
+  ///
+  /// In fr, this message translates to:
+  /// **'Chaque jour à {hour} h, conservées {days} jours, dans {dir}.'**
+  String backupsSchedule(int hour, int days, String dir);
+
+  /// No description provided for @backupsManualOnly.
+  ///
+  /// In fr, this message translates to:
+  /// **'Sauvegarde quotidienne désactivée. Dossier : {dir}.'**
+  String backupsManualOnly(String dir);
+
+  /// No description provided for @backupNow.
+  ///
+  /// In fr, this message translates to:
+  /// **'Sauvegarder maintenant'**
+  String get backupNow;
+
+  /// No description provided for @backupDone.
+  ///
+  /// In fr, this message translates to:
+  /// **'Sauvegarde terminée.'**
+  String get backupDone;
+
+  /// No description provided for @backupsNone.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucune sauvegarde.'**
+  String get backupsNone;
+
+  /// No description provided for @backupLine.
+  ///
+  /// In fr, this message translates to:
+  /// **'{date} · base {size} Mo · {files} fichiers'**
+  String backupLine(String date, String size, int files);
+
+  /// No description provided for @backupsRestoreHelp.
+  ///
+  /// In fr, this message translates to:
+  /// **'Recopiez régulièrement ce dossier hors du serveur (autre site, stockage chiffré). Restauration : voir docs/SAUVEGARDES.md (pg_restore puis recopie des fichiers joints).'**
+  String get backupsRestoreHelp;
 }
 
 class _AppLocalizationsDelegate

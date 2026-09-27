@@ -85,6 +85,8 @@ final class TestServer {
     googleClientSecret: c.googleClientSecret,
     microsoftClientId: c.microsoftClientId,
     microsoftClientSecret: c.microsoftClientSecret,
+    backupDir: c.backupDir,
+    backupHour: null,
   );
 
   static Future<void> _resetDatabase(DatabaseConfig db) async {

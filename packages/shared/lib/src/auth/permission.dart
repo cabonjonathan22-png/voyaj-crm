@@ -60,6 +60,11 @@ enum Permission {
     'connector.manage',
     'Configurer les connecteurs, imports externes et webhooks',
   ),
+  gdprManage(
+    'gdpr.manage',
+    'Exercer les droits RGPD : export et anonymisation des personnes',
+  ),
+  backupManage('backup.manage', 'Lancer et consulter les sauvegardes'),
   syncConflictRead('sync.conflict.read', 'Consulter le journal des conflits'),
   syncConflictManage(
     'sync.conflict.manage',

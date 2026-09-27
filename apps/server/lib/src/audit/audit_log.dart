@@ -44,6 +44,8 @@ abstract final class AuditActions {
   static const webhookDeleted = 'webhook.deleted';
   static const apiTokenCreated = 'auth.api_token.created';
   static const apiTokenRevoked = 'auth.api_token.revoked';
+  static const gdprExported = 'gdpr.contact.exported';
+  static const gdprErased = 'gdpr.contact.erased';
 }
 
 /// Événement à journaliser.
