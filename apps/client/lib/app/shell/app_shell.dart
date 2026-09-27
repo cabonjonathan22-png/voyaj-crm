@@ -11,6 +11,7 @@ import 'package:voyaj_shared/voyaj_shared.dart';
 import '../../core/format.dart';
 import '../../data/sync/sync_engine.dart';
 import '../../design_system/design_system.dart';
+import '../../features/crm/activities/reminders.dart';
 import '../../features/settings/settings_page.dart';
 import '../app.dart';
 import '../commands/command_palette.dart';
@@ -30,6 +31,7 @@ class AppShell extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final c = context.colors;
     final collapsed = ref.watch(sidebarCollapsedProvider);
+    ref.watch(reminderWatcherProvider);
 
     void go(String route) => context.go(route);
 

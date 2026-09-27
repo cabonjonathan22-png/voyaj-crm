@@ -5,6 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:voyaj_client/data/local/database.dart';
 import 'package:voyaj_client/data/records/record_store.dart';
 import 'package:voyaj_client/data/sync/local_clock.dart';
+import 'package:voyaj_client/features/crm/activities/reminders.dart';
 import 'package:voyaj_client/features/crm/deals/default_pipelines.dart';
 import 'package:voyaj_client/features/crm/duplicates/merge.dart';
 import 'package:voyaj_client/features/crm/import/import_mapping.dart';
@@ -294,5 +295,34 @@ void main() {
       }),
       isEmpty,
     );
+  });
+
+  test('rappels : échus, non terminés, signalés une seule fois', () {
+    final now = DateTime.utc(2026, 9, 27, 10);
+    ActivityRow activity(String id, {DateTime? remind, DateTime? done}) =>
+        ActivityRow(
+          id: id,
+          kind: 'task',
+          subject: id,
+          remindAt: remind,
+          doneAt: done,
+          version: 1,
+          fieldMeta: '{}',
+          createdAt: now,
+          updatedAt: now,
+        );
+    final due = dueReminders(
+      [
+        activity('futur', remind: now.add(const Duration(minutes: 5))),
+        activity('b', remind: now.subtract(const Duration(minutes: 1))),
+        activity('a', remind: now.subtract(const Duration(hours: 1))),
+        activity('fait', remind: now, done: now),
+        activity('deja', remind: now),
+        activity('sans'),
+      ],
+      {'deja'},
+      now,
+    );
+    expect(due.map((a) => a.id), ['a', 'b']);
   });
 }
