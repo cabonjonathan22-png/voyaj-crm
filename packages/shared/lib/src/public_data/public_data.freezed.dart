@@ -15,7 +15,8 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$PublicDataRun {
 
- String get id; String get source; PublicRunTrigger get trigger; PublicRunStatus get status; DateTime get startedAt; DateTime? get finishedAt; int get fetched; int get created; int get updated; int get unchanged; String? get error;
+ String get id; String get source; PublicRunTrigger get trigger; PublicRunStatus get status; DateTime get startedAt; DateTime? get finishedAt; int get fetched; int get created; int get updated; int get unchanged;/// Fiches refusées par les règles de validation.
+ int get rejected; String? get error;
 /// Create a copy of PublicDataRun
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +29,16 @@ $PublicDataRunCopyWith<PublicDataRun> get copyWith => _$PublicDataRunCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PublicDataRun&&(identical(other.id, id) || other.id == id)&&(identical(other.source, source) || other.source == source)&&(identical(other.trigger, trigger) || other.trigger == trigger)&&(identical(other.status, status) || other.status == status)&&(identical(other.startedAt, startedAt) || other.startedAt == startedAt)&&(identical(other.finishedAt, finishedAt) || other.finishedAt == finishedAt)&&(identical(other.fetched, fetched) || other.fetched == fetched)&&(identical(other.created, created) || other.created == created)&&(identical(other.updated, updated) || other.updated == updated)&&(identical(other.unchanged, unchanged) || other.unchanged == unchanged)&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PublicDataRun&&(identical(other.id, id) || other.id == id)&&(identical(other.source, source) || other.source == source)&&(identical(other.trigger, trigger) || other.trigger == trigger)&&(identical(other.status, status) || other.status == status)&&(identical(other.startedAt, startedAt) || other.startedAt == startedAt)&&(identical(other.finishedAt, finishedAt) || other.finishedAt == finishedAt)&&(identical(other.fetched, fetched) || other.fetched == fetched)&&(identical(other.created, created) || other.created == created)&&(identical(other.updated, updated) || other.updated == updated)&&(identical(other.unchanged, unchanged) || other.unchanged == unchanged)&&(identical(other.rejected, rejected) || other.rejected == rejected)&&(identical(other.error, error) || other.error == error));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,source,trigger,status,startedAt,finishedAt,fetched,created,updated,unchanged,error);
+int get hashCode => Object.hash(runtimeType,id,source,trigger,status,startedAt,finishedAt,fetched,created,updated,unchanged,rejected,error);
 
 @override
 String toString() {
-  return 'PublicDataRun(id: $id, source: $source, trigger: $trigger, status: $status, startedAt: $startedAt, finishedAt: $finishedAt, fetched: $fetched, created: $created, updated: $updated, unchanged: $unchanged, error: $error)';
+  return 'PublicDataRun(id: $id, source: $source, trigger: $trigger, status: $status, startedAt: $startedAt, finishedAt: $finishedAt, fetched: $fetched, created: $created, updated: $updated, unchanged: $unchanged, rejected: $rejected, error: $error)';
 }
 
 
@@ -48,7 +49,7 @@ abstract mixin class $PublicDataRunCopyWith<$Res>  {
   factory $PublicDataRunCopyWith(PublicDataRun value, $Res Function(PublicDataRun) _then) = _$PublicDataRunCopyWithImpl;
 @useResult
 $Res call({
- String id, String source, PublicRunTrigger trigger, PublicRunStatus status, DateTime startedAt, DateTime? finishedAt, int fetched, int created, int updated, int unchanged, String? error
+ String id, String source, PublicRunTrigger trigger, PublicRunStatus status, DateTime startedAt, DateTime? finishedAt, int fetched, int created, int updated, int unchanged, int rejected, String? error
 });
 
 
@@ -65,7 +66,7 @@ class _$PublicDataRunCopyWithImpl<$Res>
 
 /// Create a copy of PublicDataRun
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? source = null,Object? trigger = null,Object? status = null,Object? startedAt = null,Object? finishedAt = freezed,Object? fetched = null,Object? created = null,Object? updated = null,Object? unchanged = null,Object? error = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? source = null,Object? trigger = null,Object? status = null,Object? startedAt = null,Object? finishedAt = freezed,Object? fetched = null,Object? created = null,Object? updated = null,Object? unchanged = null,Object? rejected = null,Object? error = freezed,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,source: null == source ? _self.source : source // ignore: cast_nullable_to_non_nullable
@@ -77,6 +78,7 @@ as DateTime?,fetched: null == fetched ? _self.fetched : fetched // ignore: cast_
 as int,created: null == created ? _self.created : created // ignore: cast_nullable_to_non_nullable
 as int,updated: null == updated ? _self.updated : updated // ignore: cast_nullable_to_non_nullable
 as int,unchanged: null == unchanged ? _self.unchanged : unchanged // ignore: cast_nullable_to_non_nullable
+as int,rejected: null == rejected ? _self.rejected : rejected // ignore: cast_nullable_to_non_nullable
 as int,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
@@ -163,10 +165,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String source,  PublicRunTrigger trigger,  PublicRunStatus status,  DateTime startedAt,  DateTime? finishedAt,  int fetched,  int created,  int updated,  int unchanged,  String? error)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String source,  PublicRunTrigger trigger,  PublicRunStatus status,  DateTime startedAt,  DateTime? finishedAt,  int fetched,  int created,  int updated,  int unchanged,  int rejected,  String? error)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _PublicDataRun() when $default != null:
-return $default(_that.id,_that.source,_that.trigger,_that.status,_that.startedAt,_that.finishedAt,_that.fetched,_that.created,_that.updated,_that.unchanged,_that.error);case _:
+return $default(_that.id,_that.source,_that.trigger,_that.status,_that.startedAt,_that.finishedAt,_that.fetched,_that.created,_that.updated,_that.unchanged,_that.rejected,_that.error);case _:
   return orElse();
 
 }
@@ -184,10 +186,10 @@ return $default(_that.id,_that.source,_that.trigger,_that.status,_that.startedAt
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String source,  PublicRunTrigger trigger,  PublicRunStatus status,  DateTime startedAt,  DateTime? finishedAt,  int fetched,  int created,  int updated,  int unchanged,  String? error)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String source,  PublicRunTrigger trigger,  PublicRunStatus status,  DateTime startedAt,  DateTime? finishedAt,  int fetched,  int created,  int updated,  int unchanged,  int rejected,  String? error)  $default,) {final _that = this;
 switch (_that) {
 case _PublicDataRun():
-return $default(_that.id,_that.source,_that.trigger,_that.status,_that.startedAt,_that.finishedAt,_that.fetched,_that.created,_that.updated,_that.unchanged,_that.error);case _:
+return $default(_that.id,_that.source,_that.trigger,_that.status,_that.startedAt,_that.finishedAt,_that.fetched,_that.created,_that.updated,_that.unchanged,_that.rejected,_that.error);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -204,10 +206,10 @@ return $default(_that.id,_that.source,_that.trigger,_that.status,_that.startedAt
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String source,  PublicRunTrigger trigger,  PublicRunStatus status,  DateTime startedAt,  DateTime? finishedAt,  int fetched,  int created,  int updated,  int unchanged,  String? error)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String source,  PublicRunTrigger trigger,  PublicRunStatus status,  DateTime startedAt,  DateTime? finishedAt,  int fetched,  int created,  int updated,  int unchanged,  int rejected,  String? error)?  $default,) {final _that = this;
 switch (_that) {
 case _PublicDataRun() when $default != null:
-return $default(_that.id,_that.source,_that.trigger,_that.status,_that.startedAt,_that.finishedAt,_that.fetched,_that.created,_that.updated,_that.unchanged,_that.error);case _:
+return $default(_that.id,_that.source,_that.trigger,_that.status,_that.startedAt,_that.finishedAt,_that.fetched,_that.created,_that.updated,_that.unchanged,_that.rejected,_that.error);case _:
   return null;
 
 }
@@ -219,7 +221,7 @@ return $default(_that.id,_that.source,_that.trigger,_that.status,_that.startedAt
 @JsonSerializable()
 
 class _PublicDataRun implements PublicDataRun {
-  const _PublicDataRun({required this.id, required this.source, required this.trigger, required this.status, required this.startedAt, this.finishedAt, this.fetched = 0, this.created = 0, this.updated = 0, this.unchanged = 0, this.error});
+  const _PublicDataRun({required this.id, required this.source, required this.trigger, required this.status, required this.startedAt, this.finishedAt, this.fetched = 0, this.created = 0, this.updated = 0, this.unchanged = 0, this.rejected = 0, this.error});
   factory _PublicDataRun.fromJson(Map<String, dynamic> json) => _$PublicDataRunFromJson(json);
 
 @override final  String id;
@@ -232,6 +234,8 @@ class _PublicDataRun implements PublicDataRun {
 @override@JsonKey() final  int created;
 @override@JsonKey() final  int updated;
 @override@JsonKey() final  int unchanged;
+/// Fiches refusées par les règles de validation.
+@override@JsonKey() final  int rejected;
 @override final  String? error;
 
 /// Create a copy of PublicDataRun
@@ -247,16 +251,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PublicDataRun&&(identical(other.id, id) || other.id == id)&&(identical(other.source, source) || other.source == source)&&(identical(other.trigger, trigger) || other.trigger == trigger)&&(identical(other.status, status) || other.status == status)&&(identical(other.startedAt, startedAt) || other.startedAt == startedAt)&&(identical(other.finishedAt, finishedAt) || other.finishedAt == finishedAt)&&(identical(other.fetched, fetched) || other.fetched == fetched)&&(identical(other.created, created) || other.created == created)&&(identical(other.updated, updated) || other.updated == updated)&&(identical(other.unchanged, unchanged) || other.unchanged == unchanged)&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PublicDataRun&&(identical(other.id, id) || other.id == id)&&(identical(other.source, source) || other.source == source)&&(identical(other.trigger, trigger) || other.trigger == trigger)&&(identical(other.status, status) || other.status == status)&&(identical(other.startedAt, startedAt) || other.startedAt == startedAt)&&(identical(other.finishedAt, finishedAt) || other.finishedAt == finishedAt)&&(identical(other.fetched, fetched) || other.fetched == fetched)&&(identical(other.created, created) || other.created == created)&&(identical(other.updated, updated) || other.updated == updated)&&(identical(other.unchanged, unchanged) || other.unchanged == unchanged)&&(identical(other.rejected, rejected) || other.rejected == rejected)&&(identical(other.error, error) || other.error == error));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,source,trigger,status,startedAt,finishedAt,fetched,created,updated,unchanged,error);
+int get hashCode => Object.hash(runtimeType,id,source,trigger,status,startedAt,finishedAt,fetched,created,updated,unchanged,rejected,error);
 
 @override
 String toString() {
-  return 'PublicDataRun(id: $id, source: $source, trigger: $trigger, status: $status, startedAt: $startedAt, finishedAt: $finishedAt, fetched: $fetched, created: $created, updated: $updated, unchanged: $unchanged, error: $error)';
+  return 'PublicDataRun(id: $id, source: $source, trigger: $trigger, status: $status, startedAt: $startedAt, finishedAt: $finishedAt, fetched: $fetched, created: $created, updated: $updated, unchanged: $unchanged, rejected: $rejected, error: $error)';
 }
 
 
@@ -267,7 +271,7 @@ abstract mixin class _$PublicDataRunCopyWith<$Res> implements $PublicDataRunCopy
   factory _$PublicDataRunCopyWith(_PublicDataRun value, $Res Function(_PublicDataRun) _then) = __$PublicDataRunCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String source, PublicRunTrigger trigger, PublicRunStatus status, DateTime startedAt, DateTime? finishedAt, int fetched, int created, int updated, int unchanged, String? error
+ String id, String source, PublicRunTrigger trigger, PublicRunStatus status, DateTime startedAt, DateTime? finishedAt, int fetched, int created, int updated, int unchanged, int rejected, String? error
 });
 
 
@@ -284,7 +288,7 @@ class __$PublicDataRunCopyWithImpl<$Res>
 
 /// Create a copy of PublicDataRun
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? source = null,Object? trigger = null,Object? status = null,Object? startedAt = null,Object? finishedAt = freezed,Object? fetched = null,Object? created = null,Object? updated = null,Object? unchanged = null,Object? error = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? source = null,Object? trigger = null,Object? status = null,Object? startedAt = null,Object? finishedAt = freezed,Object? fetched = null,Object? created = null,Object? updated = null,Object? unchanged = null,Object? rejected = null,Object? error = freezed,}) {
   return _then(_PublicDataRun(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,source: null == source ? _self.source : source // ignore: cast_nullable_to_non_nullable
@@ -296,6 +300,7 @@ as DateTime?,fetched: null == fetched ? _self.fetched : fetched // ignore: cast_
 as int,created: null == created ? _self.created : created // ignore: cast_nullable_to_non_nullable
 as int,updated: null == updated ? _self.updated : updated // ignore: cast_nullable_to_non_nullable
 as int,unchanged: null == unchanged ? _self.unchanged : unchanged // ignore: cast_nullable_to_non_nullable
+as int,rejected: null == rejected ? _self.rejected : rejected // ignore: cast_nullable_to_non_nullable
 as int,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as String?,
   ));

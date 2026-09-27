@@ -20,6 +20,7 @@ _PublicDataRun _$PublicDataRunFromJson(Map<String, dynamic> json) =>
       created: (json['created'] as num?)?.toInt() ?? 0,
       updated: (json['updated'] as num?)?.toInt() ?? 0,
       unchanged: (json['unchanged'] as num?)?.toInt() ?? 0,
+      rejected: (json['rejected'] as num?)?.toInt() ?? 0,
       error: json['error'] as String?,
     );
 
@@ -35,6 +36,7 @@ Map<String, dynamic> _$PublicDataRunToJson(_PublicDataRun instance) =>
       'created': instance.created,
       'updated': instance.updated,
       'unchanged': instance.unchanged,
+      'rejected': instance.rejected,
       'error': instance.error,
     };
 

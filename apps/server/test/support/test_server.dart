@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:fr_public_data/fr_public_data.dart';
 import 'package:http/http.dart' as http;
 import 'package:postgres/postgres.dart';
 import 'package:voyaj_server/voyaj_server.dart';
@@ -32,7 +33,7 @@ final class TestServer {
   final VoyajServer server;
   final Uri baseUri;
 
-  static Future<TestServer> start() async {
+  static Future<TestServer> start({PublicDataClient? publicDataClient}) async {
     final config = ServerConfig.fromMap({
       'DATABASE_URL': testDatabaseUrl()!,
       'VOYAJ_MASTER_KEY': base64.encode(List.filled(32, 42)),
@@ -43,7 +44,10 @@ final class TestServer {
       'VOYAJ_DATA_DIR': Directory.systemTemp.createTempSync('voyaj-data').path,
     });
     await _resetDatabase(config.database);
-    final server = await VoyajServer.start(_withPort0(config));
+    final server = await VoyajServer.start(
+      _withPort0(config),
+      publicDataClient: publicDataClient,
+    );
     await server.services.users.createAdmin(
       email: adminEmail,
       displayName: 'Admin',
@@ -61,6 +65,7 @@ final class TestServer {
     argon2MemoryKib: c.argon2MemoryKib,
     argon2Iterations: c.argon2Iterations,
     dataDir: c.dataDir,
+    publicDataHour: null,
   );
 
   static Future<void> _resetDatabase(DatabaseConfig db) async {

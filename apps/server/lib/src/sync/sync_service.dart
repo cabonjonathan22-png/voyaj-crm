@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:collection/collection.dart';
 import 'package:logging/logging.dart';
+import 'package:meta/meta.dart';
 import 'package:postgres/postgres.dart';
 import 'package:voyaj_shared/voyaj_shared.dart';
 
@@ -10,6 +12,44 @@ import '../db/database.dart';
 import '../errors.dart';
 
 final _log = Logger('sync');
+
+/// Enregistrement fourni par une source externe (données publiques).
+@immutable
+final class SourceRecord {
+  const SourceRecord({
+    required this.ref,
+    required this.fields,
+    this.matchField,
+    this.parent,
+    this.defaults = const {},
+  });
+
+  /// Identifiant dans la source (`source_ref`).
+  final String ref;
+
+  /// Champs maintenus par la source (format réseau).
+  final Map<String, Object?> fields;
+
+  /// Champs posés uniquement à la création (ex. statut commercial).
+  final Map<String, Object?> defaults;
+
+  /// Champ de rapprochement avec une fiche existante de même type
+  /// (`kind`), ex. `insee_code`.
+  final String? matchField;
+
+  /// Parent : fiche dont le champ vaut la valeur, parmi ces types.
+  final (String field, String value, Set<String> kinds)? parent;
+}
+
+/// Bilan d'un import depuis une source.
+final class SourceUpsertStats {
+  int created = 0;
+  int updated = 0;
+  int unchanged = 0;
+
+  /// Refusés par les règles de validation : référence → message.
+  final Map<String, String> rejected = {};
+}
 
 /// Moteur de synchronisation côté serveur.
 ///
@@ -210,7 +250,8 @@ final class SyncService {
     }
   }
 
-  /// Écrit l'enregistrement fusionné et journalise le changement.
+  /// Écrit l'enregistrement fusionné et journalise le changement (push
+  /// d'un client : entrée d'audit par enregistrement).
   Future<int> _write(
     TxSession tx,
     EntitySchema schema,
@@ -220,16 +261,62 @@ final class SyncService {
     int version,
     MergeResult merge,
   ) async {
+    final seq = await _persist(
+      tx,
+      schema,
+      entityId: op.entityId,
+      isInsert: isInsert,
+      version: version,
+      merge: merge,
+      hlc: op.hlc,
+      opId: op.opId,
+      deviceId: ctx.deviceId,
+      userId: ctx.userId,
+    );
+    final deleted = merge.applied[SyncColumns.deletedAt];
+    await AuditLog.append(
+      tx,
+      AuditEvent(
+        action: isInsert
+            ? AuditActions.recordCreated
+            : deleted != null
+            ? AuditActions.recordDeleted
+            : AuditActions.recordUpdated,
+        actorUserId: ctx.userId,
+        sessionId: ctx.sessionId,
+        entity: schema.name,
+        entityId: op.entityId,
+        payload: {'version': version, 'fields': merge.applied.keys.toList()},
+        ip: ctx.meta.ip,
+      ),
+    );
+    return seq;
+  }
+
+  /// Insère ou met à jour l'enregistrement et l'ajoute au journal des
+  /// changements. Retourne le numéro de séquence attribué.
+  Future<int> _persist(
+    TxSession tx,
+    EntitySchema schema, {
+    required String entityId,
+    required bool isInsert,
+    required int version,
+    required MergeResult merge,
+    required String hlc,
+    String? opId,
+    String? deviceId,
+    String? userId,
+  }) async {
     final seqRow = await tx.queryOne("SELECT nextval('sync_seq') AS seq");
     final seq = seqRow!['seq'] as int;
     final now = _clock().toUtc();
     final params = <String, Object?>{
-      'id': op.entityId,
+      'id': entityId,
       'version': version,
       'seq': seq,
       'meta': encodeFieldMeta(merge.stamps),
       'now': now,
-      'user': ctx.userId,
+      'user': userId,
     };
     final fieldColumns = merge.applied.keys.toList();
     for (final (i, field) in fieldColumns.indexed) {
@@ -291,33 +378,15 @@ final class SyncService {
       {
         'seq': seq,
         'e': schema.name,
-        'id': op.entityId,
+        'id': entityId,
         'v': version,
         'fields': merge.applied,
-        'hlc': op.hlc,
-        'op': op.opId,
-        'd': ctx.deviceId,
-        'u': ctx.userId,
+        'hlc': hlc,
+        'op': opId,
+        'd': deviceId,
+        'u': userId,
         'now': now,
       },
-    );
-
-    final deleted = merge.applied[SyncColumns.deletedAt];
-    await AuditLog.append(
-      tx,
-      AuditEvent(
-        action: isInsert
-            ? AuditActions.recordCreated
-            : deleted != null
-            ? AuditActions.recordDeleted
-            : AuditActions.recordUpdated,
-        actorUserId: ctx.userId,
-        sessionId: ctx.sessionId,
-        entity: schema.name,
-        entityId: op.entityId,
-        payload: {'version': version, 'fields': merge.applied.keys.toList()},
-        ip: ctx.meta.ip,
-      ),
     );
     return seq;
   }
@@ -346,6 +415,169 @@ final class SyncService {
       'op': op.opId,
     },
   );
+
+  // ── Import depuis une source externe ─────────────────────────────────
+
+  /// Crée ou met à jour les enregistrements de [source] (champ `source`),
+  /// retrouvés par `source_ref`, sinon rapprochés d'une fiche existante
+  /// par [SourceRecord.matchField] (si [canAdopt] accepte sa source).
+  ///
+  /// Écritures « système » (sans utilisateur), synchronisées comme les
+  /// autres. Un champ modifié par un utilisateur n'est jamais écrasé.
+  Future<SourceUpsertStats> upsertFromSource(
+    EntitySchema schema, {
+    required String source,
+    required List<SourceRecord> records,
+    bool Function(String? currentSource)? canAdopt,
+    int batchSize = 500,
+  }) async {
+    final stats = SourceUpsertStats();
+    final parents = <String, String?>{};
+    var lastSeq = 0;
+    for (var start = 0; start < records.length; start += batchSize) {
+      final batch = records.skip(start).take(batchSize).toList();
+      final seq = await _db.tx((tx) async {
+        await tx.query('SELECT pg_advisory_xact_lock(@k)', {
+          'k': _writeLockKey,
+        });
+        var batchSeq = 0;
+        for (final record in batch) {
+          final seq = await _upsertSourceRecord(
+            tx,
+            schema,
+            source,
+            record,
+            stats,
+            parents,
+            canAdopt ?? (current) => current == null,
+          );
+          if (seq > batchSeq) batchSeq = seq;
+        }
+        return batchSeq;
+      });
+      if (seq > 0) {
+        lastSeq = seq;
+        _changes.add(seq);
+      }
+    }
+    if (lastSeq > 0) _log.info('Import $source : $lastSeq');
+    return stats;
+  }
+
+  Future<int> _upsertSourceRecord(
+    TxSession tx,
+    EntitySchema schema,
+    String source,
+    SourceRecord record,
+    SourceUpsertStats stats,
+    Map<String, String?> parents,
+    bool Function(String? currentSource) canAdopt,
+  ) async {
+    bool isField(String name) => schema.fields.containsKey(name);
+    var row = await tx.queryOne(
+      'SELECT * FROM ${schema.name} WHERE source = @s AND source_ref = @r '
+      'ORDER BY deleted_at NULLS FIRST, created_at LIMIT 1',
+      {'s': source, 'r': record.ref},
+    );
+    // Fiche supprimée par un utilisateur : elle n'est pas recréée.
+    if (row != null && row['deleted_at'] != null) {
+      stats.unchanged++;
+      return 0;
+    }
+    final match = record.matchField;
+    if (row == null && match != null && isField(match) && isField('kind')) {
+      final value = record.fields[match];
+      if (value != null) {
+        final candidate = await tx.queryOne(
+          'SELECT * FROM ${schema.name} WHERE kind = @k AND $match = @v '
+          'AND deleted_at IS NULL ORDER BY created_at LIMIT 1',
+          {'k': record.fields['kind'], 'v': value},
+        );
+        if (candidate != null && canAdopt(candidate['source'] as String?)) {
+          row = candidate;
+        }
+      }
+    }
+
+    final incoming = <String, Object?>{
+      ...record.fields,
+      'source': source,
+      'source_ref': record.ref,
+    };
+    if (record.parent case (final field, final value, final kinds)?
+        when isField(field) && isField('kind')) {
+      final key = '$field|$value|${(kinds.toList()..sort()).join(',')}';
+      final parentId = parents.containsKey(key)
+          ? parents[key]
+          : parents[key] =
+                (await tx.queryOne(
+                      'SELECT id FROM ${schema.name} WHERE $field = @v '
+                      'AND kind = ANY(@kinds:_text) AND deleted_at IS NULL '
+                      'ORDER BY created_at LIMIT 1',
+                      {'v': value, 'kinds': kinds.toList()},
+                    ))?['id']
+                    as String?;
+      if (parentId != null) incoming['parent_id'] = parentId;
+    }
+
+    final id = row?['id'] as String? ?? newId();
+    final version = row?['version'] as int? ?? 0;
+    final current = <String, Object?>{
+      if (row != null)
+        for (final field in schema.fields.keys)
+          field: _toWire(row[field], schema.fields[field]!.type),
+    };
+    final stamps = decodeFieldMeta(
+      (row?['field_meta'] as Map?)?.cast<String, dynamic>(),
+    );
+    const equality = DeepCollectionEquality();
+    final changes = <String, Object?>{
+      if (row == null) ...record.defaults,
+      for (final MapEntry(:key, :value) in incoming.entries)
+        if (isField(key) &&
+            !equality.equals(current[key], value) &&
+            stamps[key]?.userId == null)
+          key: value,
+    };
+    if (changes.isEmpty) {
+      stats.unchanged++;
+      return 0;
+    }
+    changes['collected_at'] = _clock().toUtc().toIso8601String();
+
+    final hlc = _hlc.now();
+    final merge = mergeFields(
+      current: current,
+      stamps: stamps,
+      incoming: changes,
+      hlc: hlc,
+      baseVersion: version,
+      nextVersion: version + 1,
+      userId: null,
+    );
+    final issues = [
+      ...schema.checkFields(changes),
+      ...schema.validate({...current, ...merge.applied, 'id': id}),
+    ];
+    if (issues.isNotEmpty) {
+      stats.rejected[record.ref] = issues.map((i) => i.message).join(' ');
+      return 0;
+    }
+    if (row == null) {
+      stats.created++;
+    } else {
+      stats.updated++;
+    }
+    return _persist(
+      tx,
+      schema,
+      entityId: id,
+      isInsert: row == null,
+      version: version + 1,
+      merge: merge,
+      hlc: hlc.toString(),
+    );
+  }
 
   // ── Pull ─────────────────────────────────────────────────────────────
 

@@ -12,6 +12,7 @@ import '../auth/users_service.dart';
 import '../db/database.dart';
 import '../errors.dart';
 import '../files/file_store.dart';
+import '../public_data/public_data_service.dart';
 import '../realtime/realtime_hub.dart';
 import '../sync/sync_service.dart';
 import 'http_utils.dart';
@@ -27,6 +28,7 @@ Handler buildHandler({
   required SyncService sync,
   required RealtimeHub hub,
   required FileStore files,
+  required PublicDataService publicData,
   required bool trustProxy,
   required bool hsts,
 }) {
@@ -189,6 +191,30 @@ Handler buildHandler({
           'content-disposition': 'attachment',
         },
       );
+    })
+    // ── Données publiques ──
+    ..get('/public-data', (Request r) async {
+      final list = await publicData.status(await authed(r));
+      return jsonResponse([for (final s in list) s.toJson()]);
+    })
+    ..get('/public-data/runs', (Request r) async {
+      final list = await publicData.runs(
+        await authed(r),
+        source: r.url.queryParameters['source'],
+        limit: intParam(r, 'limit') ?? 50,
+      );
+      return jsonResponse([for (final run in list) run.toJson()]);
+    })
+    ..put('/public-data/<source>', (Request r, String source) async {
+      final ctx = await authed(r);
+      final body = await readJson(r, ConfigurePublicSourceRequest.fromJson);
+      return jsonResponse(
+        (await publicData.configure(ctx, source, body)).toJson(),
+      );
+    })
+    ..post('/public-data/<source>/run', (Request r, String source) async {
+      final run = await publicData.start(await authed(r), source);
+      return jsonResponse(run.toJson(), status: 202);
     })
     // ── Audit ──
     ..get('/audit', (Request r) async {

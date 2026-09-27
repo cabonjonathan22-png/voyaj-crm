@@ -176,6 +176,31 @@ void main() {
       expect(config.database.requireSsl, isTrue);
     });
 
+    test('dossier des données et heure de l’import quotidien', () {
+      final defaults = ServerConfig.fromMap(base());
+      expect(defaults.dataDir, 'data');
+      expect(defaults.publicDataHour, 3);
+      expect(
+        ServerConfig.fromMap({...base(), 'VOYAJ_PUBLIC_DATA_HOUR': 'off'})
+            .publicDataHour,
+        isNull,
+      );
+      expect(
+        ServerConfig.fromMap({...base(), 'VOYAJ_PUBLIC_DATA_HOUR': '22'})
+            .publicDataHour,
+        22,
+      );
+      for (final invalid in ['25', 'midi']) {
+        expect(
+          () => ServerConfig.fromMap({
+            ...base(),
+            'VOYAJ_PUBLIC_DATA_HOUR': invalid,
+          }),
+          throwsA(isA<ConfigException>()),
+        );
+      }
+    });
+
     test('TLS obligatoire hors localhost', () {
       expect(
         () => ServerConfig.fromMap({...base(), 'VOYAJ_HOST': '0.0.0.0'}),

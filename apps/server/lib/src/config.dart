@@ -42,6 +42,7 @@ final class ServerConfig {
     this.argon2MemoryKib = 19456,
     this.argon2Iterations = 2,
     this.dataDir = 'data',
+    this.publicDataHour = 3,
   });
 
   /// Charge la configuration depuis l'environnement et les fichiers.
@@ -119,6 +120,15 @@ final class ServerConfig {
       argon2MemoryKib: readInt('VOYAJ_ARGON2_MEMORY_KIB', 19456),
       argon2Iterations: readInt('VOYAJ_ARGON2_ITERATIONS', 2),
       dataDir: read('VOYAJ_DATA_DIR') ?? 'data',
+      publicDataHour: switch (read('VOYAJ_PUBLIC_DATA_HOUR')?.toLowerCase()) {
+        null => 3,
+        'off' || 'non' || 'false' => null,
+        final text =>
+          int.tryParse(text) ??
+              (throw const ConfigException(
+                'VOYAJ_PUBLIC_DATA_HOUR doit être une heure (0-23) ou off',
+              )),
+      },
     );
     config.validate();
     return config;
@@ -148,6 +158,10 @@ final class ServerConfig {
   /// répertoire de travail s'il n'est pas absolu.
   final String dataDir;
 
+  /// Heure locale de l'import quotidien des données publiques (`null` :
+  /// désactivé).
+  final int? publicDataHour;
+
   bool get tlsEnabled => tlsCertPath != null && tlsKeyPath != null;
 
   bool get isLoopback => const {'127.0.0.1', 'localhost', '::1'}.contains(host);
@@ -168,6 +182,10 @@ final class ServerConfig {
     }
     if (port <= 0 || port > 65535) {
       throw ConfigException('port invalide : $port');
+    }
+    if (publicDataHour != null &&
+        (publicDataHour! < 0 || publicDataHour! > 23)) {
+      throw ConfigException('heure d’import invalide : $publicDataHour');
     }
     if (argon2MemoryKib < 1024 || argon2Iterations < 1) {
       throw const ConfigException('paramètres Argon2 trop faibles');

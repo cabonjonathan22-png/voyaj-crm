@@ -61,6 +61,9 @@ abstract class PublicDataRun with _$PublicDataRun {
     @Default(0) int created,
     @Default(0) int updated,
     @Default(0) int unchanged,
+
+    /// Fiches refusées par les règles de validation.
+    @Default(0) int rejected,
     String? error,
   }) = _PublicDataRun;
 

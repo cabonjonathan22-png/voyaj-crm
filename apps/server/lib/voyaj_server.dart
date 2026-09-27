@@ -8,5 +8,6 @@ export 'src/config.dart';
 export 'src/db/database.dart' show Database;
 export 'src/db/migrations.dart' show migrate;
 export 'src/errors.dart';
+export 'src/public_data/public_data_service.dart' show PublicDataService;
 export 'src/security/passwords.dart' show PasswordHasher;
 export 'src/server.dart';

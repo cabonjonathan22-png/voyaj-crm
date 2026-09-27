@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:fr_public_data/fr_public_data.dart';
 import 'package:logging/logging.dart';
 import 'package:shelf/shelf_io.dart' as shelf_io;
 
@@ -11,6 +12,7 @@ import 'db/database.dart';
 import 'db/migrations.dart';
 import 'files/file_store.dart';
 import 'http/api.dart';
+import 'public_data/public_data_service.dart';
 import 'realtime/realtime_hub.dart';
 import 'security/passwords.dart';
 import 'security/secret_cipher.dart';
@@ -20,9 +22,21 @@ final _log = Logger('server');
 
 /// Services du serveur, reliés entre eux.
 final class Services {
-  Services._(this.db, this.auth, this.users, this.sync, this.hub, this.files);
+  Services._(
+    this.db,
+    this.auth,
+    this.users,
+    this.sync,
+    this.hub,
+    this.files,
+    this.publicData,
+  );
 
-  factory Services.create(ServerConfig config, Database db) {
+  factory Services.create(
+    ServerConfig config,
+    Database db, {
+    PublicDataClient? publicDataClient,
+  }) {
     final hasher = PasswordHasher(
       memoryKib: config.argon2MemoryKib,
       iterations: config.argon2Iterations,
@@ -50,6 +64,12 @@ final class Services {
       sync,
       hub,
       FileStore(db: db, dataDir: config.dataDir),
+      PublicDataService(
+        db: db,
+        sync: sync,
+        client: publicDataClient ?? PublicDataClient(),
+        scheduleHour: config.publicDataHour,
+      ),
     );
   }
 
@@ -59,6 +79,7 @@ final class Services {
   final SyncService sync;
   final RealtimeHub hub;
   final FileStore files;
+  final PublicDataService publicData;
 }
 
 /// Serveur HTTP en cours d'exécution.
@@ -72,14 +93,22 @@ final class VoyajServer {
   int get port => _http.port;
 
   /// Démarre le serveur : base, migrations, rôles système, HTTP.
-  static Future<VoyajServer> start(ServerConfig config) async {
+  static Future<VoyajServer> start(
+    ServerConfig config, {
+    PublicDataClient? publicDataClient,
+  }) async {
     final db = Database.open(config.database, poolSize: config.dbPoolSize);
     if (config.autoMigrate) {
       final applied = await migrate(db);
       if (applied.isNotEmpty) _log.info('Migrations appliquées : $applied');
     }
-    final services = Services.create(config, db);
+    final services = Services.create(
+      config,
+      db,
+      publicDataClient: publicDataClient,
+    );
     await services.users.syncSystemRoles();
+    await services.publicData.recoverInterrupted();
 
     final handler = buildHandler(
       db: db,
@@ -88,6 +117,7 @@ final class VoyajServer {
       sync: services.sync,
       hub: services.hub,
       files: services.files,
+      publicData: services.publicData,
       trustProxy: config.trustProxy,
       hsts: config.tlsEnabled || config.trustProxy,
     );
@@ -110,6 +140,12 @@ final class VoyajServer {
       unawaited(
         services.auth.purgeExpiredChallenges().catchError(
           (Object e) => _log.warning('Nettoyage des vérifications 2FA', e),
+        ),
+      );
+      unawaited(
+        services.publicData.runScheduledIfDue().catchError(
+          (Object e) =>
+              _log.warning('Import planifié des données publiques', e),
         ),
       );
     });

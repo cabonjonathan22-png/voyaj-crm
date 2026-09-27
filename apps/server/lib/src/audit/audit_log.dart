@@ -29,6 +29,8 @@ abstract final class AuditActions {
   static const recordUpdated = 'record.updated';
   static const recordDeleted = 'record.deleted';
   static const conflictReviewed = 'sync.conflict.reviewed';
+  static const publicDataConfigured = 'public_data.configured';
+  static const publicDataRun = 'public_data.run';
 }
 
 /// Événement à journaliser.
