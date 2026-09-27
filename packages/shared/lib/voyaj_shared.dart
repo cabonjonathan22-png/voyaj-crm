@@ -9,6 +9,7 @@ export 'src/auth/api_token_dto.dart';
 export 'src/auth/auth_dto.dart';
 export 'src/auth/permission.dart';
 export 'src/billing/billing_dto.dart';
+export 'src/billing/signature_dto.dart';
 export 'src/calendar/ics.dart';
 export 'src/connectors/connector_dto.dart';
 export 'src/crm/csv.dart';

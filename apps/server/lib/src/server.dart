@@ -29,6 +29,8 @@ import 'public_data/public_data_service.dart';
 import 'realtime/realtime_hub.dart';
 import 'security/passwords.dart';
 import 'security/secret_cipher.dart';
+import 'signature/signature_service.dart';
+import 'signature/yousign_client.dart';
 import 'sync/sync_service.dart';
 import 'tenders/tender_service.dart';
 
@@ -52,6 +54,7 @@ final class Services {
     this.gdpr,
     this.backups,
     this.tenders,
+    this.signatures,
   );
 
   factory Services.create(
@@ -64,6 +67,7 @@ final class Services {
     SourceOpener? sourceOpener,
     http.Client? webhookClient,
     BoampClient? boampClient,
+    http.Client? yousignHttp,
   }) {
     final cipher = SecretCipher(config.masterKey);
     final hasher = PasswordHasher(
@@ -154,6 +158,19 @@ final class Services {
         pgDump: config.pgDumpPath,
       ),
       TenderService(db: db, boamp: boampClient ?? BoampClient()),
+      SignatureService(
+        db: db,
+        sync: sync,
+        files: files,
+        client: config.yousignApiKey == null
+            ? null
+            : YousignClient(
+                apiKey: config.yousignApiKey!,
+                sandbox: config.yousignSandbox,
+                httpClient: yousignHttp,
+              ),
+        webhookSecret: config.yousignWebhookSecret,
+      ),
     );
   }
 
@@ -172,6 +189,7 @@ final class Services {
   final GdprService gdpr;
   final BackupService backups;
   final TenderService tenders;
+  final SignatureService signatures;
 }
 
 /// Serveur HTTP en cours d'exécution.
@@ -194,6 +212,7 @@ final class VoyajServer {
     SourceOpener? sourceOpener,
     http.Client? webhookClient,
     BoampClient? boampClient,
+    http.Client? yousignHttp,
   }) async {
     final db = Database.open(config.database, poolSize: config.dbPoolSize);
     if (config.autoMigrate) {
@@ -210,6 +229,7 @@ final class VoyajServer {
       sourceOpener: sourceOpener,
       webhookClient: webhookClient,
       boampClient: boampClient,
+      yousignHttp: yousignHttp,
     );
     await services.users.syncSystemRoles();
     await services.publicData.recoverInterrupted();
@@ -232,6 +252,7 @@ final class VoyajServer {
       gdpr: services.gdpr,
       backups: services.backups,
       tenders: services.tenders,
+      signatures: services.signatures,
       trustProxy: config.trustProxy,
       hsts: config.tlsEnabled || config.trustProxy,
     );

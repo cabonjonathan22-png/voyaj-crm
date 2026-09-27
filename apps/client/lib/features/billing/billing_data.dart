@@ -103,6 +103,30 @@ final class BillingApi {
               as Map<String, dynamic>)['flux']
           as String;
 
+  Future<List<SignatureInfo>> signatures(String invoiceId) async => [
+    for (final s
+        in (await _api.get('/api/v1/billing/documents/$invoiceId/signatures'))!
+            as List)
+      SignatureInfo.fromJson(s as Map<String, dynamic>),
+  ];
+
+  Future<SignatureInfo> sendForSignature(
+    String invoiceId,
+    String contactId,
+  ) async => SignatureInfo.fromJson(
+    (await _api.post(
+          '/api/v1/billing/documents/$invoiceId/signatures',
+          SendSignatureRequest(contactId: contactId).toJson(),
+        ))!
+        as Map<String, dynamic>,
+  );
+
+  Future<SignatureInfo> refreshSignature(String id) async =>
+      SignatureInfo.fromJson(
+        (await _api.post('/api/v1/signatures/$id/refresh'))!
+            as Map<String, dynamic>,
+      );
+
   Future<List<int>> fec(int year) async =>
       (await _api.send(
             'GET',
@@ -129,3 +153,9 @@ final billingApiProvider = Provider<BillingApi?>((ref) {
 final billingSettingsProvider = FutureProvider.autoDispose<BillingSettings>(
   (ref) => ref.watch(billingApiProvider)!.settings(),
 );
+
+/// Demandes de signature d'un devis (rechargées par `ref.invalidate`).
+final signaturesProvider = FutureProvider.autoDispose
+    .family<List<SignatureInfo>, String>(
+      (ref, invoiceId) => ref.watch(billingApiProvider)!.signatures(invoiceId),
+    );

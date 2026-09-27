@@ -53,6 +53,9 @@ final class ServerConfig {
     this.backupHour = 2,
     this.backupKeepDays = 14,
     this.pgDumpPath = 'pg_dump',
+    this.yousignApiKey,
+    this.yousignSandbox = true,
+    this.yousignWebhookSecret,
   });
 
   /// Charge la configuration depuis l'environnement et les fichiers.
@@ -154,6 +157,9 @@ final class ServerConfig {
       },
       backupKeepDays: readInt('VOYAJ_BACKUP_KEEP_DAYS', 14),
       pgDumpPath: read('VOYAJ_PG_DUMP') ?? 'pg_dump',
+      yousignApiKey: read('VOYAJ_YOUSIGN_API_KEY'),
+      yousignSandbox: readBool('VOYAJ_YOUSIGN_SANDBOX', fallback: true),
+      yousignWebhookSecret: read('VOYAJ_YOUSIGN_WEBHOOK_SECRET'),
       publicDataHour: switch (read('VOYAJ_PUBLIC_DATA_HOUR')?.toLowerCase()) {
         null => 3,
         'off' || 'non' || 'false' => null,
@@ -217,6 +223,12 @@ final class ServerConfig {
 
   /// Exécutable `pg_dump` (même version majeure que le serveur PostgreSQL).
   final String pgDumpPath;
+
+  /// Signature électronique (Yousign) : clé d'API, environnement de test,
+  /// secret des notifications.
+  final String? yousignApiKey;
+  final bool yousignSandbox;
+  final String? yousignWebhookSecret;
 
   bool get tlsEnabled => tlsCertPath != null && tlsKeyPath != null;
 

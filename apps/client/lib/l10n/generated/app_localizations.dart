@@ -5132,6 +5132,60 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Appel d\'offres BOAMP {ref} — {buyer}'**
   String tenderDealDescription(String ref, String buyer);
+
+  /// No description provided for @signatureSend.
+  ///
+  /// In fr, this message translates to:
+  /// **'Signature électronique'**
+  String get signatureSend;
+
+  /// No description provided for @signatureChooseSigner.
+  ///
+  /// In fr, this message translates to:
+  /// **'Signataire du devis'**
+  String get signatureChooseSigner;
+
+  /// No description provided for @signatureNoContact.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun contact de ce client n\'a d\'adresse email.'**
+  String get signatureNoContact;
+
+  /// No description provided for @signatureSent.
+  ///
+  /// In fr, this message translates to:
+  /// **'Devis envoyé pour signature.'**
+  String get signatureSent;
+
+  /// No description provided for @signatureTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Signature électronique'**
+  String get signatureTitle;
+
+  /// No description provided for @signatureDone.
+  ///
+  /// In fr, this message translates to:
+  /// **'Signé'**
+  String get signatureDone;
+
+  /// No description provided for @signatureOngoing.
+  ///
+  /// In fr, this message translates to:
+  /// **'En attente'**
+  String get signatureOngoing;
+
+  /// No description provided for @signatureDeclined.
+  ///
+  /// In fr, this message translates to:
+  /// **'Refusé'**
+  String get signatureDeclined;
+
+  /// No description provided for @signatureEnded.
+  ///
+  /// In fr, this message translates to:
+  /// **'Clos'**
+  String get signatureEnded;
 }
 
 class _AppLocalizationsDelegate

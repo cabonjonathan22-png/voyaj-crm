@@ -958,5 +958,14 @@
   "tenderIgnore": "Ignorer",
   "tenderFollowed": "Affaire créée pour cet appel d'offres.",
   "tenderDealDescription": "Appel d'offres BOAMP {ref} — {buyer}",
-  "@tenderDealDescription": {"placeholders": {"ref": {"type": "String"}, "buyer": {"type": "String"}}}
+  "@tenderDealDescription": {"placeholders": {"ref": {"type": "String"}, "buyer": {"type": "String"}}},
+  "signatureSend": "Signature électronique",
+  "signatureChooseSigner": "Signataire du devis",
+  "signatureNoContact": "Aucun contact de ce client n'a d'adresse email.",
+  "signatureSent": "Devis envoyé pour signature.",
+  "signatureTitle": "Signature électronique",
+  "signatureDone": "Signé",
+  "signatureOngoing": "En attente",
+  "signatureDeclined": "Refusé",
+  "signatureEnded": "Clos"
 }

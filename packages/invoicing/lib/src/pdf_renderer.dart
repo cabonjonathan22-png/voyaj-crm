@@ -328,9 +328,23 @@ Future<Uint8List> renderDocumentPdf(IssuedDocument doc) async {
             height: 80,
             padding: const pw.EdgeInsets.all(8),
             decoration: pw.BoxDecoration(border: pw.Border.all(color: _line)),
-            child: pw.Text(
-              'Bon pour accord (date, nom, signature et cachet)',
-              style: small,
+            child: pw.Column(
+              crossAxisAlignment: pw.CrossAxisAlignment.start,
+              children: [
+                pw.Text(
+                  'Bon pour accord (date, nom, signature et cachet)',
+                  style: small,
+                ),
+                pw.SizedBox(height: 4),
+                // Ancre de signature électronique (Yousign), invisible.
+                pw.Text(
+                  signatureAnchor,
+                  style: const pw.TextStyle(
+                    fontSize: 6,
+                    color: PdfColors.white,
+                  ),
+                ),
+              ],
             ),
           ),
         ],
@@ -339,6 +353,10 @@ Future<Uint8List> renderDocumentPdf(IssuedDocument doc) async {
   );
   return pdf.save();
 }
+
+/// Ancre de la signature électronique d'un devis (Yousign : signataire 1,
+/// zone de 180 × 48 points).
+const signatureAnchor = '{{s1|signature|180|48}}';
 
 pw.Widget _totalRow(String label, String value, pw.TextStyle style) =>
     pw.Padding(

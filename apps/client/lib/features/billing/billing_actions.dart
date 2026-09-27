@@ -13,6 +13,7 @@ import '../../core/api_client.dart';
 import '../../data/local/database.dart';
 import '../../design_system/design_system.dart';
 import '../crm/crm_data.dart';
+import '../crm/crm_format.dart';
 import '../crm/widgets/record_form.dart';
 import 'billing_data.dart';
 
@@ -217,4 +218,49 @@ Future<void> recordPayment(
     });
   }
   ref.read(toastProvider).success(l10n.paymentRecorded);
+}
+
+/// Envoie le devis émis pour signature électronique à un contact de
+/// l'organisation (avec email).
+Future<void> sendForSignature(
+  BuildContext context,
+  WidgetRef ref,
+  InvoiceRow quote,
+) async {
+  final l10n = context.l10n;
+  final api = ref.read(billingApiProvider);
+  if (api == null) return;
+  final contacts = [
+    for (final c in ref.read(contactsProvider).value ?? const <ContactRow>[])
+      if (c.email != null &&
+          c.doNotContact != true &&
+          (quote.organisationId == null ||
+              c.organisationId == quote.organisationId))
+        c,
+  ];
+  if (contacts.isEmpty) {
+    ref.read(toastProvider).error(l10n.signatureNoContact);
+    return;
+  }
+  final option = await showSearchPicker<String>(
+    context,
+    title: l10n.signatureChooseSigner,
+    options: [
+      for (final c in contacts)
+        VSelectOption(c.id, '${contactName(c)} — ${c.email}'),
+    ],
+  );
+  if (option == null) return;
+  try {
+    await api.sendForSignature(quote.id, option.value);
+    ref.read(toastProvider).success(l10n.signatureSent);
+    ref.invalidate(signaturesProvider(quote.id));
+  } on ApiFailure catch (e) {
+    ref
+        .read(toastProvider)
+        .error(
+          e.message,
+          description: e.issues.map((i) => i.message).join(' '),
+        );
+  }
 }

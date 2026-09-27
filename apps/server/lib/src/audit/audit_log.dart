@@ -46,6 +46,7 @@ abstract final class AuditActions {
   static const apiTokenRevoked = 'auth.api_token.revoked';
   static const gdprExported = 'gdpr.contact.exported';
   static const gdprErased = 'gdpr.contact.erased';
+  static const signatureSent = 'billing.signature.sent';
 }
 
 /// Événement à journaliser.

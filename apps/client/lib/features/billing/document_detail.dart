@@ -7,6 +7,8 @@ import 'package:voyaj_shared/voyaj_shared.dart';
 
 import '../../app/app.dart';
 import '../../app/providers.dart';
+import '../../core/api_client.dart';
+import '../../core/format.dart';
 import '../../data/local/database.dart';
 import '../../design_system/design_system.dart';
 import '../crm/crm_data.dart';
@@ -104,6 +106,13 @@ class _DocumentDetail extends ConsumerWidget {
             ),
           ),
         ],
+        if (doc.status == DocumentStatus.sent.key &&
+            ref.watch(apiClientProvider) != null)
+          VButton(
+            label: l10n.signatureSend,
+            icon: LucideIcons.signature,
+            onPressed: () => unawaited(sendForSignature(context, ref, doc)),
+          ),
         VButton.primary(
           label: l10n.billingToInvoice,
           icon: LucideIcons.receipt,
@@ -222,6 +231,10 @@ class _DocumentDetail extends ConsumerWidget {
             alignment: Alignment.centerRight,
             child: DocumentTotalsView(totals: totals),
           ),
+          if (kind == DocumentKind.quote &&
+              issued &&
+              ref.watch(apiClientProvider) != null)
+            _Signatures(invoiceId: doc.id),
           if (kind == DocumentKind.invoice && issued) ...[
             const SizedBox(height: VSpace.x4),
             Text(l10n.payments, style: t.heading),
@@ -270,6 +283,78 @@ class _DocumentDetail extends ConsumerWidget {
             const SizedBox(height: VSpace.x4),
             Text(doc.notes!, style: t.small),
           ],
+        ],
+      ),
+    );
+  }
+}
+
+/// Demandes de signature électronique d'un devis.
+class _Signatures extends ConsumerWidget {
+  const _Signatures({required this.invoiceId});
+
+  final String invoiceId;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = context.l10n;
+    final t = context.text;
+    final list = ref.watch(signaturesProvider(invoiceId)).value ?? const [];
+    if (list.isEmpty) return const SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsets.only(top: VSpace.x4),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(l10n.signatureTitle, style: t.heading),
+          const SizedBox(height: VSpace.x2),
+          for (final s in list)
+            Row(
+              children: [
+                VBadge(
+                  switch (s.status) {
+                    'done' => l10n.signatureDone,
+                    'ongoing' => l10n.signatureOngoing,
+                    'declined' => l10n.signatureDeclined,
+                    _ => l10n.signatureEnded,
+                  },
+                  tone: switch (s.status) {
+                    'done' => VTone.success,
+                    'ongoing' => VTone.info,
+                    'declined' => VTone.danger,
+                    _ => VTone.neutral,
+                  },
+                ),
+                const SizedBox(width: VSpace.x2),
+                Expanded(
+                  child: Text(
+                    [
+                      '${s.signerName} <${s.signerEmail}>',
+                      formatDateTime(s.updatedAt.toLocal()),
+                      ?s.error,
+                    ].join(' · '),
+                    style: t.small,
+                  ),
+                ),
+                if (s.status == 'ongoing')
+                  VIconButton(
+                    icon: LucideIcons.refreshCw,
+                    tooltip: l10n.refresh,
+                    size: VButtonSize.sm,
+                    onPressed: () async {
+                      try {
+                        await ref
+                            .read(billingApiProvider)!
+                            .refreshSignature(s.id);
+                        ref.invalidate(signaturesProvider(invoiceId));
+                        await ref.read(syncEngineProvider)?.syncNow();
+                      } on ApiFailure catch (e) {
+                        ref.read(toastProvider).error(e.message);
+                      }
+                    },
+                  ),
+              ],
+            ),
         ],
       ),
     );

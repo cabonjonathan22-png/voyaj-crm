@@ -23,6 +23,7 @@ import '../errors.dart';
 import '../files/file_store.dart';
 import '../public_data/public_data_service.dart';
 import '../realtime/realtime_hub.dart';
+import '../signature/signature_service.dart';
 import '../sync/sync_service.dart';
 import '../tenders/tender_service.dart';
 import 'http_utils.dart';
@@ -47,6 +48,7 @@ Handler buildHandler({
   required GdprService gdpr,
   required BackupService backups,
   required TenderService tenders,
+  required SignatureService signatures,
   required bool trustProxy,
   required bool hsts,
 }) {
@@ -353,6 +355,31 @@ Handler buildHandler({
     ..post('/billing/documents/<id>/chorus', (Request r, String id) async {
       final flux = await billing.depositToChorus(await authed(r), id);
       return jsonResponse({'flux': flux});
+    })
+    ..get('/billing/documents/<id>/signatures', (Request r, String id) async {
+      final list = await signatures.list(await authed(r), id);
+      return jsonResponse([for (final s in list) s.toJson()]);
+    })
+    ..post('/billing/documents/<id>/signatures', (Request r, String id) async {
+      final ctx = await authed(r);
+      final body = await readJson(r, SendSignatureRequest.fromJson);
+      return jsonResponse(
+        (await signatures.send(ctx, id, body)).toJson(),
+        status: 201,
+      );
+    })
+    ..post('/signatures/<id>/refresh', (Request r, String id) async {
+      return jsonResponse(
+        (await signatures.refresh(await authed(r), id)).toJson(),
+      );
+    })
+    // Notifications Yousign (signées par le secret du webhook).
+    ..post('/signatures/webhook', (Request r) async {
+      await signatures.webhook(
+        await _readLimited(r, maxHookBytes),
+        r.headers['x-yousign-signature-256'],
+      );
+      return noContent();
     })
     ..get('/billing/fec', (Request r) async {
       final year = intParam(r, 'year');

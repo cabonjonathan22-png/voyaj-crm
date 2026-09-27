@@ -2984,4 +2984,32 @@ class AppLocalizationsFr extends AppLocalizations {
   String tenderDealDescription(String ref, String buyer) {
     return 'Appel d\'offres BOAMP $ref — $buyer';
   }
+
+  @override
+  String get signatureSend => 'Signature électronique';
+
+  @override
+  String get signatureChooseSigner => 'Signataire du devis';
+
+  @override
+  String get signatureNoContact =>
+      'Aucun contact de ce client n\'a d\'adresse email.';
+
+  @override
+  String get signatureSent => 'Devis envoyé pour signature.';
+
+  @override
+  String get signatureTitle => 'Signature électronique';
+
+  @override
+  String get signatureDone => 'Signé';
+
+  @override
+  String get signatureOngoing => 'En attente';
+
+  @override
+  String get signatureDeclined => 'Refusé';
+
+  @override
+  String get signatureEnded => 'Clos';
 }
