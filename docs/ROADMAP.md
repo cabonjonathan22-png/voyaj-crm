@@ -15,10 +15,7 @@
 ## Éléments reportés ou à compléter
 
 ### Déploiement et distribution
-- **Hébergement du serveur accessible aux utilisateurs** : pour que des personnes hors de ce PC
-  utilisent le client, le serveur doit être joignable (VPS + nom de domaine avec
-  `deploy/docker`, recommandé). Le déploiement Docker n'a pas pu être testé sur le poste de
-  développement (Docker absent).
+- **Hébergement** : serveur de test en ligne sur Google Cloud (Paris, `https://voyaj-crm.duckdns.org`, Docker + Caddy, sauvegarde quotidienne locale à la VM). Production prévue chez OVH : ajouter une copie des sauvegardes hors de la machine.
 - **Signature de code** de l'installeur (certificat OV/EV) pour supprimer l'avertissement SmartScreen.
 - **Mise à jour automatique** du client (vérification de version au démarrage + téléchargement).
 - Service Windows : exécuter sous un compte dédié plutôt que LocalSystem. Sur le poste de

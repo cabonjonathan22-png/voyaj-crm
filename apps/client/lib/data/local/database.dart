@@ -190,6 +190,9 @@ abstract final class SettingKeys {
   static const lastSyncAt = 'last_sync_at';
   static const currentUser = 'current_user';
   static const lastUserId = 'last_user_id';
+
+  /// Serveur d'origine des données locales.
+  static const dataServerUrl = 'data_server_url';
   static const themeMode = 'theme_mode';
   static const sidebarCollapsed = 'sidebar_collapsed';
   static String tableView(String table) => 'table_view.$table';

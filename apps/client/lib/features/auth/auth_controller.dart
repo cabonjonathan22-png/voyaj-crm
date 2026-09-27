@@ -99,15 +99,19 @@ final class AuthController extends Notifier<AuthState> {
 
   Future<void> _completeLogin(AuthTokens tokens, CurrentUser user) async {
     final lastUserId = await _db.readSetting<String>(SettingKeys.lastUserId);
-    if (lastUserId != null && lastUserId != user.id) {
-      // Autre utilisateur sur ce poste : les données locales (et les
-      // modifications non envoyées) du précédent ne doivent pas lui être
-      // visibles.
+    final lastServer = await _db.readSetting<String>(SettingKeys.dataServerUrl);
+    final server = ref.read(serverUrlProvider).toString();
+    if ((lastUserId != null && lastUserId != user.id) ||
+        (lastServer != null && lastServer != server)) {
+      // Autre utilisateur ou autre serveur : les données locales (et les
+      // modifications non envoyées) ne doivent pas être visibles ni
+      // mélangées ; le curseur de synchronisation repart de zéro.
       await _db.wipeSyncedData();
     }
     await ref.read(tokenStoreProvider).save(tokens);
     await _db.writeSetting(SettingKeys.currentUser, user.toJson());
     await _db.writeSetting(SettingKeys.lastUserId, user.id);
+    await _db.writeSetting(SettingKeys.dataServerUrl, server);
     state = AuthSignedIn(user);
   }
 
