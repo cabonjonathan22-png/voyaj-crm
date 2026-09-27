@@ -9,6 +9,7 @@ import 'package:voyaj_shared/voyaj_shared.dart';
 import '../../../app/app.dart';
 import '../../../app/providers.dart';
 import '../../../data/local/database.dart';
+import '../../../data/records/record_store.dart';
 import '../../../design_system/design_system.dart';
 import '../crm_data.dart';
 import '../crm_format.dart';
@@ -302,7 +303,12 @@ class _StageColumn extends ConsumerWidget {
       onWillAcceptWithDetails: (details) =>
           canWrite && details.data.stageId != stage.id,
       onAcceptWithDetails: (details) => unawaited(
-        moveDeal(ref, details.data, stage, sortOrder: lastOrder + 1),
+        moveDeal(ref, details.data, stage, sortOrder: lastOrder + 1).catchError(
+          (Object e) {
+            ref.read(toastProvider).error(e.toString());
+          },
+          test: (e) => e is RecordValidationException,
+        ),
       ),
       builder: (context, candidates, _) => AnimatedContainer(
         duration: VMotion.fast,

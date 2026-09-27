@@ -18,12 +18,12 @@ import 'support/test_app.dart';
 void main() {
   setUpAll(loadFonts);
 
-  const screens = {
+  final screens = {
     'organisations': Routes.organisations,
     'organisation_new': '${Routes.organisations}?new=1',
-    'organisation_detail': '${Routes.organisations}/org-1',
+    'organisation_detail': '${Routes.organisations}/${sid('org-1')}',
     'contacts': Routes.contacts,
-    'contact_detail': '${Routes.contacts}/ct-2',
+    'contact_detail': '${Routes.contacts}/${sid('ct-2')}',
     'elected': Routes.elected,
     'pipelines': Routes.pipelines,
     'tasks': Routes.tasks,

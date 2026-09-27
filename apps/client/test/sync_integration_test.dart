@@ -10,6 +10,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:postgres/postgres.dart';
 import 'package:voyaj_client/core/api_client.dart';
 import 'package:voyaj_client/data/local/database.dart' hide Tags;
+import 'package:voyaj_client/data/records/record_store.dart';
 import 'package:voyaj_client/data/sync/local_clock.dart';
 import 'package:voyaj_client/data/sync/sync_engine.dart';
 import 'package:voyaj_client/features/tags/tags_repository.dart';
@@ -50,6 +51,7 @@ void main() {
         dbPoolSize: 4,
         argon2MemoryKib: 1024,
         argon2Iterations: 1,
+        dataDir: Directory.systemTemp.createTempSync('voyaj-files').path,
       ),
     );
     baseUri = Uri.parse('http://127.0.0.1:${server.port}');
@@ -303,6 +305,86 @@ void main() {
       expect((await bob.tag(id))!.name, 'Instantané');
     },
   );
+
+  test('CRM : organisation, contact, mandat, tag et fichier joint', () async {
+    final alice = await device('alice@voyaj.test');
+    final bob = await device('bob@voyaj.test');
+    addTearDown(alice.close);
+    addTearDown(bob.close);
+
+    final bytes = utf8.encode('Proposition commerciale');
+    final fileId = await alice.api.uploadFile(bytes, mimeType: 'text/plain');
+    final tagId = await alice.tags.create((
+      name: 'Aveyron',
+      color: '#10B981',
+      description: null,
+    ));
+    final (orgId, contactId) = await alice.records.write((w) async {
+      final orgId = await w.create(SyncEntities.organisations, {
+        'name': 'Mairie de Rodez',
+        'kind': 'commune',
+        'status': 'en_discussion',
+        'latitude': 44.35,
+        'custom_fields': {'budget': 120000},
+      });
+      final contactId = await w.create(SyncEntities.contacts, {
+        'first_name': 'Paul',
+        'last_name': 'Martin',
+        'organisation_id': orgId,
+      });
+      await w.create(SyncEntities.positions, {
+        'contact_id': contactId,
+        'organisation_id': orgId,
+        'is_elected': true,
+        'mandate_role': 'maire',
+        'start_date': '2020-07-03',
+      });
+      await w.create(SyncEntities.taggings, {
+        'tag_id': tagId,
+        'entity': 'organisations',
+        'record_id': orgId,
+      });
+      await w.create(SyncEntities.attachments, {
+        'file_id': fileId,
+        'file_name': 'proposition.txt',
+        'size': bytes.length,
+        'organisation_id': orgId,
+      });
+      return (orgId, contactId);
+    });
+    await alice.sync();
+    expect(await alice.pendingCount(), 0);
+    await bob.sync();
+
+    final org = await (bob.db.select(
+      bob.db.organisations,
+    )..where((t) => t.id.equals(orgId))).getSingle();
+    expect(org.name, 'Mairie de Rodez');
+    expect(org.latitude, 44.35);
+    expect(org.customFields, '{"budget":120000}');
+    final position = await bob.db.select(bob.db.positions).getSingle();
+    expect(position.contactId, contactId);
+    expect(position.startDate, '2020-07-03');
+    expect((await bob.db.select(bob.db.taggings).getSingle()).recordId, orgId);
+    final attachment = await bob.db.select(bob.db.attachments).getSingle();
+    expect(await bob.api.downloadFile(attachment.fileId), bytes);
+
+    // Modification concurrente de champs différents : fusion.
+    await alice.records.update(SyncEntities.organisations, orgId, {
+      'status': 'client',
+    });
+    await bob.records.update(SyncEntities.organisations, orgId, {
+      'phone': '05 65 77 88 00',
+    });
+    await alice.sync();
+    await bob.sync();
+    await alice.sync();
+    for (final d in [alice, bob]) {
+      final merged = (await d.records.read(SyncEntities.organisations, orgId))!;
+      expect(merged['status'], 'client');
+      expect(merged['phone'], '05 65 77 88 00');
+    }
+  });
 }
 
 /// Un poste client : base locale, horloge, API, moteur de synchro.
@@ -346,6 +428,12 @@ final class _Device {
   final ApiClient api;
   final SyncEngine engine;
   final TagsRepository tags;
+  late final RecordStore records = RecordStore(
+    db: db,
+    clock: clock,
+    currentUserId: null,
+    onChanged: () {},
+  );
   late void Function(AuthTokens) _setTokens;
 
   Future<void> login(String email, String password) async {

@@ -1,7 +1,19 @@
 import 'package:voyaj_client/data/local/database.dart';
 import 'package:voyaj_client/data/sync/local_entities.dart';
 
-/// Données CRM de démonstration (tests d'écrans et captures).
+final _seedKey = RegExp(r'^(org|ct|pos|pl|st|deal|act|file|tg|cf|seg)-\d+$');
+
+/// Identifiant UUID stable d'une clé de démonstration (`org-1`).
+String sid(String key) {
+  final hash = key.codeUnits.fold<int>(
+    0,
+    (h, c) => (h * 31 + c) & 0xFFFFFFFFFFFF,
+  );
+  return '00000000-0000-7000-8000-${hash.toRadixString(16).padLeft(12, '0')}';
+}
+
+/// Données CRM de démonstration (tests d'écrans et captures). Les
+/// identifiants (`org-1`…) sont convertis par [sid].
 Future<void> seedCrm(AppDatabase db) async {
   final now = DateTime.now().toUtc();
   String ago(Duration d) => now.subtract(d).toIso8601String();
@@ -11,8 +23,9 @@ Future<void> seedCrm(AppDatabase db) async {
     String id,
     Map<String, Object?> fields, {
     int version = 2,
-  }) => localEntityFor(entity)!.upsert(db, id, {
-    ...fields,
+  }) => localEntityFor(entity)!.upsert(db, sid(id), {
+    for (final MapEntry(:key, :value) in fields.entries)
+      key: value is String && _seedKey.hasMatch(value) ? sid(value) : value,
     'version': version,
     'created_at': ago(const Duration(days: 20)),
     'updated_at': ago(Duration(hours: id.hashCode % 90)),
