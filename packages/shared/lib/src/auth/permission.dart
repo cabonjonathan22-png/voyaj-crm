@@ -3,8 +3,34 @@
 /// La liste fait foi côté serveur (contrôle d'accès) et côté client
 /// (affichage conditionnel). Ajouter une permission = ajouter une valeur ici.
 enum Permission {
+  organisationRead('organisation.read', 'Consulter les organisations'),
+  organisationWrite(
+    'organisation.write',
+    'Créer, modifier et supprimer les organisations',
+  ),
+  contactRead('contact.read', 'Consulter les contacts et les élus'),
+  contactWrite(
+    'contact.write',
+    'Créer, modifier et supprimer les contacts et les élus',
+  ),
+  dealRead('deal.read', 'Consulter les affaires et les pipelines'),
+  dealWrite('deal.write', 'Créer, modifier et supprimer les affaires'),
+  activityRead('activity.read', 'Consulter les activités et les fichiers'),
+  activityWrite(
+    'activity.write',
+    'Créer, modifier et supprimer les activités et les fichiers',
+  ),
   tagRead('tag.read', 'Consulter les tags'),
   tagWrite('tag.write', 'Créer, modifier et supprimer les tags'),
+  tagApply('tag.apply', 'Appliquer des tags aux fiches'),
+  segmentWrite('segment.write', 'Créer et modifier les segments partagés'),
+  pipelineManage('pipeline.manage', 'Configurer les pipelines et leurs étapes'),
+  customFieldManage(
+    'customfield.manage',
+    'Configurer les champs personnalisés',
+  ),
+  dataImport('data.import', 'Importer des données (CSV, Excel)'),
+  dataExport('data.export', 'Exporter des données (CSV, Excel)'),
   syncConflictRead('sync.conflict.read', 'Consulter le journal des conflits'),
   syncConflictManage(
     'sync.conflict.manage',
@@ -35,13 +61,29 @@ enum SystemRole {
     'Commercial',
     'Prospection et gestion commerciale.',
     [
+      Permission.organisationRead,
+      Permission.organisationWrite,
+      Permission.contactRead,
+      Permission.contactWrite,
+      Permission.dealRead,
+      Permission.dealWrite,
+      Permission.activityRead,
+      Permission.activityWrite,
       Permission.tagRead,
       Permission.tagWrite,
+      Permission.tagApply,
+      Permission.segmentWrite,
+      Permission.dataImport,
+      Permission.dataExport,
       Permission.syncConflictRead,
       Permission.userRead,
     ],
   ),
   reader('lecture', 'Lecture seule', 'Consultation uniquement.', [
+    Permission.organisationRead,
+    Permission.contactRead,
+    Permission.dealRead,
+    Permission.activityRead,
     Permission.tagRead,
     Permission.userRead,
   ]);

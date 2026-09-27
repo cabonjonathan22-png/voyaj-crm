@@ -142,7 +142,8 @@ final class SyncService {
         final currentVersion = row?['version'] as int? ?? 0;
         final current = <String, Object?>{
           if (row != null)
-            for (final field in schema.fields.keys) field: _toWire(row[field]),
+            for (final field in schema.fields.keys)
+              field: _toWire(row[field], schema.fields[field]!.type),
         };
         final merge = mergeFields(
           current: current,
@@ -481,7 +482,7 @@ final class SyncService {
             SyncColumns.updatedAt,
             SyncColumns.updatedBy,
           ])
-            column: _toWire(row[column]),
+            column: _toWire(row[column], schema.fields[column]?.type),
         },
         fieldMeta: decodeFieldMeta(
           (row['field_meta'] as Map).cast<String, dynamic>(),
@@ -501,18 +502,24 @@ final class SyncService {
   );
 }
 
-/// Valeur base → valeur réseau (dates en ISO 8601 UTC).
-Object? _toWire(Object? value) =>
-    value is DateTime ? value.toUtc().toIso8601String() : value;
+/// Valeur base → valeur réseau (horodatages en ISO 8601 UTC, dates
+/// calendaires en AAAA-MM-JJ).
+Object? _toWire(Object? value, [FieldType? type]) => switch (value) {
+  final DateTime d when type == FieldType.date => formatDateOnly(d),
+  final DateTime d => d.toUtc().toIso8601String(),
+  _ => value,
+};
 
 /// Valeur réseau → paramètre SQL.
-Object? _fromWire(FieldType type, Object? value) =>
-    type == FieldType.dateTime && value is String
-    ? DateTime.parse(value).toUtc()
-    : value;
+Object? _fromWire(FieldType type, Object? value) => switch (type) {
+  FieldType.dateTime when value is String => DateTime.parse(value).toUtc(),
+  FieldType.date when value is String => DateTime.parse('${value}T00:00:00Z'),
+  _ => value,
+};
 
 String _param(int index, FieldType type) => switch (type) {
   FieldType.json => '@f$index:jsonb',
   FieldType.dateTime => '@f$index:timestamptz',
+  FieldType.date => '@f$index:date',
   _ => '@f$index',
 };

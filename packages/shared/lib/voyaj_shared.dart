@@ -6,6 +6,8 @@ export 'src/api/api_error.dart';
 export 'src/audit/audit_entry.dart';
 export 'src/auth/auth_dto.dart';
 export 'src/auth/permission.dart';
+export 'src/crm/enums.dart';
+export 'src/crm/rules.dart';
 export 'src/ids.dart';
 export 'src/models/tag.dart';
 export 'src/sync/entities.dart';

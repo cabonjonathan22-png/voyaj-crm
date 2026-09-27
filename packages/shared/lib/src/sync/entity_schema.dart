@@ -20,30 +20,53 @@ enum FieldType {
   /// Chaîne ISO 8601 UTC.
   dateTime,
 
+  /// Date calendaire `AAAA-MM-JJ` (sans heure ni fuseau).
+  date,
+
   /// Valeur JSON arbitraire (objet ou liste).
   json,
 }
 
+final _datePattern = RegExp(r'^\d{4}-\d{2}-\d{2}$');
+
 /// Définition d'un champ synchronisé.
 @immutable
 final class FieldSpec {
-  const FieldSpec(this.type, {this.nullable = true});
+  const FieldSpec(this.type, {this.nullable = true, this.values});
+
+  /// Champ texte limité à une liste de valeurs (énumération).
+  const FieldSpec.oneOf(Set<String> this.values, {this.nullable = true})
+    : type = FieldType.text;
 
   final FieldType type;
   final bool nullable;
 
+  /// Valeurs autorisées (champ énuméré), ou `null`.
+  final Set<String>? values;
+
   bool accepts(Object? value) {
     if (value == null) return nullable;
     return switch (type) {
-      FieldType.text => value is String,
+      FieldType.text =>
+        value is String && (values == null || values!.contains(value)),
       FieldType.integer => value is int,
       FieldType.decimal => value is num,
       FieldType.boolean => value is bool,
       FieldType.dateTime => value is String && DateTime.tryParse(value) != null,
+      FieldType.date =>
+        value is String &&
+            _datePattern.hasMatch(value) &&
+            DateTime.tryParse(value) != null,
       FieldType.json => value is Map || value is List,
     };
   }
 }
+
+/// Formate une date calendaire (`AAAA-MM-JJ`).
+String formatDateOnly(DateTime date) =>
+    '${date.year.toString().padLeft(4, '0')}-'
+    '${date.month.toString().padLeft(2, '0')}-'
+    '${date.day.toString().padLeft(2, '0')}';
 
 /// Colonnes techniques communes à toutes les entités synchronisées.
 abstract final class SyncColumns {

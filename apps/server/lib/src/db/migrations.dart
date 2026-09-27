@@ -7,6 +7,7 @@ import 'package:postgres/postgres.dart';
 
 import 'database.dart';
 import 'migrations/m0001_initial.dart';
+import 'migrations/m0002_crm.dart';
 
 /// Migration SQL versionnée. Une migration appliquée ne doit plus jamais
 /// être modifiée : on en ajoute une nouvelle (le checksum est vérifié).
@@ -23,7 +24,7 @@ final class Migration {
 
 /// Liste ordonnée des migrations. Ajouter une migration : créer
 /// `migrations/mNNNN_nom.dart` et l'ajouter ici.
-const List<Migration> migrations = [m0001Initial];
+const List<Migration> migrations = [m0001Initial, m0002Crm];
 
 final _log = Logger('migrations');
 
